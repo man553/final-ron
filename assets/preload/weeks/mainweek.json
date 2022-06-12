@@ -1,0 +1,24 @@
+{
+	"songs": [
+		["Ron", "ron", [165, 0, 77]],
+		["Wasted", "ronslightly", [165, 0, 77]],
+		["Ayo", "rontriggered", [165, 0, 77]],
+		["Bloodshed", "hellron", [165, 0, 77]]
+
+	],
+
+	"weekCharacters": [
+		"ron",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}

@@ -1,0 +1,48 @@
+{
+	"song": {
+		"speed": 2.7,
+		"stage": "ronPissed",
+		"player1": "bf",
+		"player2": "ronslightly",
+		"events": [
+			[
+				103500,
+				[
+					[
+						"Add Camera Zoom",
+						"0.5",
+						""
+					]
+				]
+			],
+			[
+				103625,
+				[
+					[
+						"Change Character",
+						"dad",
+						"rontriggered"
+					]
+				]
+			],
+			[
+				103875,
+				[
+					[
+						"Add Camera Zoom",
+						"0.015",
+						""
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 120,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"song": "wasted"
+	}
+}

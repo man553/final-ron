@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="truck go brr.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Moving Truck0000" x="0" y="0" width="1090" height="530" frameX="0" frameY="-17" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0001" x="1090" y="0" width="1090" height="533" frameX="0" frameY="-14" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0002" x="2180" y="0" width="1090" height="548" frameX="0" frameY="0" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0003" x="0" y="548" width="1090" height="547" frameX="0" frameY="-3" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0004" x="1090" y="548" width="1090" height="542" frameX="0" frameY="-7" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0005" x="2180" y="548" width="1090" height="537" frameX="0" frameY="-10" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0006" x="0" y="1095" width="1090" height="530" frameX="0" frameY="-16" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0007" x="1090" y="1095" width="1090" height="530" frameX="0" frameY="-16" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0008" x="2180" y="1095" width="1090" height="530" frameX="0" frameY="-18" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0009" x="0" y="1625" width="1090" height="532" frameX="0" frameY="-18" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0010" x="1090" y="1625" width="1090" height="532" frameX="0" frameY="-17" frameWidth="1090" frameHeight="550"/>
+	<SubTexture name="Moving Truck0011" x="2180" y="1625" width="1090" height="530" frameX="0" frameY="-17" frameWidth="1090" frameHeight="550"/>
+</TextureAtlas>

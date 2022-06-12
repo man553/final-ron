@@ -468,11 +468,90 @@ class PlayState extends MusicBeatState
 		boyfriendGroup = new FlxSpriteGroup(BF_X, BF_Y);
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
-
+		
 		switch (curStage)
-		{
+		{ 	//all the stages here
+			case 'ronPissed': //ron
+				var sky:BGSprite = new BGSprite('bgs/pissedRon_sky', -100, 20, 0.1, 0.1);
+				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				add(sky);
+
+				var clouds:BGSprite = new BGSprite('bgs/pissedRon_clouds', -100, 20, 0.2, 0.2);
+				clouds.setGraphicSize(Std.int(clouds.width * 1.75));
+				add(clouds);
+
+				var ground:BGSprite = new BGSprite('bgs/pissedRon_ground', -850, -500);
+				ground.setGraphicSize(Std.int(ground.width * 1.2));
+				ground.updateHitbox();
+				add(ground);
+
+			case 'ronMad': //ron
+				var sky:BGSprite = new BGSprite('bgs/veryAngreRon_sky', -100, 20, 0.1, 0.1);
+				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				add(sky);
+
+				var clouds:BGSprite = new BGSprite('bgs/veryAngreRon_clouds', -100, 20, 0.2, 0.2);
+				clouds.setGraphicSize(Std.int(clouds.width * 1.75));
+				add(clouds);
+				
+				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				rain.animation.addByPrefix('rain', 'rain', 24, true);
+				rain.setGraphicSize(Std.int(rain.width * 4));
+				rain.updateHitbox();
+				rain.screenCenter(XY);
+				add(rain);
+				rain.animation.play('rain');
+
+				var ground:BGSprite = new BGSprite('bgs/veryAngreRon_ground', -850, -500);
+				ground.setGraphicSize(Std.int(ground.width * 1.2));
+				ground.updateHitbox();
+				add(ground);
+
+			case 'ronNormal': //ron
+				var sky:BGSprite = new BGSprite('bgs/happyRon_sky', -100, 20, 0.1, 0.1);
+				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				add(sky);
+
+				var ground:BGSprite = new BGSprite('bgs/happyRon_ground', -850, -500);
+				ground.setGraphicSize(Std.int(ground.width * 1.2));
+				ground.updateHitbox();
+				add(ground);
+
+			case 'hell': //ron
+				var hellbg:BGSprite = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
+				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
+				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
+				hellbg.updateHitbox();
+				hellbg.screenCenter(XY);
+				hellbg.y += hellbg.height / 5;
+				add(hellbg);
+				hellbg.animation.play('idle instance 1');
+
+				var satan:BGSprite = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
+				satan.setGraphicSize(Std.int(satan.width * 1.2));
+				satan.screenCenter(XY);
+				satan.y -= 100;
+				satan.updateHitbox();
+				add(satan);
+
+				var ground:BGSprite = new BGSprite('bgs/hellRon_ground', -500, -500);
+				ground.setGraphicSize(Std.int(ground.width * 1.2));
+				ground.updateHitbox();
+				add(ground);
+
+			// extra shit
+			/*case 'daveStage': //ron
+				var sky:BGSprite = new BGSprite('bgs/happyRon_sky', -100, 20, 0.1, 0.1);
+				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				add(sky);
+
+				var ground:BGSprite = new BGSprite('bgs/happyRon_ground', -850, -500);
+				ground.setGraphicSize(Std.int(ground.width * 1.2));
+				ground.updateHitbox();
+				add(ground);*/
+
 			case 'stage': //Week 1
-				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
+				var bg:BGSprite = new BGSprite('stageback', -537, 100, 0.9, 0.9);
 				add(bg);
 
 				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
@@ -954,6 +1033,7 @@ class PlayState extends MusicBeatState
 				gf.visible = false;
 		}
 
+
 		switch(curStage)
 		{
 			case 'limo':
@@ -1287,6 +1367,13 @@ class PlayState extends MusicBeatState
 							}
 						});
 					});
+
+				case "ron":
+					startVideo('ron');
+
+				case "bloodshed":
+					startVideo('bloodshed');
+
 				case 'senpai' | 'roses' | 'thorns':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);

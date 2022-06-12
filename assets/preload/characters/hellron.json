@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-85,
+				160
+			],
+			"loop": true,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle normal"
+		},
+		{
+			"offsets": [
+				44,
+				247
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up normal"
+		},
+		{
+			"offsets": [
+				-10,
+				99
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down normal"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				25,
+				154
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "left normal",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				55,
+				164
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "right normal",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/hellron",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "hellron",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		-80,
+		-120
+	],
+	"sing_duration": 4,
+	"scale": 1.125
+}

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="annoyed_rain.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="rain0000" x="0" y="0" width="649" height="1074"/>
+	<SubTexture name="rain0001" x="649" y="0" width="649" height="1074"/>
+	<SubTexture name="rain0002" x="1298" y="0" width="649" height="1074"/>
+	<SubTexture name="rain0003" x="0" y="1074" width="649" height="1074"/>
+	<SubTexture name="rain0004" x="649" y="1074" width="649" height="1074"/>
+	<SubTexture name="rain0005" x="1298" y="1074" width="649" height="1074"/>
+	<SubTexture name="rain0006" x="0" y="2148" width="649" height="1074"/>
+	<SubTexture name="rain0007" x="649" y="2148" width="649" height="1074"/>
+</TextureAtlas>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="atelo_bg.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bg instance 10000" x="0" y="0" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10001" x="2278" y="0" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10002" x="4556" y="0" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10003" x="0" y="1129" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10004" x="2278" y="1129" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10005" x="4556" y="1129" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10006" x="0" y="2258" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10007" x="2278" y="2258" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10008" x="4556" y="2258" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10009" x="0" y="3387" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10010" x="2278" y="3387" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10011" x="4556" y="3387" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10012" x="0" y="4516" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10013" x="2278" y="4516" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10014" x="4556" y="4516" width="2278" height="1129"/>
+	<SubTexture name="bg instance 10015" x="0" y="5645" width="2278" height="1129"/>
+</TextureAtlas>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="glitch_lamp.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="lamppost0000" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0001" x="221" y="0" width="409" height="336" frameX="-16" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0002" x="630" y="0" width="370" height="402" frameX="-36" frameY="0" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0003" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0004" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0005" x="0" y="402" width="221" height="266" frameX="-110" frameY="-103" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0006" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0007" x="221" y="402" width="231" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0008" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0009" x="452" y="402" width="258" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0010" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0011" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0012" x="0" y="738" width="441" height="395" frameX="0" frameY="-4" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0013" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0014" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0015" x="441" y="738" width="321" height="336" frameX="-98" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0016" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0017" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0018" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0019" x="0" y="0" width="221" height="336" frameX="-4" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0020" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0021" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0022" x="762" y="738" width="221" height="240" frameX="-110" frameY="-81" frameWidth="441" frameHeight="402"/>
+	<SubTexture name="lamppost0023" x="0" y="0" width="221" height="336" frameX="-110" frameY="-33" frameWidth="441" frameHeight="402"/>
+</TextureAtlas>

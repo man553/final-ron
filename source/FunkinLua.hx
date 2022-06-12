@@ -333,7 +333,7 @@ class FunkinLua {
 				{
 					if(luaInstance.scriptName == cervix)
 					{
-						Lua.getglobal(luaInstance.lua, global);
+					/*	Lua.getglobal(luaInstance.lua, global);
 						if(Lua.isnumber(luaInstance.lua,-1)){
 							Lua.pushnumber(lua, Lua.tonumber(luaInstance.lua, -1));
 						}else if(Lua.isstring(luaInstance.lua,-1)){
@@ -342,7 +342,7 @@ class FunkinLua {
 							Lua.pushboolean(lua, Lua.toboolean(luaInstance.lua, -1));
 						}else{
 							Lua.pushnil(lua);
-						}
+						}*/
 						// TODO: table
 
 						Lua.pop(luaInstance.lua,1); // remove the global
@@ -438,7 +438,7 @@ class FunkinLua {
 
 							// Manual conversion
 							// first we convert the key
-							if(Lua.isnumber(luaInstance.lua,-2)){
+						/*	if(Lua.isnumber(luaInstance.lua,-2)){
 								Lua.pushnumber(lua, Lua.tonumber(luaInstance.lua, -2));
 								pop++;
 							}else if(Lua.isstring(luaInstance.lua,-2)){
@@ -461,7 +461,7 @@ class FunkinLua {
 							}else if(Lua.isboolean(luaInstance.lua,-1)){
 								Lua.pushboolean(lua, Lua.toboolean(luaInstance.lua, -1));
 								pop++;
-							}
+							}*/
 							// TODO: table
 
 							if(pop==2)Lua.rawset(lua, tableIdx); // then set it
