@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.5.2h'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.5.2h (ron eidition)'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -44,6 +44,12 @@ class MainMenuState extends MusicBeatState
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
 
+	var code:String = "";
+	var codeInt = 0;
+	var codeInt2 = 0;
+	var neededCode:Array<String> = ['B', 'R', 'O'];
+	var therock:FlxSprite;
+
 	override function create()
 	{
 		WeekData.loadTheFirstEnabledMod();
@@ -53,6 +59,21 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
+
+		var bgTex = 'menuSunset';
+		var sunTex = 'menuSun';
+		var alphaTex = 1;
+		var cityTex = 'menuCity';
+		var cityBTex = 'menuCityBack';
+
+		if ((Date.now().getHours() < 6) || (Date.now().getHours() > 20))
+		{
+			bgTex = 'menuNight';
+			sunTex = 'menuMoon';
+			alphaTex = 2;
+			cityTex = 'menuCityNight';
+			cityBTex = 'menuCityBackNight';
+		}
 
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
