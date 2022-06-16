@@ -1,24 +1,52 @@
 {
-	"songs": [
-		["Ron", "ron", [165, 0, 77]],
-		["Wasted", "ronslightly", [165, 0, 77]],
-		["Ayo", "rontriggered", [165, 0, 77]],
-		["Bloodshed", "hellron", [165, 0, 77]]
-
-	],
-
+	"storyName": "VS COOL GUY B)",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
 	"weekCharacters": [
 		"ron",
 		"bf",
 		"gf"
 	],
-	"weekBackground": "stage",
-
-	"storyName": "",
-	"weekBefore": "tutorial",
-	"weekName": "Tutorial",
-	"startUnlocked": true,
-
+	"songs": [
+		[
+			"Ron",
+			"ron",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"Wasted",
+			"ronslightly",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"Ayo",
+			"rontriggered",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"Bloodshed",
+			"hellron",
+			[
+				165,
+				0,
+				77
+			]
+		]
+	],
 	"hideStoryMode": false,
-	"hideFreeplay": false
+	"weekName": "Week 1"
 }

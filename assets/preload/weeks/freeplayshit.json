@@ -1,25 +1,61 @@
 {
-	"songs": [
-		["bloodbath", "demonron", [165, 0, 77]],
-		["bijuu", "bijuuron", [165, 0, 77]],
-		["holy-shit-dave-fnf", "dave", [165, 0, 77]],
-		["withered-tweaked", "ron-mad", [165, 0, 77]],
-		["bleeding", "hellron", [165, 0, 77]]
-
-	],
-
+	"storyName": "Freeplay Extras",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
 	"weekCharacters": [
-		"ron",
+		"ron2",
 		"bf",
 		"gf"
 	],
-	"weekBackground": "stage",
-
-	"storyName": "",
-	"weekBefore": "tutorial",
-	"weekName": "Tutorial",
-	"startUnlocked": true,
-
+	"songs": [
+		[
+			"bloodbath",
+			"demonron",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"bijuu",
+			"bijuuron",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"holy-shit-dave-fnf",
+			"dave",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"withered-tweaked",
+			"ron-mad",
+			[
+				165,
+				0,
+				77
+			]
+		],
+		[
+			"bleeding",
+			"hellron",
+			[
+				165,
+				0,
+				77
+			]
+		]
+	],
 	"hideStoryMode": false,
-	"hideFreeplay": false
+	"weekName": "Tutorial"
 }
