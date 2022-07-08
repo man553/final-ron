@@ -16,6 +16,8 @@ class StrumNote extends FlxSprite
 	public var sustainReduce:Bool = true;
 	
 	private var player:Int;
+
+	var dadCurChar:String;
 	
 	public var texture(default, set):String = null;
 	private function set_texture(value:String):String {
@@ -26,7 +28,7 @@ class StrumNote extends FlxSprite
 		return value;
 	}
 
-	public function new(x:Float, y:Float, leData:Int, player:Int) {
+	public function new(x:Float, y:Float, leData:Int, player:Int, ?dadCurChar:String) {
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
 		noteData = leData;
@@ -82,6 +84,44 @@ class StrumNote extends FlxSprite
 		}
 		else
 		{
+			var skin = 'ronsip';
+			switch (dadCurChar)
+			{
+				case 'douyhe':
+					skin = 'NOTE_assets';
+				case 'hacker':
+					skin = 'ronhell';
+				case 'hellron':
+					skin = 'ronhell';
+				case 'devilron':
+					skin = 'ronhell';
+				case 'ateloron':
+					skin = 'ronhell';
+				case 'ron-usb':
+					skin = 'ronhell';
+				case 'demonron':
+					skin = 'demonsip';
+				case 'devilron':
+					skin = 'demonsip';
+				case 'ronb':
+					skin = 'evik';
+				case 'ronmad-b':
+					skin = 'evik';
+				case 'hellron-2':
+					skin = 'bhell';
+				case 'ateloron-b':
+					skin = 'bhell';
+				case 'ron-usb-b':
+					skin = 'bhell';
+				case 'dave':
+					skin = 'NOTEold_assets';
+				case 'bambi':
+					skin = 'NOTEold_assets';
+				case 'ronDave':
+					skin = 'NOTEold_assets';
+			}
+			if (player == 0) texture = skin;
+
 			frames = Paths.getSparrowAtlas(texture);
 			animation.addByPrefix('green', 'arrowUP');
 			animation.addByPrefix('blue', 'arrowDOWN');

@@ -9,6 +9,8 @@ import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
 
 using StringTools;
 
@@ -17,6 +19,7 @@ class DialogueBox extends FlxSpriteGroup
 	var box:FlxSprite;
 
 	var curCharacter:String = '';
+	var emote:Bool = false;
 
 	var dialogue:Alphabet;
 	var dialogueList:Array<String> = [];
@@ -67,28 +70,27 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'senpai':
+			case 'ron' | 'ayo' | 'wasted' | 'trojan-virus' | 'file-manipulation' | 'atelophobia' | 'factory-reset' | 'bloodshed-old' | 'pretty-wacky' | 'bloodshed-b':
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
-				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear instance 1', [4], "", 24);
-			case 'roses':
+				box.frames = Paths.getSparrowAtlas('speech_bubble', 'shared');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByPrefix('normal', 'speech bubble normal', 24, false);
+				box.animation.addByPrefix('exaggerate', 'AHH speech bubble', 24, false);
+				box.width = 200;
+				box.height = 200;
+				box.x = -100;
+				box.y = 375;
 				hasDialog = true;
-				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
-
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
-				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH instance 1', [4], "", 24);
-
-			case 'thorns':
+			case 'bloodshed' | 'bleeding':
+				box.frames = Paths.getSparrowAtlas('speech_bubble_talking_invert', 'shared');
+				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
+				box.animation.addByPrefix('normal', 'speech bubble normal', 24, false);
+				box.animation.addByPrefix('exaggerate', 'AHH speech bubble', 24, false);
+				box.width = 200;
+				box.height = 200;
+				box.x = -100;
+				box.y = 375;
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-evil');
-				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
-				box.animation.addByIndices('normal', 'Spirit Textbox spawn instance 1', [11], "", 24);
-
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
-				face.setGraphicSize(Std.int(face.width * 6));
-				add(face);
 		}
 
 		this.dialogueList = dialogueList;
@@ -96,23 +98,36 @@ class DialogueBox extends FlxSpriteGroup
 		if (!hasDialog)
 			return;
 		
-		portraitLeft = new FlxSprite(-20, 40);
-		portraitLeft.frames = Paths.getSparrowAtlas('weeb/senpaiPortrait');
-		portraitLeft.animation.addByPrefix('enter', 'Senpai Portrait Enter', 24, false);
-		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+		portraitLeft = new FlxSprite();
+		portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/ronPortrait', 'shared');
+		portraitLeft.animation.addByPrefix('ron Portrait Enter', 'ron Portrait Enter', 24, false);
+		portraitLeft.setGraphicSize(Std.int(portraitLeft.width + PlayState.daPixelZoom * 0.175));
 		portraitLeft.updateHitbox();
 		portraitLeft.scrollFactor.set();
+		portraitLeft.screenCenter();
+		portraitLeft.x -= 80;
+		portraitLeft.y += 100;
+		portraitLeft.scale.set(0.8, 0.8);
 		add(portraitLeft);
-		portraitLeft.visible = false;
+		portraitLeft.visible = true;
 
-		portraitRight = new FlxSprite(0, 40);
-		portraitRight.frames = Paths.getSparrowAtlas('weeb/bfPortrait');
-		portraitRight.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
-		portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+		portraitRight = new FlxSprite();
+		portraitRight.frames = Paths.getSparrowAtlas('dialogue/bf', 'shared');
+		portraitRight.animation.addByPrefix('bf', 'FTalk', 24, false);
+		portraitRight.animation.addByPrefix('bside', 'BSIDE', 24, false);
+		portraitRight.animation.addByPrefix('BTalk', 'BTalk', 24, false);
+		portraitRight.animation.addByPrefix('FTalk', 'FTalk', 24, false);
+		portraitRight.animation.addByPrefix('Fear', 'Fear', 24, false);
+		portraitRight.animation.addByPrefix('Special', 'Special', 24, false);
+		portraitRight.screenCenter();
+		portraitRight.x += 250;
+		portraitRight.y += 40;
+		portraitRight.setGraphicSize(Std.int(portraitRight.width * 0.8));
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
 		add(portraitRight);
-		portraitRight.visible = false;
+		portraitRight.alpha = 0.5;
+		portraitRight.visible = true;
 		
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
@@ -122,11 +137,12 @@ class DialogueBox extends FlxSpriteGroup
 		box.screenCenter(X);
 		portraitLeft.screenCenter(X);
 
-		handSelect = new FlxSprite(1042, 590).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
-		handSelect.setGraphicSize(Std.int(handSelect.width * PlayState.daPixelZoom * 0.9));
-		handSelect.updateHitbox();
-		handSelect.visible = false;
+		if ((PlayState.SONG.song.toLowerCase() == 'bloodshed') || (PlayState.SONG.song.toLowerCase() == 'bleeding'))
+			handSelect = new FlxSprite(FlxG.width * 0.7, FlxG.height * 0.85).loadGraphic(Paths.image('handBlood'));
+		else
+			handSelect = new FlxSprite(FlxG.width * 0.7, FlxG.height * 0.85).loadGraphic(Paths.image('hand'));
 		add(handSelect);
+		FlxTween.tween(handSelect, {x: FlxG.width * 0.72}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
 
 
 		if (!talkingRight)
@@ -157,14 +173,8 @@ class DialogueBox extends FlxSpriteGroup
 	override function update(elapsed:Float)
 	{
 		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
-		if (PlayState.SONG.song.toLowerCase() == 'thorns')
-		{
-			portraitLeft.visible = false;
-			swagDialogue.color = FlxColor.WHITE;
-			dropText.color = FlxColor.BLACK;
-		}
+		if (bgFade.alpha <= 0.7)
+			bgFade.alpha += (1 / 25) * 0.7;
 
 		dropText.text = swagDialogue.text;
 
@@ -172,9 +182,20 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished)
 			{
-				box.animation.play('normal');
+				if (emote == true)
+					box.animation.play('exaggerate');
+				else
+					box.animation.play('normal');
 				dialogueOpened = true;
 			}
+		}
+
+		if (box.animation.curAnim.name != 'normalOpen' && box.animation.curAnim.finished)
+		{
+			if (emote == true)
+				box.animation.play('exaggerate');
+			else
+				box.animation.play('normal');
 		}
 
 		if (dialogueOpened && !dialogueStarted)
@@ -194,9 +215,6 @@ class DialogueBox extends FlxSpriteGroup
 					{
 						isEnding = true;
 						FlxG.sound.play(Paths.sound('clickText'), 0.8);	
-
-						if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns')
-							FlxG.sound.music.fadeOut(1.5, 0);
 
 						new FlxTimer().start(0.2, function(tmr:FlxTimer)
 						{
@@ -247,6 +265,34 @@ class DialogueBox extends FlxSpriteGroup
 		// add(theDialog);
 
 		// swagDialogue.text = ;
+		emote = false;
+		if (StringTools.contains(dialogueList[0], 'exag'))
+		{
+			dialogueList[0] = dialogueList[0].substr(4).trim();
+			emote = true;
+			box.y = 315;
+		}
+		else
+		{
+			box.y = 375;
+		}
+
+		if (StringTools.contains(dialogueList[0], 'sussy'))
+		{
+			dialogueList[0] = dialogueList[0].substr(5).trim();
+			FlxG.sound.play(Paths.sound('among'), 1);
+		}
+		if (StringTools.contains(dialogueList[0], 'static'))
+		{
+			dialogueList[0] = dialogueList[0].substr(6).trim();
+			FlxG.sound.play(Paths.sound('static'), 1);
+		}
+		if (StringTools.contains(dialogueList[0], 'vine'))
+		{
+			dialogueList[0] = dialogueList[0].substr(4).trim();
+			FlxG.sound.play(Paths.sound('vine'), 1);
+		}
+
 		swagDialogue.resetText(dialogueList[0]);
 		swagDialogue.start(0.04, true);
 		swagDialogue.completeCallback = function() {
@@ -256,22 +302,54 @@ class DialogueBox extends FlxSpriteGroup
 
 		handSelect.visible = false;
 		dialogueEnded = false;
-		switch (curCharacter)
+		if ((StringTools.contains(curCharacter, 'ron')) || (StringTools.contains(curCharacter, 'Ron')))
 		{
-			case 'dad':
-				portraitRight.visible = false;
-				if (!portraitLeft.visible)
-				{
-					if (PlayState.SONG.song.toLowerCase() == 'senpai') portraitLeft.visible = true;
-					portraitLeft.animation.play('enter');
-				}
-			case 'bf':
-				portraitLeft.visible = false;
-				if (!portraitRight.visible)
-				{
-					portraitRight.visible = true;
-					portraitRight.animation.play('enter');
-				}
+			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/' + curCharacter, 'shared');
+			portraitLeft.animation.addByPrefix('ron Portrait Enter', 'ron Portrait Enter', 24, false);
+			portraitLeft.setGraphicSize(Std.int(portraitLeft.width + PlayState.daPixelZoom * 0.175));
+			portraitLeft.updateHitbox();
+			portraitLeft.scrollFactor.set();
+			portraitLeft.screenCenter();
+			portraitLeft.x -= 80;
+			portraitLeft.y += 100;
+			portraitLeft.scale.set(0.8, 0.8);
+			portraitRight.alpha = 0.5;
+			portraitLeft.alpha = 1;
+			portraitLeft.animation.play('ron Portrait Enter');
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('ronText'), 0.6)];
+			dropText.font = Paths.font("w95.otf");
+			dropText.color = 0xFFFFF4BB;
+			swagDialogue.font = Paths.font("w95.otf");
+			swagDialogue.color = 0xFFFFBF00;
+			if ((PlayState.SONG.song.toLowerCase() == 'bloodshed') || (PlayState.SONG.song.toLowerCase() == 'bleeding'))
+			{
+				swagDialogue.color = 0xFFFFF4BB;
+				dropText.color = 0xFF1A1A1A;
+			}
+			dropText.size = 48;
+			swagDialogue.size = 48;
+			box.flipX = true;
+		}
+		else
+		{
+			portraitLeft.alpha = 0.5;
+			portraitRight.alpha = 1;
+			trace('bf pog!!!');
+			portraitRight.animation.play(curCharacter);
+			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('bfText'), 0.6)];
+			dropText.font = 'Pixel Arial 11 Bold';
+			dropText.color = 0xFFB9E5FF;
+			swagDialogue.font = 'Pixel Arial 11 Bold';
+			swagDialogue.color = 0xFF00BADA;
+			dropText.size = 32;
+			swagDialogue.size = 32;
+			box.flipX = false;
+			if ((PlayState.SONG.song.toLowerCase() == 'bloodshed') || (PlayState.SONG.song.toLowerCase() == 'bleeding'))
+				dropText.color = 0xFF1A1A1A;
+			new FlxTimer().start(0.04, function(tmr:FlxTimer)
+			{
+				portraitRight.animation.play(curCharacter);
+			}, dialogueList[0].length);
 		}
 		if(nextDialogueThing != null) {
 			nextDialogueThing();

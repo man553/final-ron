@@ -49,6 +49,8 @@ class StoryMenuState extends MusicBeatState
 
 	var loadedWeeks:Array<WeekData> = [];
 
+	public var video:MP4Handler = new MP4Handler();
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -309,11 +311,20 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
-			new FlxTimer().start(1, function(tmr:FlxTimer)
+			switch (curWeek)
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
-				FreeplayState.destroyFreeplayVocals();
-			});
+				case 0:
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						video.playMP4(Paths.videoRon('ron'), new PlayState(), false, false, false);
+					});
+				default:
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						LoadingState.loadAndSwitchState(new PlayState(), true);
+						FreeplayState.destroyFreeplayVocals();
+					});
+			}
 		} else {
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}

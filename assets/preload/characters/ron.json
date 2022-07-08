@@ -1,70 +1,70 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				185,
 				170
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				305,
 				154
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Sing Left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Sing Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				210,
 				69
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "Sing Down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Sing Down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				224,
 				207
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Sing Up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Sing Up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				72,
 				154
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Sing Right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Sing Right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				257,
 				165
 			],
-			"anim": "hey",
+			"loop": false,
 			"fps": 24,
-			"name": "Ugh",
-			"indices": []
+			"anim": "hey",
+			"indices": [],
+			"name": "Ugh"
 		}
 	],
 	"no_antialiasing": false,
@@ -73,7 +73,7 @@
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "ron",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,

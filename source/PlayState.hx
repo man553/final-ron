@@ -1369,7 +1369,8 @@ class PlayState extends MusicBeatState
 					});
 
 				case "ron":
-					startVideo('ron');
+					schoolIntro(doof);
+					//startVideo('ron');
 
 				case "bloodshed":
 					startVideo('bloodshed');
@@ -1416,6 +1417,50 @@ class PlayState extends MusicBeatState
 		}
 
 		Conductor.safeZoneOffset = (ClientPrefs.safeFrames / 60) * 1000;
+
+		for (i in 0...unspawnNotes.length - 1)
+		{
+			if (!unspawnNotes[i].mustPress)
+			{
+				var skin = 'ronsip';
+				switch (dad.curCharacter)
+				{
+					case 'douyhe':
+						skin = 'NOTE_assets';
+					case 'hellron':
+						skin = 'ronhell';
+					case 'hacker':
+						skin = 'ronhell';
+					case 'ateloron':
+						skin = 'ronhell';
+					case 'ron-usb':
+						skin = 'ronhell';
+					case 'demonron':
+						skin = 'demonsip';
+					case 'ronb':
+						skin = 'evik';
+					case 'ronmad-b':
+						skin = 'evik';
+					case 'ronangry-b':
+						skin = 'evik';
+					case 'hellron-2':
+						skin = 'bhell';
+					case 'ateloron-b':
+						skin = 'bhell';
+					case 'ron-usb-b':
+						skin = 'bhell';
+					case 'dave':
+						skin = 'NOTEold_assets';
+					case 'bambi':
+						skin = 'NOTEold_assets';
+					case 'ronDave':
+						skin = 'NOTEold_assets';
+				}
+
+				unspawnNotes[i].texture = skin;
+			}
+		}
+
 		callOnLuas('onCreatePost', []);
 
 		super.create();
@@ -1650,7 +1695,6 @@ class PlayState extends MusicBeatState
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
 	{
-		inCutscene = true;
 		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
@@ -1658,74 +1702,16 @@ class PlayState extends MusicBeatState
 		var red:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, 0xFFff1b31);
 		red.scrollFactor.set();
 
-		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
-		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
-		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
-		senpaiEvil.scrollFactor.set();
-		senpaiEvil.updateHitbox();
-		senpaiEvil.screenCenter();
-		senpaiEvil.x += 300;
-
-		var songName:String = Paths.formatToSongPath(SONG.song);
-		if (songName == 'roses' || songName == 'thorns')
-		{
-			remove(black);
-
-			if (songName == 'thorns')
-			{
-				add(red);
-				camHUD.visible = false;
-			}
-		}
+		remove(black);
 
 		new FlxTimer().start(0.3, function(tmr:FlxTimer)
 		{
-			black.alpha -= 0.15;
-
-			if (black.alpha > 0)
-			{
-				tmr.reset(0.3);
-			}
-			else
+			// too slow
 			{
 				if (dialogueBox != null)
 				{
-					if (Paths.formatToSongPath(SONG.song) == 'thorns')
-					{
-						add(senpaiEvil);
-						senpaiEvil.alpha = 0;
-						new FlxTimer().start(0.3, function(swagTimer:FlxTimer)
-						{
-							senpaiEvil.alpha += 0.15;
-							if (senpaiEvil.alpha < 1)
-							{
-								swagTimer.reset();
-							}
-							else
-							{
-								senpaiEvil.animation.play('idle');
-								FlxG.sound.play(Paths.sound('Senpai_Dies'), 1, false, null, true, function()
-								{
-									remove(senpaiEvil);
-									remove(red);
-									FlxG.camera.fade(FlxColor.WHITE, 0.01, true, function()
-									{
-										add(dialogueBox);
-										camHUD.visible = true;
-									}, true);
-								});
-								new FlxTimer().start(3.2, function(deadTime:FlxTimer)
-								{
-									FlxG.camera.fade(FlxColor.WHITE, 1.6, false);
-								});
-							}
-						});
-					}
-					else
-					{
-						add(dialogueBox);
-					}
+					inCutscene = true;
+					add(dialogueBox);
 				}
 				else
 					startCountdown();
@@ -2406,6 +2392,8 @@ class PlayState extends MusicBeatState
 
 				var gottaHitNote:Bool = section.mustHitSection;
 
+				var skin = 'NOTE_assets';
+
 				if (songNotes[1] > 3)
 				{
 					gottaHitNote = !section.mustHitSection;
@@ -2416,7 +2404,50 @@ class PlayState extends MusicBeatState
 					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 				else
 					oldNote = null;
-
+				
+				if (gottaHitNote == false) {
+					skin = 'ronsip';
+					switch (dad.curCharacter)
+					{
+						case 'douyhe':
+							skin = 'NOTE_assets';
+						case 'hellron':
+							skin = 'ronhell';
+						case 'hacker':
+							skin = 'ronhell';
+						case 'ateloron':
+							skin = 'ronhell';
+						case 'ron-usb':
+							skin = 'ronhell';
+						case 'demonron':
+							skin = 'demonsip';
+						case 'ronb':
+							skin = 'evik';
+						case 'ronmad-b':
+							skin = 'evik';
+						case 'ronangry-b':
+							skin = 'evik';
+						case 'hellron-2':
+							skin = 'bhell';
+						case 'ateloron-b':
+							skin = 'bhell';
+						case 'ron-usb-b':
+							skin = 'bhell';
+						case 'dave':
+							skin = 'NOTEold_assets';
+						case 'bambi':
+							skin = 'NOTEold_assets';
+						case 'ronDave':
+							skin = 'NOTEold_assets';
+					}
+				}
+				else 
+				{
+					skin = 'NOTE_assets';
+					if (dad.curCharacter == 'dave')
+						skin = 'ronsip';
+				}
+				
 				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
 				swagNote.mustPress = gottaHitNote;
 				swagNote.sustainLength = songNotes[2];
@@ -2627,7 +2658,7 @@ class PlayState extends MusicBeatState
 				else if(ClientPrefs.middleScroll) targetAlpha = 0.35;
 			}
 
-			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
+			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player, dad.curCharacter);
 			babyArrow.downScroll = ClientPrefs.downScroll;
 			if (!isStoryMode && !skipArrowStartTween)
 			{
