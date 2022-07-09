@@ -1,0 +1,28 @@
+{
+	"song": {
+		"speed": 2.8,
+		"stage": "ronMad",
+		"player1": "dBF",
+		"player2": "rontriggered",
+		"events": [
+			[
+				114800,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"Dad"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "dGF",
+		"bpm": 150,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"song": "Ayo"
+	}
+}

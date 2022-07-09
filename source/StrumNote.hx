@@ -34,6 +34,7 @@ class StrumNote extends FlxSprite
 		noteData = leData;
 		this.player = player;
 		this.noteData = leData;
+		this.dadCurChar = dadCurChar;
 		super(x, y);
 
 		var skin:String = 'NOTE_assets';

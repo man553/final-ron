@@ -1,0 +1,48 @@
+{
+	"song": {
+		"speed": 2,
+		"stage": "ronNormal",
+		"player1": "bf",
+		"player2": "ron",
+		"events": [
+			[
+				2470.58823529412,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"Dad"
+					]
+				]
+			],
+			[
+				42000,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"Dad"
+					]
+				]
+			],
+			[
+				75882.3529411764,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"Dad"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 170,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"song": "Ron"
+	}
+}

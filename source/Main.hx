@@ -89,4 +89,9 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 	}
+
+	public function getFPS():Float
+	{
+		return fpsVar.currentFPS;
+	}
 }
