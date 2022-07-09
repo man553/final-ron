@@ -50,6 +50,23 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		Conductor.songPosition = 0;
 
+		if (PlayState.SONG.player2 == 'hellron')
+		{
+			characterName = 'bfbloodshed-death';
+			deathSoundName = 'smack';
+		}
+
+		if (ClientPrefs.siteenable)
+		{
+			switch (PlayState.curStage)
+			{
+				case 'baka':
+					FlxG.openURL("https://sites.google.com/view/robgivesyourobuc/home");
+				case 'hell':
+					FlxG.openURL("https://sites.google.com/view/ronmoment/home/");
+			}
+		}
+
 		boyfriend = new Boyfriend(x, y, characterName);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];

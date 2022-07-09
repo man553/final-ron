@@ -131,4 +131,7 @@ class MusicBeatState extends FlxUIState
 	{
 		//do literally nothing dumbass
 	}
+
+	public function setChrome(daChrome:Float):Void
+		ShadersHandler.setChrome(daChrome);
 }

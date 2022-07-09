@@ -62,6 +62,7 @@ import Conductor.Rating;
 #if sys
 import sys.FileSystem;
 #end
+import lime.app.Application;
 
 using StringTools;
 
@@ -301,6 +302,18 @@ class PlayState extends MusicBeatState
 	var firebg:FlxSprite;
 	var fx:FlxSprite;
 	var Estatic:FlxSprite;
+	var blackeffect:FlxSprite;
+	var Estatic2:FlxSprite;
+
+	var funnywindow:Bool = false;
+	var funnywindowsmall:Bool = false;
+	var NOMOREFUNNY:Bool = false;
+	var strumy:Int = 50;
+	var windowmove:Bool = false;
+	var cameramove:Bool = false;
+
+	var defaultStrumX:Array<Float> = [50,162,274,386,690,802,914,1026];
+	var defaultStrumY:Float = 50;
 
 	override public function create()
 	{
@@ -534,6 +547,16 @@ class PlayState extends MusicBeatState
 				add(hellbg);
 				hellbg.animation.play('idle instance 1');
 
+				firebg = new FlxSprite();
+				firebg.frames = Paths.getSparrowAtlas('bgs/escape_fire');
+				firebg.scale.set(6,6);
+				firebg.animation.addByPrefix('idle', 'fire instance 1', 24, true);
+				firebg.animation.play('idle');
+				firebg.scrollFactor.set();
+				firebg.screenCenter();
+				firebg.alpha = 0;
+				add(firebg);
+
 				satan = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
 				satan.setGraphicSize(Std.int(satan.width * 1.2));
 				satan.screenCenter(XY);
@@ -546,28 +569,37 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				add(ground);
 
-				firebg = new FlxSprite();
-				firebg.frames = Paths.getSparrowAtlas('bgs/escape_fire');
-				firebg.scale.set(6,6);
-				firebg.animation.addByPrefix('idle', 'fire instance 1', 24, true);
-				firebg.animation.play('idle');
-				firebg.scrollFactor.set();
-				firebg.screenCenter();
-				firebg.alpha = 0;
-				add(firebg);
-
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-				fx.setGraphicSize(Std.int(2560 * 0.25));
+				fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
 				fx.updateHitbox();
 				fx.antialiasing = true;
 				fx.screenCenter(XY);
 				fx.scrollFactor.set(0, 0);
 				fx.alpha = 0.3;
 
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+				blackeffect.updateHitbox();
+				blackeffect.antialiasing = true;
+				blackeffect.screenCenter(XY);
+				blackeffect.scrollFactor.set();
+				blackeffect.alpha = 1;
+				if (SONG.song != 'Bloodshed-b')
+					blackeffect.alpha = 0;
+				add(blackeffect);
+
 				Estatic = new FlxSprite().loadGraphic(Paths.image('bgs/deadly'));
 				Estatic.scrollFactor.set();
 				Estatic.screenCenter();
 				Estatic.alpha = 0;
+
+				Estatic2 = new FlxSprite();
+				Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
+				Estatic2.scale.set(4,4);
+				Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
+				Estatic2.animation.play('idle');
+				Estatic2.scrollFactor.set();
+				Estatic2.screenCenter();
+				Estatic2.alpha = 0;
 
 			// extra shit
 			/*case 'daveStage': //ron
@@ -1069,6 +1101,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
+		setChrome(0.0);
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
 		{
@@ -1086,6 +1119,15 @@ class PlayState extends MusicBeatState
 		{
 			startCountdown();
 		}
+
+		if (daSong == 'bloodshed')
+		{
+			add(fx);
+			add(Estatic);
+			FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
+			setChrome(350); // add chrome option later
+		}
+
 		RecalculateRating();
 
 		//PRECACHING MISS SOUNDS BECAUSE I THINK THEY CAN LAG PEOPLE AND FUCK THEM UP IDK HOW HAXE WORKS
@@ -2531,6 +2573,86 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
+
+		var currentBeat:Float = (Conductor.songPosition / 1000)*(Conductor.bpm/60);
+
+		switch(SONG.song.toLowerCase())
+		{
+			case 'bloodshed': 
+				if(funnywindow)
+					setWindowPos(Std.int(127 * Math.sin(currentBeat * Math.PI) + 327), Std.int(127 * Math.sin(currentBeat * 3) + 160));
+				if(funnywindowsmall)
+					setWindowPos(Std.int(24 * Math.sin(currentBeat * Math.PI) + 327), Std.int(24 * Math.sin(currentBeat * 3) + 160));
+				if(NOMOREFUNNY)
+					setWindowPos(Std.int(0 * Math.sin(currentBeat * Math.PI) + 327), Std.int(0 * Math.sin(currentBeat * 3) + 160));
+				if(daNoteMove)
+				{
+				    for (i in 4...8) 
+					{
+						var member = strumLineNotes.members[i];
+
+						member.x  = defaultStrumX[i]+ 8* Math.sin((currentBeat + i*0.25) * Math.PI);
+
+						if(FlxG.save.data.downscroll)
+							member.y  = defaultStrumY -  18 *  Math.cos((currentBeat + i*2.5) * Math.PI);
+						else 
+							member.y  = defaultStrumY +  18 *  Math.cos((currentBeat + i*2.5) * Math.PI);
+						
+					}
+				}
+				if(daNoteMoveH)
+				{
+				    for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x  = defaultStrumX[i] + 32 * Math.sin((currentBeat + i*0.25) * Math.PI);	
+					}
+				}
+			
+				if(daNoteMoveH3)
+				{
+				    for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						if(ClientPrefs.downScroll)
+							member.y =  defaultStrumY - 128 * Math.cos((currentBeat/4) * Math.PI) - 128;	
+						else 
+							member.y =  defaultStrumY + 128 * Math.cos((currentBeat/4) * Math.PI) + 128;	
+
+						member.x =  defaultStrumX[i]  + 128 * Math.sin((currentBeat) * Math.PI);	
+					}
+				}
+				if(daNoteMoveH4)
+				{
+				    for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x  = defaultStrumX[i] + 128 * Math.sin((currentBeat) * Math.PI);	
+
+						if(ClientPrefs.downScroll)
+							member.y  = defaultStrumY - 24 * Math.cos((currentBeat) * Math.PI);
+						else
+							member.y  = defaultStrumY + 24 * Math.cos((currentBeat) * Math.PI);
+					}
+					camHUD.angle = 10 * Math.sin((currentBeat/6) * Math.PI);
+					FlxG.camera.angle = 2 * Math.sin((currentBeat/6) * Math.PI);
+				}
+				if(daNoteMoveH5)
+				{
+					for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x  = defaultStrumX[i] + 128 * Math.sin((currentBeat) * Math.PI);	
+						
+						if(ClientPrefs.downScroll)
+							member.y  = defaultStrumY - 96 * Math.cos((currentBeat/4) * Math.PI) - 96;
+						else 
+							member.y  = defaultStrumY + 96 * Math.cos((currentBeat/4) * Math.PI) + 96;
+					}
+					camHUD.angle = 25 * Math.sin((currentBeat/5) * Math.PI);
+					FlxG.camera.angle = 5 * Math.sin((currentBeat/5) * Math.PI);
+				}
+		}
 
 		switch (curStage)
 		{
@@ -4564,6 +4686,13 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	var daNoteMove:Bool =false;
+	var daNoteMoveH:Bool =false;
+	var daNoteMoveH2:Bool =false;
+	var daNoteMoveH3:Bool =false;
+	var daNoteMoveH4:Bool =false;
+	var daNoteMoveH5:Bool =false;
+
 	var lastStepHit:Int = -1;
 	override function stepHit()
 	{
@@ -4696,6 +4825,61 @@ class PlayState extends MusicBeatState
 					fx.alpha -= 0.05;
 			}
 			Estatic.alpha = (((2-health)/3)+0.2);
+		}
+
+		switch(SONG.song.toLowerCase())
+		{
+			case 'bloodshed': 
+				if(curStep == 129)
+				{
+					funnywindowsmall = true;
+					for (i in 0...4)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i]+ 1250 ,angle: 360}, 1);
+						defaultStrumX[i] += 1250;
+					}
+					for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i] - 275,angle: 360}, 1);
+						defaultStrumX[i] -= 275;
+					}
+				}
+				if(curStep == 258)
+				{
+					daNoteMoveH2 = true;
+					funnywindowsmall = false;
+					funnywindow = true;
+				}
+				if(curStep == 389)
+				{
+					daNoteMoveH2 = false;
+					daNoteMoveH3 = true;
+				}
+				if(curStep == 518)
+				{
+					daNoteMoveH3 = false;
+					daNoteMoveH4 = true;
+					funnywindow = false;
+					funnywindowsmall = true;
+				}
+				if(curStep == 776)
+				{
+					funnywindowsmall = false;
+					funnywindow = true;
+					daNoteMoveH4 = false;
+					daNoteMoveH5 = true;
+				}
+				if(curStep >= 1053)
+				{
+					NOMOREFUNNY = true;
+					funnywindow = false;
+					funnywindowsmall = false;
+					if(PlayState.instance.camHUD.alpha > 0 ){
+						PlayState.instance.camHUD.alpha  -= 0.05;
+					}
+				}		
 		}
 
 		lastStepHit = curStep;
@@ -5009,6 +5193,12 @@ class PlayState extends MusicBeatState
 				bruh.destroy();
 			}
 		});
+	}
+
+	function setWindowPos(x:Int,y:Int)
+	{
+		Application.current.window.x = x;
+		Application.current.window.y = y;
 	}
 
 	var curLight:Int = -1;
