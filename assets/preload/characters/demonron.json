@@ -71,7 +71,7 @@
 	"image": "characters/demonron",
 	"position": [
 		0,
-		200
+		150
 	],
 	"healthicon": "demonron",
 	"flip_x": false,
