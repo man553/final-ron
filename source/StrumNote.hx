@@ -114,12 +114,14 @@ class StrumNote extends FlxSprite
 					skin = 'bhell';
 				case 'dave':
 					skin = 'NOTEold_assets';
+					if (player == 1) texture = 'ronsip';
 				case 'bambi':
 					skin = 'NOTEold_assets';
 				case 'ronDave':
-					skin = 'NOTEold_assets';
+					skin = 'ronsip';
 			}
 			if (player == 0) texture = skin;
+
 
 			frames = Paths.getSparrowAtlas(texture);
 			animation.addByPrefix('green', 'arrowUP');
