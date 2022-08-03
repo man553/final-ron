@@ -87,6 +87,8 @@ class ClientPrefs {
 	public static var defaultKeys:Map<String, Array<FlxKey>> = null;
 
 	public static var siteenable:Bool = true;
+	public static var rgbenable:Bool = true;
+	public static var rgbintense:Float = 1;
 
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
@@ -130,6 +132,8 @@ class ClientPrefs {
 		FlxG.save.data.pauseMusic = pauseMusic;
 
 		FlxG.save.data.siteenable = siteenable;
+		FlxG.save.data.rgbenable = rgbenable;
+		FlxG.save.data.rgbintense = rgbintense;
 	
 		FlxG.save.flush();
 
@@ -250,16 +254,16 @@ class ClientPrefs {
 		
 		// flixel automatically saves your volume!
 		if(FlxG.save.data.volume != null)
-		{
 			FlxG.sound.volume = FlxG.save.data.volume;
-		}
 		if (FlxG.save.data.mute != null)
-		{
 			FlxG.sound.muted = FlxG.save.data.mute;
-		}
 
 		if(FlxG.save.data.siteenable != null)
 			siteenable = FlxG.save.data.siteenable;
+		if(FlxG.save.data.rgbenable != null)
+			rgbenable = FlxG.save.data.rgbenable;
+		if(FlxG.save.data.rgbintense != null)
+			rgbintense = FlxG.save.data.rgbintense;
 
 		var save:FlxSave = new FlxSave();
 		save.bind('controls_v2', 'ninjamuffin99');
