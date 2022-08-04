@@ -14,34 +14,43 @@
 			"bloodbath",
 			"demonron",
 			[
-				165,
-				0,
-				77
+				131,
+				32,
+				52
 			]
 		],
 		[
 			"bijuu",
 			"bijuuron",
 			[
-				165,
 				0,
-				77
+				180,
+				57
 			]
 		],
 		[
 			"holy-shit-dave-fnf",
 			"dave",
 			[
-				165,
 				0,
-				77
+				0,
+				255
+			]
+		],
+		[
+			"pretty-wacky",
+			"douyhe",
+			[
+				255,
+				255,
+				255
 			]
 		],
 		[
 			"withered-tweaked",
-			"ron-mad",
+			"hellron",
 			[
-				165,
+				0,
 				0,
 				77
 			]
@@ -50,9 +59,9 @@
 			"bleeding",
 			"hellron",
 			[
-				165,
 				0,
-				77
+				0,
+				0
 			]
 		]
 	],
