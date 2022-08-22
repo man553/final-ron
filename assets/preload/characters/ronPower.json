@@ -1,0 +1,89 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Trojan Ron Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				42,
+				-172
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Trojan Ron Up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				40,
+				-280
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Trojan Ron Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				158,
+				-177
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Trojan Ron Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-169,
+				-200
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Trojan Ron Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				71,
+				-40
+			],
+			"anim": "cheer",
+			"fps": 24,
+			"name": "Trojan Ron Bruh",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Trojan_Ron",
+	"position": [
+		-200,
+		150
+	],
+	"healthicon": "ronpower",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		216,
+		0
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

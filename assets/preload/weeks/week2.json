@@ -1,0 +1,59 @@
+{
+	"songs": [
+		[
+			"trojan virus",
+			"ronpower",
+			[
+				255,
+				255,
+				20
+			]
+		],
+		[
+			"recycle-bin",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"file-manipulation",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
+		],
+		[
+			"factory-reset",
+			"dad",
+			[
+				146,
+				113,
+				253
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "ron",
+	"difficulties": "",
+	"weekCharacters": [
+		"dad",
+		"bf",
+		"gf"
+	],
+	"storyName": "o shit ron ron ron ronim ron ron ron whyron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron",
+	"weekName": "Week 2",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": false,
+	"weekBefore": "tutorial",
+	"startUnlocked": true
+}

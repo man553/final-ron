@@ -389,16 +389,16 @@ class MainMenuState extends MusicBeatState
 
 			if (spr.ID == curSelected)
 			{
-				leOld = spr.x;
-				spr.x += 80;
 				spr.animation.play('selected');
+				spr.x += 80;
+				leOld = spr.ID;
 				var add:Float = 0;
 				if(menuItems.length > 4) {
 					add = menuItems.length * 8;
 				}
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
 				spr.centerOffsets();
-			} else spr.x = leOld;
+			} else spr.x = 40;
 		});
 	}
 }

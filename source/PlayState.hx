@@ -329,6 +329,8 @@ class PlayState extends MusicBeatState
 	var WTFending:Bool = false;
 	var intensecameramove:Bool = false;
 
+	var moveing:Bool = false;
+
 	override public function create()
 	{
 		Paths.clearStoredMemory();
@@ -751,6 +753,66 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				ground.screenCenter(X);
 				add(ground);
+			case 'win':
+				{
+					defaultCamZoom = 0.8;
+					var bg:FlxSprite = new FlxSprite();
+					bg.frames = Paths.getSparrowAtlas('bgs/trojan_bg');
+					bg.scale.set(4, 4);
+					bg.animation.addByPrefix('idle', 'bg instance 1', 24, true);
+					bg.animation.play('idle');
+					bg.scrollFactor.set(0.05, 0.05);
+					bg.screenCenter();
+					add(bg);
+					Estatic2 = new FlxSprite().loadGraphic(Paths.image('bgs/deadly'));
+					Estatic2.scrollFactor.set();
+					Estatic2.screenCenter();
+					Estatic2.alpha = 0;
+					var console:FlxSprite = new FlxSprite();
+					console.frames = Paths.getSparrowAtlas('bgs/trojan_console');
+					console.scale.set(4, 4);
+					console.animation.addByPrefix('idle', 'ezgif.com-gif-maker (7)_gif instance 1', 24, true);
+					console.animation.play('idle');
+					console.scrollFactor.set(0.05, 0.05);
+					console.screenCenter();
+					console.alpha = 0.3;
+					add(console);
+					var popup:FlxSprite = new FlxSprite();
+					popup.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
+					popup.scale.set(4, 4);
+					popup.animation.addByPrefix('idle', 'popups instance 1', 24, true);
+					popup.animation.play('idle');
+					popup.scrollFactor.set(0.05, 0.05);
+					popup.screenCenter();
+					add(popup);
+					var lamp:FlxSprite = new FlxSprite(900, 100);
+					lamp.frames = Paths.getSparrowAtlas('bgs/glitch_lamp');
+					lamp.scale.set(2, 2);
+					lamp.animation.addByPrefix('idle', 'lamppost', 24, true);
+					lamp.animation.play('idle');
+					lamp.scrollFactor.set(0.9, 0.9);
+					add(lamp);
+					var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/trojan_ground'));
+					ground.updateHitbox();
+					ground.active = false;
+					ground.antialiasing = true;
+					add(ground);
+					var error:FlxSprite = new FlxSprite(900, 550);
+					error.frames = Paths.getSparrowAtlas('bgs/error');
+					error.scale.set(2, 2);
+					error.animation.addByPrefix('idle', 'error instance 1', 24, true);
+					error.animation.play('idle');
+					error.updateHitbox();
+					error.antialiasing = true;
+					add(error);
+					Estatic = new FlxSprite();
+					Estatic.frames = Paths.getSparrowAtlas('bgs/trojan_static');
+					Estatic.scale.set(4, 4);
+					Estatic.animation.addByPrefix('idle', 'static instance 1', 24, true);
+					Estatic.animation.play('idle');
+					Estatic.scrollFactor.set();
+					Estatic.screenCenter();
+				}
 		}
 
 		if(isPixelStage) {
@@ -926,6 +988,7 @@ class PlayState extends MusicBeatState
 		if (OpenFlAssets.exists(file)) {
 			dialogue = CoolUtil.coolTextFile(file);
 		}
+
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -1242,7 +1305,8 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'ayo' | 'wasted' | 'bloodshed':
+				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
+					trace('true');
 					schoolIntro(doof);
 				default:
 					startCountdown();
@@ -2593,6 +2657,19 @@ class PlayState extends MusicBeatState
 			{
 				camHUD.angle = 360 * Math.sin((currentBeat / 8) * Math.PI);
 				FlxG.camera.angle = 27 * Math.sin((currentBeat / 2) * Math.PI);
+			}
+		}
+
+		if (curSong.toLowerCase() == 'trojan-virus')
+		{
+			if (moveing)
+			{
+				for (i in 0...8)
+					strumLineNotes.members[i].x = defaultStrumX[i]+ 32 * Math.sin((currentBeat + i*0.25) * Math.PI);
+			} else
+			{
+				for (i in 0...8)
+					strumLineNotes.members[i].x = defaultStrumX[i]+ 16 * Math.sin((currentBeat/4 + i*0.25) * Math.PI);
 			}
 		}
 
@@ -5148,6 +5225,14 @@ class PlayState extends MusicBeatState
 				cameramove = false;
 				intensecameramove = false;
 			}
+		}
+
+		if (curSong.toLowerCase() == 'trojan-virus')
+		{
+			if (curStep == 384)
+				moveing = true;
+			if (curStep == 640)
+				moveing = false;
 		}
 
 		callOnLuas('onStepHit', []);
