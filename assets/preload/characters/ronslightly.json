@@ -1,77 +1,66 @@
 {
 	"animations": [
 		{
-			"loop": true,
-			"offsets": [
-				185,
-				170
-			],
-			"anim": "idle",
-			"fps": 24,
-			"name": "Idle",
-			"indices": []
-		},
-		{
 			"loop": false,
 			"offsets": [
-				305,
-				154
-			],
-			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Sing Left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				210,
-				69
+				0,
+				0
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "Sing Down",
+			"name": "ron down",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				224,
-				207
+				0,
+				0
 			],
 			"anim": "singUP",
 			"fps": 24,
-			"name": "Sing Up",
+			"name": "ron up",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				72,
-				154
+				0,
+				0
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "Sing Right",
+			"name": "ron right",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				257,
-				165
+				0,
+				0
 			],
-			"anim": "hey",
+			"anim": "idle",
 			"fps": 24,
-			"name": "Ugh",
+			"name": "ron idle",
 			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "ron left"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/slightlyannoyedron",
+	"image": "characters/wastedfucker",
 	"position": [
-		0,
-		350
+		-600,
+		140
 	],
 	"healthicon": "ronslightly",
 	"flip_x": false,
@@ -81,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-320,
-		-120
+		-210,
+		-200
 	],
 	"sing_duration": 4,
 	"scale": 1

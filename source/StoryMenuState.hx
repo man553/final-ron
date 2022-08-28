@@ -51,6 +51,8 @@ class StoryMenuState extends MusicBeatState
 
 	public var video:MP4Handler = new MP4Handler();
 
+	public static var musicTime:Float;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -60,6 +62,9 @@ class StoryMenuState extends MusicBeatState
 		WeekData.reloadWeekFiles(true);
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
+
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7); // i have no idea whats the error is so im just going to uh
+		FlxG.sound.music.time = musicTime;
 
 		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat("VCR OSD Mono", 32);

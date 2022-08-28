@@ -5250,6 +5250,12 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		if (curSong == 'Ron') 
+		{
+			if (curStep == 326 || curStep == 590 || curStep == 606 || curStep == 638 || curStep == 751 || curStep == 754)
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+		}
+
 		lastStepHit = curStep;
 		setOnLuas('curStep', curStep);
 
@@ -5422,22 +5428,14 @@ class PlayState extends MusicBeatState
 				santa.dance(true);
 		}
 
-		if (curBeat == 2 && curSong == 'Ron')
-			bruh();
-
 		if (curSong == 'Ron')
 		{
-			if (curBeat == 7)
+			if (curBeat == 29)
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1.3, {ease: FlxEase.expoOut,});
+			else if (curBeat == 172)
 				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
-			else if (curBeat == 119)
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
-			else if (curBeat == 215)
-			{
-				FlxG.camera.follow(dad, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
-			}
-			else
-				FlxG.camera.follow(camFollowPos, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
+			//else
+			//	FlxG.camera.follow(camFollowPos, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
 		}
 
 		lastBeatHit = curBeat;
