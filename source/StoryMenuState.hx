@@ -318,6 +318,11 @@ class StoryMenuState extends MusicBeatState
 					{
 						video.playMP4(Paths.videoRon('ron'), new PlayState(), false, false, false);
 					});
+				case 2:
+					new FlxTimer().start(1, function(tmr:FlxTimer)
+					{
+						video.playMP4(Paths.videoRon('trojanvirus'), new PlayState(), false, false, false);
+					});
 				default:
 					new FlxTimer().start(1, function(tmr:FlxTimer)
 					{

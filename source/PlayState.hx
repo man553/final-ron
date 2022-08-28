@@ -331,6 +331,9 @@ class PlayState extends MusicBeatState
 
 	var moveing:Bool = false;
 
+	var bgLol:FlxSprite;
+	var cloudsa:FlxSprite;
+
 	override public function create()
 	{
 		Paths.clearStoredMemory();
@@ -812,6 +815,82 @@ class PlayState extends MusicBeatState
 					Estatic.animation.play('idle');
 					Estatic.scrollFactor.set();
 					Estatic.screenCenter();
+				}
+			case 'verymad': // trojan virus
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'verymad';
+					var bg2:FlxSprite = new FlxSprite();
+					bg2.frames = Paths.getSparrowAtlas('bgs/trojan_bg');
+					bg2.scale.set(4, 4);
+					bg2.animation.addByPrefix('idle', 'bg instance 1', 24, true);
+					bg2.animation.play('idle');
+					bg2.scrollFactor.set(0.05, 0.05);
+					bg2.screenCenter();
+					add(bg2);
+					Estatic2 = new FlxSprite();
+					Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
+					Estatic2.scale.set(4, 4);
+					Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
+					Estatic2.animation.play('idle');
+					Estatic2.scrollFactor.set();
+					Estatic2.screenCenter();
+					add(Estatic2);
+					var console:FlxSprite = new FlxSprite();
+					console.frames = Paths.getSparrowAtlas('bgs/trojan_console');
+					console.scale.set(4, 4);
+					console.animation.addByPrefix('idle', 'ezgif.com-gif-maker (7)_gif instance 1', 24, true);
+					console.animation.play('idle');
+					console.scrollFactor.set(0.05, 0.05);
+					console.screenCenter();
+					console.alpha = 0.3;
+					add(console);
+					var popup:FlxSprite = new FlxSprite();
+					popup.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
+					popup.scale.set(4, 4);
+					popup.animation.addByPrefix('idle', 'popups instance 1', 24, true);
+					popup.animation.play('idle');
+					popup.scrollFactor.set(0.05, 0.05);
+					popup.screenCenter();
+					add(popup);
+					bgLol = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_sky'));
+					bgLol.updateHitbox();
+					bgLol.scale.x = 1;
+					bgLol.scale.y = 1;
+					bgLol.active = false;
+					bgLol.antialiasing = true;
+					bgLol.screenCenter();
+					bgLol.scrollFactor.set(0.1, 0.1);
+					add(bgLol);
+					witheredRa = new FlxSprite(-512, -260);
+					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
+					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
+					witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
+					witheredRa.updateHitbox();
+					witheredRa.antialiasing = true;
+					witheredRa.scrollFactor.set(0.5, 0.1);
+					witheredRa.screenCenter(XY);
+					add(witheredRa);
+					witheredRa.animation.play('rain');
+
+					cloudsa = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_clouds'));
+					cloudsa.updateHitbox();
+					cloudsa.scale.x = 0.7;
+					cloudsa.scale.y = 0.7;
+					cloudsa.screenCenter();
+					cloudsa.active = false;
+					cloudsa.antialiasing = true;
+					cloudsa.scrollFactor.set(0.2, 0.2);
+					add(cloudsa);
+					/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
+						var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
+						add(glitchSprite); */
+
+					var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bgs/veryAngreRon_ground'));
+					ground.updateHitbox();
+					ground.active = false;
+					ground.antialiasing = true;
+					add(ground);
 				}
 		}
 
@@ -1306,7 +1385,6 @@ class PlayState extends MusicBeatState
 			switch (daSong)
 			{
 				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
-					trace('true');
 					schoolIntro(doof);
 				default:
 					startCountdown();
@@ -2660,7 +2738,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong.toLowerCase() == 'trojan-virus')
+		if (curSong.toLowerCase() == 'trojan-virus' && startedCountdown)
 		{
 			if (moveing)
 			{
@@ -2678,6 +2756,7 @@ class PlayState extends MusicBeatState
 
 		if ((curSong == 'Atelophobia') || (curSong == 'Factory-Reset') || (curSong == 'Bloodshed') || (curSong == 'Bloodshed-b') || (curSong == 'Bloodshed-old') || (curSong == 'BLOODSHED-TWO') || (curSong == 'Factory-Reset-b') || (curSong == 'Atelophobia-b') || (curSong == 'Trojan-Virus') || (curSong == 'Trojan-Virus-b') || (curSong == 'File-Manipulation') || (curSong == 'File Manipulation-b')) 
 		{
+
 			if (chromeOffset <= 0)
 			{
 				setChrome(0.0);
@@ -5074,6 +5153,34 @@ class PlayState extends MusicBeatState
 				dad.playAnim('um');
 			else if (curStep >= 400 && curStep < 448)
 				dad.playAnim('err');
+		}
+
+		if (curSong == 'Trojan-Virus')
+		{
+			switch (curStep)
+			{
+				case 384:
+					FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					camHUD.shake(0.002);
+					defaultCamZoom += 0.2;
+				case 640:
+					defaultCamZoom -= 0.2;
+				case 1584:
+					var budjet = new FlxSprite(0, 0);
+					budjet.loadGraphic(Paths.image('ron/budjet'));
+					budjet.screenCenter();
+					budjet.cameras = [camHUD];
+					add(budjet);
+					dad.visible = false;
+					defaultCamZoom = 1;
+					FlxTween.tween(FlxG.camera, {zoom: 1}, 0.4, {ease: FlxEase.expoOut,});
+			}
+			if ((curStep >= 384) && (curStep <= 640))
+				FlxG.camera.shake(0.00625, 0.1);
+
+			camHUD.shake(0.00125, 0.15);
 		}
 
 		if (curSong == 'Withered-Tweaked')

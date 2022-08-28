@@ -43,16 +43,6 @@ class DialogueBox extends FlxSpriteGroup
 	{
 		super();
 
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'senpai':
-				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.8);
-			case 'thorns':
-				FlxG.sound.playMusic(Paths.music('LunchboxScary'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.8);
-		}
-
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
@@ -197,7 +187,7 @@ class DialogueBox extends FlxSpriteGroup
 			else
 				box.animation.play('normal');
 		}
-
+		
 		if (dialogueOpened && !dialogueStarted)
 		{
 			startDialogue();
@@ -259,6 +249,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	function startDialogue():Void
 	{
+		trace('wo');
 		cleanDialog();
 		// var theDialog:Alphabet = new Alphabet(0, 70, dialogueList[0], false, true);
 		// dialogue = theDialog;
@@ -292,6 +283,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueList[0] = dialogueList[0].substr(4).trim();
 			FlxG.sound.play(Paths.sound('vine'), 1);
 		}
+		trace('ah');
 
 		swagDialogue.resetText(dialogueList[0]);
 		swagDialogue.start(0.04, true);
@@ -304,6 +296,7 @@ class DialogueBox extends FlxSpriteGroup
 		dialogueEnded = false;
 		if ((StringTools.contains(curCharacter, 'ron')) || (StringTools.contains(curCharacter, 'Ron')))
 		{
+			trace('ron pog...?');
 			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/' + curCharacter, 'shared');
 			portraitLeft.animation.addByPrefix('ron Portrait Enter', 'ron Portrait Enter', 24, false);
 			portraitLeft.setGraphicSize(Std.int(portraitLeft.width + PlayState.daPixelZoom * 0.175));
@@ -329,6 +322,7 @@ class DialogueBox extends FlxSpriteGroup
 			dropText.size = 48;
 			swagDialogue.size = 48;
 			box.flipX = true;
+			trace('RON POG');
 		}
 		else
 		{
