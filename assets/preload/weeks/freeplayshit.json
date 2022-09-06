@@ -56,6 +56,24 @@
 			]
 		],
 		[
+			"certified-champion",
+			"shuttleman",
+			[
+				0,
+				255,
+				64
+			]
+		],
+		[
+			"double-trouble",
+			"onslaughthell",
+			[
+				64,
+				0,
+				16
+			]
+		],
+		[
 			"bleeding",
 			"hellron",
 			[
@@ -63,8 +81,8 @@
 				0,
 				0
 			]
-		]
+		]		
 	],
-	"hideStoryMode": false,
+	"hideStoryMode": true,
 	"weekName": "Tutorial"
 }

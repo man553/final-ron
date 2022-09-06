@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="ou.png"><SubTexture name="shuttle man idle0000" x="0" y="0" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man idle0001" x="904" y="0" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man idle0002" x="1808" y="0" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man hey0000" x="2712" y="0" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man hey0001" x="0" y="694" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man hey0002" x="904" y="694" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man right0000" x="1808" y="694" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man right0001" x="2712" y="694" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss right0000" x="0" y="1388" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man down0000" x="904" y="1388" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man down0001" x="1808" y="1388" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss down0000" x="2712" y="1388" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss down0001" x="0" y="2082" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man up0000" x="904" y="2082" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man up0001" x="1808" y="2082" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss up0000" x="0" y="2776" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss up0001" x="2712" y="2082" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man left0000" x="904" y="2776" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man left0001" x="1808" y="2776" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss left0000" x="2712" y="2776" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss left0001" x="0" y="3470" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+<SubTexture name="shuttle man miss right0001" x="904" y="3470" width="904" height="694" frameX="0" frameY="0" frameWidth="904" frameHeight="694" />
+</TextureAtlas>

@@ -1,0 +1,34 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				120,
+				170
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "idleg"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/godron",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "godron",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-320,
+		-120
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

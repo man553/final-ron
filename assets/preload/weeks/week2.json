@@ -8,6 +8,33 @@
 				255,
 				20
 			]
+		],
+		[
+			"file manipulation",
+			"ron-usb",
+			[
+				255,
+				255,
+				20
+			]
+		],
+		[
+			"recycle bin",
+			"ateloron",
+			[
+				255,
+				255,
+				20
+			]
+		],
+		[
+			"factory reset",
+			"ateloron",
+			[
+				255,
+				255,
+				20
+			]
 		]
 	],
 	"hiddenUntilUnlocked": false,
