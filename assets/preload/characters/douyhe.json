@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": true,
-			"fps": 24,
+			"offsets": [
+				0,
+				-40
+			],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				60
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				20,
+				-37
+			],
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				25,
-				-60
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				145,
+				-260
+			],
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [
-				75,
-				30
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				35,
+				-51
+			],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				-47,
+				-46
+			],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 24,
+			"name": "right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/doyne",
+	"image": "characters/doyneBetter",
 	"position": [
 		20,
 		125
@@ -70,9 +70,9 @@
 		255
 	],
 	"camera_position": [
-		0,
+		-200,
 		0
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 1.4
 }

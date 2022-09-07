@@ -304,6 +304,9 @@ class PlayState extends MusicBeatState
 	var fx:FlxSprite;
 	var Estatic:FlxSprite;
 	var blackeffect:FlxSprite;
+	var bgbleffect:FlxSprite;
+	var snowemitter:FlxEmitter;
+
 	var Estatic2:FlxSprite;
 
 	var funnywindow:Bool = false;
@@ -892,6 +895,99 @@ class PlayState extends MusicBeatState
 					ground.antialiasing = true;
 					add(ground);
 				}
+			case 'snow':
+			{
+				defaultCamZoom = 0.85;
+				curStage = 'snow';
+				bgLol = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_sky'));
+				bgLol.updateHitbox();
+				bgLol.scale.x = 1;
+				bgLol.scale.y = 1;
+				bgLol.active = false;
+				bgLol.antialiasing = true;
+				bgLol.screenCenter();
+				bgLol.scrollFactor.set(0.1, 0.1);
+				add(bgLol);
+				var graadienter:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
+				graadienter.updateHitbox();
+				graadienter.screenCenter();
+				graadienter.active = false;
+				graadienter.antialiasing = true;
+				graadienter.scrollFactor.set(0.2, 0.2);
+				add(graadienter);
+				cloudsa = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_clouds'));
+				cloudsa.updateHitbox();
+				cloudsa.scale.x = 0.7;
+				cloudsa.scale.y = 0.7;
+				cloudsa.screenCenter();
+				cloudsa.active = false;
+				cloudsa.antialiasing = true;
+				cloudsa.scrollFactor.set(0.2, 0.2);
+				add(cloudsa);
+				var icicleb:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_iciclesbehind'));
+				icicleb.updateHitbox();
+				icicleb.scale.set(0.65,0.65);
+				icicleb.screenCenter();
+				icicleb.active = false;
+				icicleb.antialiasing = true;
+				icicleb.scrollFactor.set(0.3, 0.3);
+				add(icicleb);
+				var iciclef:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_iciclesnbulb'));
+				iciclef.updateHitbox();
+				iciclef.scale.set(0.65,0.65);
+				iciclef.screenCenter();
+				iciclef.active = false;
+				iciclef.antialiasing = true;
+				iciclef.scrollFactor.set(0.3, 0.3);
+				add(iciclef);
+				bgbleffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
+				bgbleffect.updateHitbox();
+				bgbleffect.antialiasing = true;
+				bgbleffect.screenCenter(XY);
+				bgbleffect.scrollFactor.set();
+				bgbleffect.alpha = 0.5;
+				add(bgbleffect);
+				satan = new BGSprite('bgs/ss_pentagram', 300, 20, 0.15, 0.15);
+				satan.antialiasing = true;
+				satan.scale.set(1.2,1.2);
+				satan.screenCenter(XY);
+				satan.y -= 100;
+				satan.active = true;
+				add(satan);	
+				var diamond:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_diamond'));
+				diamond.updateHitbox();
+				diamond.screenCenter();
+				diamond.active = false;
+				diamond.antialiasing = true;
+				diamond.scrollFactor.set(0.15, 0.15);
+				diamond.y -= 160;
+				add(diamond);
+				var ground:FlxSprite = new FlxSprite(300,200).loadGraphic(Paths.image('bgs/ss_ground'));
+				ground.antialiasing = true;
+				ground.screenCenter(XY);
+				ground.scrollFactor.set(0.9, 0.9);
+				ground.active = false;
+				add(ground);
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+				fx.setGraphicSize(Std.int(2560 * 0.75));
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0, 0);
+				fx.alpha = 0.3;		
+				Estatic = new FlxSprite().loadGraphic(Paths.image('bgs/deadly2'));
+				Estatic.scrollFactor.set();
+				Estatic.screenCenter();
+				Estatic.alpha = 0;
+					Estatic2 = new FlxSprite();
+				Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
+				Estatic2.scale.set(4,4);
+				Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
+				Estatic2.animation.play('idle');
+				Estatic2.scrollFactor.set();
+				Estatic2.screenCenter();
+				Estatic2.alpha = 0;
+			}
 		}
 
 		if(isPixelStage) {
@@ -1380,16 +1476,47 @@ class PlayState extends MusicBeatState
 
 		setChrome(0.0);
 		var daSong:String = Paths.formatToSongPath(curSong);
-		if (isStoryMode && !seenCutscene)
+		if (!seenCutscene)
 		{
 			switch (daSong)
 			{
 				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
+				case 'blizzard':
+					add(fx);
+					gf.visible = false;
+					blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
+					blackeffect.updateHitbox();
+					blackeffect.antialiasing = true;
+					blackeffect.screenCenter(XY);
+					blackeffect.scrollFactor.set();
+					blackeffect.alpha = 0.25;
+					add(blackeffect);
+					add(Estatic);
+					FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
+					snowemitter = new FlxEmitter(9999, 0, 300);
+					for (i in 0...150)
+					{
+						var p = new FlxParticle();
+						var p2 = new FlxParticle();
+
+						p.loadGraphic(Paths.image('bgs/smallSnow'));
+						p2.loadGraphic(Paths.image('bgs/bigSnow'));
+
+						snowemitter.add(p);
+						snowemitter.add(p2);
+					}
+					snowemitter.width = FlxG.width*1.5;
+					snowemitter.launchMode = SQUARE;
+					snowemitter.velocity.set(-120, 240, -200, 320);
+					snowemitter.lifespan.set(5);
+					add(snowemitter);
+					snowemitter.start(false, 0.05);
+					startCountdown();
 				default:
 					startCountdown();
 			}
-			seenCutscene = true;
+			seenCutscene = false;
 		}
 		else if (WeekData.weeksList[storyWeek] == 'freeplayshit')
 		{
@@ -1466,15 +1593,13 @@ class PlayState extends MusicBeatState
 						skin = 'evik';
 					case 'ronangry-b':
 						skin = 'evik';
-					case 'hellron-2':
+					case 'godron':
 						skin = 'bhell';
 					case 'ateloron-b':
 						skin = 'bhell';
 					case 'ron-usb-b':
 						skin = 'bhell';
 					case 'dave':
-						skin = 'NOTEold_assets';
-					case 'bambi':
 						skin = 'NOTEold_assets';
 				}
 
@@ -2768,12 +2893,12 @@ class PlayState extends MusicBeatState
 					switch (curSong)
 					{
 						case 'File-Manipulation':
-							setChrome(ClientPrefs.rgbintense);
+							setChrome(ClientPrefs.rgbintense/350);
 						default:
 							var sinus = 1;
 							if (curStep >= 538)
 								sinus = 2 * Std.int(Math.sin((curStep - 538) / 3));
-							setChrome(chromeOffset*ClientPrefs.rgbintense*sinus);
+							setChrome(chromeOffset*ClientPrefs.rgbintense*sinus/350);
 					}
 				}
 				else
@@ -2783,7 +2908,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			if ((curSong == 'Withered-Tweaked') && (curStep >= 1152))
-				setChrome(chromeOffset*ClientPrefs.rgbintense);
+				setChrome(chromeOffset*ClientPrefs.rgbintense/350);
 		}
 
 		super.update(elapsed);
@@ -3836,12 +3961,13 @@ class PlayState extends MusicBeatState
 		{
 			switch(daRating.name)
 			{
+				// i should nerf unforgiving input its too hard
 				case 'shit':
-					health -= 0.3;
+					health -= 0.15;
 				case 'bad':
-					health -= 0.09;
+					health -= 0.045;
 				case 'good' | 'sick':
-					health += 0.023;
+					health += 0.05;
 			}
 		}
 
@@ -4434,7 +4560,13 @@ class PlayState extends MusicBeatState
 				if(combo > 9999) combo = 9999;
 			}
 			if (!SCREWYOU)
-				health += note.hitHealth * healthGain;
+			{
+				// i just dont like how psych engine's health mechanics work
+				if (note.isSustainNote)
+					health += note.hitHealth * healthGain / 2;
+				else
+					health += note.hitHealth * healthGain * 4;
+			}
 
 			if(!note.noAnimation) {
 				var daAlt = '';
@@ -4769,6 +4901,61 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
 			}
 		}
+		
+		if 	(curSong == 'blizzard')
+			{	
+				healthBarBG.alpha = 0;
+				healthBar.alpha = 0;
+				iconP1.visible = true;
+				iconP2.visible = true;
+				iconP2.alpha = (2-(health)-0.25)/2+0.2;
+				iconP1.alpha = (health-0.25)/2+0.2;
+				Estatic.alpha = (((2-health)/3)+0.2);
+				if ((curStep >= 256))
+				{
+					snowemitter.x = FlxG.camera.scroll.x;
+					snowemitter.y = FlxG.camera.scroll.y-40;
+				}
+				else
+					snowemitter.x = 9999;
+				switch (curStep)
+				{
+					case 240:
+						defaultCamZoom += 0.1;
+					case 256:
+						FlxG.camera.flash(FlxColor.WHITE, 0.2);
+						blackeffect.alpha = 0;
+						bgbleffect.alpha = 0;
+						fx.alpha = 0;
+						defaultCamZoom += 0.1;
+				}		
+				if ((curStep >= 256) && (curStep <= 512))
+				{
+					FlxG.camera.shake(0.01, 0.1);
+					camHUD.shake(0.001, 0.15);		
+					if (curStep == 256)
+					{
+						FlxTween.angle(satan, 0, 359.99, 1.5, { 
+							ease: FlxEase.quadIn, 
+							onComplete: function(twn:FlxTween) 
+							{
+								FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTween.LOOPING } );
+							}} 
+						);
+					}
+					if (health > 0.2)
+						health -= 0.05;
+				}
+				else
+				{
+					if ((curStep == 1297) || (curStep == 614))
+						FlxTween.cancelTweensOf(satan);
+					if (satan.angle != 0)
+						FlxTween.angle(satan, satan.angle, 359.99, 0.5, {ease: FlxEase.quadIn});
+					if (fx.alpha > 0.3)
+						fx.alpha -= 0.05;
+				}
+			}
 
 		if (curSong == 'Bloodshed') 
 		{
