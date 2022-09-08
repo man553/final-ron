@@ -2276,9 +2276,9 @@ class PlayState extends MusicBeatState
 		callOnLuas('onSongStart', []);
 		
 		//better credits system
-		if (FileSystem.exists(Paths.txt(songLowercase  + "/credits")))
+		if (FileSystem.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
 		{
-			var creditsText:String = Assets.getText(Paths.txt(songLowercase  + "/credits"));
+			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 32);
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(300, FlxG.height*3, FlxColor.BLACK);
 			
@@ -2296,8 +2296,8 @@ class PlayState extends MusicBeatState
 			creditsblack.cameras = [camHUD];
 			credits.cameras = [camHUD];
 			
-			FlxTween.tween(creditsblack, {alpha: 0.5}, 0.5});
-			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2}, 0.5});
+			FlxTween.tween(creditsblack, {alpha: 0.5}, 0.5);
+			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2}, 0.5);
 			
 			new FlxTimer().start(5, function(tmr:FlxTimer)
 			{
