@@ -2274,6 +2274,47 @@ class PlayState extends MusicBeatState
 		#end
 		setOnLuas('songLength', songLength);
 		callOnLuas('onSongStart', []);
+		
+		//better credits system
+		if (FileSystem.exists(Paths.txt(songLowercase  + "/credits")))
+		{
+			var creditsText:String = Assets.getText(Paths.txt(songLowercase  + "/credits"));
+			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 32);
+			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(300, FlxG.height*3, FlxColor.BLACK);
+			
+			credits.setFormat(Paths.font("w95.otf"), 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			credits.scrollFactor.set();
+			credits.screenCenter();
+			credits.y = FlxG.camera.scroll.y+FlxG.height+40;
+			
+			creditsblack.scrollFactor.set();
+			creditsblack.alpha = 0;
+			creditsblack.screenCenter();
+			
+			add(creditsblack);
+			add(credits);
+			creditsblack.cameras = [camHUD];
+			credits.cameras = [camHUD];
+			
+			FlxTween.tween(creditsblack, {alpha: 0.5}, 0.5});
+			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2}, 0.5});
+			
+			new FlxTimer().start(5, function(tmr:FlxTimer)
+			{
+				FlxTween.tween(credits, {alpha: 0}, 3, {
+					onComplete: function(tween:FlxTween)
+					{
+						credits.destroy();
+					}
+				});		
+				FlxTween.tween(creditsblack, {alpha: 0}, 3, {
+					onComplete: function(tween:FlxTween)
+					{
+						creditsblack.destroy();
+					}
+				});						
+			});
+		}
 	}
 
 	var debugNum:Int = 0;

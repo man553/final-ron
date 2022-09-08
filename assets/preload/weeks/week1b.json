@@ -48,5 +48,6 @@
 		]
 	],
 	"hideStoryMode": false,
+	"weekBefore": "mainweek",
 	"weekName": "Week 1 bsides"
 }

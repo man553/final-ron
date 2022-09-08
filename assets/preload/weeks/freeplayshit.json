@@ -83,6 +83,7 @@
 			]
 		]		
 	],
+	"weekBefore": "week2",
 	"hideStoryMode": true,
 	"weekName": "Tutorial"
 }

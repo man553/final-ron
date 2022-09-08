@@ -10,7 +10,7 @@
 			]
 		],
 		[
-			"file manipulation",
+			"recycle bin",
 			"ron-usb",
 			[
 				255,
@@ -19,14 +19,14 @@
 			]
 		],
 		[
-			"recycle bin",
+			"file manipulation",
 			"ateloron",
 			[
 				255,
 				255,
 				20
 			]
-		],
+		]
 		[
 			"factory reset",
 			"ateloron",
@@ -54,6 +54,6 @@
 		253
 	],
 	"hideStoryMode": false,
-	"weekBefore": "mainweek",
+	"weekBefore": "week1b",
 	"startUnlocked": true
 }
