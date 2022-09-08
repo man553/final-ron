@@ -306,6 +306,7 @@ class PlayState extends MusicBeatState
 	var blackeffect:FlxSprite;
 	var bgbleffect:FlxSprite;
 	var snowemitter:FlxEmitter;
+	var wbg:FlxSprite;
 
 	var Estatic2:FlxSprite;
 
@@ -988,6 +989,31 @@ class PlayState extends MusicBeatState
 				Estatic2.screenCenter();
 				Estatic2.alpha = 0;
 			}
+			case 'nothing':
+			{
+				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
+				wbg.updateHitbox();
+				wbg.screenCenter(XY);
+				wbg.scrollFactor.set();
+				add(wbg);
+				snowemitter = new FlxEmitter(9999, 0, 300);
+				for (i in 0...150)
+				{
+					var p = new FlxParticle();
+					var p2 = new FlxParticle();
+					p.makeGraphic(12,12,FlxColor.GRAY);
+					p2.makeGraphic(24,24,FlxColor.GRAY);
+					
+					snowemitter.add(p);
+					snowemitter.add(p2);
+				}
+				snowemitter.width = FlxG.width*1.5;
+				snowemitter.launchMode = SQUARE;
+				snowemitter.velocity.set(-10, -240, 10, -320);
+				snowemitter.lifespan.set(5);
+				add(snowemitter);
+				snowemitter.start(false, 0.05);
+			}
 		}
 
 		if(isPixelStage) {
@@ -1482,6 +1508,15 @@ class PlayState extends MusicBeatState
 			{
 				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
+				case 'pretty-wacky':
+					var graadienter:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
+					graadienter.updateHitbox();
+					graadienter.screenCenter();
+					graadienter.active = false;
+					graadienter.antialiasing = true;
+					graadienter.scrollFactor.set(0.2, 0.2);
+					add(graadienter);				
+					startCountdown();
 				case 'blizzard':
 					add(fx);
 					gf.visible = false;
@@ -4956,6 +4991,41 @@ class PlayState extends MusicBeatState
 						fx.alpha -= 0.05;
 				}
 			}
+
+		if 	(curSong == 'pretty-wacky')
+		{	
+			switch (curStep)
+			{
+				case 120:
+					defaultCamZoom += 0.1;
+				case 128:
+					FlxG.camera.flash(FlxColor.BLACK, 0.5);
+			}	
+			if (curStep >= 128)
+			{
+				snowemitter.x = FlxG.camera.scroll.x;
+				snowemitter.y = FlxG.camera.scroll.y+FlxG.height+40;
+				if (curStep % 4 == 0)
+				{
+					if (curStep % 8 == 0)
+					{
+						camGame.angle = -2;
+						camHUD.angle = -4;
+					}
+					else
+					{
+						camGame.angle = 2;
+						camHUD.angle = 4;
+					}
+					FlxTween.tween(camGame, {angle: 0}, 0.4, {ease: FlxEase.circOut});
+					FlxTween.tween(camHUD, {angle: 0}, 0.4, {ease: FlxEase.circOut});
+				}
+			}
+			else
+			{
+				snowemitter.x = 9999;
+			}
+		}
 
 		if (curSong == 'Bloodshed') 
 		{
