@@ -1,77 +1,66 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				-2,
+				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "Idle"
-		},
-		{
-			"offsets": [
-				42,
-				38
-			],
-			"loop": true,
 			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "Sing Up"
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				40,
-				-120
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Sing Down"
-		},
-		{
-			"offsets": [
-				98,
-				-27
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "Sing Left"
-		},
-		{
-			"offsets": [
-				-89,
-				-51
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Sing Right"
-		},
-		{
-			"offsets": [
-				71,
-				-40
-			],
 			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
 			"fps": 24,
-			"anim": "cheer",
-			"indices": [],
-			"name": "Ugh"
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		}
 	],
-	"no_antialiasing": false,
-	"image": "characters/demonron",
+	"no_antialiasing": true,
+	"image": "characters/bloodbathRon",
 	"position": [
-		0,
-		150
+		-59,
+		80
 	],
 	"healthicon": "demonron",
 	"flip_x": false,
@@ -81,9 +70,9 @@
 		52
 	],
 	"camera_position": [
-		300,
-		0
+		-30,
+		-50
 	],
-	"sing_duration": 6.1,
-	"scale": 1
+	"sing_duration": 4,
+	"scale": 1.2
 }

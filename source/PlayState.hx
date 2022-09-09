@@ -2282,7 +2282,7 @@ class PlayState extends MusicBeatState
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 32);
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
 			
-			credits.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			//credits.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
 			credits.scrollFactor.set();
 			credits.screenCenter();
 			credits.y = FlxG.camera.scroll.y+FlxG.height+40;
