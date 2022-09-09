@@ -2280,9 +2280,9 @@ class PlayState extends MusicBeatState
 		{
 			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 32);
-			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(300, FlxG.height*3, FlxColor.BLACK);
+			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
 			
-			credits.setFormat(Paths.font("w95.otf"), 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			credits.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
 			credits.scrollFactor.set();
 			credits.screenCenter();
 			credits.y = FlxG.camera.scroll.y+FlxG.height+40;
@@ -2297,7 +2297,7 @@ class PlayState extends MusicBeatState
 			credits.cameras = [camHUD];
 			
 			FlxTween.tween(creditsblack, {alpha: 0.5}, 0.5);
-			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2}, 0.5);
+			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2-credits.height}, 0.5);
 			
 			new FlxTimer().start(5, function(tmr:FlxTimer)
 			{

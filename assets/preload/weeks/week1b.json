@@ -1,11 +1,12 @@
 {
 	"storyName": "VS COOLER GUY B)",
+	"difficulties": "Hard",
 	"hideFreeplay": false,
 	"weekBackground": "storyWeek1",
-	"weekBefore": "tutorial",
+	"weekBefore": "mainweek",
 	"startUnlocked": true,
 	"weekCharacters": [
-		"ron-b",
+		"ron",
 		"bf",
 		"gf"
 	],
@@ -48,6 +49,5 @@
 		]
 	],
 	"hideStoryMode": false,
-	"weekBefore": "mainweek",
 	"weekName": "Week 1 bsides"
 }
