@@ -340,7 +340,7 @@ class MainMenuState extends MusicBeatState
 									StoryMenuState.musicTime = FlxG.sound.music.time;
 									MusicBeatState.switchState(new StoryMenuState());
 								case 'freeplay':
-									MusicBeatState.switchState(new FreeplayState());
+									MusicBeatState.switchState(new MasterFreeplayState());
 								#if MODS_ALLOWED
 								case 'mods':
 									MusicBeatState.switchState(new ModsMenuState());
