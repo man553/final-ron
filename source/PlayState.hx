@@ -306,6 +306,7 @@ class PlayState extends MusicBeatState
 	var blackeffect:FlxSprite;
 	var bgbleffect:FlxSprite;
 	var snowemitter:FlxEmitter;
+	var graadienter:FlxSprite;
 	var wbg:FlxSprite;
 
 	var Estatic2:FlxSprite;
@@ -991,11 +992,19 @@ class PlayState extends MusicBeatState
 			}
 			case 'nothing':
 			{
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+				fx.setGraphicSize(Std.int(2560 * 0.75));
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0, 0);
+				fx.alpha = 0.75;		
 				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
 				wbg.updateHitbox();
 				wbg.screenCenter(XY);
 				wbg.scrollFactor.set();
 				add(wbg);
+				wbg.color = FlxColor.BLACK;
 				snowemitter = new FlxEmitter(9999, 0, 300);
 				for (i in 0...150)
 				{
@@ -1509,13 +1518,15 @@ class PlayState extends MusicBeatState
 				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
 				case 'pretty-wacky':
-					var graadienter:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
+					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
 					graadienter.screenCenter();
 					graadienter.active = false;
 					graadienter.antialiasing = true;
 					graadienter.scrollFactor.set(0.2, 0.2);
 					add(graadienter);				
+					graadienter.color = FlxColor.BLACK;
+					add(fx);
 					startCountdown();
 				case 'blizzard':
 					add(fx);
@@ -4999,7 +5010,7 @@ class PlayState extends MusicBeatState
 					case 240:
 						defaultCamZoom += 0.1;
 					case 256:
-						FlxG.camera.flash(FlxColor.WHITE, 0.2);
+						FlxG.camera.flash(FlxColor.WHITE, 0.5);
 						blackeffect.alpha = 0;
 						bgbleffect.alpha = 0;
 						fx.alpha = 0;
@@ -5037,12 +5048,15 @@ class PlayState extends MusicBeatState
 		{	
 			switch (curStep)
 			{
-				case 120:
+				case 250:
 					defaultCamZoom += 0.1;
-				case 128:
-					FlxG.camera.flash(FlxColor.BLACK, 0.5);
+				case 256:
+					graadienter.color = FlxColor.WHITE;
+					wbg.color = FlxColor.WHITE;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					fx.alpha = 0;
 			}	
-			if (curStep >= 128)
+			if (curStep >= 256)
 			{
 				snowemitter.x = FlxG.camera.scroll.x;
 				snowemitter.y = FlxG.camera.scroll.y+FlxG.height+40;
