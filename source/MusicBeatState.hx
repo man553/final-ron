@@ -134,4 +134,7 @@ class MusicBeatState extends FlxUIState
 
 	public function setChrome(daChrome:Float):Void
 		ShadersHandler.setChrome(daChrome);
+		
+	public function setBlockSize(bs:Float):Void
+		ShadersHandler.setBlockSize(bs);
 }

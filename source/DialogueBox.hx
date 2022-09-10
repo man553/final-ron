@@ -8,6 +8,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
@@ -43,18 +44,14 @@ class DialogueBox extends FlxSpriteGroup
 	{
 		super();
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
+		bgFade = FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), [0xFFB3DFd8, 0xFF6572c2]);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
+		bgFade.x = -200;
+		bgFade.y = -200;
 
-		new FlxTimer().start(0.83, function(tmr:FlxTimer)
-		{
-			bgFade.alpha += (1 / 5) * 0.7;
-			if (bgFade.alpha > 0.7)
-				bgFade.alpha = 0.7;
-		}, 5);
-
+		FlxTween.tween(bgFade, {alpha: 0.7}, 1, {ease: FlxEase.quadInOut});
 		box = new FlxSprite(-20, 45);
 		
 		var hasDialog = false;
@@ -162,10 +159,6 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		// HARD CODING CUZ IM STUPDI
-		if (bgFade.alpha <= 0.7)
-			bgFade.alpha += (1 / 25) * 0.7;
-
 		dropText.text = swagDialogue.text;
 
 		if (box.animation.curAnim != null)
@@ -206,16 +199,16 @@ class DialogueBox extends FlxSpriteGroup
 						isEnding = true;
 						FlxG.sound.play(Paths.sound('clickText'), 0.8);	
 
-						new FlxTimer().start(0.2, function(tmr:FlxTimer)
-						{
-							box.alpha -= 1 / 5;
-							bgFade.alpha -= 1 / 5 * 0.7;
-							portraitLeft.visible = false;
-							portraitRight.visible = false;
-							swagDialogue.alpha -= 1 / 5;
-							handSelect.alpha -= 1 / 5;
-							dropText.alpha = swagDialogue.alpha;
-						}, 5);
+						FlxTween.tween(box, {y: 960}, 1, {ease: FlxEase.backInOut});
+						FlxTween.tween(handSelect, {y: 960}, 0.75, {ease: FlxEase.backInOut});
+						FlxTween.tween(swagDialogue, {y: 960}, 0.5, {ease: FlxEase.circIn});
+						FlxTween.tween(dropText, {y: 1080}, 0.5, {ease: FlxEase.circIn});
+						FlxTween.tween(bgFade, {alpha: 0}, 1.2, {ease: FlxEase.quadInOut});
+						FlxTween.tween(swagDialogue, {alpha: 0}, 1, {ease: FlxEase.quadInOut});
+						FlxTween.tween(handSelect, {alpha: 0}, 1, {ease: FlxEase.quadInOut});
+						FlxTween.tween(dropText, {alpha: 0}, 1, {ease: FlxEase.quadInOut});
+						portraitLeft.visible = false;
+						portraitRight.visible = false;
 
 						new FlxTimer().start(1.5, function(tmr:FlxTimer)
 						{

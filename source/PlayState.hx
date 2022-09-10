@@ -554,6 +554,7 @@ class PlayState extends MusicBeatState
 				add(ground);
 
 			case 'hell': //ron
+				defaultCamZoom = 0.8;
 				var hellbg:BGSprite = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
 				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
@@ -1527,6 +1528,7 @@ class PlayState extends MusicBeatState
 					add(graadienter);				
 					graadienter.color = FlxColor.BLACK;
 					add(fx);
+					camHUD.alpha = 0.5;
 					startCountdown();
 				case 'blizzard':
 					add(fx);
@@ -5049,18 +5051,43 @@ class PlayState extends MusicBeatState
 			switch (curStep)
 			{
 				case 250:
-					defaultCamZoom += 0.1;
+					defaultCamZoom += 0.2;
 				case 256:
+					defaultCamZoom -= 0.1;
+					camHUD.alpha = 1;
 					graadienter.color = FlxColor.WHITE;
 					wbg.color = FlxColor.WHITE;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					fx.alpha = 0;
+				case 752:
+					FlxG.camera.setFilters([ShadersHandler.MosaicShader]);
+					camHUD.setFilters([ShadersHandler.MosaicShader]);
+					defaultCamZoom += 0.1;
+					setBlockSize(0);
+				case 761: setBlockSize(1);
+				case 762: setBlockSize(2);
+				case 763: setBlockSize(3);
+				case 764: setBlockSize(4);
+				case 765: setBlockSize(5);
+				case 766: setBlockSize(6);
+				case 767: setBlockSize(7);
+				case 768:
+					cameraSpeed = 0;
+					setBlockSize(0);
+					
+					defaultCamZoom -= 0.1;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					triggerEventNote('Change Character', 'dad', 'doyneSprited');
+					triggerEventNote('Change Character', 'bf', 'bfSprited');
+					dad.x += 400;
+					boyfriend.x += 400;
+					boyfriend.y += 100;
 			}	
 			if (curStep >= 256)
 			{
 				snowemitter.x = FlxG.camera.scroll.x;
 				snowemitter.y = FlxG.camera.scroll.y+FlxG.height+40;
-				if (curStep % 4 == 0)
+				if ((curStep <= 512) && (curStep % 4 == 0))
 				{
 					if (curStep % 8 == 0)
 					{

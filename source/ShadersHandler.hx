@@ -15,4 +15,7 @@ class ShadersHandler
 		chromaticAberration.shader.data.gOffset.value = [0.0];
 		chromaticAberration.shader.data.bOffset.value = [chromeOffset * -1];
 	}
+	
+	public static function setBlockSize(amongla:Float):Void
+		MosaicShader.shader.data.uBlocksize.value = [amongla];
 }
