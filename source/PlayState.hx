@@ -215,7 +215,9 @@ class PlayState extends MusicBeatState
 	var blammedLightsBlack:FlxSprite;
 	var phillyWindowEvent:BGSprite;
 	var trainSound:FlxSound;
-
+	
+	var baro:FlxSprite;
+	var bart:FlxSprite;
 	var phillyGlowGradient:PhillyGlow.PhillyGlowGradient;
 	var phillyGlowParticles:FlxTypedGroup<PhillyGlow.PhillyGlowParticle>;
 
@@ -1254,6 +1256,22 @@ class PlayState extends MusicBeatState
 		add(timeBar);
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
+		
+		baro = new FlxSprite().makeGraphic(150, FlxG.height*3, FlxColor.BLACK);
+		bart = new FlxSprite().makeGraphic(150, FlxG.height*3, FlxColor.BLACK);
+		add(baro);
+		add(bart);
+			
+		baro.x = 0;
+		baro.scrollFactor.set();
+		baro.cameras = [camHUD];
+					
+		bart.x = FlxG.width-150;
+		bart.scrollFactor.set();
+		bart.cameras = [camHUD];
+		
+		baro.alpha = 0;
+		bart.alpha = 0;
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
@@ -1651,9 +1669,14 @@ class PlayState extends MusicBeatState
 						skin = 'NOTEold_assets';
 				}
 
+				if (isPixelStage)
+					skin = 'pixelUI/NOTE_assets';
 				unspawnNotes[i].texture = skin;
 			} else if (SONG.player1 == 'ronDave')
-				unspawnNotes[i].texture = 'ronsip';
+				if (isPixelStage)
+					unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
+				else
+					unspawnNotes[i].texture = 'ronsip';
 		}
 
 		callOnLuas('onCreatePost', []);
@@ -2292,25 +2315,27 @@ class PlayState extends MusicBeatState
 		if (FileSystem.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
 		{
 			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
-			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 32);
+			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 28);
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
+			var targety:Int = 0;
 			
-			//credits.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			credits.setFormat(Paths.font("w95.otf"), 28, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			add(creditsblack);
+			add(credits);
 			credits.scrollFactor.set();
 			credits.screenCenter();
+			targety = Std.int(credits.y);
 			credits.y = FlxG.camera.scroll.y+FlxG.height+40;
 			
 			creditsblack.scrollFactor.set();
 			creditsblack.alpha = 0;
 			creditsblack.screenCenter();
 			
-			add(creditsblack);
-			add(credits);
 			creditsblack.cameras = [camHUD];
 			credits.cameras = [camHUD];
 			
 			FlxTween.tween(creditsblack, {alpha: 0.5}, 0.5);
-			FlxTween.tween(credits, {y: FlxG.camera.scroll.y+FlxG.height/2-credits.height}, 0.5);
+			FlxTween.tween(credits, {y: targety}, 0.5);
 			
 			new FlxTimer().start(5, function(tmr:FlxTimer)
 			{
@@ -2407,6 +2432,8 @@ class PlayState extends MusicBeatState
 				var gottaHitNote:Bool = section.mustHitSection;
 
 				var skin = 'NOTE_assets';
+				if (isPixelStage)
+					skin = 'pixelUI/NOTE_assets';
 
 				if (songNotes[1] > 3)
 				{
@@ -5067,14 +5094,18 @@ class PlayState extends MusicBeatState
 				case 761: setBlockSize(1);
 				case 762: setBlockSize(2);
 				case 763: setBlockSize(3);
-				case 764: setBlockSize(4);
-				case 765: setBlockSize(5);
-				case 766: setBlockSize(6);
-				case 767: setBlockSize(7);
+				case 764: setBlockSize(6);
+				case 765: setBlockSize(9);
+				case 766: setBlockSize(13);
+				case 767: setBlockSize(20);
 				case 768:
 					cameraSpeed = 0;
-					setBlockSize(0);
-					
+					FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
+					camHUD.setFilters([ShadersHandler.chromaticAberration]);
+					setChrome(ClientPrefs.rgbintense/350);
+					isPixelStage = true;
+					baro.alpha = 1;
+					bart.alpha = 1;
 					defaultCamZoom -= 0.1;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					triggerEventNote('Change Character', 'dad', 'doyneSprited');
