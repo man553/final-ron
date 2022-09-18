@@ -2319,7 +2319,7 @@ class PlayState extends MusicBeatState
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
 			var targety:Int = 0;
 			
-			credits.setFormat(Paths.font("w95.otf"), 28, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
+			credits.setFormat(Paths.font("w95.otf"), 24, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK); 
 			add(creditsblack);
 			add(credits);
 			credits.scrollFactor.set();
@@ -5111,7 +5111,7 @@ class PlayState extends MusicBeatState
 					triggerEventNote('Change Character', 'dad', 'doyneSprited');
 					triggerEventNote('Change Character', 'bf', 'bfSprited');
 					dad.x += 400;
-					boyfriend.x += 400;
+					boyfriend.x += 350;
 					boyfriend.y += 100;
 			}	
 			if (curStep >= 256)
@@ -5268,7 +5268,7 @@ class PlayState extends MusicBeatState
             iconP1.alpha = (health-0.25)/2+0.2;
             switch (curStep)
             {
-                case 128: defaultCamZoom = 0.9;
+                case 1: defaultCamZoom = 0.9;
                 case 253: defaultCamZoom = 1.2;
                 case 409: defaultCamZoom = 1.1;
                 case 413: defaultCamZoom = 0.95;    
