@@ -1,6 +1,6 @@
 {
 	"storyName": "VS COOL GUY B)",
-	"difficulties": "Hard",
+	"difficulties": "Easy, Normal, Hard, Cool, Flip",
 	"hideFreeplay": false,
 	"weekBackground": "storyWeek1",
 	"weekBefore": "tutorial",

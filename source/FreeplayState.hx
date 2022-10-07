@@ -52,6 +52,8 @@ class FreeplayState extends MusicBeatState
 
 	public static var mode:String = 'main';
 
+	var isB:Bool = false;
+
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -304,7 +306,7 @@ class FreeplayState extends MusicBeatState
 				if(holdTime > 0.5 && checkNewHold - checkLastHold > 0)
 				{
 					changeSelection((checkNewHold - checkLastHold) * (controls.UI_UP ? -shiftMult : shiftMult));
-					changeDiff();
+					changeDiff(0, true);
 				}
 			}
 		}
@@ -313,7 +315,7 @@ class FreeplayState extends MusicBeatState
 			changeDiff(-1);
 		else if (controls.UI_RIGHT_P)
 			changeDiff(1);
-		else if (upP || downP) changeDiff();
+		else if (upP || downP) changeDiff(0, true);
 
 		if (controls.BACK)
 		{
@@ -408,9 +410,23 @@ class FreeplayState extends MusicBeatState
 		vocals = null;
 	}
 
-	function changeDiff(change:Int = 0)
+	function changeDiff(change:Int = 0, isMuda:Bool = false)
 	{
+		var lastDiff = curDifficulty;
+
 		curDifficulty += change;
+
+		if (curDifficulty == 4 && !isMuda)
+		{
+			modeSwitch();
+			curDifficulty = 4;
+		}
+
+		if (lastDiff == 4 && curDifficulty != 4 && !isMuda)
+		{
+			modeSwitchA();
+			curDifficulty += change;
+		}
 
 		if (curDifficulty < 0)
 			curDifficulty = CoolUtil.difficulties.length-1;
@@ -435,10 +451,13 @@ class FreeplayState extends MusicBeatState
 
 		curSelected += change;
 
+		var max:Int = songs.length;
+		if (isB) max = 4;
+
 		if (curSelected < 0)
-			curSelected = songs.length - 1;
-		if (curSelected >= songs.length)
-			curSelected = 0;
+			curSelected = max - 1;
+		if (curSelected >= max)
+			curSelected = 0;	
 			
 		var newColor:Int = songs[curSelected].color;
 		if(newColor != intendedColor) {
@@ -535,6 +554,93 @@ class FreeplayState extends MusicBeatState
 		scoreBG.x = FlxG.width - (scoreBG.scale.x / 2);
 		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
 		diffText.x -= diffText.width / 2;
+	}
+
+	function modeSwitch()
+	{
+		FlxG.camera.flash(FlxColor.WHITE, 0.5);
+		isB = true;
+
+		for (i in 0...songs.length)
+			remove(iconArray[i]);
+		untyped iconArray.length = 0;
+		for (i in 0...songs.length)
+		{
+			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter + "-b");
+			icon.sprTracker = grpSongs.members[i];
+
+			iconArray.push(icon);
+			add(icon);
+
+			var color:Int = FlxColor.MAGENTA;
+			switch (i)
+			{
+				case 0:
+					color = FlxColor.MAGENTA;
+				case 1:
+					color = FlxColor.PURPLE;
+				case 2:
+					color = 0xFF8200AA;
+				case 3:
+					color = FlxColor.WHITE;
+				case 4:
+					color = 0xFF966E6E;
+				case 5:
+					color = FlxColor.BLUE;
+				case 6:
+					color = 0xFFDCDCDC;
+				case 7:
+					color = FlxColor.CYAN;
+			}
+			songs[i].color = color;
+
+			if (songs[i].week != 0)
+			{
+				grpSongs.members[i].visible = false;
+				iconArray[i].visible = false;
+			}
+		}
+
+		changeSelection(0, false);
+	}
+
+	function modeSwitchA()
+	{
+		FlxG.camera.flash(FlxColor.WHITE, 0.5);
+		isB = false;
+
+		for (i in 0...songs.length)
+			remove(iconArray[i]);
+		untyped iconArray.length = 0;
+		for (i in 0...songs.length)
+		{
+			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
+			icon.sprTracker = grpSongs.members[i];
+
+			iconArray.push(icon);
+			add(icon);
+
+			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[0]);
+
+			var colors:Array<Int>;
+			if(leWeek.songs[i] == null)
+				colors = [255, 255, 20];
+			else
+			{
+				colors = leWeek.songs[i][2];
+				if(colors == null || colors.length < 3)
+					colors = [255, 255, 20];
+			}
+			songs[i].color = FlxColor.fromRGB(colors[0], colors[1], colors[2]);
+
+			if (songs[i].week != 0)
+			{
+				grpSongs.members[i].visible = true;
+				iconArray[i].visible = true;
+			}
+		}
+
+		changeSelection(0, false);
 	}
 }
 
