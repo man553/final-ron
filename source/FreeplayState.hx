@@ -340,8 +340,17 @@ class FreeplayState extends MusicBeatState
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
 				Paths.currentModDirectory = songs[curSelected].folder;
-				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+
+				var songName:String = songs[curSelected].songName.toLowerCase();
+				if (isB)
+				{
+					songName += "-b";
+					if (songName == 'bloodshed-b')
+						songName = 'blizzard';
+				}
+					
+				var poop:String = Highscore.formatSong(songName, curDifficulty);
+				PlayState.SONG = Song.loadFromJson(poop, songName);
 				if (PlayState.SONG.needsVoices)
 					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
 				else
@@ -362,6 +371,12 @@ class FreeplayState extends MusicBeatState
 		{
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
+			if (isB) 
+			{
+				songLowercase += "-b";
+				if (songLowercase == 'bloodshed-b')
+					songLowercase = 'blizzard';
+			}
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 			/*#if MODS_ALLOWED
 			if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
@@ -396,7 +411,14 @@ class FreeplayState extends MusicBeatState
 		else if(controls.RESET)
 		{
 			persistentUpdate = false;
-			openSubState(new ResetScoreSubState(songs[curSelected].songName, curDifficulty, songs[curSelected].songCharacter));
+			var songName:String = songs[curSelected].songName;
+			if (isB)
+			{
+				songName += "-b";
+				if (songName == 'bloodshed-b')
+					songName = 'blizzard';
+			}
+			openSubState(new ResetScoreSubState(songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 		super.update(elapsed);
@@ -416,12 +438,6 @@ class FreeplayState extends MusicBeatState
 
 		curDifficulty += change;
 
-		if (curDifficulty == 4 && !isMuda)
-		{
-			modeSwitch();
-			curDifficulty = 4;
-		}
-
 		if (lastDiff == 4 && curDifficulty != 4 && !isMuda)
 		{
 			modeSwitchA();
@@ -433,11 +449,24 @@ class FreeplayState extends MusicBeatState
 		if (curDifficulty >= CoolUtil.difficulties.length)
 			curDifficulty = 0;
 
+		if (curDifficulty == 4 && !isMuda)
+		{
+			modeSwitch();
+			curDifficulty = 4;
+		}
+
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
 		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-		intendedRating = Highscore.getRating(songs[curSelected].songName, curDifficulty);
+		var songName:String = songs[curSelected].songName;
+		if (isB)
+		{
+			songName += "-b";
+			if (songName == 'bloodshed-b')
+				songName = 'blizzard';
+		}
+		intendedScore = Highscore.getScore(songName, curDifficulty);
+		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
 
 		PlayState.storyDifficulty = curDifficulty;
@@ -475,8 +504,15 @@ class FreeplayState extends MusicBeatState
 		// selector.y = (70 * curSelected) + 30;
 
 		#if !switch
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-		intendedRating = Highscore.getRating(songs[curSelected].songName, curDifficulty);
+		var songName:String = songs[curSelected].songName;
+		if (isB)
+		{
+			songName += "-b";
+			if (songName == 'bloodshed-b')
+				songName = 'blizzard';
+		}
+		intendedScore = Highscore.getScore(songName, curDifficulty);
+		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
 
 		var bullShit:Int = 0;
