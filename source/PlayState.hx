@@ -341,6 +341,9 @@ class PlayState extends MusicBeatState
 	var bgLol:FlxSprite;
 	var cloudsa:FlxSprite;
 
+	var leBlack:FlxSprite;
+	var shutTheFuckUp:Bool = false;
+
 	override public function create()
 	{
 		Paths.clearStoredMemory();
@@ -1032,6 +1035,10 @@ class PlayState extends MusicBeatState
 			introSoundsSuffix = '-pixel';
 		}
 
+		leBlack = new FlxSprite(0, 0).makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
+		leBlack.alpha = 0;
+		add(leBlack);
+
 		add(gfGroup); //Needed for blammed lights
 
 		// Shitty layering but whatev it works LOL
@@ -1653,7 +1660,7 @@ class PlayState extends MusicBeatState
 						skin = 'ronhell';
 					case 'demonron':
 						skin = 'demonsip';
-					case 'ronb':
+					case 'ron-b':
 						skin = 'evik';
 					case 'ronmad-b':
 						skin = 'evik';
@@ -5018,60 +5025,71 @@ class PlayState extends MusicBeatState
 			}
 		}
 		
-		if 	(curSong == 'blizzard')
-			{	
-				healthBarBG.alpha = 0;
-				healthBar.alpha = 0;
-				iconP1.visible = true;
-				iconP2.visible = true;
-				iconP2.alpha = (2-(health)-0.25)/2+0.2;
-				iconP1.alpha = (health-0.25)/2+0.2;
-				Estatic.alpha = (((2-health)/3)+0.2);
-				if ((curStep >= 256))
-				{
-					snowemitter.x = FlxG.camera.scroll.x;
-					snowemitter.y = FlxG.camera.scroll.y-40;
-				}
-				else
-					snowemitter.x = 9999;
-				switch (curStep)
-				{
-					case 240:
-						defaultCamZoom += 0.1;
-					case 256:
-						FlxG.camera.flash(FlxColor.WHITE, 0.5);
-						blackeffect.alpha = 0;
-						bgbleffect.alpha = 0;
-						fx.alpha = 0;
-						defaultCamZoom += 0.1;
-				}		
-				if ((curStep >= 256) && (curStep <= 512))
-				{
-					FlxG.camera.shake(0.01, 0.1);
-					camHUD.shake(0.001, 0.15);		
-					if (curStep == 256)
-					{
-						FlxTween.angle(satan, 0, 359.99, 1.5, { 
-							ease: FlxEase.quadIn, 
-							onComplete: function(twn:FlxTween) 
-							{
-								FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTween.LOOPING } );
-							}} 
-						);
-					}
-					if (health > 0.2)
-						health -= 0.05;
-				}
-				else
-				{
-					if ((curStep == 1297) || (curStep == 614))
-						FlxTween.cancelTweensOf(satan);
-					if (satan.angle != 0)
-						FlxTween.angle(satan, satan.angle, 359.99, 0.5, {ease: FlxEase.quadIn});
-					if (fx.alpha > 0.3)
-						fx.alpha -= 0.05;
-				}
+		if (curSong == 'blizzard')
+		{
+			healthBarBG.alpha = 0;
+			healthBar.alpha = 0;
+			iconP1.visible = true;
+			iconP2.visible = true;
+			if (!shutTheFuckUp)
+				iconP2.alpha = (2 - (health) - 0.25) / 2 + 0.2;
+			iconP1.alpha = (health - 0.25) / 2 + 0.2;
+			if (!shutTheFuckUp)
+				Estatic.alpha = (((2 - health) / 3) + 0.2);
+			if ((curStep >= 256))
+			{
+				snowemitter.x = FlxG.camera.scroll.x;
+				snowemitter.y = FlxG.camera.scroll.y - 40;
 			}
+			else
+				snowemitter.x = 9999;
+			switch (curStep)
+			{
+				case 240:
+					defaultCamZoom += 0.1;
+				case 256:
+					FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					blackeffect.alpha = 0;
+					bgbleffect.alpha = 0;
+					fx.alpha = 0;
+					defaultCamZoom += 0.1;
+			}
+			if ((curStep >= 256) && (curStep <= 512))
+			{
+				FlxG.camera.shake(0.01, 0.1);
+				camHUD.shake(0.001, 0.15);
+				if (curStep == 256)
+				{
+					FlxTween.angle(satan, 0, 359.99, 1.5, {
+						ease: FlxEase.quadIn,
+						onComplete: function(twn:FlxTween)
+						{
+							FlxTween.angle(satan, 0, 359.99, 0.75, {type: FlxTween.LOOPING});
+						}
+					});
+				}
+				if (health > 0.2)
+					health -= 0.05;
+			} else
+			{
+				if ((curStep == 1297) || (curStep == 614))
+					FlxTween.cancelTweensOf(satan);
+				if (satan.angle != 0)
+					FlxTween.angle(satan, satan.angle, 359.99, 0.5, {ease: FlxEase.quadIn});
+				if (fx.alpha > 0.3)
+					fx.alpha -= 0.05;
+			}
+
+			if (curStep == 768)
+			{
+				FlxTween.tween(leBlack, {alpha: 1}, 1);
+				FlxTween.tween(dad, {alpha: 0}, 1);
+				snowemitter.emitting = false;
+				shutTheFuckUp = true;
+				FlxTween.tween(iconP2, {alpha: 0}, 1);
+				FlxTween.tween(fx, {alpha: 0}, 1);
+			}
+		}
 
 		if 	(curSong == 'pretty-wacky')
 		{	

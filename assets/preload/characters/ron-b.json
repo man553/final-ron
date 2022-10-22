@@ -1,77 +1,66 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				185,
-				170
+				105,
+				-20
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left instance 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				100,
+				-81
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down instance 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				64,
+				27
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up instance 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				42,
+				14
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right instance 1",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
 			],
 			"loop": true,
 			"fps": 24,
 			"anim": "idle",
 			"indices": [],
-			"name": "Idle"
-		},
-		{
-			"offsets": [
-				305,
-				154
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "Sing Left"
-		},
-		{
-			"offsets": [
-				210,
-				69
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Sing Down"
-		},
-		{
-			"offsets": [
-				224,
-				207
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "Sing Up"
-		},
-		{
-			"offsets": [
-				72,
-				154
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "Sing Right"
-		},
-		{
-			"offsets": [
-				257,
-				165
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "hey",
-			"indices": [],
-			"name": "Ugh"
+			"name": "Tween 1 instance 1"
 		}
 	],
-	"no_antialiasing": false,
-	"image": "characters/BsidesNEW",
+	"no_antialiasing": true,
+	"image": "characters/B-side_Ron",
 	"position": [
-		0,
-		350
+		-30,
+		240
 	],
 	"healthicon": "ron-b",
 	"flip_x": false,
@@ -81,9 +70,9 @@
 		255
 	],
 	"camera_position": [
-		-320,
-		-120
+		-270,
+		-30
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 1.5
 }

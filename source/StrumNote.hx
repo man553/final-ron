@@ -102,11 +102,11 @@ class StrumNote extends FlxSprite
 					skin = 'ronhell';
 				case 'demonron':
 					skin = 'demonsip';
-				case 'ronb':
+				case 'ron-b':
 					skin = 'evik';
 				case 'ronmad-b':
 					skin = 'evik';
-				case 'hellron-2':
+				case 'godron':
 					skin = 'bhell';
 				case 'ateloron-b':
 					skin = 'bhell';
