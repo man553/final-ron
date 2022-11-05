@@ -1541,7 +1541,19 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'ayo' | 'wasted' | 'bloodshed' | 'trojan-virus':
+				case "ron" | 'wasted' | 'bloodshed' | 'trojan-virus':
+					schoolIntro(doof);
+				case "ayo":
+					witheredRa = new FlxSprite(-512, -260);
+					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
+					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
+					witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
+					witheredRa.updateHitbox();
+					witheredRa.antialiasing = true;
+					witheredRa.scrollFactor.set(0.05, 0.05);
+					witheredRa.screenCenter(XY);
+					add(witheredRa);
+					witheredRa.animation.play('rain');
 					schoolIntro(doof);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
