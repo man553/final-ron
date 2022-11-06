@@ -2951,7 +2951,14 @@ class PlayState extends MusicBeatState
 		if(!inCutscene)
 		{
 			var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
+			//if (curSong.toLowerCase() == 'pretty-wacky' && curBeat >= 192)
+			//{
+			//	FlxTween.tween(camFollowPos, {x: camFollow.x, y: camFollow.y}, 0.4, {ease: FlxEase.backInOut});
+			//}
+			//else
+			
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+			
 			if(!startingSong && !endingSong && boyfriend.animation.curAnim.name.startsWith('idle'))
 			{
 				boyfriendIdleTime += elapsed;
@@ -5129,7 +5136,9 @@ class PlayState extends MusicBeatState
 				case 766: setBlockSize(13);
 				case 767: setBlockSize(20);
 				case 768:
-					cameraSpeed = 0;
+					cameraSpeed = 3;
+					graadienter.color = FlxColor.fromRGB(224,224,224);
+					wbg.color = FlxColor.fromRGB(224,224,224);
 					FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
 					camHUD.setFilters([ShadersHandler.chromaticAberration]);
 					setChrome(ClientPrefs.rgbintense/350);
@@ -5137,13 +5146,23 @@ class PlayState extends MusicBeatState
 					baro.alpha = 1;
 					bart.alpha = 1;
 					defaultCamZoom -= 0.1;
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					FlxG.camera.flash(FlxColor.fromRGB(224,224,224), 3);
 					triggerEventNote('Change Character', 'dad', 'doyneSprited');
 					triggerEventNote('Change Character', 'bf', 'bfSprited');
-					dad.x += 400;
-					boyfriend.x += 350;
-					boyfriend.y += 100;
-			}	
+					dad.y -= 120;
+					dad.x -= 60;
+					var bruh:FlxSprite = new FlxSprite();
+					bruh.loadGraphic(Paths.image('bgs/scanlines'));
+					bruh.antialiasing = false;
+					bruh.active = false;
+					bruh.scrollFactor.set();
+					bruh.screenCenter();
+					bruh.scale.set(4,4);
+					add(bruh);
+					FlxTween.tween(bruh, {alpha: 0.5}, 0.5, {ease: FlxEase.circInOut, type: PINGPONG});
+					FlxTween.cancelTweensOf(camFollowPos);
+					FlxTween.tween(camFollowPos, {x: camFollow.x, y: camFollow.y}, 0.01);
+			}
 			if (curStep >= 256)
 			{
 				snowemitter.x = FlxG.camera.scroll.x;

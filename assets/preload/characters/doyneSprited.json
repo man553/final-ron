@@ -5,10 +5,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "singDOWN",
-			"loop": false,
+			"indices": [],
 			"name": "down"
 		},
 		{
@@ -16,10 +16,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "singLEFT",
-			"loop": false,
+			"indices": [],
 			"name": "left"
 		},
 		{
@@ -27,10 +27,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "idle"
 		},
 		{
@@ -38,10 +38,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "singUP",
-			"loop": false,
+			"indices": [],
 			"name": "up"
 		},
 		{
@@ -49,10 +49,10 @@
 				0,
 				0
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 8,
 			"anim": "singRIGHT",
-			"loop": false,
+			"indices": [],
 			"name": "right"
 		}
 	],
@@ -65,13 +65,13 @@
 	"healthicon": "douyhe-pixel",
 	"flip_x": false,
 	"healthbar_colors": [
-		255,
+		235,
 		255,
 		255
 	],
 	"camera_position": [
-		0,
-		0
+		-160,
+		-140
 	],
 	"sing_duration": 4,
 	"scale": 10

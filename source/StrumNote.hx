@@ -120,8 +120,11 @@ class StrumNote extends FlxSprite
 				case 'ronDave':
 					skin = 'ronsip';
 			}
-			if (player == 0) texture = skin;
 
+			if (texture == 'PIXELNOTE_assets')
+				skin = texture;
+
+			if (player == 0) texture = skin;
 
 			frames = Paths.getSparrowAtlas(texture);
 			animation.addByPrefix('green', 'arrowUP');
