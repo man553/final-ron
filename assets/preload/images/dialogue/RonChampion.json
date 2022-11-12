@@ -1,0 +1,50 @@
+{
+	"dialogue_pos": "left",
+	"position": [
+		0,
+		50
+	],
+	"scale": 1.25,
+	"animations": [
+		{
+			"anim": "talk",
+			"loop_offsets": [
+				-130,
+				-130
+			],
+			"idle_offsets": [
+				-121,
+				-130
+			],
+			"loop_name": "Talk",
+			"idle_name": "Idle"
+		},
+		{
+			"loop_name": "Sad",
+			"idle_offsets": [
+				-130,
+				-130
+			],
+			"idle_name": "Sad",
+			"anim": "sad",
+			"loop_offsets": [
+				-130,
+				-130
+			]
+		},
+		{
+			"loop_name": "doteyes",
+			"idle_offsets": [
+				-130,
+				-130
+			],
+			"idle_name": "doteyes",
+			"anim": "wtf",
+			"loop_offsets": [
+				-130,
+				-131
+			]
+		}
+	],
+	"image": "RonTalk"
+}

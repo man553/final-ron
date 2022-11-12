@@ -1,0 +1,133 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-5,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "shuttle man idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				5,
+				-6
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "shuttle man left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-20,
+				9
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "shuttle man down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-46,
+				-13
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "shuttle man up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				12,
+				13
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "shuttle man right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-3,
+				-1
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "shuttle man miss left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-25,
+				11
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "shuttle man miss down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-46,
+				27
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "shuttle man miss up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-24,
+				-8
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "shuttle man miss right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-4,
+				0
+			],
+			"anim": "hey",
+			"fps": 23,
+			"name": "shuttle man hey",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/shuttle-man",
+	"position": [
+		-200,
+		60
+	],
+	"healthicon": "shittle",
+	"flip_x": true,
+	"healthbar_colors": [
+		98,
+		235,
+		32
+	],
+	"camera_position": [
+		0,
+		110
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

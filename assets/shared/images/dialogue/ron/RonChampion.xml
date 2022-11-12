@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="RonTalk.png">
+	<!-- Created with Adobe Animate version 21.0.8.42666 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Idle0000" x="0" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0001" x="348" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0002" x="696" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0003" x="1044" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0004" x="1392" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0005" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Idle0006" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Idle0007" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Idle0008" x="0" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0009" x="348" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0010" x="696" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0011" x="1044" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0012" x="1392" y="0" width="348" height="242"/>
+	<SubTexture name="Idle0013" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Idle0014" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Idle0015" x="0" y="242" width="348" height="242"/>
+	<SubTexture name="Sad0000" x="348" y="242" width="283" height="242"/>
+	<SubTexture name="Talk0000" x="631" y="242" width="283" height="242"/>
+	<SubTexture name="Talk0001" x="631" y="242" width="283" height="242"/>
+	<SubTexture name="Talk0002" x="914" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0000" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0001" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0002" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0003" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0004" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0005" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0006" x="1480" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0007" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0008" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0009" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0010" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0011" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0012" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0013" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0014" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0015" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0016" x="1197" y="242" width="283" height="242"/>
+	<SubTexture name="doteyes0017" x="1197" y="242" width="283" height="242"/>
+</TextureAtlas>
