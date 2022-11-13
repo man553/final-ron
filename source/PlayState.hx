@@ -549,14 +549,40 @@ class PlayState extends MusicBeatState
 				add(ground);
 
 			case 'ronNormal': //ron
-				var sky:BGSprite = new BGSprite('bgs/happyRon_sky', -100, 20, 0.1, 0.1);
-				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				defaultCamZoom = 0.7;
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/ron_sky', -100, 20);
+				sky.screenCenter();
+				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-
-				var ground:BGSprite = new BGSprite('bgs/happyRon_ground', -850, -500);
-				ground.setGraphicSize(Std.int(ground.width * 1.2));
-				ground.updateHitbox();
-				add(ground);
+				
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				add(mountainsback);
+				
+				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron_clouds'), 0.1, 0, true, false);
+				clouds.scrollFactor.set(0.1,0);
+				clouds.screenCenter(XY);
+				add(clouds);
+				
+				FlxTween.tween(clouds, {x: clouds.x + 6000}, 360, {type: LOOPING});
+				
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron_mountains', -100, 20);
+				mountains.screenCenter();
+				mountains.scrollFactor.set(0.3, 0.3);
+				mountains.y -= 60;
+				add(mountains);
+			
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ron_hillfront', -100, 20);
+				hillfront.screenCenter();
+				hillfront.scrollFactor.set(0.4, 0.4);
+				hillfront.y -= 60;
+				add(hillfront);
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ron_street', -100, 20);
+				street.screenCenter();
+				add(street);
 
 			case 'hell': //ron
 				defaultCamZoom = 0.8;
@@ -1172,7 +1198,6 @@ class PlayState extends MusicBeatState
 		startCharacterLua(dad.curCharacter);
 
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
-		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
 		startCharacterLua(boyfriend.curCharacter);
 
@@ -1463,6 +1488,9 @@ class PlayState extends MusicBeatState
 			case 'dave':
 				gf.visible = false;
 				boyfriend.y -= 120;
+			case 'ron':
+				boyfriend.x += 160;
+				gf.x += 50;
 		}
 
 		if (curSong == 'Withered-Tweaked')

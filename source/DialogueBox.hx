@@ -43,7 +43,12 @@ class DialogueBox extends FlxSpriteGroup
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
 		super();
-
+		if (StringTools.contains(PlayState.SONG.song.toLowerCase(), 'bloodshed') || PlayState.SONG.song.toLowerCase() == 'bleeding')
+			FlxG.sound.playMusic(Paths.music('bloodshed-dialogue-mus'), 0);
+		else
+			FlxG.sound.playMusic(Paths.music('talking-in-a-cool-way'), 0);
+		
+		FlxG.sound.music.fadeIn(1, 0, 0.8);
 		bgFade = FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), [0xFFB3DFd8, 0xFF6572c2]);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
