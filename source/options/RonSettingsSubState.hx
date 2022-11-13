@@ -13,6 +13,13 @@ class RonSettingsSubState extends BaseOptionsMenu
 			'bool', //Variable type
 			true); //Default value
 		addOption(option);
+		
+		var option:Option = new Option('Show Startup Warnings', //Name
+		'If checked, will show warnings at startup', //Description
+		'warnings', //Save data variable name
+		'bool', //Variable type
+		true); //Default value
+		addOption(option);
 
 		var option:Option = new Option('RGB Enabled', //Name
 			'Enables a RGB shader in some songs.', //Description

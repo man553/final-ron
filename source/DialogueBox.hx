@@ -24,6 +24,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	var dialogue:Alphabet;
 	var dialogueList:Array<String> = [];
+	var preloadedPortraits:Map<String, Dynamic> = new Map<String, Dynamic>();
 
 	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
 	var swagDialogue:FlxTypeText;
@@ -42,6 +43,7 @@ class DialogueBox extends FlxSpriteGroup
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
+
 		super();
 		if (StringTools.contains(PlayState.SONG.song.toLowerCase(), 'bloodshed') || PlayState.SONG.song.toLowerCase() == 'bleeding')
 			FlxG.sound.playMusic(Paths.music('bloodshed-dialogue-mus'), 0);
@@ -87,6 +89,14 @@ class DialogueBox extends FlxSpriteGroup
 
 		this.dialogueList = dialogueList;
 		
+		//portrait preloader
+		for (i in 0...dialogueList.length)
+		{
+			preloadedPortraits[dialogueList[i].split(":")[1]] = Paths.getSparrowAtlas('dialogue/ron/' + dialogueList[i].split(":")[1], 'shared');
+		}
+
+
+
 		if (!hasDialog)
 			return;
 		
@@ -295,7 +305,7 @@ class DialogueBox extends FlxSpriteGroup
 		if ((StringTools.contains(curCharacter, 'ron')) || (StringTools.contains(curCharacter, 'Ron')))
 		{
 			trace('ron pog...?');
-			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/' + curCharacter, 'shared');
+			portraitLeft.frames = preloadedPortraits[curCharacter];
 			portraitLeft.animation.addByPrefix('ron Portrait Enter', 'ron Portrait Enter', 24, false);
 			portraitLeft.setGraphicSize(Std.int(portraitLeft.width + PlayState.daPixelZoom * 0.175));
 			portraitLeft.updateHitbox();
@@ -327,7 +337,6 @@ class DialogueBox extends FlxSpriteGroup
 			portraitLeft.alpha = 0.5;
 			portraitRight.alpha = 1;
 			trace('bf pog!!!');
-			portraitRight.animation.play(curCharacter);
 			swagDialogue.sounds = [FlxG.sound.load(Paths.sound('bfText'), 0.6)];
 			dropText.font = 'Pixel Arial 11 Bold';
 			dropText.color = 0xFFB9E5FF;

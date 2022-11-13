@@ -1,6 +1,9 @@
 package;
 
 import Conductor.BPMChangeEvent;
+import openfl.filters.ShaderFilter;
+import flixel.FlxCamera;
+import DynamicShaderHandler;
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
@@ -16,6 +19,12 @@ import flixel.FlxBasic;
 
 class MusicBeatState extends FlxUIState
 {
+
+	public static var animatedShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
+	public var luaShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
+
+	public var Shaders = animatedShaders;
+
 	private var lastBeat:Float = 0;
 	private var lastStep:Float = 0;
 
@@ -36,6 +45,11 @@ class MusicBeatState extends FlxUIState
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 	}
+	public function addShader(camera:FlxCamera, shader:String)
+	{
+		new DynamicShaderHandler(shader);
+		camera.setFilters([new ShaderFilter(animatedShaders[shader].shader)]);
+	}
 	
 	#if (VIDEOS_ALLOWED && windows)
 	override public function onFocus():Void
@@ -53,6 +67,16 @@ class MusicBeatState extends FlxUIState
 
 	override function update(elapsed:Float)
 	{
+		for (shader in animatedShaders)
+		{
+			shader.update(elapsed);
+		}
+		#if LUA_ALLOWED
+		for (key => value in luaShaders)
+		{
+			value.update(elapsed);
+		}
+		#end
 		//everyStep();
 		var oldStep:Int = curStep;
 
@@ -65,6 +89,7 @@ class MusicBeatState extends FlxUIState
 		if(FlxG.save.data != null) FlxG.save.data.fullscreen = FlxG.fullscreen;
 
 		super.update(elapsed);
+		Shaders = animatedShaders;
 	}
 
 	private function updateBeat():Void
@@ -133,8 +158,10 @@ class MusicBeatState extends FlxUIState
 	}
 
 	public function setChrome(daChrome:Float):Void
-		ShadersHandler.setChrome(daChrome);
+		//ShadersHandler.setChrome(daChrome);
+	return;
 		
 	public function setBlockSize(bs:Float):Void
-		ShadersHandler.setBlockSize(bs);
+		//ShadersHandler.setBlockSize(bs);
+	return;
 }

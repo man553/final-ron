@@ -69,6 +69,7 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
@@ -585,6 +586,7 @@ class PlayState extends MusicBeatState
 				add(street);
 
 			case 'hell': //ron
+				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
 				var hellbg:BGSprite = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
@@ -1683,53 +1685,14 @@ class PlayState extends MusicBeatState
 
 		for (i in 0...unspawnNotes.length - 1)
 		{
-			if (!unspawnNotes[i].mustPress)
-			{
-				var skin = 'ronsip';
-				switch (dad.curCharacter)
-				{
-					case 'douyhe':
-						skin = 'NOTE_assets';
-					case 'hellron':
-						skin = 'ronhell';
-					case 'hacker':
-						skin = 'ronhell';
-					case 'ateloron':
-						skin = 'ronhell';
-					case 'ron-usb':
-						skin = 'ronhell';
-					case 'demonron':
-						skin = 'demonsip';
-					case 'ron-b':
-						skin = 'evik';
-					case 'ronmad-b':
-						skin = 'evik';
-					case 'ronangry-b':
-						skin = 'evik';
-					case 'godron':
-						skin = 'bhell';
-					case 'ateloron-b':
-						skin = 'bhell';
-					case 'ron-usb-b':
-						skin = 'bhell';
-					case 'dave':
-						skin = 'NOTEold_assets';
-				}
-
-				if (isPixelStage)
-					skin = 'pixelUI/NOTE_assets';
-				unspawnNotes[i].texture = skin;
-			} else if (SONG.player1 == 'ronDave')
-				if (isPixelStage)
-					unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
-				else
-					unspawnNotes[i].texture = 'ronsip';
+			unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? boyfriend.noteskin : dad.noteskin);
+			if (isPixelStage)
+				unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
 		}
 
 		callOnLuas('onCreatePost', []);
 
 		super.create();
-
 		Paths.clearUnusedMemory();
 
 		for (key => type in precacheList)
@@ -2705,6 +2668,8 @@ class PlayState extends MusicBeatState
 
 			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player, dad.curCharacter);
 			babyArrow.downScroll = ClientPrefs.downScroll;
+			babyArrow.texture = "noteskins/" + (player == 0 ? dad.noteskin : boyfriend.noteskin);
+			babyArrow.reloadNote();
 			if (!isStoryMode && !skipArrowStartTween)
 			{
 				//babyArrow.y -= 10;
@@ -2873,9 +2838,10 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
-
+	var sinSpeed:Float = 0;
+	var noteSinSpeed:Float = 0;
 	override public function update(elapsed:Float)
-	{
+	{		
 		/*if (FlxG.keys.justPressed.NINE)
 		{
 			iconP1.swapOldIcon();
@@ -2888,77 +2854,84 @@ class PlayState extends MusicBeatState
 		{
 			case 'bloodshed': 
 				if(funnywindow)
-					setWindowPos(Std.int(127 * Math.sin(currentBeat * Math.PI) + 327), Std.int(127 * Math.sin(currentBeat * 3) + 160));
+					sinSpeed = FlxMath.lerp(sinSpeed, 127, 0.01);
 				if(funnywindowsmall)
-					setWindowPos(Std.int(24 * Math.sin(currentBeat * Math.PI) + 327), Std.int(24 * Math.sin(currentBeat * 3) + 160));
+					sinSpeed = FlxMath.lerp(sinSpeed, 24, 0.01);
 				if(NOMOREFUNNY)
-					setWindowPos(Std.int(0 * Math.sin(currentBeat * Math.PI) + 327), Std.int(0 * Math.sin(currentBeat * 3) + 160));
+					sinSpeed = FlxMath.lerp(sinSpeed, 0, 0.01);
+
+				setWindowPos(Std.int(sinSpeed * Math.sin(currentBeat * Math.PI) + 327), Std.int(sinSpeed * Math.sin(currentBeat * 3) + 160));
 				if(daNoteMove)
 				{
+					noteSinSpeed = FlxMath.lerp(noteSinSpeed, 8, 0.01);
 				    for (i in 4...8) 
 					{
 						var member = strumLineNotes.members[i];
 
-						member.x  = defaultStrumX[i]+ 8* Math.sin((currentBeat + i*0.25) * Math.PI);
+						member.x  = defaultStrumX[i]+ noteSinSpeed* Math.sin((currentBeat + i*0.25) * Math.PI);
 
 						if(FlxG.save.data.downscroll)
-							member.y  = defaultStrumY -  18 *  Math.cos((currentBeat + i*2.5) * Math.PI);
+							member.y  = defaultStrumY + noteSinSpeed *  Math.cos((currentBeat + i*2.5) * Math.PI);
 						else 
-							member.y  = defaultStrumY +  18 *  Math.cos((currentBeat + i*2.5) * Math.PI);
+							member.y  = defaultStrumY + noteSinSpeed *  Math.cos((currentBeat + i*2.5) * Math.PI);
 						
 					}
 				}
 				if(daNoteMoveH)
 				{
+					noteSinSpeed = FlxMath.lerp(noteSinSpeed, 32, 0.01);
 				    for (i in 4...8)
 					{ 
 						var member = strumLineNotes.members[i];
-						member.x  = defaultStrumX[i] + 32 * Math.sin((currentBeat + i*0.25) * Math.PI);	
+						member.x  = defaultStrumX[i] + noteSinSpeed * Math.sin((currentBeat + i*0.25) * Math.PI);	
 					}
 				}
 			
 				if(daNoteMoveH3)
 				{
+					noteSinSpeed = FlxMath.lerp(noteSinSpeed, 128, 0.01);
 				    for (i in 4...8)
 					{ 
 						var member = strumLineNotes.members[i];
 						if(ClientPrefs.downScroll)
-							member.y =  defaultStrumY - 128 * Math.cos((currentBeat/4) * Math.PI) - 128;	
+							member.y =  defaultStrumY - noteSinSpeed * Math.cos((currentBeat/4) * Math.PI);	
 						else 
-							member.y =  defaultStrumY + 128 * Math.cos((currentBeat/4) * Math.PI) + 128;	
+							member.y =  defaultStrumY + noteSinSpeed * Math.cos((currentBeat/4) * Math.PI);	
 
-						member.x =  defaultStrumX[i]  + 128 * Math.sin((currentBeat) * Math.PI);	
+						member.x =  defaultStrumX[i]  + noteSinSpeed * Math.sin((currentBeat) * Math.PI);	
 					}
 				}
 				if(daNoteMoveH4)
 				{
+					noteSinSpeed = FlxMath.lerp(noteSinSpeed, 128, 0.01);
 				    for (i in 4...8)
 					{ 
 						var member = strumLineNotes.members[i];
 						member.x  = defaultStrumX[i] + 128 * Math.sin((currentBeat) * Math.PI);	
 
 						if(ClientPrefs.downScroll)
-							member.y  = defaultStrumY - 24 * Math.cos((currentBeat) * Math.PI);
+							member.y  = defaultStrumY - (noteSinSpeed * 0.1875) * Math.cos((currentBeat) * Math.PI);
 						else
-							member.y  = defaultStrumY + 24 * Math.cos((currentBeat) * Math.PI);
+							member.y  = defaultStrumY + (noteSinSpeed * 0.1875) * Math.cos((currentBeat) * Math.PI);
 					}
-					camHUD.angle = 10 * Math.sin((currentBeat/6) * Math.PI);
-					FlxG.camera.angle = 2 * Math.sin((currentBeat/6) * Math.PI);
+					camHUD.angle = (noteSinSpeed * 0.078125) * Math.sin((currentBeat/6) * Math.PI);
+					FlxG.camera.angle = (noteSinSpeed * 0.015625) * Math.sin((currentBeat/6) * Math.PI);
 				}
 				if(daNoteMoveH5)
 				{
+					noteSinSpeed = FlxMath.lerp(noteSinSpeed, 128, 0.01);
 					for (i in 4...8)
 					{ 
 						var member = strumLineNotes.members[i];
 						member.x  = defaultStrumX[i] + 128 * Math.sin((currentBeat) * Math.PI);	
 						
 						if(ClientPrefs.downScroll)
-							member.y  = defaultStrumY - 96 * Math.cos((currentBeat/4) * Math.PI) - 96;
+							member.y  = defaultStrumY - (noteSinSpeed * 0.75) * Math.cos((currentBeat/4) * Math.PI);
 						else 
-							member.y  = defaultStrumY + 96 * Math.cos((currentBeat/4) * Math.PI) + 96;
+							member.y  = defaultStrumY + (noteSinSpeed * 0.75) * Math.cos((currentBeat/4) * Math.PI);
 					}
-					camHUD.angle = 25 * Math.sin((currentBeat/5) * Math.PI);
-					FlxG.camera.angle = 5 * Math.sin((currentBeat/5) * Math.PI);
+					camHUD.angle = (noteSinSpeed * 0.1953125) * Math.sin((currentBeat/5) * Math.PI);
+					FlxG.camera.angle = (noteSinSpeed * 0.0390625) * Math.sin((currentBeat/5) * Math.PI);
 				}
 		}
 
@@ -2984,7 +2957,6 @@ class PlayState extends MusicBeatState
 			//	FlxTween.tween(camFollowPos, {x: camFollow.x, y: camFollow.y}, 0.4, {ease: FlxEase.backInOut});
 			//}
 			//else
-			
 			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 			
 			if(!startingSong && !endingSong && boyfriend.animation.curAnim.name.startsWith('idle'))
@@ -3866,6 +3838,10 @@ class PlayState extends MusicBeatState
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
 			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+			if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
+			if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+			if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
+			if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 			tweenCamIn();
 		}
 		else
@@ -3873,6 +3849,10 @@ class PlayState extends MusicBeatState
 			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 			camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
 			camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+			if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
+			if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+			if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
+			if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 
 			if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1)
 			{
@@ -4104,7 +4084,6 @@ class PlayState extends MusicBeatState
 
 	public var showCombo:Bool = true;
 	public var showRating:Bool = true;
-
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
@@ -5534,13 +5513,13 @@ class PlayState extends MusicBeatState
 					for (i in 0...4)
 					{ 
 						var member = strumLineNotes.members[i];
-						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i]+ 1250 ,angle: 360}, 1);
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i]+ 1250 ,angle: 360}, 1, {ease: FlxEase.quintInOut});
 						defaultStrumX[i] += 1250;
 					}
 					for (i in 4...8)
 					{ 
 						var member = strumLineNotes.members[i];
-						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i] - 275,angle: 360}, 1);
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i] - 275,angle: 360}, 1, {ease: FlxEase.backOut});
 						defaultStrumX[i] -= 275;
 					}
 				}

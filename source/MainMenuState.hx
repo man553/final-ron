@@ -229,6 +229,9 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+
+		addShader(FlxG.camera, 'colorizer');
+		Shaders["colorizer"].shader.data.colors.value = [0.173,0.263,0.275];
 	}
 
 	#if ACHIEVEMENTS_ALLOWED

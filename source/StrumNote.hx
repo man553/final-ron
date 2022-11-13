@@ -37,7 +37,7 @@ class StrumNote extends FlxSprite
 		this.dadCurChar = dadCurChar;
 		super(x, y);
 
-		var skin:String = 'NOTE_assets';
+		var skin:String = 'noteskins/NOTE_assets';
 		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
 		texture = skin; //Load texture and anims
 
@@ -85,46 +85,6 @@ class StrumNote extends FlxSprite
 		}
 		else
 		{
-			var skin = 'ronsip';
-			switch (dadCurChar)
-			{
-				case 'douyhe':
-					skin = 'NOTE_assets';
-				case 'hacker':
-					skin = 'ronhell';
-				case 'hellron':
-					skin = 'ronhell';
-				case 'devilron':
-					skin = 'ronhell';
-				case 'ateloron':
-					skin = 'ronhell';
-				case 'ron-usb':
-					skin = 'ronhell';
-				case 'demonron':
-					skin = 'demonsip';
-				case 'ron-b':
-					skin = 'evik';
-				case 'ronmad-b':
-					skin = 'evik';
-				case 'godron':
-					skin = 'bhell';
-				case 'ateloron-b':
-					skin = 'bhell';
-				case 'ron-usb-b':
-					skin = 'bhell';
-				case 'dave':
-					skin = 'NOTEold_assets';
-					if (player == 1) texture = 'ronsip';
-				case 'bambi':
-					skin = 'NOTEold_assets';
-				case 'ronDave':
-					skin = 'ronsip';
-			}
-
-			if (texture == 'PIXELNOTE_assets')
-				skin = texture;
-
-			if (player == 0) texture = skin;
 
 			frames = Paths.getSparrowAtlas(texture);
 			animation.addByPrefix('green', 'arrowUP');

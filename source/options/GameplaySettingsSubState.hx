@@ -145,13 +145,6 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		addOption(option);
 
-		var option:Option = new Option('Website Opening', //Name
-			'If checked, some songs may open websites in your browser.', //Description
-			'siteenable', //Save data variable name
-			'bool', //Variable type
-			true); //Default value
-		addOption(option);
-
 		super();
 	}
 
