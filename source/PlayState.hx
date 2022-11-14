@@ -514,18 +514,46 @@ class PlayState extends MusicBeatState
 		switch (curStage)
 		{ 	//all the stages here
 			case 'ronPissed': //ron
-				var sky:BGSprite = new BGSprite('bgs/pissedRon_sky', -100, 20, 0.1, 0.1);
-				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				defaultCamZoom = 0.7;
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+				sky.screenCenter();
+				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-
-				var clouds:BGSprite = new BGSprite('bgs/pissedRon_clouds', -100, 20, 0.2, 0.2);
-				clouds.setGraphicSize(Std.int(clouds.width * 1.75));
+				
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				add(mountainsback);
+				
+				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
+				clouds.screenCenter();
+				clouds.scrollFactor.set(0.1, 0.1);
 				add(clouds);
-
-				var ground:BGSprite = new BGSprite('bgs/pissedRon_ground', -850, -500);
-				ground.setGraphicSize(Std.int(ground.width * 1.2));
-				ground.updateHitbox();
-				add(ground);
+				
+				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				rain.animation.addByPrefix('rain', 'rain', 24, true);
+				rain.setGraphicSize(Std.int(rain.width * 4));
+				rain.updateHitbox();
+				rain.screenCenter(XY);
+				add(rain);
+				rain.animation.play('rain');
+				
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
+				mountains.screenCenter();
+				mountains.scrollFactor.set(0.3, 0.3);
+				mountains.y -= 60;
+				add(mountains);
+			
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_hillfront', -100, 20);
+				hillfront.screenCenter();
+				hillfront.scrollFactor.set(0.4, 0.4);
+				hillfront.y -= 60;
+				add(hillfront);
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
+				street.screenCenter();
+				add(street);
 
 			case 'ronMad': //ron
 				var sky:BGSprite = new BGSprite('bgs/veryAngreRon_sky', -100, 20, 0.1, 0.1);
@@ -1571,9 +1599,9 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'wasted' | 'bloodshed' | 'trojan-virus':
+				case "ron" | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
-				case "ayo":
+				case "ayo" | 'wasted':
 					witheredRa = new FlxSprite(-512, -260);
 					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
 					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
@@ -1585,6 +1613,8 @@ class PlayState extends MusicBeatState
 					add(witheredRa);
 					witheredRa.animation.play('rain');
 					schoolIntro(doof);
+					FlxG.camera.setFilters([ShadersHandler.Rain]);
+					camHUD.setFilters([ShadersHandler.Rain]);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
