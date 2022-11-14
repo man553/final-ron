@@ -551,37 +551,37 @@ class PlayState extends MusicBeatState
 
 			case 'ronNormal': //ron
 				defaultCamZoom = 0.7;
-				var sky:BGSprite = new BGSprite('bgs/newbgtest/ron_sky', -100, 20);
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_sky', -100, 20);
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
 				
-				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron_mountainsback', -100, 20);
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
 				mountainsback.screenCenter();
 				mountainsback.scrollFactor.set(0.3, 0.3);
 				mountainsback.y -= 60;
 				add(mountainsback);
 				
-				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron_clouds'), 0.1, 0, true, false);
+				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
 				clouds.scrollFactor.set(0.1,0);
 				clouds.screenCenter(XY);
 				add(clouds);
 				
 				FlxTween.tween(clouds, {x: clouds.x + 6000}, 360, {type: LOOPING});
 				
-				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron_mountains', -100, 20);
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
 				mountains.screenCenter();
 				mountains.scrollFactor.set(0.3, 0.3);
 				mountains.y -= 60;
 				add(mountains);
 			
-				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ron_hillfront', -100, 20);
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_hillfront', -100, 20);
 				hillfront.screenCenter();
 				hillfront.scrollFactor.set(0.4, 0.4);
 				hillfront.y -= 60;
 				add(hillfront);
 				
-				var street:BGSprite = new BGSprite('bgs/newbgtest/ron_street', -100, 20);
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
 				street.screenCenter();
 				add(street);
 
