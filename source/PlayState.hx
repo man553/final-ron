@@ -5569,6 +5569,7 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 1.2;
 				case 384:
 					FlxG.camera.flash(FlxColor.WHITE, 0.2);
+					triggerEventNote('Change Character', 'BF', 'ron-drip');
 				case 400:
 					defaultCamZoom = 1.5;
 				case 448:
