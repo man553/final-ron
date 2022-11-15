@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fatherless.png">
+	<!-- Created with Adobe Animate version 20.0.0.17400 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="GF Cheer0000" x="0" y="0" width="699" height="657" frameX="-2" frameY="0" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0001" x="709" y="0" width="703" height="657"/>
+	<SubTexture name="GF Cheer0002" x="1422" y="0" width="703" height="654" frameX="0" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0003" x="2135" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0004" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0005" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0006" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0007" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0008" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0009" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0010" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0011" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0012" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0013" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0014" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0015" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0016" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0017" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0018" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0019" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+	<SubTexture name="GF Cheer0020" x="2844" y="0" width="699" height="654" frameX="-2" frameY="-3" frameWidth="703" frameHeight="657"/>
+</TextureAtlas>

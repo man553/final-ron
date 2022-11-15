@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Trojan Ron.png"><SubTexture name="Trojan Ron Idle0000" x="0" y="600" width="427" height="499" frameX="-63" frameY="-57" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0001" x="0" y="600" width="427" height="499" frameX="-63" frameY="-57" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0002" x="427" y="600" width="437" height="490" frameX="-57" frameY="-65" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0003" x="427" y="600" width="437" height="490" frameX="-57" frameY="-65" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0004" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0005" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0006" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0007" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0008" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0009" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0010" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0011" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0012" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0013" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0014" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Idle0015" x="864" y="600" width="433" height="476" frameX="-61" frameY="-79" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Left0000" x="525" y="1099" width="419" height="353" frameX="-40" frameY="-26" frameWidth="500" frameHeight="400" />
+<SubTexture name="Trojan Ron Left0001" x="1857" y="0" width="472" height="197" frameX="-16" frameY="-182" frameWidth="500" frameHeight="400" />
+<SubTexture name="Trojan Ron Right0000" x="944" y="1099" width="419" height="353" frameX="-41" frameY="-26" frameWidth="500" frameHeight="400" />
+<SubTexture name="Trojan Ron Right0001" x="1857" y="197" width="472" height="197" frameX="-12" frameY="-182" frameWidth="500" frameHeight="400" />
+<SubTexture name="Trojan Ron Down0000" x="511" y="1460" width="549" height="260" frameX="-14" frameY="-29" frameWidth="600" frameHeight="300" />
+<SubTexture name="Trojan Ron Down0001" x="1060" y="1460" width="600" height="260" frameX="0" frameY="-29" frameWidth="600" frameHeight="300" />
+<SubTexture name="Trojan Ron Up0000" x="0" y="1460" width="511" height="352" frameX="-24" frameY="-34" frameWidth="550" frameHeight="400" />
+<SubTexture name="Trojan Ron Up0001" x="0" y="1099" width="525" height="361" frameX="-21" frameY="-23" frameWidth="550" frameHeight="400" />
+<SubTexture name="Trojan Ron Bruh0000" x="0" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0001" x="1500" y="0" width="357" height="419" frameX="-105" frameY="-172" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0002" x="1500" y="0" width="357" height="419" frameX="-105" frameY="-172" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0003" x="1363" y="1099" width="392" height="329" frameX="-67" frameY="-254" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0004" x="500" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0005" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0006" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0007" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0008" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0009" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+<SubTexture name="Trojan Ron Bruh0010" x="1000" y="0" width="500" height="600" frameX="0" frameY="0" frameWidth="500" frameHeight="600" />
+</TextureAtlas>
