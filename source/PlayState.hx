@@ -584,18 +584,18 @@ class PlayState extends MusicBeatState
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
 				
-				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
-				mountainsback.screenCenter();
-				mountainsback.scrollFactor.set(0.3, 0.3);
-				mountainsback.y -= 60;
-				add(mountainsback);
-				
 				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
 				clouds.scrollFactor.set(0.1,0);
 				clouds.screenCenter(XY);
 				add(clouds);
 				
 				FlxTween.tween(clouds, {x: clouds.x + 6000}, 360, {type: LOOPING});
+				
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				add(mountainsback);
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
 				mountains.screenCenter();
@@ -1599,11 +1599,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case 'ron':
-					addShader(FlxG.camera, 'motionblur');
-					schoolIntro(doof);
-				case 'pretty-wacky':
-				case 'bloodshed' | 'trojan-virus':
+				case "ron" | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
 				case "ayo" | 'wasted':
 					witheredRa = new FlxSprite(-512, -260);
@@ -1616,9 +1612,9 @@ class PlayState extends MusicBeatState
 					witheredRa.screenCenter(XY);
 					add(witheredRa);
 					witheredRa.animation.play('rain');
+					schoolIntro(doof);
 					FlxG.camera.setFilters([ShadersHandler.Rain]);
 					camHUD.setFilters([ShadersHandler.Rain]);
-					schoolIntro(doof);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
