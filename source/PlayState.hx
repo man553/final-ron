@@ -585,7 +585,7 @@ class PlayState extends MusicBeatState
 				add(sky);
 				
 				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
-				clouds.scrollFactor.set(0.1,0);
+				clouds.scrollFactor.set(0.1,0.1);
 				clouds.screenCenter(XY);
 				add(clouds);
 				

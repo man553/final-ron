@@ -17,7 +17,7 @@ class DiscordClient
 	{
 		trace("Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "863222024192262205",
+			clientID: "933014680635588640",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
@@ -45,7 +45,7 @@ class DiscordClient
 			details: "In the Menus",
 			state: null,
 			largeImageKey: 'icon',
-			largeImageText: "Psych Engine"
+			largeImageText: "Ron: The Resurrection"
 		});
 	}
 
@@ -72,21 +72,24 @@ class DiscordClient
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
 	{
 		var startTimestamp:Float = if(hasStartTimestamp) Date.now().getTime() else 0;
+		var image:String = 'uhhhht';
+		//if ((Math.floor(Date.now().getTime()/1000) % 2 == 0))
+		//	image = 'uhhhh';
 
 		if (endTimestamp > 0)
 		{
 			endTimestamp = startTimestamp + endTimestamp;
 		}
-
+		
 		DiscordRpc.presence({
-			details: details,
-			state: state,
-			largeImageKey: 'icon',
-			largeImageText: "Engine Version: " + MainMenuState.psychEngineVersion,
+			details: "no leaks bruh",
+			state: "no leaks bruh",
+			largeImageKey: image,
+			largeImageText: "no leaks bruh",
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
-			startTimestamp : Std.int(startTimestamp / 1000),
-            endTimestamp : Std.int(endTimestamp / 1000)
+			startTimestamp : Std.int(0),
+            endTimestamp : Std.int(0)
 		});
 
 		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
