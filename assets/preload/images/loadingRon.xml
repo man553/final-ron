@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="loadingRon.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="run0000" x="0" y="0" width="57" height="68"/>
+	<SubTexture name="run0001" x="0" y="0" width="57" height="68"/>
+	<SubTexture name="run0002" x="57" y="0" width="57" height="68"/>
+	<SubTexture name="run0003" x="57" y="0" width="57" height="68"/>
+	<SubTexture name="run0004" x="0" y="68" width="57" height="68"/>
+	<SubTexture name="run0005" x="0" y="68" width="57" height="68"/>
+	<SubTexture name="run0006" x="57" y="68" width="57" height="68"/>
+	<SubTexture name="run0007" x="57" y="68" width="57" height="68"/>
+	<SubTexture name="run0008" x="0" y="136" width="57" height="68"/>
+	<SubTexture name="run0009" x="0" y="136" width="57" height="68"/>
+</TextureAtlas>

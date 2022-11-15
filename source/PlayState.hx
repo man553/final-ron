@@ -584,12 +584,22 @@ class PlayState extends MusicBeatState
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
 				
-				var clouds = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
-				clouds.scrollFactor.set(0.1,0.1);
-				clouds.screenCenter(XY);
-				add(clouds);
+				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				cloudsbig.scrollFactor.set(0.1,0.1);
+				cloudsbig.screenCenter(XY);
+				add(cloudsbig);
 				
-				FlxTween.tween(clouds, {x: clouds.x + 6000}, 360, {type: LOOPING});
+				FlxTween.tween(cloudsbig, {x: cloudsbig.x + 6000}, 720, {type: LOOPING});
+				
+				var cloudssmall = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				cloudssmall.scale.set(0.5,0.5);
+				cloudssmall.updateHitbox();
+				cloudssmall.scrollFactor.set(0.05,0.1);
+				cloudssmall.screenCenter(XY);
+				cloudssmall.y -= 120;
+				add(cloudssmall);
+				
+				FlxTween.tween(cloudssmall, {x: cloudssmall.x + 3000}, 360, {type: LOOPING});
 				
 				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
 				mountainsback.screenCenter();
