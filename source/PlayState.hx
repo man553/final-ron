@@ -1599,7 +1599,11 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'bloodshed' | 'trojan-virus':
+				case 'ron':
+					addShader(FlxG.camera, 'motionblur');
+					schoolIntro(doof);
+				case 'pretty-wacky':
+				case 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
 				case "ayo" | 'wasted':
 					witheredRa = new FlxSprite(-512, -260);
@@ -1612,9 +1616,9 @@ class PlayState extends MusicBeatState
 					witheredRa.screenCenter(XY);
 					add(witheredRa);
 					witheredRa.animation.play('rain');
-					schoolIntro(doof);
 					FlxG.camera.setFilters([ShadersHandler.Rain]);
 					camHUD.setFilters([ShadersHandler.Rain]);
+					schoolIntro(doof);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
