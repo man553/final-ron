@@ -72,10 +72,7 @@ class DiscordClient
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey : String, ?hasStartTimestamp : Bool, ?endTimestamp: Float)
 	{
 		var startTimestamp:Float = if(hasStartTimestamp) Date.now().getTime() else 0;
-		var image:String = 'uhhhht';
-		//if ((Math.floor(Date.now().getTime()/1000) % 2 == 0))
-		//	image = 'uhhhh';
-
+		var image:String = 'uhhhh';
 		if (endTimestamp > 0)
 		{
 			endTimestamp = startTimestamp + endTimestamp;
