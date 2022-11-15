@@ -80,7 +80,7 @@ class DiscordClient
 		
 		DiscordRpc.presence({
 			details: "no leaks bruh",
-			state: "no leaks bruh",
+			state: "hurb skael on",
 			largeImageKey: image,
 			largeImageText: "no leaks bruh",
 			smallImageKey : smallImageKey,
