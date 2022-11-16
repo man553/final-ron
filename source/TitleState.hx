@@ -289,7 +289,7 @@ class TitleState extends MusicBeatState
 		// logoBl.color = FlxColor.BLACK;
 
 		swagShader = new ColorSwap();
-		gfDance = new FlxSprite(FlxG.width * 0.62, FlxG.height * 0.3);
+		gfDance = new FlxSprite();
 
 		var easterEgg:String = FlxG.save.data.psychDevsEasterEgg;
 		if(easterEgg == null) easterEgg = ''; //html5 fix
@@ -323,10 +323,12 @@ class TitleState extends MusicBeatState
 				gfDance.animation.addByPrefix('idle', "GF Dancing Beat", 24);
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
-
-		add(gfDance);
+		gfDance.scale.set(0.5,0.5);
+		gfDance.x += 320;
+		gfDance.y -= 200;
 		gfDance.shader = swagShader.shader;
 		add(logoBl);
+		add(gfDance);
 		logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
