@@ -1,82 +1,82 @@
 {
-	"noteskin": "NOTEold_assets",
+	"noteskin" : "NOTEold_assets",
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"indices": [],
 			"fps": 24,
-			"name": "idleDance",
-			"indices": []
+			"anim": "idle",
+			"loop": true,
+			"name": "idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				18,
+				-27,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "right0"
+		},
+		{
+			"offsets": [
+				1,
+				11
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "left0"
+		},
+		{
+			"offsets": [
+				-12,
+				18
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "up0"
+		},
+		{
+			"offsets": [
+				-28,
 				12
 			],
-			"anim": "singUP",
+			"indices": [],
 			"fps": 24,
-			"name": "Up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				5,
-				-2
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-5,
-				2
-			],
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Down",
-			"indices": []
+			"loop": false,
+			"name": "down0"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				29,
-				2
+				10,
+				10
 			],
-			"anim": "singLEFT",
+			"indices": [],
 			"fps": 24,
-			"name": "Left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "um",
-			"fps": 24,
-			"name": "um",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
 			"anim": "err",
+			"loop": false,
+			"name": "hey"
+		},
+		{
+			"offsets": [
+				8,
+				9
+			],
+			"indices": [],
 			"fps": 24,
-			"name": "err",
-			"indices": []
+			"anim": "um",
+			"loop": false,
+			"name": "hey"
 		}
 	],
 	"no_antialiasing": false,

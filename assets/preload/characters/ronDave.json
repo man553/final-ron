@@ -2,74 +2,74 @@
 	"noteskin": "ronsip",
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
-				0,
-				0
+				885,
+				720
 			],
+			"loop": true,
+			"fps": 12,
 			"anim": "idle",
-			"fps": 24,
-			"name": "Idle",
-			"indices": []
+			"indices": [],
+			"name": "ron idle"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				98,
-				-27
+				900,
+				713
 			],
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "Sing Left",
+			"fps": 8,
+			"name": "ron left",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				40,
-				-120
+				886,
+				717
 			],
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "Sing Down",
+			"fps": 12,
+			"name": "ron down",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				42,
-				38
+				867,
+				726
 			],
 			"anim": "singUP",
-			"fps": 24,
-			"name": "Sing Up",
+			"fps": 12,
+			"name": "ron up",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-89,
-				-51
+				869,
+				717
 			],
 			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "Sing Right",
+			"fps": 12,
+			"name": "ron right",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				0,
-				0
+				885,
+				716
 			],
-			"anim": "cheer",
-			"fps": 24,
-			"name": "Ugh",
+			"anim": "hey",
+			"fps": 16,
+			"name": "ron death",
 			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Tankman",
+	"image": "characters/newcharstest/ron",
 	"position": [
 		0,
 		350
@@ -78,13 +78,13 @@
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
-		216,
+		255,
 		0
 	],
 	"camera_position": [
-		300,
-		0
+		-320,
+		-120
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 0.5
 }
