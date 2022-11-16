@@ -41,10 +41,11 @@ class LoadingState extends MusicBeatState
 	}
 
 	var funkay:FlxSprite;
+	var ron:FlxSprite;
 	var loadBar:FlxSprite;
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xffcaff4d);
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
 		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
 		funkay.setGraphicSize(0, FlxG.height);
@@ -53,6 +54,14 @@ class LoadingState extends MusicBeatState
 		add(funkay);
 		funkay.scrollFactor.set();
 		funkay.screenCenter();
+
+		ron = new FlxSprite(0, 0).loadGraphic(Paths.getPreloadPath('images/loadingRon'));
+		ron.setGraphicSize(0, FlxG.height);
+		ron.updateHitbox();
+		ron.antialiasing = ClientPrefs.globalAntialiasing;
+		ron.scale.set(0.50,0.50);
+		add(ron);
+		ron.scrollFactor.set();
 
 		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
 		loadBar.screenCenter(X);
