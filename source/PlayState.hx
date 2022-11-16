@@ -247,6 +247,12 @@ class PlayState extends MusicBeatState
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
+	/*Bloodshed Legacy Redux stuffs
+	BLR = Bloodshed Legacy Redux*/
+	var skyBLR:FlxSprite;
+	var groundBLR:FlxSprite;
+	//aight
+
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
 	public var songMisses:Int = 0;
@@ -969,6 +975,16 @@ class PlayState extends MusicBeatState
 					ground.antialiasing = true;
 					add(ground);
 				}
+			case 'bloodshed-legacy-redux': {
+				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
+				skyBLR.setGraphicSize(Std.int(skyBLR.width * 1.75));
+				add(skyBLR);
+
+				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -850, -500);
+				groundBLR.setGraphicSize(Std.int(groundBLR.width * 1.2));
+				groundBLR.updateHitbox();
+				add(groundBLR);
+			}
 			case 'snow':
 			{
 				defaultCamZoom = 0.85;
