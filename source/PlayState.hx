@@ -980,7 +980,7 @@ class PlayState extends MusicBeatState
 				skyBLR.setGraphicSize(Std.int(skyBLR.width * 1.75));
 				add(skyBLR);
 
-				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -850, -500);
+				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
 				groundBLR.setGraphicSize(Std.int(groundBLR.width * 1.2));
 				groundBLR.updateHitbox();
 				add(groundBLR);
