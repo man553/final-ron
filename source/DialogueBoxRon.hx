@@ -1,6 +1,7 @@
 package;
 import Std;
 import Reflect;
+import Math;
 import flixel.group.FlxSpriteGroup;
 import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -38,6 +39,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var bg:FlxSprite = new FlxSprite().makeGraphic(1280, 720, 0xFFE0E0E0);
 	var STOP:Bool = false;
 	var dialogText:FlxTypeText;
+	var dialogHand:FlxSprite = new FlxSprite(950, 575).loadGraphic(Paths.image('hand'));
 	public function new(dialogueJson:Dynamic, callback:Void->Void) {
 		super();
 		FlxG.sound.list.add(music);
@@ -99,10 +101,15 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		curTextDelay = 0.05;
 		dialogText.color = 0xFF000000;
 		add(dialogText);
+		add(dialogHand);
+		dialogHand.visible = false;
 	}
+	var time:Float = 0;
 	override function update(elapsed:Float) {
 		if (FlxG.keys.justPressed.K && !STOP) nextDialogue(1);
 		super.update(elapsed);
+		time += elapsed;
+		dialogHand.x = 950 + (Math.abs(Math.sin(3.5 * time)) * 10);
 	}
 	var expression:String = '';
 	var curPortrait:Dynamic = "";
@@ -110,13 +117,14 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var curTextDelay:Float;
 	function nextDialogue(e:Int) {
 		dialoguebox.visible = true;
+		dialogHand.visible = true;
 		curDialogue += e;
 		if (curDialogue == dialogueJSON.length) {
 			STOP = true;
 			music.fadeOut(2,0,function(twn:FlxTween) {
 				music.destroy();
 			});
-			for (a in [bg, curPortrait, dialoguebox, dialogText])
+			for (a in [bg, curPortrait, dialoguebox, dialogText, dialogHand])
 				FlxTween.tween(a, {alpha: 0}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {finishCallback();kill();
 				}});
 			return;
