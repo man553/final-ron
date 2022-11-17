@@ -169,7 +169,6 @@ class Character extends FlxSprite
 				}
 				imageFile = json.image;
 				noteskin = (json.noteskin != null ? json.noteskin : "NOTE_assets");
-				trace(noteskin);
 
 				if(json.scale != 1) {
 					jsonScale = json.scale;

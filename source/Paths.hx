@@ -118,7 +118,25 @@ class Paths
 	{
 		currentLevel = name.toLowerCase();
 	}
+	inline static public function getPortrait(key:String):FlxAtlasFrames
+	{
+		return FlxAtlasFrames.fromSparrow(returnPortraitGraphic(key, "preload"), file('portraits/$key.xml'));
+	}
+	public static function returnPortraitGraphic(key:String, ?library:String) {
 
+		var path = getPath('portraits/$key.png', IMAGE, library);
+		if (OpenFlAssets.exists(path, IMAGE)) {
+			if(!currentTrackedAssets.exists(path)) {
+				var newGraphic:FlxGraphic = FlxG.bitmap.add(path, false, path);
+				newGraphic.persist = true;
+				currentTrackedAssets.set(path, newGraphic);
+			}
+			localTrackedAssets.push(path);
+			return currentTrackedAssets.get(path);
+		}
+		trace('oh no its returning null NOOOO');
+		return null;
+	}
 	public static function getPath(file:String, type:AssetType, ?library:Null<String> = null)
 	{
 		if (library != null)

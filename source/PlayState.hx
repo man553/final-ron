@@ -58,6 +58,7 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
+import DialogueBoxRon;
 import Conductor.Rating;
 #if sys
 import sys.FileSystem;
@@ -200,7 +201,7 @@ class PlayState extends MusicBeatState
 	public var cameraSpeed:Float = 1;
 
 	var dialogue:Array<String> = ['blah blah blah', ':coolswag'];
-	var dialogueJson:DialogueFile = null;
+	var dialogueJson:FuckingDialogue = null;
 
 	var dadbattleBlack:BGSprite;
 	var dadbattleLight:BGSprite;
@@ -1282,21 +1283,11 @@ class PlayState extends MusicBeatState
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
 		if (OpenFlAssets.exists(file)) {
-			dialogueJson = DialogueBoxPsych.parseDialogue(file);
+			dialogueJson = Json.parse(Assets.getText(file));
 		}
 
-		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
-		if (OpenFlAssets.exists(file)) {
-			dialogue = CoolUtil.coolTextFile(file);
-		}
-
-		var doof:DialogueBox = new DialogueBox(false, dialogue);
-		// doof.x += 70;
-		// doof.y = FlxG.height * 0.5;
+		var doof:DialogueBoxRon = new DialogueBoxRon(dialogueJson, startCountdown);
 		doof.scrollFactor.set();
-		doof.finishThing = startCountdown;
-		doof.nextDialogueThing = startNextDialogue;
-		doof.skipDialogueThing = skipDialogue;
 
 		var doof2:DialogueBoxDave = new DialogueBoxDave(false, dialogue);
 		doof2.scrollFactor.set();
@@ -1538,7 +1529,7 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
-
+		boyfriend.y += 300;
 		switch(SONG.player2)
 		{
 			case 'dave':
@@ -1977,7 +1968,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function schoolIntro(?dialogueBox:DialogueBox):Void
+	function schoolIntro(?dialogueBox:DialogueBoxRon):Void
 	{
 		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
@@ -1992,7 +1983,7 @@ class PlayState extends MusicBeatState
 		{
 			// too slow
 			{
-				if (dialogueBox != null)
+				if (dialogueBox != null && dialogueBox.dialogueWorks)
 				{
 					inCutscene = true;
 					add(dialogueBox);

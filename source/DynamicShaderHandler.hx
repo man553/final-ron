@@ -34,16 +34,13 @@ class DynamicShaderHandler
 	public function new(fileName:String, optimize:Bool = false)
 	{
 		var path = Paths.modsShaderFragment(fileName);
-		trace(path);
 		if (!FileSystem.exists(path)) path = Paths.shaderFragment(fileName);
 		
-		trace(path);
 		var fragSource:String = "";
 
 		if (FileSystem.exists(path))
 		{
 			fragSource = sys.io.File.getContent(path);
-			trace(fragSource);
 		}
 
 		

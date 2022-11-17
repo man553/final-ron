@@ -56,6 +56,7 @@ typedef DialogueLine = {
 class DialogueCharacter extends FlxSprite
 {
 	private static var IDLE_SUFFIX:String = '-IDLE';
+	private static var LOOP_SUFFIX:String = '-LOOP';
 	public static var DEFAULT_CHARACTER:String = 'bf';
 	public static var DEFAULT_SCALE:Float = 0.7;
 
@@ -79,7 +80,7 @@ class DialogueCharacter extends FlxSprite
 		this.curCharacter = character;
 
 		reloadCharacterJson(character);
-		frames = Paths.getSparrowAtlas('dialogue/' + jsonFile.image);
+		frames = Paths.getPortrait(jsonFile.image);
 		reloadAnimations();
 
 		antialiasing = ClientPrefs.globalAntialiasing;
@@ -87,7 +88,7 @@ class DialogueCharacter extends FlxSprite
 	}
 
 	public function reloadCharacterJson(character:String) {
-		var characterPath:String = 'images/dialogue/' + character + '.json';
+		var characterPath:String = 'portraits/' + character + '.json';
 		var rawJson = null;
 
 		#if MODS_ALLOWED
@@ -97,7 +98,7 @@ class DialogueCharacter extends FlxSprite
 		}
 
 		if(!FileSystem.exists(path)) {
-			path = Paths.getPreloadPath('images/dialogue/' + DEFAULT_CHARACTER + '.json');
+			path = Paths.getPreloadPath('portraits/' + DEFAULT_CHARACTER + '.json');
 		}
 		rawJson = File.getContent(path);
 
@@ -113,7 +114,7 @@ class DialogueCharacter extends FlxSprite
 		dialogueAnimations.clear();
 		if(jsonFile.animations != null && jsonFile.animations.length > 0) {
 			for (anim in jsonFile.animations) {
-				animation.addByPrefix(anim.anim, anim.loop_name, 24, isGhost);
+				animation.addByPrefix(anim.anim + LOOP_SUFFIX, anim.loop_name, 24, true);
 				animation.addByPrefix(anim.anim + IDLE_SUFFIX, anim.idle_name, 24, true);
 				dialogueAnimations.set(anim.anim, anim);
 			}
@@ -138,7 +139,7 @@ class DialogueCharacter extends FlxSprite
 		dialogueAnimations.get(leAnim).loop_name == dialogueAnimations.get(leAnim).idle_name)) {
 			playIdle = true;
 		}
-		animation.play(playIdle ? leAnim + IDLE_SUFFIX : leAnim, false);
+		animation.play(playIdle ? leAnim + IDLE_SUFFIX : leAnim + LOOP_SUFFIX, true);
 
 		if(dialogueAnimations.exists(leAnim)) {
 			var anim:DialogueAnimArray = dialogueAnimations.get(leAnim);

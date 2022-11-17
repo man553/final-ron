@@ -52,7 +52,6 @@ class DialogueBoxDave extends FlxSpriteGroup
 	{
 		super();
 	
-		trace('starting');
 		randomNumber = FlxG.random.int(0, 50);
 		if ((PlayState.SONG.stage == 'bambiFarm') || (PlayState.SONG.stage == 'daveHouse'))
 		{
@@ -68,12 +67,10 @@ class DialogueBoxDave extends FlxSpriteGroup
 			}
 		}
 	
-		trace('music check');
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
-		trace('bgFade');
 
 		FlxTween.tween(bgFade, {alpha: 0.7}, 4.15);
 		box = new FlxSprite(-20, 400);
@@ -82,7 +79,6 @@ class DialogueBoxDave extends FlxSpriteGroup
 		blackScreen.screenCenter();
 		blackScreen.alpha = 0;
 		add(blackScreen);
-		trace('blackscreen');
 		
 		var hasDialog = true;
 		box.frames = Paths.getSparrowAtlas('speech_bubble', 'shared');
@@ -92,7 +88,6 @@ class DialogueBoxDave extends FlxSpriteGroup
 		box.animation.addByPrefix('normal', 'speech bubble normal', 24, true);
 		box.antialiasing = true;
 		
-		trace('box');
 
 		this.dialogueList = dialogueList;
 		
@@ -127,8 +122,6 @@ class DialogueBoxDave extends FlxSpriteGroup
 		portraitLeft.visible = true;
 		add(portraitLeft);
 		add(portraitRight);
-		
-		trace('portrait stuff');
 
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
@@ -149,7 +142,6 @@ class DialogueBoxDave extends FlxSpriteGroup
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
 		
-		trace('swag dialog');
 
 		dialogue = new Alphabet(0, 80, "", false, true);
 		// dialogue.x = 90;

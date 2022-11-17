@@ -1,0 +1,57 @@
+[
+	{
+		"text": "hehehehehehehehehe i knew you'd do the funny",
+		"character": "ron",
+		"expression": "happy"
+	},
+	{
+		"text": "what",
+		"character": "bf",
+		"expression": "confused"
+	},
+	{
+		"text": "btw why are you wearing a jumpsuit"
+	},
+	{
+		"text": "also WHAT THE FRICK HOW ARE YOU HERE YOU LITERALLY DIED LIKE YESTERDAY",
+		"boxState": "angry",
+		"expression": "shocked"
+	},
+	{
+		"text": "fuck you",
+		"character": "ron",
+		"expression": "happy"
+	},
+	{
+		"text": "i'm wearing my pajamas (in a cool way)"
+	},
+	{
+		"text": "and i'm too cool to die in a beep bop game lmao"
+	},
+	{
+		"text": "what",
+		"character": "bf",
+		"expression": "confused"
+	},
+	{
+		"text": "what do you mean game",
+		"expression": "shocked"
+	},
+	{
+		"text": "???????????"
+	},
+	{
+		"text": "uuuuuuuuuuuuuuuuuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+		"character": "ron",
+		"expression": "happy",
+		"events" : [["playSound", ["among"]]]
+	},
+	{
+		"text": "beep boop battle :)"
+	},
+	{
+		"text": ":)",
+		"character": "bf",
+		"expression": "talk"
+	}
+]
