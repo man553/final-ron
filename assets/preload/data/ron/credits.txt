@@ -1,8 +1,10 @@
 COMPOSER(s)
+GlitchCrack
 Sic
 
 CHARTER(s)
-Shoutsuo
+Seezee
 
 ARTIST(s)
-Wildythomas
+BYOK
+Seezee
