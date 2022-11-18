@@ -629,6 +629,14 @@ class PlayState extends MusicBeatState
 				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
 				street.screenCenter();
 				add(street);
+				
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+				blackeffect.updateHitbox();
+				blackeffect.antialiasing = true;
+				blackeffect.screenCenter(XY);
+				blackeffect.scrollFactor.set();
+				blackeffect.alpha = 0;
+				add(blackeffect);
 
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
@@ -5725,8 +5733,19 @@ class PlayState extends MusicBeatState
 
 		if (curSong == 'Ron') 
 		{
-			if (curStep == 326 || curStep == 590 || curStep == 606 || curStep == 638 || curStep == 751 || curStep == 754)
+			if (curStep == 540 || curStep == 604 || curStep == 668 || curStep == 732 || curStep == 1304)
 				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+			switch (curStep)
+			{
+				case 1304:
+					//frak can you make it so wasted bg appears
+				case 1568:
+					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
+					defaultCamZoom += 0.2;
+				case 1600:
+					FlxTween.tween(blackeffect, {alpha: 0}, 0.5, {ease: FlxEase.circOut,});
+					defaultCamZoom -= 0.2;
+			}
 		}
 
 		lastStepHit = curStep;
