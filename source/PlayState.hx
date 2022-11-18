@@ -354,6 +354,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		//preventing duplicate shaders
+		//MusicBeatState.allShaders = [];
 		Paths.clearStoredMemory();
 
 		// for lua
@@ -435,8 +437,6 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-		FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
-		camHUD.setFilters([ShadersHandler.chromaticAberration]);
 
 		#if desktop
 		storyDifficultyText = CoolUtil.difficulties[storyDifficulty];
@@ -1587,7 +1587,7 @@ class PlayState extends MusicBeatState
 
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
-
+		addShader(FlxG.camera, "chromatic aberration");
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
 		var filesPushed:Array<String> = [];
@@ -1618,7 +1618,6 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		setChrome(0.0);
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (!seenCutscene)
 		{
@@ -1708,7 +1707,10 @@ class PlayState extends MusicBeatState
 			add(fx);
 			add(Estatic);
 			FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
-			setChrome(ClientPrefs.rgbintense/350); // add chrome option later // HI PAST ME I ADDED GGOLE CHROME OPTION
+			var chromeOffset = (ClientPrefs.rgbintense/350);
+			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1]; // add chrome option later // HI PAST ME I ADDED GGOLE CHROME OPTION
 		}
 
 		RecalculateRating();
@@ -3073,15 +3075,14 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		var chromeOffset:Float = (((2 - health/2)/2+0.5));
-		chromeOffset /= 350;
-
 		if ((curSong == 'Atelophobia') || (curSong == 'Factory-Reset') || (curSong == 'Bloodshed') || (curSong == 'Bloodshed-b') || (curSong == 'Bloodshed-old') || (curSong == 'BLOODSHED-TWO') || (curSong == 'Factory-Reset-b') || (curSong == 'Atelophobia-b') || (curSong == 'Trojan-Virus') || (curSong == 'Trojan-Virus-b') || (curSong == 'File-Manipulation') || (curSong == 'File Manipulation-b')) 
 		{
 
-			if (chromeOffset <= 0)
+			if (2 - health <= 0)
 			{
-				setChrome(0.0);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0];
 			}
 			else
 			{
@@ -3090,22 +3091,39 @@ class PlayState extends MusicBeatState
 					switch (curSong)
 					{
 						case 'File-Manipulation':
-							setChrome(ClientPrefs.rgbintense/350);
+							var chromeOffset = (ClientPrefs.rgbintense/350);
+							Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+							Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+							Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+							FlxG.watch.addQuick("chroma", chromeOffset);
 						default:
 							var sinus = 1;
 							if (curStep >= 538)
 								sinus = 2 * Std.int(Math.sin((curStep - 538) / 3));
-							setChrome(chromeOffset*ClientPrefs.rgbintense*sinus/350);
+							var chromeOffset = (FlxMath.lerp(2 - health, 2, 0.5)*ClientPrefs.rgbintense*sinus/350) / 10;
+							Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+							Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+							Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+							FlxG.watch.addQuick("chroma", chromeOffset);
 					}
 				}
 				else
-					setChrome(0.0);
+				{
+					Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0];
+				}
 			}
 		}
 		else
 		{
 			if ((curSong == 'Withered-Tweaked') && (curStep >= 1152))
-				setChrome(chromeOffset*ClientPrefs.rgbintense/350);
+			{
+				var chromeOffset = (FlxMath.lerp(2 - health, 2, 0.5)*ClientPrefs.rgbintense/350);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+			}
 		}
 
 		super.update(elapsed);
@@ -3438,7 +3456,9 @@ class PlayState extends MusicBeatState
 		{
 			var ret:Dynamic = callOnLuas('onGameOver', []);
 			if(ret != FunkinLua.Function_Stop) {
-				setChrome(0.0);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0];
 
 				boyfriend.stunned = true;
 				deathCounter++;
@@ -5201,9 +5221,10 @@ class PlayState extends MusicBeatState
 					cameraSpeed = 3;
 					graadienter.color = FlxColor.fromRGB(224,224,224);
 					wbg.color = FlxColor.fromRGB(224,224,224);
-					FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
-					camHUD.setFilters([ShadersHandler.chromaticAberration]);
-					setChrome(ClientPrefs.rgbintense/350);
+					var chromeOffset = (ClientPrefs.rgbintense/350);
+					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 					isPixelStage = true;
 					baro.alpha = 1;
 					bart.alpha = 1;
@@ -5703,8 +5724,10 @@ class PlayState extends MusicBeatState
 				case 1024:
 					defaultCamZoom += 0.1;
 				case 1120:
-					FlxG.camera.setFilters([ShadersHandler.chromaticAberration]);
-					camHUD.setFilters([ShadersHandler.chromaticAberration]);
+					var chromeOffset = (ClientPrefs.rgbintense/350);
+					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 					dad.x += 80;
 					dad.y += 80;
 					defaultCamZoom += 0.3;
