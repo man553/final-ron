@@ -10,6 +10,7 @@ import DialogueBoxPsych;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
+import flixel.util.FlxGradient;
 import flixel.FlxSprite;
 import haxe.Json;
 
@@ -27,7 +28,7 @@ typedef FuckingDialogue = {
 }
 class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy 
 	public var dialogueWorks:Bool = true;
-	var music:FlxSound = new FlxSound().loadEmbedded(Paths.music("breakfast"));
+	var music:FlxSound = new FlxSound().loadEmbedded(Paths.music("talking-in-a-cool-way"));
 	public var finishCallback:Void->Void;
 	var dialogueJSON:Array<FuckingDialogue>;
 	var preloadPortraits:Map<String, DialogueCharacter> = new Map<String, DialogueCharacter>();
@@ -35,7 +36,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var tempPortrait = [];
 	var preloadBoxes:Map<String, FlxAtlasFrames> = new Map<String, FlxAtlasFrames>();
 	var dialoguebox:FlxSprite;
-	var bg:FlxSprite = new FlxSprite().makeGraphic(1280, 720, 0xFFE0E0E0);
+	var bg:FlxSprite = FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), [0xFFB3DFd8, 0xFF6572c2]);
 	var STOP:Bool = false;
 	var dialogText:FlxTypeText;
 	var dialogHand:FlxSprite = new FlxSprite(950, 575).loadGraphic(Paths.image('hand'));
