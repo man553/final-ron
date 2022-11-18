@@ -558,6 +558,14 @@ class PlayState extends MusicBeatState
 			var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
 			street.screenCenter();
 			wastedGrp.add(street);
+			
+			blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+			blackeffect.updateHitbox();
+			blackeffect.antialiasing = true;
+			blackeffect.screenCenter(XY);
+			blackeffect.scrollFactor.set();
+			blackeffect.alpha = 0;
+			wastedGrp.add(blackeffect);
 		switch (curStage)
 		{ 	//all the stages here
 			case 'ronPissed': //ron
@@ -669,14 +677,6 @@ class PlayState extends MusicBeatState
 				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
 				street.screenCenter();
 				add(street);
-				
-				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
-				blackeffect.updateHitbox();
-				blackeffect.antialiasing = true;
-				blackeffect.screenCenter(XY);
-				blackeffect.scrollFactor.set();
-				blackeffect.alpha = 0;
-				add(blackeffect);
 
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
@@ -5801,10 +5801,15 @@ class PlayState extends MusicBeatState
 				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
 			switch (curStep)
 			{
+				case 540 | 668:
+					dad.playAnim('hey');
+				case 604 | 732:
+					boyfriend.playAnim('hey');
 				case 1304:
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
 					wastedGrp.visible = true;
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
 					defaultCamZoom += 0.2;
@@ -5984,16 +5989,6 @@ class PlayState extends MusicBeatState
 
 				if(heyTimer <= 0) bottomBoppers.dance(true);
 				santa.dance(true);
-		}
-
-		if (curSong == 'Ron')
-		{
-			if (curBeat == 29)
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1.3, {ease: FlxEase.expoOut,});
-			else if (curBeat == 172)
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
-			//else
-			//	FlxG.camera.follow(camFollowPos, LOCKON, 0.04 * (30 / (cast(Lib.current.getChildAt(0), Main)).getFPS()));
 		}
 
 		lastBeatHit = curBeat;
