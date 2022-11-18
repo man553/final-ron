@@ -269,7 +269,7 @@ class MasterFreeplayState extends MusicBeatState
 				case 1:
 					FreeplayState.mode = 'extras';
 			}
-			FlxG.switchState(new FreeplayState());
+			MusicBeatState.switchState(new FreeplayState());
 		}
 		super.update(elapsed);
 	}
