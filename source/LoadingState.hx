@@ -56,7 +56,8 @@ class LoadingState extends MusicBeatState
 		funkay.scrollFactor.set();
 		funkay.screenCenter();
 
-		ron = new FlxSprite(0, 0).loadGraphic(Paths.getPreloadPath('images/loadingRon'));
+		ron = new FlxSprite(0, 0);
+		ron.frames = Paths.getSparrowAtlas("loadingRon");
 		ron.animation.addByPrefix('run', 'run', 24, true);
 		ron.updateHitbox();
 		ron.antialiasing = ClientPrefs.globalAntialiasing;

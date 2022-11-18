@@ -21,6 +21,7 @@ class MusicBeatState extends FlxUIState
 {
 
 	public static var animatedShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
+	public static var allShaders:Array<DynamicShaderHandler> = [];
 	public var luaShaders:Map<String, DynamicShaderHandler> = new Map<String, DynamicShaderHandler>();
 
 	public var Shaders = animatedShaders;
@@ -37,6 +38,7 @@ class MusicBeatState extends FlxUIState
 		return PlayerSettings.player1.controls;
 
 	override function create() {
+		allShaders = [];
 		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		super.create();
 
@@ -48,7 +50,14 @@ class MusicBeatState extends FlxUIState
 	public function addShader(camera:FlxCamera, shader:String)
 	{
 		new DynamicShaderHandler(shader);
-		camera.setFilters([new ShaderFilter(animatedShaders[shader].shader)]);
+		var shaders:Array<Dynamic> = [];
+		for (s in allShaders)
+			shaders.push(new ShaderFilter(s.shader));
+		camera.setFilters(cast shaders);
+	}
+	public function clearShader(camera:FlxCamera)
+	{
+		camera.setFilters([]);
 	}
 	
 	#if (VIDEOS_ALLOWED && windows)
@@ -157,9 +166,6 @@ class MusicBeatState extends FlxUIState
 		//do literally nothing dumbass
 	}
 
-	public function setChrome(daChrome:Float):Void
-		//ShadersHandler.setChrome(daChrome);
-	return;
 		
 	public function setBlockSize(bs:Float):Void
 		//ShadersHandler.setBlockSize(bs);
