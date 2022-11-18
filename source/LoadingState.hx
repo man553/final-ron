@@ -45,31 +45,31 @@ class LoadingState extends MusicBeatState
 	var loadBar:FlxSprite;
 	override function create()
 	{
-		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height, 0xff000000);
+		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
 		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/funkay.png', IMAGE));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
 		add(funkay);
-		funkay.alpha = 0;
 		funkay.scrollFactor.set();
 		funkay.screenCenter();
 
-		ron = new FlxSprite(0, 0).loadGraphic(Paths.getPreloadPath('images/loadingRon'));
+		ron = new FlxSprite(0, 0);
+		ron.frames = Paths.getSparrowAtlas("loadingRon");
 		ron.animation.addByPrefix('run', 'run', 24, true);
 		ron.updateHitbox();
+		ron.screenCenter();
 		ron.antialiasing = ClientPrefs.globalAntialiasing;
-		ron.scale.set(2,2);
 		add(ron);
 		ron.scrollFactor.set();
 		ron.animation.play('run');
 
-		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffffffff);
+		loadBar = new FlxSprite(0, FlxG.height - 20).makeGraphic(FlxG.width, 10, 0xffff16d2);
 		loadBar.screenCenter(X);
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
 		add(loadBar);
-		loadBar.alpha = 0.3;
+		
 		initSongsManifest().onComplete
 		(
 			function (lib)
