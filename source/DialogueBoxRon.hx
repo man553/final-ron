@@ -19,7 +19,6 @@ typedef FuckingDialogue = {
 	var character:String;
 	var expression:String;
 	var events:Array<Dynamic>;
-	var side:String;
 	var dialogueBox:String;
 	var boxState:String;
 	var textDelay:Float;
@@ -106,7 +105,8 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	}
 	var time:Float = 0;
 	override function update(elapsed:Float) {
-		if (FlxG.keys.justPressed.K && !STOP) nextDialogue(1);
+		if (FlxG.keys.justPressed.K && !STOP) 
+			if (!finishedTyping) dialogText.skip() else nextDialogue(1);
 		super.update(elapsed);
 		time += elapsed;
 		dialogHand.x = 950 + (Math.abs(Math.sin(3.5 * time)) * 10);
@@ -115,9 +115,10 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var curPortrait:Dynamic = "";
 	var curText:String;
 	var curTextDelay:Float;
+	var finishedTyping:Bool = false;
 	function nextDialogue(e:Int) {
 		dialoguebox.visible = true;
-		dialogHand.visible = true;
+		dialogHand.visible = false;
 		curDialogue += e;
 		if (curDialogue == dialogueJSON.length) {
 			STOP = true;
@@ -134,7 +135,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		if (d.text != null) curText = d.text;
 		if (d.clickSound != null)
 		{
-			dialogText.sounds = null;
+			dialogText.sounds = [];
 			if (d.clickSound[0] != null)
 			{
 				for (i in 0...d.clickSound.length)
@@ -173,10 +174,10 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		if (d.events != null)
 			for (i in 0...d.events.length)
 				Reflect.callMethod(this, Reflect.field(this, d.events[i][0]), d.events[i][1]);
-
+		finishedTyping = false;
 		dialogText.resetText(curText);
 		dialogText.start(curTextDelay, true);
-		dialogText.completeCallback = function() {curPortrait.playAnim(expression, true);}
+		dialogText.completeCallback = function() {curPortrait.playAnim(expression, true);finishedTyping = true;dialogHand.visible = true;}
 	}
 	function updateBoxOffsets(box:FlxSprite) { //Had to make it static because of the editors -- shadow mario's mid code
 		box.centerOffsets();

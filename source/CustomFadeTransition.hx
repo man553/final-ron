@@ -70,12 +70,13 @@ class CustomFadeTransition extends MusicBeatSubstate {
 		var transitional = new Transition(transData);
 		add(transitional);
 		new FlxTimer().start(duration, function(tmr:FlxTimer) {if(!isTransIn && finishCallback != null)finishCallback(); else close();});
-		//transitional.setStatus(isTransIn?TransitionStatus.OUT:TransitionStatus.IN);
+		transitional.setStatus(isTransIn?TransitionStatus.FULL:TransitionStatus.EMPTY);
 		transitional.start(isTransIn?TransitionStatus.OUT:TransitionStatus.IN);
 
 		if(nextCamera != null) {
 			transBlack.cameras = [nextCamera];
 			transGradient.cameras = [nextCamera];
+			transitional.cameras = [nextCamera];
 		}
 		nextCamera = null;
 	}
