@@ -351,6 +351,7 @@ class PlayState extends MusicBeatState
 
 	var leBlack:FlxSprite;
 	var shutTheFuckUp:Bool = false;
+	var wastedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
 
 	override public function create()
 	{
@@ -518,6 +519,45 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 		
+			var sky:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+			sky.screenCenter();
+			sky.scrollFactor.set(0.1, 0.1);
+			wastedGrp.add(sky);
+
+			var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
+			mountainsback.screenCenter();
+			mountainsback.scrollFactor.set(0.3, 0.3);
+			mountainsback.y -= 60;
+			wastedGrp.add(mountainsback);
+
+			var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
+			clouds.screenCenter();
+			clouds.scrollFactor.set(0.1, 0.1);
+			wastedGrp.add(clouds);
+
+			var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+			rain.animation.addByPrefix('rain', 'rain', 24, true);
+			rain.setGraphicSize(Std.int(rain.width * 4));
+			rain.updateHitbox();
+			rain.screenCenter(XY);
+			wastedGrp.add(rain);
+			rain.animation.play('rain');
+
+			var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
+			mountains.screenCenter();
+			mountains.scrollFactor.set(0.3, 0.3);
+			mountains.y -= 60;
+			wastedGrp.add(mountains);
+
+			var hillfront:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_hillfront', -100, 20);
+			hillfront.screenCenter();
+			hillfront.scrollFactor.set(0.4, 0.4);
+			hillfront.y -= 60;
+			wastedGrp.add(hillfront);
+
+			var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
+			street.screenCenter();
+			wastedGrp.add(street);
 		switch (curStage)
 		{ 	//all the stages here
 			case 'ronPissed': //ron
@@ -1121,7 +1161,8 @@ class PlayState extends MusicBeatState
 				snowemitter.start(false, 0.05);
 			}
 		}
-
+		add(wastedGrp);
+		wastedGrp.visible = false;
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
 		}
@@ -5762,6 +5803,8 @@ class PlayState extends MusicBeatState
 			{
 				case 1304:
 					//frak can you make it so wasted bg appears
+					//going to spawn the wasted bg in the shittiest way possible
+					wastedGrp.visible = true;
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
 					defaultCamZoom += 0.2;
