@@ -1,11 +1,10 @@
 COMPOSER(s)
+Seezee
 /coquers_
 
 CHARTER(s)
-Kurtfan5468
+?
 
 ARTIST(s)
+BYOK
 Seezee
-Terionic
-Benju
-Wildythomas

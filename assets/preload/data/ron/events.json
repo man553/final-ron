@@ -6,32 +6,27 @@
 		"player2": "ron",
 		"events": [
 			[
-				11612.9032258065,
+				115058.823529412,
 				[
 					[
-						"Play Animation",
-						"hey",
-						"dad"
-					]
-				]
-			],
-			[
-				26290.3225806452,
-				[
+						"Change Scroll Speed",
+						"1.1",
+						"1"
+					],
 					[
-						"Play Animation",
-						"hey",
-						"dad"
-					]
-				]
-			],
-			[
-				48870.9677419355,
-				[
+						"Change Character",
+						"1",
+						"ronslightly"
+					],
 					[
-						"Play Animation",
-						"hey",
-						"dad"
+						"Change Character",
+						"0",
+						"bfDark"
+					],
+					[
+						"Change Character",
+						"2",
+						"gfDark"
 					]
 				]
 			]
@@ -40,9 +35,9 @@
 		"splashSkin": "noteSplashes",
 		"validScore": false,
 		"gfVersion": "gf",
-		"bpm": 186,
+		"bpm": 170,
 		"arrowSkin": "",
 		"needsVoices": true,
-		"song": "ron"
+		"song": "Ron"
 	}
 }
