@@ -246,7 +246,7 @@ class FlxCamera extends FlxBasic
 	var viewOffsetX(default, null):Float = 0;
 
 	var viewOffsetY(default, null):Float = 0;
-
+	var scrlRect:Rectangle;
 	/**
 	 * The size of the camera plus view offset.
 	 * These variables are used for object visibility checks.
@@ -1276,7 +1276,8 @@ class FlxCamera extends FlxBasic
 	function updateScrollRect():Void
 	{
 		var rect:Rectangle = (_scrollRect != null) ? _scrollRect.scrollRect : null;
-
+		calculateScrollRect();
+		_scrollRect.scrollRect = scrlRect;
 		if (rect != null)
 		{
 			rect.x = rect.y = 0;
@@ -1289,8 +1290,32 @@ class FlxCamera extends FlxBasic
 			_scrollRect.x = -0.5 * rect.width;
 			_scrollRect.y = -0.5 * rect.height;
 		}
-	}
+		var flxRect = FlxRect.get();
 
+		if (_scrollRect != null)
+		{
+			flxRect.copyFromFlash(_scrollRect.scrollRect);
+			flxRect.getRotatedBounds(angle, FlxPoint.get(FlxMath.lerp(flxRect.left, flxRect.right, 0.5), FlxMath.lerp(flxRect.top, flxRect.bottom, 0.5)), flxRect);
+			_scrollRect.x += flxRect.x - _scrollRect.scrollRect.x;
+			_scrollRect.y += flxRect.y - _scrollRect.scrollRect.y;
+			_scrollRect.scrollRect = flxRect.copyToFlash();
+		} 
+
+		flxRect.put();
+	}
+	function calculateScrollRect()
+	{
+		if (_scrollRect != null)
+		{
+			var rect:Rectangle = (_scrollRect.scrollRect != null) ? _scrollRect.scrollRect : new Rectangle();
+			rect.x = rect.y = 0;
+
+			rect.width = width * initialZoom * FlxG.scaleMode.scale.x;
+			rect.height = height * initialZoom * FlxG.scaleMode.scale.y;
+			return scrlRect = rect;
+		}
+		return scrlRect = null;
+	}
 	/**
 	 * Modifies position of `_flashBitmap` in blit render mode and `canvas` and `debugSprite`
 	 * in tile render mode (these objects are children of `_scrollRect` sprite).
