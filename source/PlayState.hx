@@ -2420,7 +2420,7 @@ class PlayState extends MusicBeatState
 		callOnLuas('onSongStart', []);
 		
 		//better credits system
-		if (FileSystem.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
+		if (OpenFlAssets.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
 		{
 			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 28);
@@ -5206,7 +5206,7 @@ class PlayState extends MusicBeatState
 						ease: FlxEase.quadIn,
 						onComplete: function(twn:FlxTween)
 						{
-							FlxTween.angle(satan, 0, 359.99, 0.75, {type: FlxTween.LOOPING});
+							FlxTween.angle(satan, 0, 359.99, 0.75, {type: cast 2});
 						}
 					});
 				}

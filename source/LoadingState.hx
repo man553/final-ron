@@ -47,7 +47,7 @@ class LoadingState extends MusicBeatState
 	{
 		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
-		funkay = new FlxSprite(0, 0).loadGraphic(Paths.getPath('images/loadingscreens/loading'+Std.string(FlxG.random.int(1,8))+'.png', IMAGE));
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.image('loadingscreens/loading'+Std.string(FlxG.random.int(1,8))));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
