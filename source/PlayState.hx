@@ -586,13 +586,19 @@ class PlayState extends MusicBeatState
 				clouds.scrollFactor.set(0.1, 0.1);
 				add(clouds);
 				
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				add(rain);
-				rain.animation.play('rain');
+				//var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				//rain.animation.addByPrefix('rain', 'rain', 24, true);
+				//rain.setGraphicSize(Std.int(rain.width * 4));
+				//rain.updateHitbox();
+				//rain.screenCenter(XY);
+				//add(rain);
+				//rain.animation.play('rain');
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [35];
+				Shaders["rain"].shader.data.raindropLength.value = [0.05];
+				Shaders["rain"].shader.data.opacity.value = [0.2];
+
+
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
@@ -1667,19 +1673,19 @@ class PlayState extends MusicBeatState
 				case "ron" | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
 				case "ayo" | 'wasted':
-					witheredRa = new FlxSprite(-512, -260);
-					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
-					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
-					witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
-					witheredRa.updateHitbox();
-					witheredRa.antialiasing = true;
-					witheredRa.scrollFactor.set(0.05, 0.05);
-					witheredRa.screenCenter(XY);
-					add(witheredRa);
-					witheredRa.animation.play('rain');
+					//witheredRa = new FlxSprite(-512, -260);
+					//witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
+					//witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
+					//witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
+					//witheredRa.updateHitbox();
+					//witheredRa.antialiasing = true;
+					//witheredRa.scrollFactor.set(0.05, 0.05);
+					//witheredRa.screenCenter(XY);
+					//add(witheredRa);
+					//witheredRa.animation.play('rain');
 					schoolIntro(doof);
-					FlxG.camera.setFilters([ShadersHandler.Rain]);
-					camHUD.setFilters([ShadersHandler.Rain]);
+					//FlxG.camera.setFilters([ShadersHandler.Rain]);
+					//camHUD.setFilters([ShadersHandler.Rain]);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
