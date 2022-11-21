@@ -8,12 +8,12 @@ float rnd(float t) {
 }
 float rain(vec3 p) {
 
-  p.y += iTime*6.;
+  p.y += iTime*12.;
   p.xy *= zoom;
   
   p.y += rnd(floor(p.x))*1500.0;
   
-  return clamp(1.0-length(vec2(cos(p.x * PI), sin(p.y*raindropLength) - (2. - opacity))), 0.0, 1.0);
+  return clamp(1.0-length(vec2(cos(p.x * PI + (15. * iTime)), sin(p.y*raindropLength) - (2. - opacity))), 0.0, 1.0);
 }
 void main()
 {
@@ -25,6 +25,7 @@ void main()
     //col = vec3(rain(vec3(-uv,5)));
     col += rain(vec3(-uv*2.3,5)) * 0.5;
     col += rain(vec3(-uv*4.7,5)) * 0.25;
+    col += rain(vec3(-uv*4.7,5)) * 0.05;
     // Output to screen
     gl_FragColor = col;
 }
