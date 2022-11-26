@@ -2953,7 +2953,7 @@ class PlayState extends MusicBeatState
 
 		var currentBeat:Float = (Conductor.songPosition / 1000)*(Conductor.bpm/60);
 
-		switch(SONG.song.toLowerCase())
+		/*switch(SONG.song.toLowerCase())
 		{
 			case 'bloodshed': 
 				if(funnywindow)
@@ -3036,7 +3036,7 @@ class PlayState extends MusicBeatState
 					camHUD.angle = (noteSinSpeed * 0.1953125) * Math.sin((currentBeat/5) * Math.PI);
 					FlxG.camera.angle = (noteSinSpeed * 0.0390625) * Math.sin((currentBeat/5) * Math.PI);
 				}
-		}
+		}*/
 
 		switch (curStage)
 		{
@@ -5626,7 +5626,7 @@ class PlayState extends MusicBeatState
 			Estatic.alpha = (((2-health)/3)+0.2);
 		}
 
-		switch(SONG.song.toLowerCase())
+		/*switch(SONG.song.toLowerCase())
 		{
 			case 'bloodshed': 
 				if(curStep == 129)
@@ -5679,7 +5679,7 @@ class PlayState extends MusicBeatState
 						PlayState.instance.camHUD.alpha  -= 0.05;
 					}
 				}
-		}
+		}*/
 
 		if (curSong == 'Holy-Shit-Dave-Fnf')
 		{
