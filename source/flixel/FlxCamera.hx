@@ -1069,7 +1069,7 @@ class FlxCamera extends FlxBasic
 	public function updateScroll():Void
 	{
 		// Adjust bounds to account for zoom
-		var zoom = this.zoom / FlxG.initialZoom;
+		var zoom = this.zoom / initialZoom;
 
 		var minX:Null<Float> = minScrollX == null ? null : minScrollX - (zoom - 1) * width / (2 * zoom);
 		var maxX:Null<Float> = maxScrollX == null ? null : maxScrollX + (zoom - 1) * width / (2 * zoom);
