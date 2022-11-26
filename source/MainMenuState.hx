@@ -113,16 +113,16 @@ class MainMenuState extends MusicBeatState
 		add(sun);
 		sun.animation.play('sun');
 
-		cloud = new FlxBackdrop(Paths.image('menuClouds'), 32, 0, true, true, 0, -250);
+		cloud = new FlxBackdrop(Paths.image('menuClouds'), XY, 0, 0);
 		cloud.alpha = 0.8/alphaTex;
 		cloud.scrollFactor.set(0.1);
 		add(cloud);
 
-		city2 = new FlxBackdrop(Paths.image(cityBTex), 32, 0, true, true, 0, -250);
+		city2 = new FlxBackdrop(Paths.image(cityBTex), XY, 0, 0);
 		city2.scrollFactor.set(0.125);
 		add(city2);
 
-		city = new FlxBackdrop(Paths.image(cityTex), 32, 0, true, true, 0, -250);
+		city = new FlxBackdrop(Paths.image(cityTex), XY, 0, 0);
 		city.scrollFactor.set(0.2);
 		add(city);
 

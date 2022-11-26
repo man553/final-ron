@@ -644,15 +644,14 @@ class PlayState extends MusicBeatState
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-				
-				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudsbig.scrollFactor.set(0.1,0.1);
 				cloudsbig.screenCenter(XY);
 				add(cloudsbig);
 				
 				FlxTween.tween(cloudsbig, {x: cloudsbig.x + 6000}, 720, {type: LOOPING});
 				
-				var cloudssmall = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				var cloudssmall = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudssmall.scale.set(0.5,0.5);
 				cloudssmall.updateHitbox();
 				cloudssmall.scrollFactor.set(0.05,0.1);
@@ -882,7 +881,7 @@ class PlayState extends MusicBeatState
 				wBackground.updateHitbox();
 				wBackground.screenCenter(XY);
 				add(wBackground);
-				witheredClouds = new FlxBackdrop(Paths.image('bgs/bobtwerked/annoyed_cloud'), 0.2, 0, true, false);
+				witheredClouds = new FlxBackdrop(Paths.image('bgs/bobtwerked/annoyed_cloud'), X, 0, 0);
 				witheredClouds.scrollFactor.set(0.2,0);
 				witheredClouds.screenCenter(XY);
 				witheredClouds.scale.set(0.5,0.5);

@@ -363,8 +363,7 @@ class TitleState extends MusicBeatState
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-
-		blackScreen = new FlxBackdrop(Paths.image('scroll'), 0.2, 0.2, true, true);
+		blackScreen = new FlxBackdrop(Paths.image('scroll'), XY, 0, 0);
 		new FlxTimer().start(0.005, function(tmr:FlxTimer)
 		{
 			blackScreen.x += 1;
