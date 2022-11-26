@@ -1,75 +1,63 @@
 {
-	"noteskin": "ronsip",
 	"animations": [
 		{
 			"offsets": [
-				885,
-				720
+				705,
+				590
 			],
-			"loop": true,
-			"fps": 12,
-			"anim": "idle",
 			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
 			"name": "ronPissed idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				900,
-				713
+				722,
+				583
 			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 8,
-			"name": "ronPissed left",
-			"indices": []
+			"loop": false,
+			"name": "ronPissed left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				886,
-				717
+				714,
+				594
 			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 12,
-			"name": "ronPissed down",
-			"indices": []
+			"loop": false,
+			"name": "ronPissed down"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				867,
-				726
+				701,
+				597
 			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 12,
-			"name": "ronPissed up",
-			"indices": []
+			"loop": false,
+			"name": "ronPissed up"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				869,
-				717
+				693,
+				591
 			],
+			"indices": [],
+			"fps": 24,
 			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "ronPissed right",
-			"indices": []
-		},
-		{
 			"loop": false,
-			"offsets": [
-				885,
-				716
-			],
-			"anim": "hey",
-			"fps": 16,
-			"name": "ronPissed death",
-			"indices": []
+			"name": "ronPissed right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/newcharstest/ron",
+	"image": "characters/newcharstest/ronPissed",
 	"position": [
 		0,
 		350
