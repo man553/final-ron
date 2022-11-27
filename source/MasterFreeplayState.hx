@@ -56,7 +56,7 @@ class MasterFreeplayState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if(controls.UI_RIGHT_P)
+		if(controls.UI_RIGHT_P && curSelected == 0)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected = 1;
@@ -64,7 +64,7 @@ class MasterFreeplayState extends MusicBeatState
 			FlxTween.tween(extraImage, {x: 0}, 0.3);
 		}
 
-		if(controls.UI_LEFT_P)
+		if(controls.UI_LEFT_P && curSelected == 1)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			curSelected = 0;
