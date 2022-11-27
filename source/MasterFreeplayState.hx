@@ -41,6 +41,7 @@ class MasterFreeplayState extends MusicBeatState
 		image.y = 0;
 		image.scale.y = 0.50;
 		image.scale.x = 0.50;
+		image.ID = 0;
 		image.antialiasing = ClientPrefs.globalAntialiasing;
 		add(image);
 
@@ -50,26 +51,24 @@ class MasterFreeplayState extends MusicBeatState
 		extraImage.y = 0;
 		extraImage.scale.y = 0.50;
 		extraImage.scale.x = 0.50;
+		extraImage.ID = 1;
 		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(extraImage);
+		changeSelection(0);
 	}
 
 	override function update(elapsed:Float)
 	{
-		if(controls.UI_RIGHT_P && curSelected == 0)
+		if(controls.UI_RIGHT_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			curSelected = 1;
-			FlxTween.tween(image, {x: -1000}, 0.3);
-			FlxTween.tween(extraImage, {x: 0}, 0.3);
+			changeSelection(1);
 		}
 
-		if(controls.UI_LEFT_P && curSelected == 1)
+		if(controls.UI_LEFT_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
-			curSelected = 0;
-			FlxTween.tween(image, {x: 0}, 0.3);
-			FlxTween.tween(extraImage, {x: 1000}, 0.3);
+			changeSelection(-1);
 		}
 
 		if(controls.ACCEPT)
@@ -91,5 +90,18 @@ class MasterFreeplayState extends MusicBeatState
 			MusicBeatState.switchState(new MainMenuState());
 		}
 
+	}
+	function changeSelection(p)
+	{
+		curSelected += p;
+		if (curSelected < 0)
+			curSelected = 1;
+		if (curSelected >= 2)
+			curSelected = 0;
+		FlxTween.globalManager.cancelTweensOf(image);
+		FlxTween.globalManager.cancelTweensOf(extraImage);
+	
+		FlxTween.tween(image, {x:  1000*(image.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
 	}
 }
