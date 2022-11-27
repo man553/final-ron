@@ -1,79 +1,78 @@
 {
-	"noteskin": "ronsip",
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				0,
-				0
+				705,
+				590
 			],
-			"anim": "singDOWN",
+			"indices": [],
 			"fps": 24,
-			"name": "ron down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "ron up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "ron right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
 			"anim": "idle",
-			"fps": 24,
-			"name": "ron idle",
-			"indices": []
+			"loop": false,
+			"name": "ronPissed idle"
 		},
 		{
 			"offsets": [
-				0,
-				0
+				722,
+				583
 			],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "ron left"
+			"name": "ronPissed left"
+		},
+		{
+			"offsets": [
+				714,
+				594
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "ronPissed down"
+		},
+		{
+			"offsets": [
+				701,
+				597
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "ronPissed up"
+		},
+		{
+			"offsets": [
+				693,
+				591
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "ronPissed right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/wastedfucker",
+	"image": "characters/newcharstest/ronPissed",
 	"position": [
-		-600,
-		140
+		0,
+		350
 	],
 	"healthicon": "ronslightly",
 	"flip_x": false,
 	"healthbar_colors": [
-		220,
-		187,
+		170,
+		137,
 		0
 	],
 	"camera_position": [
-		-210,
-		-200
+		-320,
+		-120
 	],
 	"sing_duration": 4,
-	"scale": 1
+	"scale": 0.5
 }

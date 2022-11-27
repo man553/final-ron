@@ -586,13 +586,19 @@ class PlayState extends MusicBeatState
 				clouds.scrollFactor.set(0.1, 0.1);
 				add(clouds);
 				
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				add(rain);
-				rain.animation.play('rain');
+				//var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				//rain.animation.addByPrefix('rain', 'rain', 24, true);
+				//rain.setGraphicSize(Std.int(rain.width * 4));
+				//rain.updateHitbox();
+				//rain.screenCenter(XY);
+				//add(rain);
+				//rain.animation.play('rain');
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [35];
+				Shaders["rain"].shader.data.raindropLength.value = [0.05];
+				Shaders["rain"].shader.data.opacity.value = [0.2];
+
+
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
@@ -638,15 +644,14 @@ class PlayState extends MusicBeatState
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-				
-				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudsbig.scrollFactor.set(0.1,0.1);
 				cloudsbig.screenCenter(XY);
 				add(cloudsbig);
 				
 				FlxTween.tween(cloudsbig, {x: cloudsbig.x + 6000}, 720, {type: LOOPING});
 				
-				var cloudssmall = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), 0.1, 0, true, false);
+				var cloudssmall = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudssmall.scale.set(0.5,0.5);
 				cloudssmall.updateHitbox();
 				cloudssmall.scrollFactor.set(0.05,0.1);
@@ -876,7 +881,7 @@ class PlayState extends MusicBeatState
 				wBackground.updateHitbox();
 				wBackground.screenCenter(XY);
 				add(wBackground);
-				witheredClouds = new FlxBackdrop(Paths.image('bgs/bobtwerked/annoyed_cloud'), 0.2, 0, true, false);
+				witheredClouds = new FlxBackdrop(Paths.image('bgs/bobtwerked/annoyed_cloud'), X, 0, 0);
 				witheredClouds.scrollFactor.set(0.2,0);
 				witheredClouds.screenCenter(XY);
 				witheredClouds.scale.set(0.5,0.5);
@@ -1667,19 +1672,19 @@ class PlayState extends MusicBeatState
 				case "ron" | 'bloodshed' | 'trojan-virus':
 					schoolIntro(doof);
 				case "ayo" | 'wasted':
-					witheredRa = new FlxSprite(-512, -260);
-					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
-					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
-					witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
-					witheredRa.updateHitbox();
-					witheredRa.antialiasing = true;
-					witheredRa.scrollFactor.set(0.05, 0.05);
-					witheredRa.screenCenter(XY);
-					add(witheredRa);
-					witheredRa.animation.play('rain');
+					//witheredRa = new FlxSprite(-512, -260);
+					//witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
+					//witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
+					//witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
+					//witheredRa.updateHitbox();
+					//witheredRa.antialiasing = true;
+					//witheredRa.scrollFactor.set(0.05, 0.05);
+					//witheredRa.screenCenter(XY);
+					//add(witheredRa);
+					//witheredRa.animation.play('rain');
 					schoolIntro(doof);
-					FlxG.camera.setFilters([ShadersHandler.Rain]);
-					camHUD.setFilters([ShadersHandler.Rain]);
+					//FlxG.camera.setFilters([ShadersHandler.Rain]);
+					//camHUD.setFilters([ShadersHandler.Rain]);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
@@ -2948,7 +2953,7 @@ class PlayState extends MusicBeatState
 
 		var currentBeat:Float = (Conductor.songPosition / 1000)*(Conductor.bpm/60);
 
-		switch(SONG.song.toLowerCase())
+		/*switch(SONG.song.toLowerCase())
 		{
 			case 'bloodshed': 
 				if(funnywindow)
@@ -3031,7 +3036,7 @@ class PlayState extends MusicBeatState
 					camHUD.angle = (noteSinSpeed * 0.1953125) * Math.sin((currentBeat/5) * Math.PI);
 					FlxG.camera.angle = (noteSinSpeed * 0.0390625) * Math.sin((currentBeat/5) * Math.PI);
 				}
-		}
+		}*/
 
 		switch (curStage)
 		{
@@ -5621,7 +5626,7 @@ class PlayState extends MusicBeatState
 			Estatic.alpha = (((2-health)/3)+0.2);
 		}
 
-		switch(SONG.song.toLowerCase())
+		/*switch(SONG.song.toLowerCase())
 		{
 			case 'bloodshed': 
 				if(curStep == 129)
@@ -5674,7 +5679,7 @@ class PlayState extends MusicBeatState
 						PlayState.instance.camHUD.alpha  -= 0.05;
 					}
 				}
-		}
+		}*/
 
 		if (curSong == 'Holy-Shit-Dave-Fnf')
 		{

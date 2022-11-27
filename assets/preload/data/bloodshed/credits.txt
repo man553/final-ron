@@ -1,8 +1,9 @@
 COMPOSER(s)
 Tailsfan01
+Seezee
 
 CHARTER(s)
-Kurtfan5468
+Seezee
 
 ARTIST(s)
 BYOK

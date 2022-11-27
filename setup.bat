@@ -8,6 +8,8 @@ haxelib run lime setup flixel
 
 haxelib run lime setup
 
+haxelib run lime setup windows
+
 haxelib install flixel-tools
 haxelib run flixel-tools setup
 
