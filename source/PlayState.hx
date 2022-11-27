@@ -1029,7 +1029,7 @@ class PlayState extends MusicBeatState
 					ground.antialiasing = true;
 					add(ground);
 				}
-			case 'madRonV1': {
+			case 'blr': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
 				skyBLR.scale.set(1.75, 1.75);
 				skyBLR.updateHitbox();

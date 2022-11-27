@@ -81,16 +81,7 @@
 				0,
 				0
 			]
-		],
-		[
-			"bloodshed-legacy-redux",
-			"demonron",
-			[
-				131,
-				32,
-				52
-			]
-		]		
+		]
 	],
 	"weekBefore": "week2",
 	"hideStoryMode": true,
