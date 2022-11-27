@@ -52,7 +52,6 @@ class FreeplayState extends MusicBeatState
 
 	public static var mode:String = 'main';
 
-	var isB:Bool = false;
 
 	override function create()
 	{
@@ -342,12 +341,6 @@ class FreeplayState extends MusicBeatState
 				Paths.currentModDirectory = songs[curSelected].folder;
 
 				var songName:String = songs[curSelected].songName.toLowerCase();
-				if (isB)
-				{
-					songName += "-b";
-					if (songName == 'bloodshed-b')
-						songName = 'blizzard';
-				}
 					
 				var poop:String = Highscore.formatSong(songName, curDifficulty);
 				PlayState.SONG = Song.loadFromJson(poop, songName);
@@ -371,12 +364,6 @@ class FreeplayState extends MusicBeatState
 		{
 			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
-			if (isB) 
-			{
-				songLowercase += "-b";
-				if (songLowercase == 'bloodshed-b')
-					songLowercase = 'blizzard';
-			}
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 			/*#if MODS_ALLOWED
 			if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
@@ -412,12 +399,6 @@ class FreeplayState extends MusicBeatState
 		{
 			persistentUpdate = false;
 			var songName:String = songs[curSelected].songName;
-			if (isB)
-			{
-				songName += "-b";
-				if (songName == 'bloodshed-b')
-					songName = 'blizzard';
-			}
 			openSubState(new ResetScoreSubState(songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
@@ -438,33 +419,16 @@ class FreeplayState extends MusicBeatState
 
 		curDifficulty += change;
 
-		if (lastDiff == 4 && curDifficulty != 4 && !isMuda)
-		{
-			modeSwitchA();
-			curDifficulty += change;
-		}
 
 		if (curDifficulty < 0)
 			curDifficulty = CoolUtil.difficulties.length-1;
 		if (curDifficulty >= CoolUtil.difficulties.length)
 			curDifficulty = 0;
 
-		if (curDifficulty == 4 && !isMuda)
-		{
-			modeSwitch();
-			curDifficulty = 4;
-		}
-
 		lastDifficultyName = CoolUtil.difficulties[curDifficulty];
 
 		#if !switch
 		var songName:String = songs[curSelected].songName;
-		if (isB)
-		{
-			songName += "-b";
-			if (songName == 'bloodshed-b')
-				songName = 'blizzard';
-		}
 		intendedScore = Highscore.getScore(songName, curDifficulty);
 		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
@@ -481,7 +445,6 @@ class FreeplayState extends MusicBeatState
 		curSelected += change;
 
 		var max:Int = songs.length;
-		if (isB) max = 4;
 
 		if (curSelected < 0)
 			curSelected = max - 1;
@@ -505,12 +468,6 @@ class FreeplayState extends MusicBeatState
 
 		#if !switch
 		var songName:String = songs[curSelected].songName;
-		if (isB)
-		{
-			songName += "-b";
-			if (songName == 'bloodshed-b')
-				songName = 'blizzard';
-		}
 		intendedScore = Highscore.getScore(songName, curDifficulty);
 		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
@@ -592,92 +549,6 @@ class FreeplayState extends MusicBeatState
 		diffText.x -= diffText.width / 2;
 	}
 
-	function modeSwitch()
-	{
-		FlxG.camera.flash(FlxColor.WHITE, 0.5);
-		isB = true;
-
-		for (i in 0...songs.length)
-			remove(iconArray[i]);
-		untyped iconArray.length = 0;
-		for (i in 0...songs.length)
-		{
-			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter + "-b");
-			icon.sprTracker = grpSongs.members[i];
-
-			iconArray.push(icon);
-			add(icon);
-
-			var color:Int = FlxColor.MAGENTA;
-			switch (i)
-			{
-				case 0:
-					color = FlxColor.MAGENTA;
-				case 1:
-					color = FlxColor.PURPLE;
-				case 2:
-					color = 0xFF8200AA;
-				case 3:
-					color = FlxColor.WHITE;
-				case 4:
-					color = 0xFF966E6E;
-				case 5:
-					color = FlxColor.BLUE;
-				case 6:
-					color = 0xFFDCDCDC;
-				case 7:
-					color = FlxColor.CYAN;
-			}
-			songs[i].color = color;
-
-			if (songs[i].week != 0)
-			{
-				grpSongs.members[i].visible = false;
-				iconArray[i].visible = false;
-			}
-		}
-
-		changeSelection(0, false);
-	}
-
-	function modeSwitchA()
-	{
-		FlxG.camera.flash(FlxColor.WHITE, 0.5);
-		isB = false;
-
-		for (i in 0...songs.length)
-			remove(iconArray[i]);
-		untyped iconArray.length = 0;
-		for (i in 0...songs.length)
-		{
-			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
-			icon.sprTracker = grpSongs.members[i];
-
-			iconArray.push(icon);
-			add(icon);
-
-			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[0]);
-
-			var colors:Array<Int>;
-			if(leWeek.songs[i] == null)
-				colors = [255, 255, 20];
-			else
-			{
-				colors = leWeek.songs[i][2];
-				if(colors == null || colors.length < 3)
-					colors = [255, 255, 20];
-			}
-			songs[i].color = FlxColor.fromRGB(colors[0], colors[1], colors[2]);
-
-			if (songs[i].week != 0)
-			{
-				grpSongs.members[i].visible = true;
-				iconArray[i].visible = true;
-			}
-		}
-
-		changeSelection(0, false);
-	}
 }
 
 class SongMetadata

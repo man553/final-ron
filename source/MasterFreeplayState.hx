@@ -5,6 +5,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import flixel.FlxG;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -30,6 +31,8 @@ class MasterFreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		transIn = FlxTransitionableState.defaultTransIn;
+		transOut = FlxTransitionableState.defaultTransOut;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuBG'));
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;

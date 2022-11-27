@@ -40,7 +40,7 @@
 	"hiddenUntilUnlocked": false,
 	"hideFreeplay": false,
 	"weekBackground": "ron",
-	"difficulties": "Easy, Normal, Hard, Cool, Flip",
+	"difficulties": "Easy, Normal, Hard, Cool",
 	"weekCharacters": [
 		"ron2",
 		"bf",
