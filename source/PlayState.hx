@@ -1030,14 +1030,14 @@ class PlayState extends MusicBeatState
 					add(ground);
 				}
 			case 'madRonV1': {
-				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.setGraphicSize(Std.int(skyBLR.width * 1.75));
+				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20.0000045032);
+				skyBLR.scale.set(1.75, 1.75);
 				skyBLR.updateHitbox();
 				skyBLR.x += 0.0000001;
 				add(skyBLR);
 
-				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
-				groundBLR.setGraphicSize(Std.int(groundBLR.width * 1.2));
+				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600.000401, -100);
+				groundBLR.scale.set(1.2, 1.2);
 				groundBLR.updateHitbox();
 				add(groundBLR);
 			}
