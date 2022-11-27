@@ -1033,6 +1033,7 @@ class PlayState extends MusicBeatState
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
 				skyBLR.setGraphicSize(Std.int(skyBLR.width * 1.75));
 				skyBLR.updateHitbox();
+				skyBLR.x += 0.0000001;
 				add(skyBLR);
 
 				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
