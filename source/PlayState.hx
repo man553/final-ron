@@ -1029,9 +1029,10 @@ class PlayState extends MusicBeatState
 					ground.antialiasing = true;
 					add(ground);
 				}
-			case 'bloodshed-legacy-redux': {
+			case 'madRonV1': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
 				skyBLR.setGraphicSize(Std.int(skyBLR.width * 1.75));
+				skyBLR.updateHitbox();
 				add(skyBLR);
 
 				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
