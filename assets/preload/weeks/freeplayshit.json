@@ -20,6 +20,15 @@
 			]
 		],
 		[
+			"trojan virus",
+			"ronpower",
+			[
+				255,
+				255,
+				20
+			]
+		],
+		[
 			"bijuu",
 			"bijuuron",
 			[
@@ -46,14 +55,6 @@
 				255
 			]
 		],
-		[
-			"withered-tweaked",
-			"hellron",
-			[
-				0,
-				0,
-				77
-			]
 		],
 		[
 			"certified-champion",
