@@ -867,7 +867,7 @@ class PlayState extends MusicBeatState
 				street.screenCenter();
 				ronGrp.add(street);
 				
-				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
+				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/ron_street', -100, 20);
 				streetbl.screenCenter();
 				bloodshedGrp.add(streetbl);
 				
