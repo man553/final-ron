@@ -1,5 +1,6 @@
 package;
 
+import flixel.math.FlxRandom;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -113,16 +114,16 @@ class MainMenuState extends MusicBeatState
 		add(sun);
 		sun.animation.play('sun');
 
-		cloud = new FlxBackdrop(Paths.image('menuClouds'), XY, 0, 0);
+		cloud = new FlxBackdrop(Paths.image('menuClouds'), X, 0, 0);
 		cloud.alpha = 0.8/alphaTex;
 		cloud.scrollFactor.set(0.1);
 		add(cloud);
 
-		city2 = new FlxBackdrop(Paths.image(cityBTex), XY, 0, 0);
+		city2 = new FlxBackdrop(Paths.image(cityBTex), X, 0, 0);
 		city2.scrollFactor.set(0.125);
 		add(city2);
 
-		city = new FlxBackdrop(Paths.image(cityTex), XY, 0, 0);
+		city = new FlxBackdrop(Paths.image(cityTex), X, 0, 0);
 		city.scrollFactor.set(0.2);
 		add(city);
 
@@ -242,9 +243,21 @@ class MainMenuState extends MusicBeatState
 	#end
 
 	var selectedSomethin:Bool = false;
-
+	var fadingOut:Bool = false;
 	override function update(elapsed:Float)
 	{
+		if (FlxG.keys.justPressed.T)
+		{
+			fadingOut = true;
+			this.forEach(function(spr:Dynamic){
+				if (spr.alpha != null)
+					FlxTween.tween(spr, { angle: new FlxRandom().float(-145,145), y: 2000 + spr.height}, 4 * (spr.height / 550) + new FlxRandom().float(2,7), {ease:FlxEase.quintIn});
+			});
+			menuItems.forEach(function(spr:FlxSprite) {
+				FlxTween.tween(spr, { angle: new FlxRandom().float(-645,645), y: 2000 * (spr.ID + 2)}, 4.6, {ease:FlxEase.quintIn});
+			});
+			FlxG.sound.music.fadeOut();
+		}
 		if (FlxG.keys.justPressed.ANY)
 		{
 			var curKey = FlxG.keys.getIsDown()[0].ID.toString();
@@ -279,7 +292,7 @@ class MainMenuState extends MusicBeatState
 		city.x += 2;
 		city2.x += 1;
 
-		if (FlxG.sound.music.volume < 0.8)
+		if (FlxG.sound.music.volume < 0.8 && !fadingOut)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
