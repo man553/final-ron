@@ -817,7 +817,6 @@ class PlayState extends MusicBeatState
 				wastedGrp.add(cloudssmall);
 				
 				FlxTween.tween(cloudssmall, {x: cloudssmall.x + 3000}, 360, {type: LOOPING});
-				
 				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
 				mountainsback.screenCenter();
 				mountainsback.scrollFactor.set(0.3, 0.3);
@@ -867,7 +866,7 @@ class PlayState extends MusicBeatState
 				street.screenCenter();
 				ronGrp.add(street);
 				
-				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/ron_street', -100, 20);
+				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 20);
 				streetbl.screenCenter();
 				bloodshedGrp.add(streetbl);
 				
@@ -891,14 +890,6 @@ class PlayState extends MusicBeatState
 				satan.x -= 100;
 				satan.updateHitbox();
 				add(satan);
-				
-				streetba = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
-				streetba.screenCenter();
-				add(streetba);
-				
-				streetbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 20);
-				streetbl.screenCenter();
-				add(streetbl);
 				
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 				fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
@@ -2582,6 +2573,9 @@ class PlayState extends MusicBeatState
 			//trace('Oopsie doopsie! Paused sound');
 			FlxG.sound.music.pause();
 			vocals.pause();
+			FlxTween.globalManager.forEach(function(i:FlxTween) {
+				i.active = false;
+			});
 		}
 
 		// Song duration in a float, useful for the time left feature
@@ -3028,7 +3022,11 @@ class PlayState extends MusicBeatState
 	override function closeSubState()
 	{
 		if (paused)
-		{
+		{	
+			FlxTween.globalManager.forEach(function(i:FlxTween) {
+				i.active = false;
+			});
+
 			if (FlxG.sound.music != null && !startingSong)
 			{
 				resyncVocals();
@@ -3056,6 +3054,9 @@ class PlayState extends MusicBeatState
 			for (timer in modchartTimers) {
 				timer.active = true;
 			}
+			FlxTween.globalManager.forEach(function(i:FlxTween) {
+				i.active = true;
+			});
 			paused = false;
 			callOnLuas('onResume', []);
 
@@ -3371,7 +3372,9 @@ class PlayState extends MusicBeatState
 				persistentUpdate = false;
 				persistentDraw = true;
 				paused = true;
-
+				FlxTween.globalManager.forEach(function(i:FlxTween) {
+					i.active = false;
+				});
 				// 1 / 1000 chance for Gitaroo Man easter egg
 				/*if (FlxG.random.bool(0.1))
 				{
@@ -3430,6 +3433,9 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
 			paused = true;
+			FlxTween.globalManager.forEach(function(i:FlxTween) {
+				i.active = false;
+			});
 			cancelMusicFadeTween();
 			MusicBeatState.switchState(new CharacterEditorState(SONG.player2));
 		}
@@ -5555,7 +5561,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {y: dad.y + 5600}, 23, {ease: FlxEase.quartIn});
 					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23, {ease: FlxEase.quartIn});
-					FlxTween.tween(boyfriend, {angle: 359.99}, 6, {type: FlxTweenType.LOOPING});
+					FlxTween.tween(boyfriend, {angle: 359.99 * 4}, 23);
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					wbg.alpha = 1;
 			}
