@@ -372,6 +372,8 @@ class PlayState extends MusicBeatState
 	var leBlack:FlxSprite;
 	var shutTheFuckUp:Bool = false;
 	var wastedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
+	var ronGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
+	var bloodshedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
 	// ok i dont care anymor
 
 	override public function create()
