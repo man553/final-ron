@@ -318,6 +318,17 @@ class PlayState extends MusicBeatState
 	var snowemitter:FlxEmitter;
 	var graadienter:FlxSprite;
 	var wbg:FlxSprite;
+	
+	var mountainsbackba:BGSprite;
+	var mountainsba:BGSprite;
+	var hillfrontba:BGSprite;
+	var streetba:BGSprite;
+
+	var hellbg:BGSprite;
+	var mountainsbackbl:BGSprite;
+	var mountainsbl:BGSprite;
+	var hillfrontbl:BGSprite;
+	var streetbl:BGSprite;
 
 	var Estatic2:FlxSprite;
 
@@ -352,8 +363,7 @@ class PlayState extends MusicBeatState
 	var leBlack:FlxSprite;
 	var shutTheFuckUp:Bool = false;
 	var wastedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
-	var ronGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
-	var bloodshedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
+	// ok i dont care anymor
 
 	override public function create()
 	{
@@ -690,7 +700,7 @@ class PlayState extends MusicBeatState
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
-				var hellbg:BGSprite = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
+				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
 				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
 				hellbg.updateHitbox();
@@ -755,12 +765,20 @@ class PlayState extends MusicBeatState
 				Estatic2.alpha = 0;
 
 			case 'ronHell':
-				defaultCamZoom = 0.7;
+				defaultCamZoom = 0.8;
 				precacheList.set('hellexplode', 'sound');
 				witheredRa = new BGSprite('bgs/newbgtest/ron/ron_sky', 0, 0);
 				witheredRa.screenCenter();
 				witheredRa.scrollFactor.set(0.1, 0.1);
 				add(witheredRa);
+				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
+				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
+				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
+				hellbg.updateHitbox();
+				hellbg.screenCenter(XY);
+				hellbg.y += hellbg.height / 5;
+				add(hellbg);
+				hellbg.animation.play('idle instance 1');
 				
 				firebg = new FlxSprite();
 				firebg.frames = Paths.getSparrowAtlas('bgs/escape_fire');
@@ -813,13 +831,13 @@ class PlayState extends MusicBeatState
 				mountainsbackbl.y -= 60;
 				bloodshedGrp.add(mountainsbackbl);
 				
-				var mountainsbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
+				mountainsbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_mountains', -100, 20);
 				mountainsbl.screenCenter();
 				mountainsbl.scrollFactor.set(0.3, 0.3);
 				mountainsbl.y -= 60;
 				bloodshedGrp.add(mountainsbl);
 			
-				var hillfrontbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_hillfront', -100, 20);
+				hillfrontbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_hillfront', -100, 20);
 				hillfrontbl.screenCenter();
 				hillfrontbl.scrollFactor.set(0.4, 0.4);
 				hillfrontbl.y -= 60;
@@ -853,6 +871,23 @@ class PlayState extends MusicBeatState
 				wbg.alpha = 0;	
 				add(wbg);
 				wbg.animation.play('lava');
+				
+				satan = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
+				satan.setGraphicSize(Std.int(satan.width * 1.2));
+				satan.scrollFactor.set(0.2, 0.05);
+				satan.screenCenter(XY);
+				satan.y += 600;
+				satan.x -= 100;
+				satan.updateHitbox();
+				add(satan);
+				
+				streetba = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
+				streetba.screenCenter();
+				add(streetba);
+				
+				streetbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 20);
+				streetbl.screenCenter();
+				add(streetbl);
 				
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 				fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
@@ -1165,13 +1200,13 @@ class PlayState extends MusicBeatState
 				}
 			case 'blr': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.scale.set(1.75, 1.75);
+				skyBLR.scale.set(0.5, 0.5);
 				skyBLR.updateHitbox();
 				skyBLR.x += 0.0000001;
 				add(skyBLR);
 
 				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600.000401, -100);
-				groundBLR.scale.set(1.2, 1.2);
+				groundBLR.scale.set(0.5, 0.5);
 				groundBLR.updateHitbox();
 				add(groundBLR);
 			}
@@ -5484,8 +5519,17 @@ class PlayState extends MusicBeatState
 					wastedGrp.forEachAlive(function(spr:FlxBackdrop) {
 						spr.alpha = 0;
 					});	
-					bloodshedGrp.visible = true;
-					ronGrp.visible = false;
+					// im so good at coding
+					mountainsbackba.alpha = 0;
+					mountainsba.alpha = 0;	
+					hillfrontba.alpha = 0;	
+					streetba.alpha = 0;	
+					mountainsbackbl.alpha = 1;
+					mountainsbl.alpha = 1;	
+					hillfrontbl.alpha = 1;	
+					streetbl.alpha = 1;	
+					hellbg.alpha = 1;
+					defaultCamZoom = 0.9;
 				case 320:
 					FlxTween.tween(satan, {y: satan.y - 700, angle: 359.99}, 3, {ease: FlxEase.circInOut});
 				case 368:
@@ -5503,8 +5547,8 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
-					FlxTween.tween(dad, {y: dad.y + 5600}, 23);
-					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23);
+					FlxTween.tween(dad, {y: dad.y + 5600}, 23, {ease: FlxEase.quartIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23, {ease: FlxEase.quartIn});
 					FlxTween.tween(boyfriend, {angle: 359.99}, 6, {type: FlxTweenType.LOOPING});
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					wbg.alpha = 1;
