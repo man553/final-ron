@@ -1,9 +1,12 @@
 package options;
 
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
 #end
 import flash.text.TextField;
+import gameassets.Character;
+import gameassets.CheckboxThingie;
+import gameassets.AttachedText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
@@ -23,7 +26,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
-import Controls;
+import important.Controls;
 
 using StringTools;
 

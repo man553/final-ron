@@ -1,7 +1,7 @@
 package editors;
 
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -25,7 +25,7 @@ import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import flash.net.FileFilter;
 import haxe.Json;
-import DialogueBoxPsych;
+import substates.DialogueBoxPsych;
 import lime.system.Clipboard;
 #if sys
 import sys.io.File;
@@ -346,9 +346,9 @@ class DialogueEditorState extends MusicBeatState
 		}
 
 		if(!blockInput) {
-			FlxG.sound.muteKeys = TitleState.muteKeys;
-			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+			FlxG.sound.muteKeys = menus.TitleState.muteKeys;
+			FlxG.sound.volumeDownKeys = menus.TitleState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = menus.TitleState.volumeUpKeys;
 			if(FlxG.keys.justPressed.SPACE) {
 				reloadText(speedStepper.value);
 			}

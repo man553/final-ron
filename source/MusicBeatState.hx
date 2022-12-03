@@ -1,9 +1,10 @@
 package;
 
-import Conductor.BPMChangeEvent;
+import important.Conductor.BPMChangeEvent;
+import important.PlayerSettings;
 import openfl.filters.ShaderFilter;
 import flixel.FlxCamera;
-import DynamicShaderHandler;
+import misc.DynamicShaderHandler;
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
@@ -43,7 +44,7 @@ class MusicBeatState extends FlxUIState
 		super.create();
 
 		if(!skip) {
-			openSubState(new CustomFadeTransition(0.7, true));
+			openSubState(new misc.CustomFadeTransition(0.7, true));
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 	}
@@ -63,13 +64,13 @@ class MusicBeatState extends FlxUIState
 	#if (VIDEOS_ALLOWED && windows)
 	override public function onFocus():Void
 	{
-		FlxVideo.onFocus();
+		misc.FlxVideo.onFocus();
 		super.onFocus();
 	}
 	
 	override public function onFocusLost():Void
 	{
-		FlxVideo.onFocusLost();
+		misc.FlxVideo.onFocusLost();
 		super.onFocusLost();
 	}
 	#end
@@ -127,14 +128,14 @@ class MusicBeatState extends FlxUIState
 		var curState:Dynamic = FlxG.state;
 		var leState:MusicBeatState = curState;
 		if(!FlxTransitionableState.skipNextTransIn) {
-			leState.openSubState(new CustomFadeTransition(0.6, false));
+			leState.openSubState(new misc.CustomFadeTransition(0.6, false));
 			if(nextState == FlxG.state) {
-				CustomFadeTransition.finishCallback = function() {
+				misc.CustomFadeTransition.finishCallback = function() {
 					FlxG.resetState();
 				};
 				//trace('resetted');
 			} else {
-				CustomFadeTransition.finishCallback = function() {
+				misc.CustomFadeTransition.finishCallback = function() {
 					FlxG.switchState(nextState);
 				};
 				//trace('changed state');

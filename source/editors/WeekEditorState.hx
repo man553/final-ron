@@ -1,9 +1,10 @@
 package editors;
 
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
 #end
 import flixel.FlxG;
+import gameassets.MenuCharacter;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
@@ -31,7 +32,7 @@ import haxe.Json;
 import sys.io.File;
 import sys.FileSystem;
 #end
-import WeekData;
+import important.WeekData;
 
 using StringTools;
 
@@ -42,7 +43,7 @@ class WeekEditorState extends MusicBeatState
 	var lock:FlxSprite;
 	var txtTracklist:FlxText;
 	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
-	var weekThing:MenuItem;
+	var weekThing:gameassets.MenuItem;
 	var missingFileText:FlxText;
 
 	var weekFile:WeekFile = null;
@@ -64,7 +65,7 @@ class WeekEditorState extends MusicBeatState
 		bgSprite = new FlxSprite(0, 56);
 		bgSprite.antialiasing = ClientPrefs.globalAntialiasing;
 
-		weekThing = new MenuItem(0, bgSprite.y + 396, weekFileName);
+		weekThing = new gameassets.MenuItem(0, bgSprite.y + 396, weekFileName);
 		weekThing.y += weekThing.height + 20;
 		weekThing.antialiasing = ClientPrefs.globalAntialiasing;
 		add(weekThing);
@@ -442,9 +443,9 @@ class WeekEditorState extends MusicBeatState
 		}
 
 		if(!blockInput) {
-			FlxG.sound.muteKeys = TitleState.muteKeys;
-			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+			FlxG.sound.muteKeys = menus.TitleState.muteKeys;
+			FlxG.sound.volumeDownKeys = menus.TitleState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = menus.TitleState.volumeUpKeys;
 			if(FlxG.keys.justPressed.ESCAPE) {
 				MusicBeatState.switchState(new editors.MasterEditorMenu());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -590,7 +591,7 @@ class WeekEditorFreeplayState extends MusicBeatState
 
 	var bg:FlxSprite;
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var iconArray:Array<HealthIcon> = [];
+	private var iconArray:Array<gameassets.HealthIcon> = [];
 
 	var curSelected = 0;
 
@@ -611,7 +612,7 @@ class WeekEditorFreeplayState extends MusicBeatState
 			songText.targetY = i;
 			grpSongs.add(songText);
 
-			var icon:HealthIcon = new HealthIcon(weekFile.songs[i][1]);
+			var icon:gameassets.HealthIcon = new gameassets.HealthIcon(weekFile.songs[i][1]);
 			icon.sprTracker = songText;
 
 			// using a FlxGroup is too much fuss!
@@ -804,9 +805,9 @@ class WeekEditorFreeplayState extends MusicBeatState
 				iconInputText.hasFocus = false;
 			}
 		} else {
-			FlxG.sound.muteKeys = TitleState.muteKeys;
-			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+			FlxG.sound.muteKeys = menus.TitleState.muteKeys;
+			FlxG.sound.volumeDownKeys = menus.TitleState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = menus.TitleState.volumeUpKeys;
 			if(FlxG.keys.justPressed.ESCAPE) {
 				MusicBeatState.switchState(new editors.MasterEditorMenu());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));

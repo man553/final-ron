@@ -1,8 +1,12 @@
 package editors;
 
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
+
 #end
+import gameassets.BGSprite;
+import gameassets.HealthIcon;
+import gameassets.FlxUIDropDownMenuCustom;
 import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -29,7 +33,7 @@ import openfl.net.FileReference;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import haxe.Json;
-import Character;
+import gameassets.Character;
 import flixel.system.debug.interaction.tools.Pointer.GraphicCursorCross;
 import lime.system.Clipboard;
 import flixel.animation.FlxAnimation;
@@ -1116,9 +1120,9 @@ class CharacterEditorState extends MusicBeatState
 				return;
 			}
 		}
-		FlxG.sound.muteKeys = TitleState.muteKeys;
-		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+		FlxG.sound.muteKeys = menus.TitleState.muteKeys;
+		FlxG.sound.volumeDownKeys = menus.TitleState.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = menus.TitleState.volumeUpKeys;
 
 		if(!charDropDown.dropPanel.visible) {
 			if (FlxG.keys.justPressed.ESCAPE) {

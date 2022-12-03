@@ -2,7 +2,6 @@
 	"storyName": "Freeplay Extras",
 	"hideFreeplay": false,
 	"weekBackground": "storyWeek1",
-	"weekBefore": "tutorial",
 	"startUnlocked": true,
 	"weekCharacters": [
 		"ron",

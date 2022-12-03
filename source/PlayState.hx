@@ -2,11 +2,14 @@ package;
 
 import flixel.graphics.FlxGraphic;
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
 #end
-import Section.SwagSection;
-import Song.SwagSong;
-import WiggleEffect.WiggleEffectType;
+import important.Section.SwagSection;
+import important.Song;
+import important.Song.SwagSong;
+import important.WeekData;
+import important.Highscore;
+import misc.WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
 import flixel.FlxG;
@@ -48,18 +51,24 @@ import editors.ChartingState;
 import editors.CharacterEditorState;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
-import Note.EventNote;
+import gameassets.Note.EventNote;
+import gameassets.Note;
+import gameassets.*;
+import misc.*;
 import openfl.events.KeyboardEvent;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import flixel.util.FlxSave;
 import animateatlas.AtlasFrameMaker;
-import Achievements;
-import StageData;
-import FunkinLua;
-import DialogueBoxPsych;
-import DialogueBoxRon;
-import Conductor.Rating;
+import gameassets.Character;
+import gameassets.Boyfriend;
+import gameassets.Achievements;
+import gameassets.StageData;
+import important.FunkinLua;
+import substates.DialogueBoxPsych;
+import substates.DialogueBoxRon;
+import important.Conductor.Rating;
+import substates.*;
 #if sys
 import sys.FileSystem;
 #end
@@ -825,7 +834,7 @@ class PlayState extends MusicBeatState
 				hillfront.y -= 60;
 				ronGrp.add(hillfront);
 				
-				var mountainsbackbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
+				var mountainsbackbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/ron_mountainsback', -100, 20);
 				mountainsbackbl.screenCenter();
 				mountainsbackbl.scrollFactor.set(0.3, 0.3);
 				mountainsbackbl.y -= 60;
@@ -921,10 +930,8 @@ class PlayState extends MusicBeatState
 				Estatic2.screenCenter();
 				Estatic2.alpha = 0;
 				
-				add(ronGrp);
 				add(bloodshedGrp);
-				bloodshedGrp.visible = false;
-				ronGrp.visible = true;
+				add(ronGrp);
 				addCharacterToList("hellron-drippin", 1);
 				addCharacterToList("hellron", 1);
 				addCharacterToList("BFrun", 0);
@@ -1337,7 +1344,7 @@ class PlayState extends MusicBeatState
 				snowemitter.start(false, 0.05);
 			}
 		}
-		add(wastedGrp);
+		//add(wastedGrp);
 		wastedGrp.visible = false;
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
@@ -1840,7 +1847,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'bloodshed' | 'trojan-virus':
+				case "ron" | ';ed' | 'trojan-virus':
 					schoolIntro(doof);
 					if (daSong == 'bloodshed')
 						wastedGrp.visible = true;
@@ -3375,7 +3382,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.pause();
 					vocals.pause();
 				}
-				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				openSubState(new substates.PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				//}
 
 				#if desktop
@@ -3694,7 +3701,7 @@ class PlayState extends MusicBeatState
 				for (timer in modchartTimers) {
 					timer.active = true;
 				}
-				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+				openSubState(new substates.GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 
 				// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -4065,8 +4072,14 @@ class PlayState extends MusicBeatState
 					if (isPixelStage)
 						unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
 				}
+				for (n in notes.members)
+				{
+					n.texture = "noteskins/" + (n.mustPress ? boyfriend.noteskin : dad.noteskin);
+					if (isPixelStage)
+						n.texture = 'pixelUI/NOTE_assets';
+				}
 				for (i in strumLineNotes.members)
-					i.texture.set(i.player == 1 ? dad.noteskin : boyfriend.noteskin);
+					i.texture = "noteskins/" + (i.player == 0 ? dad.noteskin : boyfriend.noteskin);
 
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
@@ -4289,18 +4302,18 @@ class PlayState extends MusicBeatState
 					cancelMusicFadeTween();
 					if(FlxTransitionableState.skipNextTransIn)
 						CustomFadeTransition.nextCamera = null;
-					MusicBeatState.switchState(new StoryMenuState());
+					MusicBeatState.switchState(new menus.StoryMenuState());
 
 					// if ()
 					if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {
-						StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
+						menus.StoryMenuState.weekCompleted.set(WeekData.weeksList[storyWeek], true);
 
 						if (SONG.validScore)
 						{
 							Highscore.saveWeekScore(WeekData.getWeekFileName(), campaignScore, storyDifficulty);
 						}
 
-						FlxG.save.data.weekCompleted = StoryMenuState.weekCompleted;
+						FlxG.save.data.weekCompleted = menus.StoryMenuState.weekCompleted;
 						FlxG.save.flush();
 					}
 					changedDifficulty = false;
@@ -4329,7 +4342,7 @@ class PlayState extends MusicBeatState
 					}
 					else
 					{
-						LoadingState.loadAndSwitchState(new PlayState());
+						menus.LoadingState.loadAndSwitchState(new PlayState());
 					}
 				}
 			}
@@ -4340,7 +4353,7 @@ class PlayState extends MusicBeatState
 				if(FlxTransitionableState.skipNextTransIn) {
 					CustomFadeTransition.nextCamera = null;
 				}
-				MusicBeatState.switchState(new FreeplayState());
+				MusicBeatState.switchState(new menus.FreeplayState());
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 				changedDifficulty = false;
 			}
@@ -5519,17 +5532,8 @@ class PlayState extends MusicBeatState
 					wastedGrp.forEachAlive(function(spr:FlxBackdrop) {
 						spr.alpha = 0;
 					});	
-					// im so good at coding
-					mountainsbackba.alpha = 0;
-					mountainsba.alpha = 0;	
-					hillfrontba.alpha = 0;	
-					streetba.alpha = 0;	
-					mountainsbackbl.alpha = 1;
-					mountainsbl.alpha = 1;	
-					hillfrontbl.alpha = 1;	
-					streetbl.alpha = 1;	
-					hellbg.alpha = 1;
-					defaultCamZoom = 0.9;
+					bloodshedGrp.visible = true;
+					ronGrp.visible = false;
 				case 320:
 					FlxTween.tween(satan, {y: satan.y - 700, angle: 359.99}, 3, {ease: FlxEase.circInOut});
 				case 368:
