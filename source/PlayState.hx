@@ -5542,6 +5542,19 @@ class PlayState extends MusicBeatState
 					});	
 					bloodshedGrp.visible = true;
 					ronGrp.visible = false;
+				case 256:
+					for (i in 0...4)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i]+ 1250 ,angle: 360}, 1, {ease: FlxEase.quintInOut});
+						defaultStrumX[i] += 1250;
+					}
+					for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i] - 275,angle: 360}, 1, {ease: FlxEase.backOut});
+						defaultStrumX[i] -= 275;
+					}
 				case 320:
 					FlxTween.tween(satan, {y: satan.y - 700, angle: 359.99}, 3, {ease: FlxEase.circInOut});
 				case 368:
@@ -5564,6 +5577,18 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(boyfriend, {angle: 359.99 * 4}, 23);
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					wbg.alpha = 1;
+				case 512:
+					defaultCamZoom = 0.75;
+				case 576:
+					FlxTween.tween(dad, {y: dad.y + 5600}, 5.63, {ease: FlxEase.quartIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.63, {ease: FlxEase.quartIn});
+					defaultCamZoom = 0.85;
+				case 632:
+					defaultCamZoom = 1.1;
+				case 640:
+					defaultCamZoom = 0.7;
+					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
+					FlxG.camera.flash(FlxColor.WHITE, 1);			
 			}
 		}
 
@@ -5772,18 +5797,6 @@ class PlayState extends MusicBeatState
 				if(curStep == 129)
 				{
 					funnywindowsmall = true;
-					for (i in 0...4)
-					{ 
-						var member = strumLineNotes.members[i];
-						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i]+ 1250 ,angle: 360}, 1, {ease: FlxEase.quintInOut});
-						defaultStrumX[i] += 1250;
-					}
-					for (i in 4...8)
-					{ 
-						var member = strumLineNotes.members[i];
-						FlxTween.tween(strumLineNotes.members[i], { x: defaultStrumX[i] - 275,angle: 360}, 1, {ease: FlxEase.backOut});
-						defaultStrumX[i] -= 275;
-					}
 				}
 				if(curStep == 258)
 				{
