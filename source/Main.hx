@@ -68,7 +68,7 @@ class Main extends Sprite
 		}
 
 		#if !debug
-		initialState = TitleState;
+		initialState = menus.TitleState;
 		#end
 	
 		ClientPrefs.loadDefaultKeys();
