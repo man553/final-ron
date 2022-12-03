@@ -757,10 +757,6 @@ class PlayState extends MusicBeatState
 			case 'ronHell':
 				defaultCamZoom = 0.7;
 				precacheList.set('hellexplode', 'sound');
-				addCharacterToList("hellron-drippin", 1);
-				addCharacterToList("hellron", 1);
-				addCharacterToList("BFrun", 0);
-				addCharacterToList("GFrun", 2);
 				witheredRa = new BGSprite('bgs/newbgtest/ron/ron_sky', 0, 0);
 				witheredRa.screenCenter();
 				witheredRa.scrollFactor.set(0.1, 0.1);
@@ -779,7 +775,6 @@ class PlayState extends MusicBeatState
 				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudsbig.scrollFactor.set(0.1,0.1);
 				cloudsbig.screenCenter(XY);
-				add(cloudsbig);
 				wastedGrp.add(cloudsbig);
 				
 				FlxTween.tween(cloudsbig, {x: cloudsbig.x + 6000}, 720, {type: LOOPING});
@@ -790,7 +785,6 @@ class PlayState extends MusicBeatState
 				cloudssmall.scrollFactor.set(0.05,0.1);
 				cloudssmall.screenCenter(XY);
 				cloudssmall.y -= 120;
-				add(cloudssmall);
 				wastedGrp.add(cloudssmall);
 				
 				FlxTween.tween(cloudssmall, {x: cloudssmall.x + 3000}, 360, {type: LOOPING});
@@ -799,42 +793,36 @@ class PlayState extends MusicBeatState
 				mountainsback.screenCenter();
 				mountainsback.scrollFactor.set(0.3, 0.3);
 				mountainsback.y -= 60;
-				add(mountainsback);
 				ronGrp.add(mountainsback);
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
 				mountains.screenCenter();
 				mountains.scrollFactor.set(0.3, 0.3);
 				mountains.y -= 60;
-				add(mountains);
 				ronGrp.add(mountains);
 			
 				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_hillfront', -100, 20);
 				hillfront.screenCenter();
 				hillfront.scrollFactor.set(0.4, 0.4);
 				hillfront.y -= 60;
-				add(hillfront);
 				ronGrp.add(hillfront);
 				
 				var mountainsbackbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
 				mountainsbackbl.screenCenter();
 				mountainsbackbl.scrollFactor.set(0.3, 0.3);
 				mountainsbackbl.y -= 60;
-				add(mountainsbackbl);
 				bloodshedGrp.add(mountainsbackbl);
 				
 				var mountainsbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
 				mountainsbl.screenCenter();
 				mountainsbl.scrollFactor.set(0.3, 0.3);
 				mountainsbl.y -= 60;
-				add(mountainsbl);
 				bloodshedGrp.add(mountainsbl);
 			
 				var hillfrontbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_hillfront', -100, 20);
 				hillfrontbl.screenCenter();
 				hillfrontbl.scrollFactor.set(0.4, 0.4);
 				hillfrontbl.y -= 60;
-				add(hillfrontbl);
 				bloodshedGrp.add(hillfrontbl);
 				
 				satan = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
@@ -848,12 +836,10 @@ class PlayState extends MusicBeatState
 				
 				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
 				street.screenCenter();
-				add(street);
 				ronGrp.add(street);
 				
 				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
 				streetbl.screenCenter();
-				add(streetbl);
 				bloodshedGrp.add(streetbl);
 				
 				wbg = new FlxSprite();
@@ -904,6 +890,10 @@ class PlayState extends MusicBeatState
 				add(bloodshedGrp);
 				bloodshedGrp.visible = false;
 				ronGrp.visible = true;
+				addCharacterToList("hellron-drippin", 1);
+				addCharacterToList("hellron", 1);
+				addCharacterToList("BFrun", 0);
+				addCharacterToList("GFrun", 2);
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -537, 100, 0.9, 0.9);
 				add(bg);
@@ -2818,7 +2808,6 @@ class PlayState extends MusicBeatState
 
 				var newCharacter:String = event.value2;
 				addCharacterToList(newCharacter, charType);
-
 			case 'Dadbattle Spotlight':
 				dadbattleBlack = new BGSprite(null, -800, -400, 0, 0);
 				dadbattleBlack.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
@@ -4035,6 +4024,14 @@ class PlayState extends MusicBeatState
 						}
 				}
 				reloadHealthBarColors();
+				for (i in 0...unspawnNotes.length - 1)
+				{
+					unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? boyfriend.noteskin : dad.noteskin);
+					if (isPixelStage)
+						unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
+				}
+				for (i in strumLineNotes.members)
+					i.texture.set(i.player == 1 ? dad.noteskin : boyfriend.noteskin);
 
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
@@ -5479,10 +5476,10 @@ class PlayState extends MusicBeatState
 			switch (curStep) {
 				case 128:
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					triggerEventNote('Change Character', 'dad', 'hellron');
-					triggerEventNote('Change Character', 'bf', 'BFrun');
-					triggerEventNote('Change Character', 'gf', 'GFrun');
-					triggerEventNote('Change Scroll Speed', '4', '1');
+					//triggerEventNote('Change Character', 'dad', 'hellron');
+					//triggerEventNote('Change Character', 'bf', 'BFrun');
+					//triggerEventNote('Change Character', 'gf', 'GFrun');
+					triggerEventNote('Change Scroll Speed', '2', '1');
 					witheredRa.color = 0xFF660000;
 					wastedGrp.forEachAlive(function(spr:FlxBackdrop) {
 						spr.alpha = 0;
