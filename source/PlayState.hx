@@ -5482,7 +5482,7 @@ class PlayState extends MusicBeatState
 					triggerEventNote('Change Character', 'dad', 'hellron');
 					triggerEventNote('Change Character', 'bf', 'BFrun');
 					triggerEventNote('Change Character', 'gf', 'GFrun');
-					triggerEventNote('Change Scroll Speed', '4', '1');
+					triggerEventNote('Change Scroll Speed', '1.3', '1');
 					witheredRa.color = 0xFF660000;
 					wastedGrp.forEachAlive(function(spr:FlxBackdrop) {
 						spr.alpha = 0;
