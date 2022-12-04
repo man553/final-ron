@@ -790,6 +790,7 @@ class PlayState extends MusicBeatState
 				hellbg.y += hellbg.height / 5;
 				add(hellbg);
 				hellbg.animation.play('idle instance 1');
+				hellbg.alpha = 0.1;
 				
 				firebg = new FlxSprite();
 				firebg.frames = Paths.getSparrowAtlas('bgs/escape_fire');
@@ -5509,16 +5510,18 @@ var cameraTwn:FlxTween;
 			switch (curStep) {
 				case 128:
 					FlxG.camera.flash(FlxColor.WHITE, 1);
+					hellbg.alpha = 1;
 					//triggerEventNote('Change Character', 'dad', 'hellron');
 					//triggerEventNote('Change Character', 'bf', 'BFrun');
 					//triggerEventNote('Change Character', 'gf', 'GFrun');
-					triggerEventNote('Change Scroll Speed', '2', '1');
+					triggerEventNote('Change Scroll Speed', '1.3', '1');
 					witheredRa.color = 0xFF660000;
 					wastedGrp.forEachAlive(function(spr:FlxBackdrop) {
 						spr.alpha = 0;
 					});	
 					bloodshedGrp.visible = true;
 					ronGrp.visible = false;
+					cameraSpeed = 1.5;
 				case 256:
 					for (i in 0...4)
 					{ 
@@ -5540,6 +5543,7 @@ var cameraTwn:FlxTween;
 					FlxG.camera.shake(0.03, 1);
 				case 384:
 					defaultCamZoom = 0.6;
+					cameraSpeed = 3;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -5556,13 +5560,16 @@ var cameraTwn:FlxTween;
 					wbg.alpha = 1;
 				case 512:
 					defaultCamZoom = 0.75;
+					cameraSpeed = 2.5;
 				case 576:
-					FlxTween.tween(dad, {y: dad.y + 5600}, 5.63, {ease: FlxEase.quartIn});
-					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.63, {ease: FlxEase.quartIn});
+					FlxTween.tween(dad, {y: dad.y + 5600}, 5.4, {ease: FlxEase.quartIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.4, {ease: FlxEase.quartIn});
 					defaultCamZoom = 0.85;
+					cameraSpeed = 2;
 				case 632:
 					defaultCamZoom = 1.1;
 				case 640:
+					cameraSpeed = 1.5;
 					defaultCamZoom = 0.7;
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);			
