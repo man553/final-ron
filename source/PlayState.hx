@@ -2279,7 +2279,6 @@ class PlayState extends MusicBeatState
 			var timeForStuff:Float = Conductor.crochet / 1000 * 5;
 			FlxG.sound.music.fadeOut(timeForStuff);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, timeForStuff, {ease: FlxEase.quadInOut});
-			moveCamera(true);
 			startCountdown();
 
 			dadGroup.alpha = 1;
@@ -3242,7 +3241,7 @@ class PlayState extends MusicBeatState
 			//	FlxTween.tween(camFollowPos, {x: camFollow.x, y: camFollow.y}, 0.4, {ease: FlxEase.backInOut});
 			//}
 			//else
-			camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+			camFollowPos.acceleration.set(((camFollow.x - camFollowPos.x) - (camFollowPos.velocity.x * 0.8)) / lerpVal, ((camFollow.y - camFollowPos.y) - (camFollowPos.velocity.y * 0.8)) / lerpVal);
 			
 			if(!startingSong && !endingSong && boyfriend.animation.curAnim.name.startsWith('idle'))
 			{
@@ -3664,6 +3663,29 @@ class PlayState extends MusicBeatState
 		}
 		//#end
 
+		//camera movement cuz the current one is quite fucky
+		var section = (SONG.notes[Math.floor(curStep / 16)] != null ? SONG.notes[Math.floor(curStep / 16)].mustHitSection : null);
+		if (!isCameraOnForcedPos)
+		{
+			if (section != null && section) {
+				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y);
+				camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
+				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
+				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
+			}
+			else {
+				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y);
+				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
+				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
+				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
+			}
+		}
 		setOnLuas('cameraX', camFollowPos.x);
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', cpuControlled);
@@ -4142,52 +4164,14 @@ class PlayState extends MusicBeatState
 
 		if (!SONG.notes[id].mustHitSection)
 		{
-			moveCamera(true);
 			callOnLuas('onMoveCamera', ['dad']);
 		}
 		else
 		{
-			moveCamera(false);
 			callOnLuas('onMoveCamera', ['boyfriend']);
 		}
 	}
-
-	var cameraTwn:FlxTween;
-	public function moveCamera(isDad:Bool)
-	{
-		if(isDad)
-		{
-			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-			camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
-			if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-			if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
-			if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
-			if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
-			tweenCamIn();
-		}
-		else
-		{
-			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-			camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-			camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-			if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-			if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
-			if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
-			if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
-
-			if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1)
-			{
-				cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
-					function (twn:FlxTween)
-					{
-						cameraTwn = null;
-					}
-				});
-			}
-		}
-	}
-
+var cameraTwn:FlxTween;
 	function tweenCamIn() {
 		if (Paths.formatToSongPath(SONG.song) == 'tutorial' && cameraTwn == null && FlxG.camera.zoom != 1.3) {
 			cameraTwn = FlxTween.tween(FlxG.camera, {zoom: 1.3}, (Conductor.stepCrochet * 4 / 1000), {ease: FlxEase.elasticInOut, onComplete:
