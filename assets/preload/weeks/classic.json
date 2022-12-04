@@ -1,0 +1,61 @@
+{
+	"storyName": "classic Extras",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"ron",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"ron-classic",
+			"ron-classic",
+			[
+				192,
+				160,
+				0
+			]
+		],
+		[
+			"wasted-classic",
+			"wasted-classic",
+			[
+				160,
+				128,
+				96
+			]
+		],
+		[
+			"ayo-classic",
+			"ayo-classic",
+			[
+				64,
+				192,
+				20
+			]
+		],
+		[
+			"bloodshed-classic",
+			"bloodshed-classic",
+			[
+				40,
+				0,
+				0
+			]
+		],
+		[
+			"trojan-virus-classic",
+			"trojan-virus-classic",
+			[
+				192,
+				32,
+				32
+			]
+		]
+	],
+	"weekBefore": "freeplayshit",
+	"hideStoryMode": true,
+	"weekName": "classic"
+}

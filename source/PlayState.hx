@@ -5507,6 +5507,10 @@ var cameraTwn:FlxTween;
 			iconP2.visible = true;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
+			if (curStep >= 128)
+				Estatic.alpha = (((2-health)/3)+0.2);
+			else
+				Estatic.alpha = 0;
 			switch (curStep) {
 				case 128:
 					FlxG.camera.flash(FlxColor.WHITE, 1);

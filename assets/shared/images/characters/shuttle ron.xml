@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="shuttle ron.png"><SubTexture name="shuttle ron idle0000" x="0" y="0" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron idle0001" x="604" y="0" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron idle0002" x="1208" y="0" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron right0000" x="0" y="604" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron right0001" x="604" y="604" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron up0000" x="1208" y="604" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron up0001" x="0" y="1208" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron down0000" x="604" y="1208" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron down0001" x="1208" y="1208" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron left0000" x="0" y="1812" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+<SubTexture name="shuttle ron left0001" x="604" y="1812" width="604" height="604" frameX="0" frameY="0" frameWidth="604" frameHeight="604" />
+</TextureAtlas>

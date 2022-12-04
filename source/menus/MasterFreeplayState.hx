@@ -27,7 +27,9 @@ class MasterFreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var image:FlxSprite;
 	var extraImage:FlxSprite;
+	var classicImage:FlxSprite;
 	var curSelected:Int = 0;
+	var cooltext:FlxText;
 
 	override function create()
 	{
@@ -48,20 +50,49 @@ class MasterFreeplayState extends MusicBeatState
 		image.antialiasing = ClientPrefs.globalAntialiasing;
 		add(image);
 
+		classicImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/classic'), false, 1, 1);
+		classicImage.scrollFactor.set();
+		classicImage.x = 1000;
+		classicImage.y = 100;
+		classicImage.scale.y = 0.50;
+		classicImage.scale.x = 0.50;
+		classicImage.ID = 1;
+		classicImage.antialiasing = ClientPrefs.globalAntialiasing;
+		add(classicImage);
+		
 		extraImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/extras'), false, 1, 1);
 		extraImage.scrollFactor.set();
-		extraImage.x = 1000;
-		extraImage.y = 0;
+		extraImage.x = 2000;
+		extraImage.y = 200;
 		extraImage.scale.y = 0.50;
 		extraImage.scale.x = 0.50;
-		extraImage.ID = 1;
+		extraImage.ID = 2;
 		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(extraImage);
 		changeSelection(0);
+		
+		cooltext = new FlxText(0, 5, 0, "", 96);
+		cooltext.setFormat(Paths.font("vcr.ttf"), 96, FlxColor.WHITE, CENTER);
+		cooltext.scrollFactor.set(0,0);
+		cooltext.screenCenter(XY);
+		add(cooltext);
+		cooltext.y += 200;
 	}
 
 	override function update(elapsed:Float)
 	{
+	
+		switch(curSelected) {
+			case 0:
+				cooltext.text = "MAIN";
+				FreeplayState.mode = 'main';
+			case 1:
+				cooltext.text = "CLASSIC";
+				FreeplayState.mode = 'classic';
+			case 2:
+				cooltext.text = "EXTRAS";
+				FreeplayState.mode = 'extras';
+		}
 		if(controls.UI_RIGHT_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -73,19 +104,12 @@ class MasterFreeplayState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 			changeSelection(-1);
 		}
-
+		
 		if(controls.ACCEPT)
 		{
 			FlxG.sound.play(Paths.sound('confirmMenu'));
 			
-			switch(curSelected) {
-				case 0:
-					FreeplayState.mode = 'main';
-					MusicBeatState.switchState(new menus.FreeplayState());
-				case 1:
-					FreeplayState.mode = 'extras';
-					MusicBeatState.switchState(new menus.FreeplayState());
-			}
+			MusicBeatState.switchState(new menus.FreeplayState());
 		}
 
 		if(controls.BACK)
@@ -98,13 +122,15 @@ class MasterFreeplayState extends MusicBeatState
 	{
 		curSelected += p;
 		if (curSelected < 0)
-			curSelected = 1;
-		if (curSelected >= 2)
+			curSelected = 2;
+		if (curSelected >= 3)
 			curSelected = 0;
 		FlxTween.globalManager.cancelTweensOf(image);
+		FlxTween.globalManager.cancelTweensOf(classicImage);
 		FlxTween.globalManager.cancelTweensOf(extraImage);
 	
-		FlxTween.tween(image, {x:  1000*(image.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
-		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(image, {x:  1000*(image.ID - curSelected), y: 100*(image.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelected), y: 100*(extraImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(classicImage, {x: 1000*(classicImage.ID - curSelected), y: 100*(classicImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
 	}
 }
