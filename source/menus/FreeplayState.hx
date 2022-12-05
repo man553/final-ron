@@ -37,6 +37,7 @@ class FreeplayState extends MusicBeatState
 	private static var lastDifficultyName:String = '';
 
 	var scoreBG:FlxSprite;
+	var portrait:FlxSprite;
 	var scoreText:FlxText;
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
@@ -115,6 +116,13 @@ class FreeplayState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
+		
+		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.antialiasing = ClientPrefs.globalAntialiasing;
+		add(portrait);
+		portrait.screenCenter(XY);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -542,6 +550,11 @@ class FreeplayState extends MusicBeatState
 		{
 			curDifficulty = newPos;
 		}
+		
+		portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.screenCenter(XY);
 	}
 
 	private function positionHighscore() {
