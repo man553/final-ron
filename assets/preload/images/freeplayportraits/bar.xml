@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bar.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bar0000" x="0" y="0" width="379" height="785"/>
+	<SubTexture name="bar0001" x="0" y="0" width="379" height="785"/>
+	<SubTexture name="bar0002" x="379" y="0" width="379" height="785"/>
+	<SubTexture name="bar0003" x="379" y="0" width="379" height="785"/>
+	<SubTexture name="bar0004" x="0" y="785" width="379" height="785"/>
+	<SubTexture name="bar0005" x="0" y="785" width="379" height="785"/>
+	<SubTexture name="bar0006" x="379" y="785" width="379" height="785"/>
+	<SubTexture name="bar0007" x="379" y="785" width="379" height="785"/>
+</TextureAtlas>

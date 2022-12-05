@@ -16,6 +16,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
@@ -123,6 +124,14 @@ class FreeplayState extends MusicBeatState
 		portrait.antialiasing = ClientPrefs.globalAntialiasing;
 		add(portrait);
 		portrait.screenCenter(XY);
+		
+		var bar:FlxSprite = new FlxSprite();
+		bar.frames = Paths.getSparrowAtlas('freeplayportraits/bar');
+		bar.animation.addByPrefix('bar', 'bar', 24, true);
+		bar.animation.play('bar');
+		bar.screenCenter();
+		add(bar);
+		bar.x += 30;
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -221,6 +230,13 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
+		
+		var chromeOffset = (ClientPrefs.rgbintense/350);
+		addShader(FlxG.camera, "chromatic aberration");
+		addShader(FlxG.camera, "fake CRT");
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1/2];
 		super.create();
 	}
 
@@ -565,7 +581,17 @@ class FreeplayState extends MusicBeatState
 		diffText.x = Std.int(scoreBG.x + (scoreBG.width / 2));
 		diffText.x -= diffText.width / 2;
 	}
-
+	
+	override function beatHit()
+	{
+		super.beatHit();
+		if (curBeat % 2 == 1)
+			FlxG.camera.zoom = 1.01;
+		else
+			FlxG.camera.zoom = 0.99;
+					
+		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.quadInOut});
+	}
 }
 
 class SongMetadata
