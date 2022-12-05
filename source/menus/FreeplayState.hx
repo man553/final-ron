@@ -37,6 +37,7 @@ class FreeplayState extends MusicBeatState
 	private static var lastDifficultyName:String = '';
 
 	var scoreBG:FlxSprite;
+	var portrait:FlxSprite;
 	var scoreText:FlxText;
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
@@ -75,6 +76,7 @@ class FreeplayState extends MusicBeatState
 
 			if (mode == 'main' && WeekData.weeksList[i] != 'mainweek' && WeekData.weeksList[i] != 'week2') continue;
 			else if (mode == 'extras' && WeekData.weeksList[i] != 'freeplayshit'  && WeekData.weeksList[i] != 'blr') continue;
+			else if (mode == 'classic' && WeekData.weeksList[i] != 'classic') continue;
 
 			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);
 			var leSongs:Array<String> = [];
@@ -114,6 +116,13 @@ class FreeplayState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
+		
+		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.antialiasing = ClientPrefs.globalAntialiasing;
+		add(portrait);
+		portrait.screenCenter(XY);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -541,6 +550,11 @@ class FreeplayState extends MusicBeatState
 		{
 			curDifficulty = newPos;
 		}
+		
+		portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.screenCenter(XY);
 	}
 
 	private function positionHighscore() {

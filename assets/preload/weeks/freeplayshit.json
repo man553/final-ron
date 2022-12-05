@@ -37,6 +37,15 @@
 			]
 		],
 		[
+			"slammed",
+			"bambi",
+			[
+				0,
+				127,
+				64
+			]
+		],
+		[
 			"pretty-wacky",
 			"douyhe",
 			[
@@ -64,8 +73,26 @@
 			]
 		],
 		[
+			"awesome-ron",
+			"ron",
+			[
+				255,
+				255,
+				0
+			]
+		],
+		[
+			"ronnin-n-bobbin",
+			"baller-ron",
+			[
+				0,
+				0,
+				0
+			]
+		],
+		[
 			"bleeding",
-			"hellron",
+			"dripron",
 			[
 				0,
 				0,
