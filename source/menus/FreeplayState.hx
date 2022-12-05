@@ -10,6 +10,7 @@ import editors.ChartingState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -18,9 +19,12 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
 import openfl.utils.Assets as OpenFlAssets;
+import flixel.addons.display.FlxBackdrop;
 import important.WeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
@@ -45,18 +49,19 @@ class FreeplayState extends MusicBeatState
 	var lerpRating:Float = 0;
 	var intendedScore:Int = 0;
 	var intendedRating:Float = 0;
+	var time:Float = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	var bg:FlxSprite;
+	var bg:FlxBackdrop;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 
 	public static var mode:String = 'main';
-
+	var camBg:FlxCamera;
 
 	override function create()
 	{
@@ -112,12 +117,17 @@ class FreeplayState extends MusicBeatState
 				addSong(songArray[0], 0, songArray[1], Std.parseInt(songArray[2]));
 			}
 		}*/
-
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(bg);
-		bg.screenCenter();
 		
+		camBg = new FlxCamera();
+		camBg.bgColor.alpha = 0;
+		FlxG.cameras.add(camBg);
+
+		bg = new FlxBackdrop(Paths.image('menuDesat'), XY, 0, 0);
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		bg.screenCenter(XY);
+		add(bg);
+		bg.cameras = [camBg];
+
 		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
 		portrait.scale.set(0.5,0.5);
 		portrait.updateHitbox();
@@ -132,6 +142,25 @@ class FreeplayState extends MusicBeatState
 		bar.screenCenter();
 		add(bar);
 		bar.x += 30;
+		
+		var coolemitter:FlxEmitter = new FlxEmitter(9999, 0, 300);
+		for (i in 0...150)
+		{
+			var p = new FlxParticle();
+			var p2 = new FlxParticle();
+			p.makeGraphic(24,24,FlxColor.BLACK);
+			p2.makeGraphic(48,48,FlxColor.BLACK);
+			p.alpha = 0.5;
+			p2.alpha = 0.5;
+					
+			coolemitter.add(p);
+			coolemitter.add(p2);
+		}
+		coolemitter.width = FlxG.width*1.5;
+		coolemitter.launchMode = SQUARE;
+		coolemitter.velocity.set(-10, -240, 10, -320);
+		coolemitter.lifespan.set(5);
+		add(coolemitter);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -234,6 +263,11 @@ class FreeplayState extends MusicBeatState
 		var chromeOffset = (ClientPrefs.rgbintense/350);
 		addShader(FlxG.camera, "chromatic aberration");
 		addShader(FlxG.camera, "fake CRT");
+		addShader(FlxG.camera, "motion blur");
+		//addShader(camBg, "wiggle");
+		//Shaders["wiggle"].shader.data.length.value = [35];
+		//Shaders["wiggle"].shader.data.intensityReversed.value = [500];
+		//Shaders["wiggle"].shader.data.speed.value = [15];
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1/2];
@@ -282,6 +316,11 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
+		time += elapsed;
+		//Shaders["wiggle"].shader.data.iTime.value = [time];
+
+		bg.x += 0.5;
+		bg.y += 0.2;
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
 
@@ -584,13 +623,13 @@ class FreeplayState extends MusicBeatState
 	
 	override function beatHit()
 	{
-		super.beatHit();
 		if (curBeat % 2 == 1)
 			FlxG.camera.zoom = 1.01;
 		else
 			FlxG.camera.zoom = 0.99;
 					
 		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.quadInOut});
+		super.beatHit();
 	}
 }
 
