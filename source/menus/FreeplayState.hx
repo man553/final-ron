@@ -284,6 +284,7 @@ class FreeplayState extends MusicBeatState
 		var chromeOffset = (ClientPrefs.rgbintense/350);
 		addShader(camWhat, "chromatic aberration");
 		addShader(camWhat, "fake CRT");
+		addShader(camText, "fisheye");
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
