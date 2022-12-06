@@ -652,7 +652,7 @@ class FreeplayState extends MusicBeatState
 			curDifficulty = newPos;
 		}
 
-		if (time <= 1)
+		if (time >= 1)
 		{
 			FlxTween.globalManager.completeTweensOf(portrait);
 			portrait.screenCenter(Y);
