@@ -74,7 +74,7 @@
 		],
 		[
 			"awesome-ron",
-			"ron",
+			"awesome-ron",
 			[
 				255,
 				255,
@@ -82,12 +82,21 @@
 			]
 		],
 		[
-			"ronnin-n-bobbin",
+			"oh-my-god-hes-ballin",
 			"baller-ron",
 			[
-				0,
+				255,
 				0,
 				0
+			]
+		],
+		[
+			"fardventure",
+			"sonic",
+			[
+				0,
+				32,
+				128
 			]
 		],
 		[

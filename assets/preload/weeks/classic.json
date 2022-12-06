@@ -32,8 +32,8 @@
 			"ronmad-classic",
 			[
 				64,
-				192,
-				20
+				120,
+				192
 			]
 		],
 		[
@@ -47,11 +47,11 @@
 		],
 		[
 			"trojan-virus-classic",
-			"ronpower-classic",
+			"infectedron-classic",
 			[
 				192,
 				32,
-				32
+				120
 			]
 		]
 	],
