@@ -125,13 +125,23 @@ class FreeplayState extends MusicBeatState
 		}*/
 
 		bg = new FlxSprite();
-		bg.frames = Paths.getSparrowAtlas('freeplaymenu/bgAnimate');
-		bg.animation.addByPrefix('bgAnimate animate', 'bgAnimate animate', 24, true);
-		bg.animation.play('bgAnimate animate');
+		bg.frames = Paths.getSparrowAtlas('freeplaymenu/mainbgAnimate');
+		if (FreeplayState.mode.toLowerCase() == 'classic')
+			bg.frames = Paths.getSparrowAtlas('freeplaymenu/classicbgAnimate');
+		bg.animation.addByPrefix('animate', 'animate', 24, true);
+		bg.animation.play('animate');
 		bg.scale.set(2,2);
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
+
+		var darkportrait:FlxSprite = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
+		darkportrait.scale.set(0.5,0.5);
+		darkportrait.updateHitbox();
+		darkportrait.antialiasing = ClientPrefs.globalAntialiasing;
+		add(darkportrait);
+		darkportrait.screenCenter(XY);
+		darkportrait.color = FlxColor.BLACK;
 
 		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
 		portrait.scale.set(0.5,0.5);
@@ -641,16 +651,21 @@ class FreeplayState extends MusicBeatState
 		{
 			curDifficulty = newPos;
 		}
-		FlxTween.globalManager.completeTweensOf(portrait);
-		FlxTween.tween(portrait, {y: portrait.y + 25}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
-			portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
-			portrait.scale.set(0.5,0.5);
-			portrait.updateHitbox();
-			portrait.screenCenter(XY);
-			var mfwY = portrait.y;
-			portrait.y -= 10;
-			FlxTween.tween(portrait, {y: mfwY}, 0.4, {ease: FlxEase.elasticOut});
-		}});
+
+		if (time <= 1)
+		{
+			FlxTween.globalManager.completeTweensOf(portrait);
+			portrait.screenCenter(Y);
+
+			FlxTween.tween(portrait, {y: portrait.y + 25}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
+				updateportrait();
+				var mfwY = portrait.y;
+				portrait.y -= 10;
+				FlxTween.tween(portrait, {y: mfwY}, 0.4, {ease: FlxEase.elasticOut});
+			}});
+		}
+		else
+			updateportrait();
 	}
 
 	private function positionHighscore() {
@@ -662,12 +677,19 @@ class FreeplayState extends MusicBeatState
 		diffText.x -= diffText.width / 2;
 	}
 	
+	private function updateportrait() {
+		portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.screenCenter(XY);
+	}
+	
 	override function beatHit()
 	{
 		if (curBeat % 2 == 1)
-			FlxG.camera.zoom = 1.01;
+			FlxG.camera.zoom = 1.05;
 		else
-			FlxG.camera.zoom = 0.99;
+			FlxG.camera.zoom = 0.95;
 					
 		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.quadInOut});
 		super.beatHit();
