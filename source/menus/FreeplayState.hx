@@ -641,7 +641,7 @@ class FreeplayState extends MusicBeatState
 		{
 			curDifficulty = newPos;
 		}
-		FlxTween.globalManager.cancelTweensOf(portrait);
+		FlxTween.globalManager.completeTweensOf(portrait);
 		FlxTween.tween(portrait, {y: portrait.y + 25}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
 			portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
 			portrait.scale.set(0.5,0.5);
