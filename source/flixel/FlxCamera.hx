@@ -58,7 +58,6 @@ class FlxCamera extends FlxBasic
 	 * or`FlxG.cameras.setDefaultDrawTarget` .
 	 * @see FlxG.cameras.setDefaultDrawTarget
 	 */
-	@:deprecated("`FlxCamera.defaultCameras` is deprecated, use `FlxG.cameras.setDefaultDrawTarget` instead")
 	public static var defaultCameras(get, set):Array<FlxCamera>;
 	
 	/**

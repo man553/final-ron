@@ -16,6 +16,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import flixel.FlxCamera;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.effects.particles.FlxEmitter;
@@ -57,6 +58,8 @@ class FreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+	var camWhat:FlxCamera;
+	var camText:FlxCamera;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
 
 	public static var mode:String = 'main';
@@ -74,7 +77,12 @@ class FreeplayState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-
+		camText = new FlxCamera();
+		camText.bgColor = 0;
+		camWhat = new FlxCamera();
+		FlxG.cameras.reset(camWhat);
+		FlxG.cameras.add(camText);
+		FlxCamera.defaultCameras = [camWhat];
 		for (i in 0...WeekData.weeksList.length) {
 			if(weekIsLocked(WeekData.weeksList[i])) continue;
 
@@ -181,6 +189,8 @@ class FreeplayState extends MusicBeatState
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
+			songText.ID = i;
+			songText.cameras = [camText];
 			grpSongs.add(songText);
 
 			if (songText.width > 980)
@@ -270,10 +280,11 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("w95.otf"), size, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
-				
-		addShader(FlxG.camera, "chromatic aberration");
-		addShader(FlxG.camera, "fake CRT");
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+		
+		var chromeOffset = (ClientPrefs.rgbintense/350);
+		addShader(camWhat, "chromatic aberration");
+		addShader(camWhat, "fake CRT");
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		
@@ -485,6 +496,8 @@ class FreeplayState extends MusicBeatState
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 		super.update(elapsed);
+		for (item in grpSongs.members)
+			item.x = FlxMath.lerp(item.x, 185 + (165 * (item.ID - curSelected)), 5 * elapsed);
 	}
 
 	public static function destroyFreeplayVocals() {
