@@ -10,7 +10,6 @@ import editors.ChartingState;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxCamera;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -24,7 +23,6 @@ import flixel.effects.particles.FlxParticle;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
 import openfl.utils.Assets as OpenFlAssets;
-import flixel.addons.display.FlxBackdrop;
 import important.WeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
@@ -56,12 +54,12 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	var bg:FlxBackdrop;
+	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+	var chromeOffset = (ClientPrefs.rgbintense/350);
 
 	public static var mode:String = 'main';
-	var camBg:FlxCamera;
 
 	override function create()
 	{
@@ -117,16 +115,15 @@ class FreeplayState extends MusicBeatState
 				addSong(songArray[0], 0, songArray[1], Std.parseInt(songArray[2]));
 			}
 		}*/
-		
-		camBg = new FlxCamera();
-		camBg.bgColor.alpha = 0;
-		FlxG.cameras.add(camBg);
 
-		bg = new FlxBackdrop(Paths.image('menuDesat'), XY, 0, 0);
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		bg.screenCenter(XY);
+		bg = new FlxSprite();
+		bg.frames = Paths.getSparrowAtlas('freeplaymenu/bgAnimate');
+		bg.animation.addByPrefix('bgAnimate animate', 'bgAnimate animate', 24, true);
+		bg.animation.play('bgAnimate animate');
+		bg.scale.set(2,2);
+		bg.updateHitbox();
+		bg.screenCenter();
 		add(bg);
-		bg.cameras = [camBg];
 
 		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
 		portrait.scale.set(0.5,0.5);
@@ -143,24 +140,38 @@ class FreeplayState extends MusicBeatState
 		add(bar);
 		bar.x += 30;
 		
-		var coolemitter:FlxEmitter = new FlxEmitter(9999, 0, 300);
+		var coolemitter:FlxEmitter = new FlxEmitter();
+		coolemitter.width = FlxG.width*1.5;
+		coolemitter.launchMode = SQUARE;
+		coolemitter.velocity.set(0, -5, 0, -10);
+		coolemitter.angularVelocity.set(-10, 10);
+		coolemitter.lifespan.set(5);
+		coolemitter.y = FlxG.height;
+		
+		var coolzemitter:FlxEmitter = new FlxEmitter();
+		coolzemitter.width = FlxG.width*1.5;
+		coolzemitter.launchMode = SQUARE;
+		coolzemitter.velocity.set(0, 5, 0, 10);
+		coolzemitter.angularVelocity.set(-10, 10);
+		coolzemitter.lifespan.set(5);
+		
 		for (i in 0...150)
 		{
 			var p = new FlxParticle();
 			var p2 = new FlxParticle();
-			p.makeGraphic(24,24,FlxColor.BLACK);
-			p2.makeGraphic(48,48,FlxColor.BLACK);
-			p.alpha = 0.5;
-			p2.alpha = 0.5;
-					
+			p.makeGraphic(6,6,FlxColor.BLACK);
+			p2.makeGraphic(12,12,FlxColor.BLACK);
+
 			coolemitter.add(p);
-			coolemitter.add(p2);
+			coolemitter.add(p2);					
+			coolzemitter.add(p);
+			coolzemitter.add(p2);
 		}
-		coolemitter.width = FlxG.width*1.5;
-		coolemitter.launchMode = SQUARE;
-		coolemitter.velocity.set(-10, -240, 10, -320);
-		coolemitter.lifespan.set(5);
+
+		add(coolzemitter);
+		coolzemitter.start(false, 0.05);
 		add(coolemitter);
+		coolemitter.start(false, 0.05);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -259,18 +270,16 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("w95.otf"), size, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
-		
-		var chromeOffset = (ClientPrefs.rgbintense/350);
+				
 		addShader(FlxG.camera, "chromatic aberration");
 		addShader(FlxG.camera, "fake CRT");
-		addShader(FlxG.camera, "motion blur");
-		//addShader(camBg, "wiggle");
-		//Shaders["wiggle"].shader.data.length.value = [35];
-		//Shaders["wiggle"].shader.data.intensityReversed.value = [500];
-		//Shaders["wiggle"].shader.data.speed.value = [15];
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1/2];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+		
+		var modeText = new FlxText(10, 10, 0, FreeplayState.mode.toUpperCase(), 48);
+		modeText.setFormat(Paths.font("w95.otf"), 48, FlxColor.WHITE, LEFT);
+		add(modeText);
 		super.create();
 	}
 
@@ -315,12 +324,17 @@ class FreeplayState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
+		
+		for (song in grpSongs.members)
+		{
+			for (i in 0...songs.length)
+				song.y += (Math.sin(elapsed/100));
+		}
 
 		time += elapsed;
-		//Shaders["wiggle"].shader.data.iTime.value = [time];
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time/10)];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time/10)];
 
-		bg.x += 0.5;
-		bg.y += 0.2;
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
 
@@ -411,17 +425,18 @@ class FreeplayState extends MusicBeatState
 					
 				var poop:String = Highscore.formatSong(songName, curDifficulty);
 				PlayState.SONG = Song.loadFromJson(poop, songName);
-				if (PlayState.SONG.needsVoices)
-					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-				else
-					vocals = new FlxSound();
+				// i only want the instrumental to play
+				//if (PlayState.SONG.needsVoices)
+				//	vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+				//else
+				//	vocals = new FlxSound();
 
-				FlxG.sound.list.add(vocals);
+				//FlxG.sound.list.add(vocals);
 				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
-				vocals.play();
-				vocals.persist = true;
-				vocals.looped = true;
-				vocals.volume = 0.7;
+				//vocals.play();
+				//vocals.persist = true;
+				//vocals.looped = true;
+				//vocals.volume = 0.7;
 				instPlaying = curSelected;
 				#end
 			}
