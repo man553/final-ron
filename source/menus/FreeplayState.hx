@@ -635,11 +635,16 @@ class FreeplayState extends MusicBeatState
 		{
 			curDifficulty = newPos;
 		}
-		
-		portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
-		portrait.scale.set(0.5,0.5);
-		portrait.updateHitbox();
-		portrait.screenCenter(XY);
+		FlxTween.globalManager.cancelTweensOf(portrait);
+		FlxTween.tween(portrait, {y: portrait.y + 25}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
+			portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()));
+			portrait.scale.set(0.5,0.5);
+			portrait.updateHitbox();
+			portrait.screenCenter(XY);
+			var mfwY = portrait.y;
+			portrait.y -= 10;
+			FlxTween.tween(portrait, {y: mfwY}, 0.4, {ease: FlxEase.elasticOut});
+		}});
 	}
 
 	private function positionHighscore() {
