@@ -341,12 +341,12 @@ class FreeplayState extends MusicBeatState
 		for (song in grpSongs.members)
 		{
 			for (i in 0...songs.length)
-				song.y += (Math.sin(elapsed/100));
+				song.y += (Math.sin(i+time)/2);
 		}
 
 		time += elapsed;
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time/10)];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time/10)];
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
 		lerpRating = FlxMath.lerp(lerpRating, intendedRating, CoolUtil.boundTo(elapsed * 12, 0, 1));
@@ -500,6 +500,12 @@ class FreeplayState extends MusicBeatState
 		super.update(elapsed);
 		for (item in grpSongs.members)
 			item.x = FlxMath.lerp(item.x, 185 + (165 * (item.ID - curSelected)), 5 * elapsed);
+			
+		switch(songs[curSelected].songName.toLowerCase())
+		{
+			case 'bleeding':
+				FlxG.camera.shake(0.1,0.01);
+		}
 	}
 
 	public static function destroyFreeplayVocals() {
