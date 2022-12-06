@@ -1,5 +1,6 @@
 package gameassets;
 
+import flixel.math.FlxPoint;
 import flixel.FlxSprite;
 import openfl.utils.Assets as OpenFlAssets;
 
@@ -8,6 +9,7 @@ using StringTools;
 class HealthIcon extends FlxSprite
 {
 	public var sprTracker:FlxSprite;
+	public var trackerOffset:FlxPoint = new FlxPoint();
 	private var isOldIcon:Bool = false;
 	private var isPlayer:Bool = false;
 	private var char:String = '';
@@ -26,7 +28,7 @@ class HealthIcon extends FlxSprite
 		super.update(elapsed);
 
 		if (sprTracker != null)
-			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
+			setPosition(sprTracker.x + sprTracker.width + 10 + trackerOffset.x, sprTracker.y - 30 + trackerOffset.y);
 	}
 
 	public function swapOldIcon() {
