@@ -1031,13 +1031,14 @@ class PlayState extends MusicBeatState
 				}
 			case 'blr': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.scale.set(1.75, 1.75);
+				skyBLR.scale.set(1, 1);
 				skyBLR.updateHitbox();
-				skyBLR.x += 0.0000001;
+				skyBLR.x = -500;
+				skyBLR.y = 150;
 				add(skyBLR);
 
-				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600.000401, -100);
-				groundBLR.scale.set(1.2, 1.2);
+				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
+				groundBLR.scale.set(1, 1);
 				groundBLR.updateHitbox();
 				add(groundBLR);
 			}
@@ -5703,6 +5704,20 @@ class PlayState extends MusicBeatState
 				dad.playAnim('um');
 			else if (curStep >= 400 && curStep < 448)
 				dad.playAnim('err');
+		}
+
+		if (curSong.toLowerCase() == 'bloodshed-legacy-redux')
+		{
+				switch(curStep){
+					case 228:
+						FlxTween.tween(skyBLR, {angle : 360}, 0.5, {type: LOOPING});
+					case 544:
+						FlxTween.cancelTweensOf(skyBLR);
+					case 800:
+						FlxTween.tween(skyBLR, {angle : 360}, 0.5, {type: LOOPING});
+					case 1312:
+						FlxTween.cancelTweensOf(skyBLR);
+				}
 		}
 
 		if (curSong == 'Trojan-Virus')
