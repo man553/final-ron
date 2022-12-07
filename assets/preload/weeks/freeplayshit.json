@@ -28,6 +28,15 @@
 			]
 		],
 		[
+			"trouble",
+			"ron-classic",
+			[
+				32,
+				32,
+				0
+			]
+		],
+		[
 			"holy-shit-dave-fnf",
 			"dave",
 			[
@@ -64,6 +73,15 @@
 			]
 		],
 		[
+			"rong-aisle",
+			"ron-dvd",
+			[
+				0,
+				255,
+				64
+			]
+		],
+		[
 			"double-trouble",
 			"onslaughthell",
 			[
@@ -83,7 +101,7 @@
 		],
 		[
 			"oh-my-god-hes-ballin",
-			"baller-ron",
+			"ballerorina",
 			[
 				255,
 				0,
@@ -97,15 +115,6 @@
 				0,
 				32,
 				128
-			]
-		],
-		[
-			"bleeding",
-			"dripron",
-			[
-				0,
-				0,
-				0
 			]
 		]
 	],
