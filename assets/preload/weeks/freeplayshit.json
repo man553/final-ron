@@ -1,5 +1,6 @@
 {
 	"storyName": "Freeplay Extras",
+	"difficulties": "Hard",
 	"hideFreeplay": false,
 	"weekBackground": "storyWeek1",
 	"startUnlocked": true,
