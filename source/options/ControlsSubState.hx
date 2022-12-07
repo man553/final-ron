@@ -1,7 +1,7 @@
 package options;
 
 #if desktop
-import Discord.DiscordClient;
+import important.Discord.DiscordClient;
 #end
 import flash.text.TextField;
 import flixel.FlxG;
@@ -23,7 +23,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
-import Controls;
+import important.Controls;
 
 using StringTools;
 
@@ -63,8 +63,8 @@ class ControlsSubState extends MusicBeatSubstate {
 	];
 
 	private var grpOptions:FlxTypedGroup<Alphabet>;
-	private var grpInputs:Array<AttachedText> = [];
-	private var grpInputsAlt:Array<AttachedText> = [];
+	private var grpInputs:Array<gameassets.AttachedText> = [];
+	private var grpInputsAlt:Array<gameassets.AttachedText> = [];
 	var rebindingKey:Bool = false;
 	var nextAccept:Int = 5;
 
@@ -274,13 +274,13 @@ class ControlsSubState extends MusicBeatSubstate {
 
 	private function addBindTexts(optionText:Alphabet, num:Int) {
 		var keys:Array<Dynamic> = ClientPrefs.keyBinds.get(optionShit[num][1]);
-		var text1 = new AttachedText(InputFormatter.getKeyName(keys[0]), 400, -55);
+		var text1 = new gameassets.AttachedText(misc.InputFormatter.getKeyName(keys[0]), 400, -55);
 		text1.setPosition(optionText.x + 400, optionText.y - 55);
 		text1.sprTracker = optionText;
 		grpInputs.push(text1);
 		add(text1);
 
-		var text2 = new AttachedText(InputFormatter.getKeyName(keys[1]), 650, -55);
+		var text2 = new gameassets.AttachedText(misc.InputFormatter.getKeyName(keys[1]), 650, -55);
 		text2.setPosition(optionText.x + 650, optionText.y - 55);
 		text2.sprTracker = optionText;
 		grpInputsAlt.push(text2);
@@ -289,13 +289,13 @@ class ControlsSubState extends MusicBeatSubstate {
 
 	function reloadKeys() {
 		while(grpInputs.length > 0) {
-			var item:AttachedText = grpInputs[0];
+			var item:gameassets.AttachedText = grpInputs[0];
 			item.kill();
 			grpInputs.remove(item);
 			item.destroy();
 		}
 		while(grpInputsAlt.length > 0) {
-			var item:AttachedText = grpInputsAlt[0];
+			var item:gameassets.AttachedText = grpInputsAlt[0];
 			item.kill();
 			grpInputsAlt.remove(item);
 			item.destroy();

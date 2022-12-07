@@ -8,6 +8,7 @@ wiqduhdwiefhrieuhierfhufreiworfhewufrhewiufrehirfeuhiooerfhufrhiehiofrewoihufrei
 VS Ron V2.5 is the latest edition of VS Ron which adds in epic cool stuff!!!1!!!!1
 
 ## What's New?
+- New sex update
 - New Weeks, which includes Cooking With Ron, Bijuu Mike, and Dave and Bambi
 - Better Songs, and New Songs
 - Enhanced Visuals

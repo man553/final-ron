@@ -2,7 +2,6 @@
 	"storyName": "Freeplay Extras",
 	"hideFreeplay": false,
 	"weekBackground": "storyWeek1",
-	"weekBefore": "tutorial",
 	"startUnlocked": true,
 	"weekCharacters": [
 		"ron",
@@ -38,21 +37,21 @@
 			]
 		],
 		[
+			"slammed",
+			"bambi",
+			[
+				0,
+				127,
+				64
+			]
+		],
+		[
 			"pretty-wacky",
 			"douyhe",
 			[
 				255,
 				255,
 				255
-			]
-		],
-		[
-			"withered-tweaked",
-			"hellron",
-			[
-				0,
-				0,
-				77
 			]
 		],
 		[
@@ -74,8 +73,35 @@
 			]
 		],
 		[
+			"awesome-ron",
+			"awesome-ron",
+			[
+				255,
+				255,
+				0
+			]
+		],
+		[
+			"oh-my-god-hes-ballin",
+			"baller-ron",
+			[
+				255,
+				0,
+				0
+			]
+		],
+		[
+			"fardventure",
+			"sonic",
+			[
+				0,
+				32,
+				128
+			]
+		],
+		[
 			"bleeding",
-			"hellron",
+			"dripron",
 			[
 				0,
 				0,

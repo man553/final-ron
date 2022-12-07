@@ -1,7 +1,9 @@
 package editors;
-
-import Section.SwagSection;
-import Song.SwagSong;
+import gameassets.Note;
+import gameassets.StrumNote;
+import gameassets.NoteSplash;
+import important.Section.SwagSection;
+import important.Song.SwagSong;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
@@ -18,7 +20,7 @@ import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
-import FunkinLua;
+import important.FunkinLua;
 
 using StringTools;
 
@@ -27,13 +29,13 @@ class EditorPlayState extends MusicBeatState
 	// Yes, this is mostly a copy of PlayState, it's kinda dumb to make a direct copy of it but... ehhh
 	private var strumLine:FlxSprite;
 	private var comboGroup:FlxTypedGroup<FlxSprite>;
-	public var strumLineNotes:FlxTypedGroup<StrumNote>;
-	public var opponentStrums:FlxTypedGroup<StrumNote>;
-	public var playerStrums:FlxTypedGroup<StrumNote>;
-	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
+	public var strumLineNotes:FlxTypedGroup<gameassets.StrumNote>;
+	public var opponentStrums:FlxTypedGroup<gameassets.StrumNote>;
+	public var playerStrums:FlxTypedGroup<gameassets.StrumNote>;
+	public var grpNoteSplashes:FlxTypedGroup<gameassets.NoteSplash>;
 
-	public var notes:FlxTypedGroup<Note>;
-	public var unspawnNotes:Array<Note> = [];
+	public var notes:FlxTypedGroup<gameassets.Note>;
+	public var unspawnNotes:Array<gameassets.Note> = [];
 
 	var generatedMusic:Bool = false;
 	var vocals:FlxSound;
@@ -85,9 +87,9 @@ class EditorPlayState extends MusicBeatState
 		comboGroup = new FlxTypedGroup<FlxSprite>();
 		add(comboGroup);
 
-		strumLineNotes = new FlxTypedGroup<StrumNote>();
-		opponentStrums = new FlxTypedGroup<StrumNote>();
-		playerStrums = new FlxTypedGroup<StrumNote>();
+		strumLineNotes = new FlxTypedGroup<gameassets.StrumNote>();
+		opponentStrums = new FlxTypedGroup<gameassets.StrumNote>();
+		playerStrums = new FlxTypedGroup<gameassets.StrumNote>();
 		add(strumLineNotes);
 
 		generateStaticArrows(0);
@@ -98,10 +100,10 @@ class EditorPlayState extends MusicBeatState
 			});
 		}*/
 		
-		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+		grpNoteSplashes = new FlxTypedGroup<gameassets.NoteSplash>();
 		add(grpNoteSplashes);
 
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
+		var splash:gameassets.NoteSplash = new gameassets.NoteSplash(100, 100, 0);
 		grpNoteSplashes.add(splash);
 		splash.alpha = 0.0;
 		
@@ -195,7 +197,7 @@ class EditorPlayState extends MusicBeatState
 		var songData = PlayState.SONG;
 		Conductor.changeBPM(songData.bpm);
 		
-		notes = new FlxTypedGroup<Note>();
+		notes = new FlxTypedGroup<gameassets.Note>();
 		add(notes);
 		
 		var noteData:Array<SwagSection>;
@@ -305,13 +307,13 @@ class EditorPlayState extends MusicBeatState
 		vocals.play();
 	}
 
-	function sortByShit(Obj1:Note, Obj2:Note):Int
+	function sortByShit(Obj1:gameassets.Note, Obj2:gameassets.Note):Int
 	{
 		return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 	}
 
 	private function endSong() {
-		LoadingState.loadAndSwitchState(new editors.ChartingState());
+		menus.LoadingState.loadAndSwitchState(new editors.ChartingState());
 	}
 
 	override function update(elapsed:Float) {
@@ -319,7 +321,7 @@ class EditorPlayState extends MusicBeatState
 		{
 			FlxG.sound.music.pause();
 			vocals.pause();
-			LoadingState.loadAndSwitchState(new editors.ChartingState());
+			menus.LoadingState.loadAndSwitchState(new editors.ChartingState());
 		}
 
 		if (startingSong) {
@@ -697,7 +699,7 @@ class EditorPlayState extends MusicBeatState
 	}
 
 	var combo:Int = 0;
-	function goodNoteHit(note:Note):Void
+	function goodNoteHit(note:gameassets.Note):Void
 	{
 		if (!note.wasGoodHit)
 		{
@@ -764,7 +766,7 @@ class EditorPlayState extends MusicBeatState
 
 	var COMBO_X:Float = 400;
 	var COMBO_Y:Float = 340;
-	private function popUpScore(note:Note = null):Void
+	private function popUpScore(note:gameassets.Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
 
@@ -983,7 +985,7 @@ class EditorPlayState extends MusicBeatState
 
 
 	// Note splash shit, duh
-	function spawnNoteSplashOnNote(note:Note) {
+	function spawnNoteSplashOnNote(note:gameassets.Note) {
 		if(ClientPrefs.noteSplashes && note != null) {
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {

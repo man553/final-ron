@@ -6,5 +6,4 @@ CHARTER(s)
 ?
 
 ARTIST(s)
-BYOK
 Seezee

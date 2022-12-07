@@ -24,11 +24,11 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 import Type.ValueType;
-import Controls;
-import DialogueBoxPsych;
+import important.Controls;
+import substates.DialogueBoxPsych;
 
 #if desktop
-import Discord;
+import important.Discord;
 #end
 
 using StringTools;
@@ -180,7 +180,7 @@ class EditorLua {
 			}
 		});
 
-		Discord.DiscordClient.addLuaCallbacks(lua);
+		important.Discord.DiscordClient.addLuaCallbacks(lua);
 
 		call('onCreate', []);
 		#end

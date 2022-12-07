@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				13,
+				-190
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "weed ron idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-45,
+				-194
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": true,
+			"name": "weed ron right"
+		},
+		{
+			"offsets": [
+				8,
+				-193
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": true,
+			"name": "weed ron left"
+		},
+		{
+			"offsets": [
+				-10,
+				-210
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": true,
+			"name": "weed ron down"
+		},
+		{
+			"offsets": [
+				9,
+				-168
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": true,
+			"name": "weed ron up"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/weed ron",
+	"position": [
+		20,
+		10
+	],
+	"healthicon": "wred",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		80,
+		220
+	],
+	"sing_duration": 4,
+	"scale": 1.7
+}

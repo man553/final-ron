@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="weed ron.png"><SubTexture name="weed ron idle0000" x="0" y="0" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron idle0001" x="424" y="0" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron down0000" x="848" y="0" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron down0001" x="0" y="424" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron up0000" x="424" y="424" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron up0001" x="848" y="424" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron right0000" x="0" y="848" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron right0001" x="424" y="848" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron left0000" x="848" y="848" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+<SubTexture name="weed ron left0001" x="0" y="1272" width="424" height="424" frameX="0" frameY="0" frameWidth="424" frameHeight="424" />
+</TextureAtlas>
