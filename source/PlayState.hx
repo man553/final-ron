@@ -1596,12 +1596,6 @@ class PlayState extends MusicBeatState
 					boyfriend.visible = false;
 					gf.visible = false;
 					defaultCamZoom += 0.2;
-					for (i in 0...4)
-					{ 
-						var member = strumLineNotes.members[i];
-						member.x -= 9999;
-						defaultStrumX[i] -= 9999;
-					}
 				}
 		}
 

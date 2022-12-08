@@ -1,81 +1,81 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				884,
 				718
 			],
-			"loop": true,
-			"fps": 12,
 			"anim": "idle",
-			"indices": [],
-			"name": "ballerorina idle"
+			"fps": 12,
+			"name": "ballerorina idle",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				886,
 				716
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 8,
-			"name": "ballerorina left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ballerorina left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				884,
 				715
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 12,
-			"name": "ballerorina down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "ballerorina down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				888,
 				716
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 12,
-			"name": "ballerorina up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "ballerorina up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				884,
 				716
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 12,
-			"name": "ballerorina right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ballerorina right"
 		},
 		{
 			"loop": false,
-			"offsets": [
-				886,
-				716
-			],
-			"anim": "hey",
-			"fps": 12,
-			"name": "ballerorina this is a certified",
-			"indices": []
-		},
-		{
 			"offsets": [
 				884,
 				718
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "bye",
+			"fps": 12,
+			"name": "ballerorina baller",
+			"indices": []
+		},
+		{
+			"offsets": [
+				886,
+				716
+			],
+			"indices": [],
+			"fps": 8,
+			"anim": "hey",
 			"loop": false,
-			"name": "ballerorina baller"
+			"name": "ballerorina this is a certified"
 		}
 	],
 	"no_antialiasing": false,
