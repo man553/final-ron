@@ -2,8 +2,8 @@
 	"animations": [
 		{
 			"offsets": [
-				885,
-				717
+				884,
+				718
 			],
 			"loop": true,
 			"fps": 12,
@@ -54,6 +54,28 @@
 			"fps": 12,
 			"name": "ballerorina right",
 			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				886,
+				716
+			],
+			"anim": "hey",
+			"fps": 12,
+			"name": "ballerorina this is a certified",
+			"indices": []
+		},
+		{
+			"offsets": [
+				884,
+				718
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "bye",
+			"loop": false,
+			"name": "ballerorina baller"
 		}
 	],
 	"no_antialiasing": false,

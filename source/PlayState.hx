@@ -1589,6 +1589,7 @@ class PlayState extends MusicBeatState
 			case 'nothing':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
+					camGame.alpha = 0;
 					cameraSpeed = 3;
 					boyfriend.x = dad.x;
 					boyfriend.y = dad.y;
@@ -5601,6 +5602,18 @@ var cameraTwn:FlxTween;
 			else
 			{
 				snowemitter.x = 9999;
+			}
+		}
+		
+		if (curSong == 'oh-my-god-hes-ballin') 
+		{
+			switch (curStep) {
+				case 0:
+					dad.playAnim('hey');
+				case 1:
+					camGame.alpha = 1;
+				case 12:
+					dad.playAnim('bye');
 			}
 		}
 
