@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				885,
+				717
+			],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [],
+			"name": "ballerorina idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				886,
+				716
+			],
+			"anim": "singLEFT",
+			"fps": 8,
+			"name": "ballerorina left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				884,
+				715
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "ballerorina down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				888,
+				716
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "ballerorina up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				884,
+				716
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "ballerorina right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ballerorina",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "ballerorina",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		0,
+		63
+	],
+	"camera_position": [
+		-280,
+		-320
+	],
+	"sing_duration": 4,
+	"scale": 0.5
+}

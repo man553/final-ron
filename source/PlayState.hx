@@ -1363,36 +1363,39 @@ class PlayState extends MusicBeatState
 			}
 			case 'nothing':
 			{
-				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-				fx.setGraphicSize(Std.int(2560 * 0.75));
-				fx.updateHitbox();
-				fx.antialiasing = true;
-				fx.screenCenter(XY);
-				fx.scrollFactor.set(0, 0);
-				fx.alpha = 0.75;		
 				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
 				wbg.updateHitbox();
 				wbg.screenCenter(XY);
 				wbg.scrollFactor.set();
 				add(wbg);
-				wbg.color = FlxColor.BLACK;
-				snowemitter = new FlxEmitter(9999, 0, 300);
-				for (i in 0...150)
+				if (curSong.toLowerCase() == 'pretty-wacky')
 				{
-					var p = new FlxParticle();
-					var p2 = new FlxParticle();
-					p.makeGraphic(12,12,FlxColor.GRAY);
-					p2.makeGraphic(24,24,FlxColor.GRAY);
-					
-					snowemitter.add(p);
-					snowemitter.add(p2);
+					fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fx.setGraphicSize(Std.int(2560 * 0.75));
+					fx.updateHitbox();
+					fx.antialiasing = true;
+					fx.screenCenter(XY);
+					fx.scrollFactor.set(0, 0);
+					fx.alpha = 0.75;		
+					wbg.color = FlxColor.BLACK;
+					snowemitter = new FlxEmitter(9999, 0, 300);
+					for (i in 0...150)
+					{
+						var p = new FlxParticle();
+						var p2 = new FlxParticle();
+						p.makeGraphic(12,12,FlxColor.GRAY);
+						p2.makeGraphic(24,24,FlxColor.GRAY);
+						
+						snowemitter.add(p);
+						snowemitter.add(p2);
+					}
+					snowemitter.width = FlxG.width*1.5;
+					snowemitter.launchMode = SQUARE;
+					snowemitter.velocity.set(-10, -240, 10, -320);
+					snowemitter.lifespan.set(5);
+					add(snowemitter);
+					snowemitter.start(false, 0.05);
 				}
-				snowemitter.width = FlxG.width*1.5;
-				snowemitter.launchMode = SQUARE;
-				snowemitter.velocity.set(-10, -240, 10, -320);
-				snowemitter.lifespan.set(5);
-				add(snowemitter);
-				snowemitter.start(false, 0.05);
 			}
 			default:
 			{
@@ -1583,6 +1586,22 @@ class PlayState extends MusicBeatState
 				addBehindDad(evilTrail);
 				if (SONG.song.toLowerCase() == 'bleeding')
 					remove(evilTrail);
+			case 'nothing':
+				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
+				{
+					cameraSpeed = 3;
+					boyfriend.x = dad.x;
+					boyfriend.y = dad.y;
+					boyfriend.visible = false;
+					gf.visible = false;
+					defaultCamZoom += 0.2;
+					for (i in 0...4)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x -= 9999;
+						defaultStrumX[i] -= 9999;
+					}
+				}
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
@@ -3745,6 +3764,7 @@ class PlayState extends MusicBeatState
 				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
 				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+					
 				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
 				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 			}
@@ -3758,6 +3778,13 @@ class PlayState extends MusicBeatState
 				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 			}
 		}
+		//if ((SONG.song.toLowerCase() == 'oh-my-god-hes-ballin') && (boyfriend.animation.curAnim.curFrame == 0))
+		//{
+		//	FlxTween.globalManager.cancelTweensOf(FlxG.camera);
+		//	if (boyfriend.animation.curAnim.name == "singLEFT") FlxG.camera.angle = -5;
+		//	if (boyfriend.animation.curAnim.name == "singRIGHT") FlxG.camera.angle = 5;
+		//	FlxTween.tween(FlxG.camera, {angle: 0}, 0.5, {ease: FlxEase.circOut});
+		//}
 		setOnLuas('cameraX', camFollowPos.x);
 		setOnLuas('cameraY', camFollowPos.y);
 		setOnLuas('botPlay', cpuControlled);
@@ -6193,7 +6220,7 @@ var cameraTwn:FlxTween;
 		{
 			moveCameraSection(Std.int(curStep / 16));
 		}
-		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 4 == 0)
+		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms)
 		{
 			FlxG.camera.zoom += 0.015 * camZoomingMult;
 			camHUD.zoom += 0.03 * camZoomingMult;
