@@ -657,10 +657,10 @@ class FreeplayState extends MusicBeatState
 			FlxTween.globalManager.completeTweensOf(portrait);
 			portrait.screenCenter(Y);
 
-			FlxTween.tween(portrait, {y: portrait.y + 25}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
+			FlxTween.tween(portrait, {y: portrait.y + 45}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
 				updateportrait();
 				var mfwY = portrait.y;
-				portrait.y -= 10;
+				portrait.y -= 20;
 				FlxTween.tween(portrait, {y: mfwY}, 0.4, {ease: FlxEase.elasticOut});
 			}});
 		}
