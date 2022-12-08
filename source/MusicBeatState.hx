@@ -59,6 +59,7 @@ class MusicBeatState extends FlxUIState
 	public function clearShader(camera:FlxCamera)
 	{
 		camera.setFilters([]);
+		allShaders = [];
 	}
 	
 	#if (VIDEOS_ALLOWED && windows)

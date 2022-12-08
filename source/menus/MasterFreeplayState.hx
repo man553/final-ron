@@ -29,22 +29,22 @@ class MasterFreeplayState extends MusicBeatState
 	var image:FlxSprite;
 	var extraImage:FlxSprite;
 	var classicImage:FlxSprite;
-	public static var curSelectedMaster:Int = 0;
+	static var curSelectedMaster:Int = 0;
 	var cooltext:FlxText;
-	var camWhat:FlxCamera;
-	var camText:FlxCamera;
+	var cameraWhat:FlxCamera;
+	var cameraText:FlxCamera;
 
 	override function create()
 	{
 		
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
-		camText = new FlxCamera();
-		camText.bgColor = 0;
-		camWhat = new FlxCamera();
-		FlxG.cameras.reset(camWhat);
-		FlxG.cameras.add(camText);
-		FlxCamera.defaultCameras = [camWhat];
+		cameraText = new FlxCamera();
+		cameraText.bgColor = 0;
+		cameraWhat = new FlxCamera();
+		FlxG.cameras.reset(cameraWhat);
+		FlxG.cameras.add(cameraText);
+		FlxCamera.defaultCameras = [cameraWhat];
 		bg = new FlxSprite().loadGraphic(Paths.image('menuBG'));
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -57,7 +57,7 @@ class MasterFreeplayState extends MusicBeatState
 		image.scale.y = 0.50;
 		image.scale.x = 0.50;
 		image.ID = 0;
-		image.cameras = [camText];
+		image.cameras = [cameraText];
 		image.antialiasing = ClientPrefs.globalAntialiasing;
 		add(image);
 
@@ -68,7 +68,7 @@ class MasterFreeplayState extends MusicBeatState
 		classicImage.scale.y = 0.50;
 		classicImage.scale.x = 0.50;
 		classicImage.ID = 1;
-		classicImage.cameras = [camText];
+		classicImage.cameras = [cameraText];
 		classicImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(classicImage);
 		
@@ -79,7 +79,7 @@ class MasterFreeplayState extends MusicBeatState
 		extraImage.scale.y = 0.50;
 		extraImage.scale.x = 0.50;
 		extraImage.ID = 2;
-		extraImage.cameras = [camText];
+		extraImage.cameras = [cameraText];
 		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(extraImage);
 		changeSelection(0);
@@ -88,11 +88,11 @@ class MasterFreeplayState extends MusicBeatState
 		cooltext.setFormat(Paths.font("vcr.ttf"), 96, FlxColor.WHITE, CENTER);
 		cooltext.scrollFactor.set(0,0);
 		cooltext.screenCenter(XY);
-		cooltext.cameras = [camText];
+		cooltext.cameras = [cameraText];
 		add(cooltext);
 		cooltext.y += 200;
 
-		addShader(camText, "fisheye");
+		addShader(cameraText, "fisheye");
 
 	}
 
