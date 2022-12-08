@@ -544,6 +544,59 @@ class PlayState extends MusicBeatState
 			
 		switch (curStage)
 		{ 	//all the stages here
+			case 'mad':
+			{
+				defaultCamZoom = 0.9;
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_sky'));
+				bg.updateHitbox();
+				bg.scale.x = 1;
+				bg.scale.y = 1;
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.screenCenter();
+				bg.scrollFactor.set(0.1, 0.1);
+				add(bg);
+				
+				var clouds:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_clouds'));
+				clouds.updateHitbox();
+				clouds.scale.x = 0.7;
+				clouds.scale.y = 0.7;
+				clouds.screenCenter();
+				clouds.active = false;
+				clouds.antialiasing = true;
+				clouds.scrollFactor.set(0.2, 0.2);
+				add(clouds);
+				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
+				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
+				add(glitchSprite);*/
+				
+				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('updateron/bg/pissedRon_ground'));
+				ground.updateHitbox();
+				ground.active = false;
+				ground.antialiasing = true;
+				add(ground);
+				
+				wastedbg = new FlxSprite();
+				wastedbg.frames = Paths.getSparrowAtlas('updateron/bg/wastedbg');
+				wastedbg.scale.set(4,4);
+				wastedbg.animation.addByPrefix('idle', 'bg instance 1', 24, true);
+				wastedbg.animation.play('idle');
+				wastedbg.screenCenter();
+				wastedbg.alpha = 0;
+				add(wastedbg);
+			}
+			case 'fard':
+			{
+				defaultCamZoom = 0.9;
+				var bg:FlxSprite = new FlxSprite(300,200).loadGraphic(Paths.image('updateron/bg/sonker_bg'));
+				bg.updateHitbox();
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.scrollFactor.set(1,1);
+				bg.screenCenter();
+				bg.y -= 200;
+				add(bg);
+			}
 			case 'ronPissed': //ron
 				defaultCamZoom = 0.7;
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
@@ -573,8 +626,6 @@ class PlayState extends MusicBeatState
 				Shaders["rain"].shader.data.zoom.value = [35];
 				Shaders["rain"].shader.data.raindropLength.value = [0.05];
 				Shaders["rain"].shader.data.opacity.value = [0.2];
-
-
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
@@ -593,26 +644,37 @@ class PlayState extends MusicBeatState
 				add(street);
 
 			case 'ronMad': //ron
-				var sky:BGSprite = new BGSprite('bgs/veryAngreRon_sky', -100, 20, 0.1, 0.1);
-				sky.setGraphicSize(Std.int(sky.width * 1.75));
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
+				sky.screenCenter();
+				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-
-				var clouds:BGSprite = new BGSprite('bgs/veryAngreRon_clouds', -100, 20, 0.2, 0.2);
-				clouds.setGraphicSize(Std.int(clouds.width * 1.75));
-				add(clouds);
 				
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				add(rain);
-				rain.animation.play('rain');
-
-				var ground:BGSprite = new BGSprite('bgs/veryAngreRon_ground', -850, -500);
-				ground.setGraphicSize(Std.int(ground.width * 1.2));
-				ground.updateHitbox();
-				add(ground);
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				add(mountainsback);
+				
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_mountains', -100, 20);
+				mountains.screenCenter();
+				mountains.scrollFactor.set(0.3, 0.3);
+				mountains.y -= 60;
+				add(mountains);
+			
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_hillfront', -100, 20);
+				hillfront.screenCenter();
+				hillfront.scrollFactor.set(0.4, 0.4);
+				hillfront.y -= 60;
+				add(hillfront);
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_street', -100, 20);
+				street.screenCenter();
+				add(street);
+				
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [35];
+				Shaders["rain"].shader.data.raindropLength.value = [0.075];
+				Shaders["rain"].shader.data.opacity.value = [0.2];
 
 			case 'ronNormal': //ron
 				addCharacterToList("rontriggered", 1);
@@ -1340,6 +1402,27 @@ class PlayState extends MusicBeatState
 				snowemitter.lifespan.set(5);
 				add(snowemitter);
 				snowemitter.start(false, 0.05);
+			}
+			default:
+			{
+				defaultCamZoom = 0.9;
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/happyRon_sky'));
+				bg.updateHitbox();
+				bg.scale.x = 1.2;
+				bg.scale.y = 1.2;
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.scrollFactor.set(1,1);
+				add(bg);
+				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
+				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
+				add(glitchSprite);*/
+				
+				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('updateron/bg/happyRon_ground'));
+				ground.updateHitbox();
+				ground.active = false;
+				ground.antialiasing = true;
+				add(ground);
 			}
 		}
 		//add(wastedGrp);
