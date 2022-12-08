@@ -5,6 +5,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import flixel.FlxG;
+import flixel.FlxCamera;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
@@ -28,13 +29,22 @@ class MasterFreeplayState extends MusicBeatState
 	var image:FlxSprite;
 	var extraImage:FlxSprite;
 	var classicImage:FlxSprite;
-	var curSelected:Int = 0;
+	public static var curSelectedMaster:Int = 0;
 	var cooltext:FlxText;
+	var camWhat:FlxCamera;
+	var camText:FlxCamera;
 
 	override function create()
 	{
+		
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
+		camText = new FlxCamera();
+		camText.bgColor = 0;
+		camWhat = new FlxCamera();
+		FlxG.cameras.reset(camWhat);
+		FlxG.cameras.add(camText);
+		FlxCamera.defaultCameras = [camWhat];
 		bg = new FlxSprite().loadGraphic(Paths.image('menuBG'));
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
@@ -47,6 +57,7 @@ class MasterFreeplayState extends MusicBeatState
 		image.scale.y = 0.50;
 		image.scale.x = 0.50;
 		image.ID = 0;
+		image.cameras = [camText];
 		image.antialiasing = ClientPrefs.globalAntialiasing;
 		add(image);
 
@@ -57,6 +68,7 @@ class MasterFreeplayState extends MusicBeatState
 		classicImage.scale.y = 0.50;
 		classicImage.scale.x = 0.50;
 		classicImage.ID = 1;
+		classicImage.cameras = [camText];
 		classicImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(classicImage);
 		
@@ -67,6 +79,7 @@ class MasterFreeplayState extends MusicBeatState
 		extraImage.scale.y = 0.50;
 		extraImage.scale.x = 0.50;
 		extraImage.ID = 2;
+		extraImage.cameras = [camText];
 		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
 		add(extraImage);
 		changeSelection(0);
@@ -75,14 +88,18 @@ class MasterFreeplayState extends MusicBeatState
 		cooltext.setFormat(Paths.font("vcr.ttf"), 96, FlxColor.WHITE, CENTER);
 		cooltext.scrollFactor.set(0,0);
 		cooltext.screenCenter(XY);
+		cooltext.cameras = [camText];
 		add(cooltext);
 		cooltext.y += 200;
+
+		addShader(camText, "fisheye");
+
 	}
 
 	override function update(elapsed:Float)
 	{
 	
-		switch(curSelected) {
+		switch(curSelectedMaster) {
 			case 0:
 				cooltext.text = "MAIN";
 				FreeplayState.mode = 'main';
@@ -120,17 +137,17 @@ class MasterFreeplayState extends MusicBeatState
 	}
 	function changeSelection(p)
 	{
-		curSelected += p;
-		if (curSelected < 0)
-			curSelected = 2;
-		if (curSelected >= 3)
-			curSelected = 0;
+		curSelectedMaster += p;
+		if (curSelectedMaster < 0)
+			curSelectedMaster = 2;
+		if (curSelectedMaster >= 3)
+			curSelectedMaster = 0;
 		FlxTween.globalManager.cancelTweensOf(image);
 		FlxTween.globalManager.cancelTweensOf(classicImage);
 		FlxTween.globalManager.cancelTweensOf(extraImage);
 	
-		FlxTween.tween(image, {x:  1000*(image.ID - curSelected), y: 100*(image.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
-		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelected), y: 100*(extraImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
-		FlxTween.tween(classicImage, {x: 1000*(classicImage.ID - curSelected), y: 100*(classicImage.ID - curSelected)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(image, {x:  1000*(image.ID - curSelectedMaster), y: 100*(image.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelectedMaster), y: 100*(extraImage.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
+		FlxTween.tween(classicImage, {x: 1000*(classicImage.ID - curSelectedMaster), y: 100*(classicImage.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
 	}
 }
