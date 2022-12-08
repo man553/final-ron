@@ -575,15 +575,6 @@ class PlayState extends MusicBeatState
 				ground.active = false;
 				ground.antialiasing = true;
 				add(ground);
-				
-				wastedbg = new FlxSprite();
-				wastedbg.frames = Paths.getSparrowAtlas('updateron/bg/wastedbg');
-				wastedbg.scale.set(4,4);
-				wastedbg.animation.addByPrefix('idle', 'bg instance 1', 24, true);
-				wastedbg.animation.play('idle');
-				wastedbg.screenCenter();
-				wastedbg.alpha = 0;
-				add(wastedbg);
 			}
 			case 'fard':
 			{
