@@ -217,6 +217,11 @@ class TitleState extends MusicBeatState
 			startIntro();
 		});
 		#end
+		addShader(FlxG.camera, "chromatic aberration");
+		var chromeOffset = (ClientPrefs.rgbintense/350);
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 	}
 
 	var logoBl:FlxSprite;
@@ -434,8 +439,8 @@ class TitleState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
-		FlxG.camera.x += Math.sin(time/2)/10;
-		FlxG.camera.y += Math.cos(time/2)/10;
+		FlxG.camera.scroll.x += Math.sin(time/2)/10;
+		FlxG.camera.scroll.y += Math.cos(time/2)/10;
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -612,7 +617,7 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-		FlxG.camera.zoom = 1.1;
+		FlxG.camera.zoom = 1.03;
 		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.circOut});
 
 		if(logoBl != null)
