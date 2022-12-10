@@ -3752,8 +3752,8 @@ class PlayState extends MusicBeatState
 		{
 			if (section != null && section) {
 				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y);
-				camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
-				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+				camFollow.x -= boyfriend.cameraPosition[0];
+				camFollow.y += boyfriend.cameraPosition[1];
 				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
 				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
 					
@@ -3762,8 +3762,8 @@ class PlayState extends MusicBeatState
 			}
 			else {
 				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y);
-				camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
-				camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+				camFollow.x += dad.cameraPosition[0];
+				camFollow.y += dad.cameraPosition[1];
 				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
 				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
 				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;

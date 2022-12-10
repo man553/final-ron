@@ -489,7 +489,7 @@ class TitleState extends MusicBeatState
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					MusicBeatState.switchState((ClientPrefs.warnings ? new substates.WarningSubState() : new menus.MainMenuState()));
+					MusicBeatState.switchState((ClientPrefs.warnings ? new substates.WarningSubState() : new menus.DesktopMenu()));
 					closedState = true;
 				});
 				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
@@ -529,7 +529,6 @@ class TitleState extends MusicBeatState
 									MusicBeatState.switchState(new menus.TitleState());
 								}
 							});
-							FlxG.sound.music.fadeOut();
 							closedState = true;
 							transitioning = true;
 							playJingle = true;
@@ -752,12 +751,6 @@ class TitleState extends MusicBeatState
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';
 				easteregg = easteregg.toUpperCase();
-				#if TITLE_SCREEN_EASTER_EGG
-				if(easteregg == 'SHADOW')
-				{
-					FlxG.sound.music.fadeOut();
-				}
-				#end
 				blackScreen.alpha = 0;
 			}
 			skippedIntro = true;

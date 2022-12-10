@@ -1,5 +1,6 @@
 package menus;
 
+import misc.CustomFadeTransition;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
@@ -36,15 +37,14 @@ class MasterFreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		
-		transIn = FlxTransitionableState.defaultTransIn;
-		transOut = FlxTransitionableState.defaultTransOut;
+		persistentUpdate = true;
 		cameraText = new FlxCamera();
 		cameraText.bgColor = 0;
 		cameraWhat = new FlxCamera();
 		FlxG.cameras.reset(cameraWhat);
 		FlxG.cameras.add(cameraText);
 		FlxCamera.defaultCameras = [cameraWhat];
+		CustomFadeTransition.nextCamera = cameraText;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuBG'));
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;

@@ -1,5 +1,6 @@
 package menus;
 
+import misc.CustomFadeTransition;
 #if desktop
 import important.Discord.DiscordClient;
 #end
@@ -69,7 +70,6 @@ class FreeplayState extends MusicBeatState
 		Paths.clearStoredMemory();
 		//Paths.clearUnusedMemory();
 		
-		persistentUpdate = true;
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
 
@@ -83,6 +83,7 @@ class FreeplayState extends MusicBeatState
 		FlxG.cameras.reset(camWhat);
 		FlxG.cameras.add(camText);
 		FlxCamera.defaultCameras = [camWhat];
+		CustomFadeTransition.nextCamera = camText;
 		for (i in 0...WeekData.weeksList.length) {
 			if(weekIsLocked(WeekData.weeksList[i])) continue;
 
@@ -510,7 +511,7 @@ class FreeplayState extends MusicBeatState
 		}
 		super.update(elapsed);
 		for (item in grpSongs.members)
-			item.x = FlxMath.lerp(item.x, 185 + (165 * (item.ID - curSelected)), 5 * elapsed);
+			item.x = FlxMath.lerp(item.x, 200 + (165 * (item.ID - curSelected)), CoolUtil.lerpFix(0.1));
 			
 		switch(songs[curSelected].songName.toLowerCase())
 		{
