@@ -59,12 +59,13 @@ class TitleState extends MusicBeatState
 
 	public static var initialized:Bool = false;
 
-	var blackScreen:FlxBackdrop;
+	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
-	var credTextShit:Alphabet;
+	var credTextShit:FlxText;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
-
+	var time:Float = 0;
+	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var curWacky:Array<String> = [];
 
 	var wackyImage:FlxSprite;
@@ -363,19 +364,22 @@ class TitleState extends MusicBeatState
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
-		blackScreen = new FlxBackdrop(Paths.image('scroll'), XY, 0, 0);
-		new FlxTimer().start(0.005, function(tmr:FlxTimer)
-		{
-			blackScreen.x += 1;
-			tmr.reset(0.005);
-		});
+		blackScreen = new FlxSprite();
+		blackScreen.frames = Paths.getSparrowAtlas('titleThing');
+		blackScreen.animation.addByPrefix('idle', 'idle', 24, true);
+		blackScreen.animation.play('idle');
+		blackScreen.scale.set(2,2);
+		blackScreen.updateHitbox();
+		blackScreen.screenCenter();
 		add(blackScreen);
 
 		credGroup = new FlxGroup();
 		add(credGroup);
 		textGroup = new FlxGroup();
 
-		credTextShit = new Alphabet(0, 0, "", true);
+		credTextShit = new FlxText(0, 0, "", true);
+		credTextShit.setFormat(Paths.font("w95.otf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		credTextShit.bold = true;
 		credTextShit.screenCenter();
 
 		// credTextShit.alignment = CENTER;
@@ -429,6 +433,10 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		time += elapsed;
+		FlxG.camera.x += Math.sin(time/2)/10;
+		FlxG.camera.y += Math.cos(time/2)/10;
+
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
@@ -565,9 +573,11 @@ class TitleState extends MusicBeatState
 	{
 		for (i in 0...textArray.length)
 		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
+			var money:FlxText = new FlxText(0, 0, textArray[i]);
+			money.setFormat(Paths.font("w95.otf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			money.bold = true;
 			money.y += (i * 60) + 200 + offset;
+			money.screenCenter(X);
 			if(credGroup != null && textGroup != null) {
 				credGroup.add(money);
 				textGroup.add(money);
@@ -578,7 +588,9 @@ class TitleState extends MusicBeatState
 	function addMoreText(text:String, ?offset:Float = 0)
 	{
 		if(textGroup != null && credGroup != null) {
-			var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
+			var coolText:FlxText = new FlxText(0, 0, text);
+			coolText.setFormat(Paths.font("w95.otf"), 60, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			coolText.bold = true;
 			coolText.screenCenter(X);
 			coolText.y += (textGroup.length * 60) + 200 + offset;
 			credGroup.add(coolText);
@@ -600,6 +612,8 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
+		FlxG.camera.zoom = 1.1;
+		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.circOut});
 
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);
