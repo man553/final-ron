@@ -1041,8 +1041,6 @@ class PlayState extends MusicBeatState
 				add(santa);
 				precacheList.set('Lights_Shut_off', 'sound');
 			case 'daveHouse':
-				defaultCamZoom = 0.9;
-
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('bgs/sky'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.75, 0.75);
@@ -1050,14 +1048,14 @@ class PlayState extends MusicBeatState
 
 				add(bg);
 
-				var stageHills:FlxSprite = new FlxSprite(-225, -125).loadGraphic(Paths.image('bgs/hills'));
+				/*var stageHills:FlxSprite = new FlxSprite(-225, -325).loadGraphic(Paths.image('bgs/hills'));
 				stageHills.setGraphicSize(Std.int(stageHills.width * 1.25));
 				stageHills.updateHitbox();
 				stageHills.antialiasing = true;
 				stageHills.scrollFactor.set(0.8, 0.8);
 				stageHills.active = false;
 
-				add(stageHills);
+				add(stageHills);*/
 
 				var gate:FlxSprite = new FlxSprite(-200, -125).loadGraphic(Paths.image('bgs/gate'));
 				gate.setGraphicSize(Std.int(gate.width * 1.2));
@@ -1068,7 +1066,7 @@ class PlayState extends MusicBeatState
 
 				add(gate);
 
-				var stageFront:FlxSprite = new FlxSprite(-225, -125).loadGraphic(Paths.image('bgs/grass'));
+				var stageFront:FlxSprite = new FlxSprite(-300, 350).loadGraphic(Paths.image('bgs/grass'));
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.2));
 				stageFront.updateHitbox();
 				stageFront.antialiasing = true;
@@ -1254,7 +1252,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'blr': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
+				skyBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2); //this works every time. - Sword352
 				skyBLR.updateHitbox();
 				skyBLR.x = -500;
 				skyBLR.y = 150;
