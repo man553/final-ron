@@ -1,8 +1,10 @@
 package menus;
 
+import flixel.addons.display.FlxBackdrop;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxSprite;
+import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 
 class DesktopMenu extends MusicBeatState
@@ -21,6 +23,7 @@ class DesktopMenu extends MusicBeatState
 	var clickAmounts:Int = 0;
 	var buttons:Array<FlxButton> = [];
 	var clicked:Bool = false;
+	var time:Float = 0;
 	override function create() {
 		persistentUpdate = true;
 		transIn = FlxTransitionableState.defaultTransIn;
@@ -29,6 +32,14 @@ class DesktopMenu extends MusicBeatState
 		FlxG.mouse.visible = true;
 		var iconI:Int = 0;
 		var iconFrames = Paths.getSparrowAtlas("menuIcons");
+		var rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);
+		new FlxTimer().start(0.005, function(tmr:FlxTimer)
+		{
+			rainbowscreen.x += (Math.sin(time)/5)+2;
+			rainbowscreen.y += (Math.cos(time)/5)+1;
+			tmr.reset(0.005);
+		});
+		add(rainbowscreen);
 		add(new FlxSprite().loadGraphic(Paths.image("pcBg")));
 		for (i in icons.keys()) {
 			var button:FlxButton;
@@ -63,6 +74,7 @@ class DesktopMenu extends MusicBeatState
 		super.create();
 	}
 	override function update(elapsed:Float) {
+		time += elapsed;
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * elapsed;
