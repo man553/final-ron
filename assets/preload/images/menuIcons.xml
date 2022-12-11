@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menuIcons.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="settings10000" x="0" y="0" width="96" height="114"/>
+	<SubTexture name="freeplay10000" x="96" y="0" width="95" height="115"/>
+	<SubTexture name="discord10000" x="0" y="115" width="79" height="100"/>
+	<SubTexture name="story mode10000" x="79" y="115" width="66" height="117"/>
+	<SubTexture name="credits10000" x="145" y="115" width="83" height="112"/>
+	<SubTexture name="random10000" x="0" y="232" width="62" height="95"/>
+</TextureAtlas>
