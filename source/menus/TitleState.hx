@@ -36,7 +36,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 typedef TitleData =
@@ -168,6 +167,8 @@ class TitleState extends MusicBeatState
 		});
 		#end
 		addShader(FlxG.camera, "chromatic aberration");
+		addShader(FlxG.camera, "fake CRT");
+		addShader(FlxG.camera, "colorizer");
 		var chromeOffset = (ClientPrefs.rgbintense/350);
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -234,16 +235,6 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
-
-		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
-		logoBl.animation.play('bump');
-		logoBl.updateHitbox();
-		// logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
-
 		swagShader = new ColorSwap();
 		gfDance = new FlxSprite();
 
@@ -254,49 +245,60 @@ class TitleState extends MusicBeatState
 		gfDance.x += 320;
 		gfDance.y -= 200;
 		gfDance.shader = swagShader.shader;
-		add(logoBl);
 		add(gfDance);
-		logoBl.shader = swagShader.shader;
 
+		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
+		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
+		
+		var animScreen = new FlxBackdrop(Paths.image('titleBackground'), XY, 0, 0);
+		var animbarScrt = new FlxBackdrop(Paths.image('titleBarTop'), XY, 0, 0);
+		var animbarScrb = new FlxBackdrop(Paths.image('titleBarBottom'), XY, 0, 0);
+		new FlxTimer().start(0.005, function(tmr:FlxTimer)
+		{
+			animScreen.x += Math.sin(time/4)/4;
+			animbarScrb.x -= 2;
+			animbarScrt.x += 2;
+			tmr.reset(0.005);
+		});
+		add(animScreen);
+		add(animbarScrt);
+		add(animbarScrb);
+		
+		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
+		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
+		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
+		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
+		logoBl.animation.play('bump');
+		logoBl.updateHitbox();
+		logoBl.screenCenter(X);
+		// logoBl.screenCenter();
+		// logoBl.color = FlxColor.BLACK;
 		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
-		#if (desktop && MODS_ALLOWED)
-		var path = "mods/" + Paths.currentModDirectory + "/images/titleEnter.png";
-		//trace(path, FileSystem.exists(path));
-		if (!FileSystem.exists(path)){
-			path = "mods/images/titleEnter.png";
-		}
-		//trace(path, FileSystem.exists(path));
-		if (!FileSystem.exists(path)){
-			path = "assets/images/titleEnter.png";
-		}
-		//trace(path, FileSystem.exists(path));
-		titleText.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
-		#else
-
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		#end
 		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
 		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
 		titleText.antialiasing = ClientPrefs.globalAntialiasing;
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
-		// titleText.screenCenter(X);
+		titleText.screenCenter(X);
+		titleText.y -= 40;
+		titleText.x += 180;
+		add(logoBl);
 		add(titleText);
-
+		
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
 		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		// add(logo);
-
-		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
-		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
+		
 		blackScreen = new FlxSprite();
 		blackScreen.frames = Paths.getSparrowAtlas('titleThing');
 		blackScreen.animation.addByPrefix('idle', 'idle', 24, true);
 		blackScreen.animation.play('idle');
-		blackScreen.scale.set(2,2);
+		blackScreen.scale.set(2.25,2.25);
 		blackScreen.updateHitbox();
 		blackScreen.screenCenter();
+		blackScreen.scrollFactor.set(0.1,0.1);
 		add(blackScreen);
 
 		credGroup = new FlxGroup();
@@ -360,8 +362,14 @@ class TitleState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
-		FlxG.camera.scroll.x += Math.sin(time/2)/10;
-		FlxG.camera.scroll.y += Math.cos(time/2)/10;
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
+		if (skippedIntro) {
+			logoBl.angle += Math.cos(-time*4)/8;
+			FlxG.camera.scroll.x += Math.sin(time/2)/10;
+			FlxG.camera.scroll.y += Math.cos(time/2)/10;
+			Shaders["colorizer"].shader.data.colors.value = time/2;
+		}
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
@@ -433,7 +441,7 @@ class TitleState extends MusicBeatState
 			{
 				// im too tired to keep waiting for the stupid Other states so im just putting a skip button
 				pressedSkip = true;
-				FlxG.switchState(new menus.MainMenuState());
+				FlxG.switchState(new menus.DesktopMenu());
 			}
 		}
 
