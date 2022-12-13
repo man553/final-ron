@@ -1,4 +1,5 @@
 {
+	"noteskin": "ronsip",
 	"animations": [
 		{
 			"offsets": [
@@ -81,8 +82,8 @@
 		0
 	],
 	"camera_position": [
-		-320,
-		-120
+		0,
+		-300
 	],
 	"sing_duration": 4,
 	"scale": 2

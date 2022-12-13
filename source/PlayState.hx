@@ -1392,6 +1392,20 @@ class PlayState extends MusicBeatState
 					snowemitter.start(false, 0.05);
 				}
 			}
+			case 'normal':
+			{
+				var bg:BGSprite = new BGSprite('bgs/old/kd');
+				bg.scale.set(3,3);
+				bg.screenCenter();
+				add(bg);
+			}
+			case 'win-old':
+			{
+				var bg:BGSprite = new BGSprite('bgs/old/bg');
+				bg.scale.set(1.5,1.5);
+				bg.screenCenter();
+				add(bg);
+			}
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -3750,8 +3764,8 @@ class PlayState extends MusicBeatState
 		{
 			if (section != null && section) {
 				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y);
-				camFollow.x -= boyfriend.cameraPosition[0];
-				camFollow.y += boyfriend.cameraPosition[1];
+				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
+				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
 				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
 					
