@@ -66,7 +66,7 @@ class WarningSubState extends MusicBeatState
 						ease: FlxEase.quadInOut,
 						onComplete: function(twn:FlxTween) 
 						{
-							FlxG.switchState(new menus.MainMenuState());
+							FlxG.switchState(new menus.DesktopMenu());
 						}
 					});
 			}

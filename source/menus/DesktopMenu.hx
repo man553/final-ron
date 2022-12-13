@@ -19,17 +19,21 @@ class DesktopMenu extends MusicBeatState
 
 		"credits" => new CreditsState()
 	];
-	var curClicked:String = "";
+	public static var curClicked:String = "";
 	var clickAmounts:Int = 0;
 	var buttons:Array<FlxButton> = [];
 	var clicked:Bool = false;
 	var time:Float = 0;
 	override function create() {
-		persistentUpdate = true;
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
+		persistentUpdate = true;
 		important.WeekData.loadTheFirstEnabledMod();
-		FlxG.mouse.visible = true;
+		//FlxG.mouse.visible = true;
 		var iconI:Int = 0;
 		var iconFrames = Paths.getSparrowAtlas("menuIcons");
 		var rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);

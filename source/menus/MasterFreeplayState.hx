@@ -131,7 +131,7 @@ class MasterFreeplayState extends MusicBeatState
 
 		if(controls.BACK)
 		{
-			MusicBeatState.switchState(new menus.MainMenuState());
+			MusicBeatState.switchState(new menus.DesktopMenu());
 		}
 
 	}

@@ -151,7 +151,7 @@ class Note extends FlxSprite
 		return value;
 	}
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inEditor:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?noteskin:String, ?sustainNote:Bool = false, ?inEditor:Bool = false)
 	{
 		super();
 
@@ -171,7 +171,7 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		if(noteData > -1) {
-			texture = '';
+			texture = (noteskin != null ? "noteskins/" + noteskin : '');
 			colorSwap = new ColorSwap();
 			shader = colorSwap.shader;
 
