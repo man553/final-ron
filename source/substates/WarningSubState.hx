@@ -16,8 +16,7 @@ class WarningSubState extends MusicBeatState
 	public static var secstate:Int = 0;
 	var popup:FlxSprite;
 	
-	override function create()
-	{
+	override function create() {
 		super.create();
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('warning/warnBg'));
 		bg.screenCenter();
@@ -66,7 +65,7 @@ class WarningSubState extends MusicBeatState
 						ease: FlxEase.quadInOut,
 						onComplete: function(twn:FlxTween) 
 						{
-							FlxG.switchState(new menus.DesktopMenu());
+							MusicBeatState.switchState(new menus.DesktopMenu());
 						}
 					});
 			}

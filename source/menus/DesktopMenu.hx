@@ -1,5 +1,11 @@
 package menus;
 
+import misc.CustomFadeTransition;
+import flixel.FlxCamera;
+#if desktop
+import important.Discord.DiscordClient;
+#end
+import flixel.input.keyboard.FlxKey;
 import flixel.addons.display.FlxBackdrop;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
@@ -14,30 +20,34 @@ class DesktopMenu extends MusicBeatState
 		"random" => "https://www.facebook.com/",
 		"settings" => new options.OptionsState(),
 		"freeplay" => new MasterFreeplayState(),
-		"story mode" => new StoryMenuState(),
-		
-
+		"story mode" => "story mode is idiot",
 		"credits" => new CreditsState()
 	];
+	var camWhat:FlxCamera;
+	var camText:FlxCamera;
+	public static var leftState:Bool = false;
 	public static var curClicked:String = "";
 	var clickAmounts:Int = 0;
+	var debugKeys:Array<FlxKey>;
 	var buttons:Array<FlxButton> = [];
 	var clicked:Bool = false;
 	var time:Float = 0;
+	var transitioningToIdiotism:Bool = false;
 	override function create() {
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-		transIn = FlxTransitionableState.defaultTransIn;
-		transOut = FlxTransitionableState.defaultTransOut;
-		persistentUpdate = true;
+		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		important.WeekData.loadTheFirstEnabledMod();
-		//FlxG.mouse.visible = true;
+		FlxG.mouse.visible = true;
+
+		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
 		var iconFrames = Paths.getSparrowAtlas("menuIcons");
 		var rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);
-		new FlxTimer().start(0.005, function(tmr:FlxTimer)
+		var rainbTmr = new FlxTimer().start(0.005, function(tmr:FlxTimer)
 		{
 			rainbowscreen.x += (Math.sin(time)/5)+2;
 			rainbowscreen.y += (Math.cos(time)/5)+1;
@@ -53,12 +63,22 @@ class DesktopMenu extends MusicBeatState
 					curClicked = i;
 					for (i in buttons)
 						i.color = 0xffffff;
-				}
+ 				}
 				if (curClicked == i) {
 					clickAmounts++;
 					button.color = 0xFF485EC2;
 					if (clickAmounts == 2) {
-						if (icons[i].length != 0)
+						if (icons[i] == "story mode is idiot") {
+							StoryMenuState.musicTime = FlxG.sound.music.time;
+							new StoryMenuState();
+							transitioningToIdiotism = true;
+							rainbTmr.cancel();
+							new FlxTimer().start(1.5, function(tmr:FlxTimer){
+								FlxG.camera.fade(0x88FFFFFF, 0.6, false);
+								new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); });
+							});
+						}
+						else if (icons[i].length != 0)
 							CoolUtil.browserLoad(icons[i]);
 						else
 							MusicBeatState.switchState(icons[i]);
@@ -75,10 +95,29 @@ class DesktopMenu extends MusicBeatState
 			buttons.push(button);
 			iconI++;
 		}
+		camText = new FlxCamera();
+		camText.bgColor = 0;
+		camWhat = new FlxCamera();
+		FlxG.cameras.reset(camWhat);
+		FlxG.cameras.add(camText);
+		addShader(camText, "fisheye");
+		FlxCamera.defaultCameras = [camWhat];
+		CustomFadeTransition.nextCamera = camText;
 		super.create();
 	}
+	override function closeSubState() {
+		super.closeSubState();
+	}
 	override function update(elapsed:Float) {
+		if (transitioningToIdiotism)
+			return;
 		time += elapsed;
+		#if desktop
+		if (FlxG.keys.anyJustPressed(debugKeys))
+		{
+			MusicBeatState.switchState(new editors.MasterEditorMenu());
+		}
+		#end
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * elapsed;

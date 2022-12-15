@@ -37,6 +37,7 @@ class MasterFreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		Paths.clearStoredMemory();
 		persistentUpdate = true;
 		cameraText = new FlxCamera();
 		cameraText.bgColor = 0;
@@ -93,7 +94,7 @@ class MasterFreeplayState extends MusicBeatState
 		cooltext.y += 200;
 
 		addShader(cameraText, "fisheye");
-
+		super.create();
 	}
 
 	override function update(elapsed:Float)

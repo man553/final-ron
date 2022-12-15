@@ -450,9 +450,9 @@ class TitleState extends MusicBeatState
 
 	function fuckyou(){
 		#if desktop
-		 FlxG.switchState(new menus.MainMenuState());
+		MusicBeatState.switchState(new menus.MainMenuState());
 		#else
-		 FlxG.switchState(new menus.PiracyScreen());
+		MusicBeatState.switchState(new menus.PiracyScreen());
 		#end
 	}
 
