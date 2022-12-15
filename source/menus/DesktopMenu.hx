@@ -75,7 +75,7 @@ class DesktopMenu extends MusicBeatState
 							rainbTmr.cancel();
 							new FlxTimer().start(1.5, function(tmr:FlxTimer){
 								FlxG.camera.fade(0x88FFFFFF, 0.6, false);
-								new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); });
+								new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
 							});
 						}
 						else if (icons[i].length != 0)
