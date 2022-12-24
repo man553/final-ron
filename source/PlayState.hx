@@ -1589,7 +1589,7 @@ class PlayState extends MusicBeatState
 					cameraSpeed = 3;
 					boyfriend.x = dad.x;
 					boyfriend.y = dad.y;
-					//boyfriend.visible = false;
+					boyfriend.visible = false;
 					gf.visible = false;
 					defaultCamZoom += 0.2;
 				}
@@ -1925,10 +1925,8 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | ';ed' | 'trojan-virus':
+				case "ron" | 'trojan-virus':
 					schoolIntro(doof);
-					if (daSong == 'bloodshed')
-						wastedGrp.visible = true;
 				case "ayo" | 'wasted':
 					//witheredRa = new FlxSprite(-512, -260);
 					//witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
@@ -1991,6 +1989,9 @@ class PlayState extends MusicBeatState
 					startCountdown();
 				case 'oh-my-god-hes-ballin':
 					addShader(camGame, "bloom");
+					startCountdown();
+				case 'bloodshed':
+					wastedGrp.visible = true;
 					startCountdown();
 				default:
 					startCountdown();
@@ -5114,8 +5115,11 @@ var cameraTwn:FlxTween;
 					});	
 					bloodshedGrp.visible = true;
 					ronGrp.visible = false;
+					addShader(camGame, "chromatic aberration");
+					addShader(camGame, "bloom");
 					cameraSpeed = 1.5;
 				case 256:
+					cameraSpeed = 3;
 					for (i in 0...4)
 					{ 
 						var member = strumLineNotes.members[i];
