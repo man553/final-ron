@@ -6,9 +6,10 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.math.FlxMath;
-
+import flixel.FlxCamera;
 import openfl.utils.Assets;
 import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
@@ -26,6 +27,7 @@ class LoadingState extends MusicBeatState
 	
 	// TO DO: Make this easier
 	
+	var camWhat:FlxCamera;
 	var target:FlxState;
 	var stopMusic = false;
 	var directory:String;
@@ -64,7 +66,7 @@ class LoadingState extends MusicBeatState
 		ron.scrollFactor.set();
 		ron.animation.play('run');
 
-		loadBar = new FlxSprite(0, 20).makeGraphic(FlxG.width, 10, 0x88ffffff);
+		loadBar = new FlxSprite(0, 20).makeGraphic(FlxG.width, 10, 0xFF000000);
 		loadBar.screenCenter(X);
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
 		add(loadBar);
@@ -90,6 +92,12 @@ class LoadingState extends MusicBeatState
 				new FlxTimer().start(fadeTime + MIN_TIME, function(_) introComplete());
 			}
 		);
+		
+		camWhat = new FlxCamera();
+		FlxG.cameras.reset(camWhat);
+		FlxCamera.defaultCameras = [camWhat];
+		//addShader(camWhat, "fake CRT");
+		//addShader(camWhat, "bloom");
 	}
 	
 	function checkLoadSong(path:String)

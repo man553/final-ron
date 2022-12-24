@@ -1952,6 +1952,12 @@ class PlayState extends MusicBeatState
 					add(snowemitter);
 					snowemitter.start(false, 0.05);
 					startCountdown();
+				case 'bloodshed-legacy-redux':
+					addShader(camGame, "fake CRT");
+					startCountdown();
+				case 'oh-my-god-hes-ballin':
+					addShader(camGame, "bloom");
+					startCountdown();
 				default:
 					startCountdown();
 			}

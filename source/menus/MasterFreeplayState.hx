@@ -34,6 +34,8 @@ class MasterFreeplayState extends MusicBeatState
 	var cooltext:FlxText;
 	var cameraWhat:FlxCamera;
 	var cameraText:FlxCamera;
+	var chromeOffset = (ClientPrefs.rgbintense/350);
+	var time:Float = 0;
 
 	override function create()
 	{
@@ -46,10 +48,14 @@ class MasterFreeplayState extends MusicBeatState
 		FlxG.cameras.add(cameraText);
 		FlxCamera.defaultCameras = [cameraWhat];
 		CustomFadeTransition.nextCamera = cameraText;
-		bg = new FlxSprite().loadGraphic(Paths.image('menuBG'));
+		bg = new FlxSprite();
+		bg.frames = Paths.getSparrowAtlas('freeplaymenu/mainbgAnimate');
+		bg.animation.addByPrefix('animate', 'animate', 24, true);
+		bg.scale.set(2,2);
+		bg.updateHitbox();
 		bg.screenCenter();
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
+		bg.animation.play('animate');
 
 		image = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/main'), false, 1, 1);
 		image.scrollFactor.set();
@@ -94,12 +100,20 @@ class MasterFreeplayState extends MusicBeatState
 		cooltext.y += 200;
 
 		addShader(cameraText, "fisheye");
+		addShader(cameraText, "chromatic aberration");
+		addShader(cameraText, "fake CRT");
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		super.create();
 	}
 
 	override function update(elapsed:Float)
 	{
-	
+		time += elapsed;
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
+		cooltext.y += Math.sin(time*4)/2;
 		switch(curSelectedMaster) {
 			case 0:
 				cooltext.text = "MAIN";

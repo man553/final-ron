@@ -32,6 +32,7 @@ class DesktopMenu extends MusicBeatState
 	var buttons:Array<FlxButton> = [];
 	var clicked:Bool = false;
 	var time:Float = 0;
+	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var transitioningToIdiotism:Bool = false;
 	override function create() {
 
@@ -100,7 +101,10 @@ class DesktopMenu extends MusicBeatState
 		camWhat = new FlxCamera();
 		FlxG.cameras.reset(camWhat);
 		FlxG.cameras.add(camText);
-		addShader(camText, "fisheye");
+		addShader(camWhat, "chromatic aberration");
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		FlxCamera.defaultCameras = [camWhat];
 		CustomFadeTransition.nextCamera = camText;
 		super.create();
@@ -112,6 +116,8 @@ class DesktopMenu extends MusicBeatState
 		if (transitioningToIdiotism)
 			return;
 		time += elapsed;
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		#if desktop
 		if (FlxG.keys.anyJustPressed(debugKeys))
 		{
