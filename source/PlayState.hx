@@ -539,35 +539,69 @@ class PlayState extends MusicBeatState
 			
 		switch (curStage)
 		{ 	//all the stages here
+			case 'farm':
+				var bg:BGSprite = new BGSprite('bgs/newbgtest/slammed/sky', -600, -200,0.6, 0.6);
+				add(bg);
+
+				var flatgrass:BGSprite = new BGSprite('bgs/newbgtest/slammed/gm_flatgrass', 350, 75, 0.65, 0.65);
+				flatgrass.setGraphicSize(Std.int(flatgrass.width * 0.34));
+				flatgrass.updateHitbox();
+				add(flatgrass);
+				
+				var hills:BGSprite = new BGSprite('bgs/newbgtest/slammed/orangey hills', -173, 100, 0.65, 0.65);
+				add(hills);
+				
+				var farmHouse:BGSprite = new BGSprite('bgs/newbgtest/slammed/funfarmhouse', 100, 125, 0.7, 0.7);
+				farmHouse.setGraphicSize(Std.int(farmHouse.width * 0.9));
+				farmHouse.updateHitbox();
+				add(farmHouse);
+
+				var grassLand:BGSprite = new BGSprite('bgs/newbgtest/slammed/grass lands', -600, 500);
+				add(grassLand);
+
+				var cornFence:BGSprite = new BGSprite('bgs/newbgtest/slammed/cornFence', -400, 200);
+				add(cornFence);
+				
+				var cornFence2:BGSprite = new BGSprite('bgs/newbgtest/slammed/cornFence2', 1100, 200);
+				add(cornFence2);
+
+				var bagType = FlxG.random.int(0, 1000) == 0 ? 'popeye' : 'cornbag';
+				var cornBag:BGSprite = new BGSprite('bgs/newbgtest/slammed/cornbag', 1200, 550);
+				add(cornBag);
+				
+				var sign:BGSprite = new BGSprite('bgs/newbgtest/slammed/sign', 0, 350);
+				add(sign);
+			case 'trouble':
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/nothappy_sky'));
+				bg.scale.set(1.2, 1.2);
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				add(bg);
+				
+				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bgs/nothappy_ground'));
+				ground.antialiasing = true;
+				add(ground);
+
+				var deadbob:FlxSprite = new FlxSprite(-700, 600).loadGraphic(Paths.image('bgs/GoodHeDied'));
+				deadbob.antialiasing = true;
+				add(deadbob);
 			case 'mad':
 			{
 				defaultCamZoom = 0.9;
 				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_sky'));
-				bg.updateHitbox();
-				bg.scale.x = 1;
-				bg.scale.y = 1;
-				bg.active = false;
 				bg.antialiasing = true;
 				bg.screenCenter();
 				bg.scrollFactor.set(0.1, 0.1);
 				add(bg);
 				
 				var clouds:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_clouds'));
-				clouds.updateHitbox();
-				clouds.scale.x = 0.7;
-				clouds.scale.y = 0.7;
+				clouds.scale.set(0.7, 0.7);
 				clouds.screenCenter();
-				clouds.active = false;
 				clouds.antialiasing = true;
 				clouds.scrollFactor.set(0.2, 0.2);
 				add(clouds);
-				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
-				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
-				add(glitchSprite);*/
 				
 				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('updateron/bg/pissedRon_ground'));
-				ground.updateHitbox();
-				ground.active = false;
 				ground.antialiasing = true;
 				add(ground);
 			}
@@ -1555,7 +1589,7 @@ class PlayState extends MusicBeatState
 					cameraSpeed = 3;
 					boyfriend.x = dad.x;
 					boyfriend.y = dad.y;
-					boyfriend.visible = false;
+					//boyfriend.visible = false;
 					gf.visible = false;
 					defaultCamZoom += 0.2;
 				}

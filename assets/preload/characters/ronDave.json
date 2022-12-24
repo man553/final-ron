@@ -1,5 +1,4 @@
 {
-	"noteskin": "ronsip",
 	"animations": [
 		{
 			"offsets": [
@@ -37,8 +36,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				867,
-				726
+				887,
+				716
 			],
 			"anim": "singUP",
 			"fps": 12,
@@ -48,8 +47,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				869,
-				717
+				894,
+				719
 			],
 			"anim": "singRIGHT",
 			"fps": 12,
@@ -82,8 +81,8 @@
 		0
 	],
 	"camera_position": [
-		-320,
-		-120
+		80,
+		-200
 	],
 	"sing_duration": 4,
 	"scale": 0.5

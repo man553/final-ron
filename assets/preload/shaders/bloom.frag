@@ -1,4 +1,3 @@
-#pragma header
 //Bloom Settings
 //BLOOM_THRESHOLD - how bright a pixel needs to be to become blurred
 //BLOOM_INTENSITY - how bright the bloom effect is
@@ -19,13 +18,11 @@
 #define BLUR_SUBDIVISIONS 32
 
 vec3 getHDR(vec3 tex) {
- 
     return max((tex - BLOOM_THRESHOLD) * BLOOM_INTENSITY, 0.);
     
 }
 
 vec3 gaussian(sampler2D sampler, vec2 uv) {
- 
     vec3 sum = vec3(0.);
     
     for(int i = 1; i <= BLUR_ITERATIONS; i++) {
@@ -60,7 +57,7 @@ void main()
     vec2 uv = openfl_TextureCoordv;
     vec4 tx = texture2D(bitmap, uv);
     
-    gl_FragColor.xyz = gaussian(bitmap, uv);
+    gl_FragColor.rgb = gaussian(bitmap, uv) * (1. - float(tx.rgb));
     gl_FragColor.a   = tx.a;
-    gl_FragColor.xyz = blend(tx.xyz, gl_FragColor.xyz);
+    gl_FragColor.rgb = blend(tx.rgb, gl_FragColor.rgb);
 }

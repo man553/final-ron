@@ -72,6 +72,7 @@ class FreeplayState extends MusicBeatState
 		
 		PlayState.isStoryMode = false;
 		WeekData.reloadWeekFiles(false);
+		persistentUpdate = persistentDraw = false;
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -310,7 +311,6 @@ class FreeplayState extends MusicBeatState
 
 	override function closeSubState() {
 		changeSelection(0, false);
-		persistentUpdate = true;
 		super.closeSubState();
 	}
 
@@ -345,6 +345,7 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
+		
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -352,6 +353,7 @@ class FreeplayState extends MusicBeatState
 		
 		for (song in grpSongs.members)
 		{
+			song.forceX = FlxMath.lerp(song.x, 125 + (65 * (song.ID - curSelected)), CoolUtil.lerpFix(0.1));
 			for (i in 0...songs.length)
 				song.y += (Math.sin(i+time)/2);
 		}
@@ -424,7 +426,6 @@ class FreeplayState extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			persistentUpdate = false;
 			if(colorTween != null) {
 				colorTween.cancel();
 			}
@@ -434,7 +435,6 @@ class FreeplayState extends MusicBeatState
 
 		if(ctrl)
 		{
-			persistentUpdate = false;
 			openSubState(new substates.GameplayChangersSubstate());
 		}
 		else if(space)
@@ -469,7 +469,6 @@ class FreeplayState extends MusicBeatState
 
 		else if (accepted)
 		{
-			persistentUpdate = false;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 			/*#if MODS_ALLOWED
@@ -504,14 +503,11 @@ class FreeplayState extends MusicBeatState
 		}
 		else if(controls.RESET)
 		{
-			persistentUpdate = false;
 			var songName:String = songs[curSelected].songName;
 			openSubState(new substates.ResetScoreSubState(songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
 		super.update(elapsed);
-		for (item in grpSongs.members)
-			item.x = FlxMath.lerp(item.x, 200 + (165 * (item.ID - curSelected)), CoolUtil.lerpFix(0.1));
 			
 		switch(songs[curSelected].songName.toLowerCase())
 		{

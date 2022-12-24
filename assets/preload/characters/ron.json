@@ -1,10 +1,9 @@
 {
-	"noteskin": "ronsip",
 	"animations": [
 		{
 			"offsets": [
-				885,
-				720
+				0,
+				0
 			],
 			"loop": true,
 			"fps": 12,
@@ -15,8 +14,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				900,
-				713
+				0,
+				0
 			],
 			"anim": "singLEFT",
 			"fps": 8,
@@ -26,8 +25,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				886,
-				717
+				0,
+				0
 			],
 			"anim": "singDOWN",
 			"fps": 12,
@@ -37,8 +36,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				867,
-				726
+				0,
+				0
 			],
 			"anim": "singUP",
 			"fps": 12,
@@ -48,8 +47,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				869,
-				717
+				0,
+				0
 			],
 			"anim": "singRIGHT",
 			"fps": 12,
@@ -59,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				885,
-				716
+				0,
+				0
 			],
 			"anim": "hey",
 			"fps": 16,
@@ -71,8 +70,8 @@
 	"no_antialiasing": false,
 	"image": "characters/newcharstest/ron",
 	"position": [
-		0,
-		350
+		-940,
+		-400
 	],
 	"healthicon": "ron",
 	"flip_x": false,
@@ -82,8 +81,8 @@
 		0
 	],
 	"camera_position": [
-		-320,
-		-120
+		400,
+		480
 	],
 	"sing_duration": 4,
 	"scale": 0.5
