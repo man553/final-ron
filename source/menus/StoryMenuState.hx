@@ -193,6 +193,14 @@ class StoryMenuState extends MusicBeatState
 		changeWeek();
 		changeDifficulty();
 
+		addShader(FlxG.camera, "chromatic aberration");
+		addShader(FlxG.camera, "fake CRT");
+		addShader(FlxG.camera, "colorizer");
+		var chromeOffset = (ClientPrefs.rgbintense/350);
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+
 		super.create();
 	}
 
