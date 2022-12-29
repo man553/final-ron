@@ -367,6 +367,7 @@ class TitleState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		if (skippedIntro) {
 			logoBl.angle += Math.cos(-time*4)/8;
+			logoBl.screenCenter(XY);
 			titleText.angle += Math.sin(-time*8)/16;
 			FlxG.camera.scroll.x += Math.sin(time/2)/10;
 			FlxG.camera.scroll.y += Math.cos(time/2)/10;
