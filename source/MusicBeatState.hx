@@ -50,11 +50,14 @@ class MusicBeatState extends FlxUIState
 	}
 	public function addShader(camera:FlxCamera, shader:String)
 	{
-		new DynamicShaderHandler(shader);
-		var shaders:Array<Dynamic> = [];
-		for (s in allShaders)
-			shaders.push(new ShaderFilter(s.shader));
-		camera.setFilters(cast shaders);
+		if(ClientPrefs.shaders)
+		{
+			new DynamicShaderHandler(shader);
+			var shaders:Array<Dynamic> = [];
+			for (s in allShaders)
+				shaders.push(new ShaderFilter(s.shader));
+			camera.setFilters(cast shaders);
+		}
 	}
 	public function clearShader(camera:FlxCamera)
 	{
@@ -78,16 +81,20 @@ class MusicBeatState extends FlxUIState
 
 	override function update(elapsed:Float)
 	{
-		for (shader in animatedShaders)
+		if(ClientPrefs.shaders)
 		{
-			shader.update(elapsed);
+			for (shader in animatedShaders)
+			{
+				shader.update(elapsed);
+			}
+			#if LUA_ALLOWED
+			for (key => value in luaShaders)
+			{
+				value.update(elapsed);
+			}
+			#end
 		}
-		#if LUA_ALLOWED
-		for (key => value in luaShaders)
-		{
-			value.update(elapsed);
-		}
-		#end
+
 		//everyStep();
 		var oldStep:Int = curStep;
 
@@ -100,7 +107,7 @@ class MusicBeatState extends FlxUIState
 		if(FlxG.save.data != null) FlxG.save.data.fullscreen = FlxG.fullscreen;
 
 		super.update(elapsed);
-		Shaders = animatedShaders;
+		if(ClientPrefs.shaders) Shaders = animatedShaders;
 	}
 
 	private function updateBeat():Void

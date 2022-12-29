@@ -21,6 +21,13 @@ class RonSettingsSubState extends BaseOptionsMenu
 		true); //Default value
 		addOption(option);
 
+		var option:Option = new Option('Shaders', //Name
+		'If checked, enable shaders. MAY NOT WORK ON BAD PCS!', //Description
+		'shaders', //Save data variable name
+		'bool', //Variable type
+		true); //Default value
+		addOption(option);
+
 		var option:Option = new Option('RGB Enabled', //Name
 			'Enables a RGB shader in some songs.', //Description
 			'rgbenable', //Save data variable name
