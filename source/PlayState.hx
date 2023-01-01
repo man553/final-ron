@@ -1435,6 +1435,14 @@ class PlayState extends MusicBeatState
 				bg.screenCenter();
 				add(bg);
 			}
+			case 'awesome':
+			{
+				var bg:BGSprite = new BGSprite('bgs/newbgtest/awesomeron/bg');
+				bg.scale.set(4,4);
+				bg.screenCenter();
+				bg.antialiasing = false;
+				add(bg);
+			}
 			default:
 			{
 				defaultCamZoom = 0.9;
@@ -1786,7 +1794,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
-		if (SONG.stage == 'daveHouse')
+		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 		{
 			var songName = SONG.song;
 			if (songName == 'Holy-Shit-Dave-Fnf')
@@ -1819,7 +1827,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		if (SONG.stage == 'daveHouse')
+		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
 			scoreTxt.setFormat(Paths.font("w95.otf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -1829,7 +1837,7 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
-		if (SONG.stage == 'daveHouse')
+		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			botplayTxt.setFormat(Paths.font("comic.ttf"), 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
 			botplayTxt.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

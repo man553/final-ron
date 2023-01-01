@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				-700,
+				-560
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "awesome-ron idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-695,
+				-560
+			],
+			"anim": "singLEFT",
+			"fps": 8,
+			"name": "awesome-ron left",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-700,
+				-560
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "awesome-ron down"
+		},
+		{
+			"offsets": [
+				-674,
+				-550
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singUP",
+			"loop": false,
+			"name": "awesome-ron up"
+		},
+		{
+			"offsets": [
+				-700,
+				-555
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "awesome-ron right"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/newcharstest/awesome-ron",
+	"position": [
+		-940,
+		-400
+	],
+	"healthicon": "awesome-ron",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		0
+	],
+	"camera_position": [
+		400,
+		480
+	],
+	"sing_duration": 4,
+	"scale": 1
+}
