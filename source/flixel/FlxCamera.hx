@@ -412,7 +412,7 @@ class FlxCamera extends FlxBasic
 	/**
 	 * Internal, the filters array to be applied to the camera.
 	 */
-	var _filters:Array<BitmapFilter>;
+	public var filters:Array<BitmapFilter> = [];
 
 	/**
 	 * Camera's initial zoom value. Used for camera's scale handling.
@@ -1050,7 +1050,7 @@ class FlxCamera extends FlxBasic
 		updateFlash(elapsed);
 		updateFade(elapsed);
 
-		flashSprite.filters = filtersEnabled ? _filters : null;
+		flashSprite.filters = filtersEnabled ? filters : null;
 
 		updateFlashSpritePosition();
 		updateShake(elapsed);
@@ -1511,7 +1511,7 @@ class FlxCamera extends FlxBasic
 	 */
 	public function setFilters(filters:Array<BitmapFilter>):Void
 	{
-		_filters = filters;
+		this.filters = filters;
 	}
 
 	/**

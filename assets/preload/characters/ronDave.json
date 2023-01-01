@@ -1,4 +1,5 @@
 {
+	"noteskin": "NOTEold_assets",
 	"animations": [
 		{
 			"offsets": [
@@ -82,7 +83,7 @@
 	],
 	"camera_position": [
 		80,
-		-200
+		-350
 	],
 	"sing_duration": 4,
 	"scale": 0.5

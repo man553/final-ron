@@ -1392,34 +1392,34 @@ class PlayState extends MusicBeatState
 				wbg.screenCenter(XY);
 				wbg.scrollFactor.set();
 				add(wbg);
-				if (curSong.toLowerCase() == 'pretty-wacky')
+				trace("expect another trace here");
+				trace(curSong + "<-- theres nothing what the fuck");
+				trace("THIS IS PRETTY WACKY!!");
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+				fx.setGraphicSize(Std.int(2560 * 0.75));
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0, 0);
+				fx.alpha = 0.75;		
+				wbg.color = FlxColor.BLACK;
+				snowemitter = new FlxEmitter(9999, 0, 300);
+				for (i in 0...150)
 				{
-					fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-					fx.setGraphicSize(Std.int(2560 * 0.75));
-					fx.updateHitbox();
-					fx.antialiasing = true;
-					fx.screenCenter(XY);
-					fx.scrollFactor.set(0, 0);
-					fx.alpha = 0.75;		
-					wbg.color = FlxColor.BLACK;
-					snowemitter = new FlxEmitter(9999, 0, 300);
-					for (i in 0...150)
-					{
-						var p = new FlxParticle();
-						var p2 = new FlxParticle();
-						p.makeGraphic(12,12,FlxColor.GRAY);
-						p2.makeGraphic(24,24,FlxColor.GRAY);
-						
-						snowemitter.add(p);
-						snowemitter.add(p2);
-					}
-					snowemitter.width = FlxG.width*1.5;
-					snowemitter.launchMode = SQUARE;
-					snowemitter.velocity.set(-10, -240, 10, -320);
-					snowemitter.lifespan.set(5);
-					add(snowemitter);
-					snowemitter.start(false, 0.05);
+					var p = new FlxParticle();
+					var p2 = new FlxParticle();
+					p.makeGraphic(12,12,FlxColor.GRAY);
+					p2.makeGraphic(24,24,FlxColor.GRAY);
+					
+					snowemitter.add(p);
+					snowemitter.add(p2);
 				}
+				snowemitter.width = FlxG.width*1.5;
+				snowemitter.launchMode = SQUARE;
+				snowemitter.velocity.set(-10, -240, 10, -320);
+				snowemitter.lifespan.set(5);
+				add(snowemitter);
+				snowemitter.start(false, 0.05);
 			}
 			case 'normal':
 			{
@@ -3859,14 +3859,10 @@ class PlayState extends MusicBeatState
 				for (i in 0...unspawnNotes.length - 1)
 				{
 					unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? boyfriend.noteskin : dad.noteskin);
-					if (isPixelStage)
-						unspawnNotes[i].texture = 'pixelUI/NOTE_assets';
 				}
 				for (n in notes.members)
 				{
 					n.texture = "noteskins/" + (n.mustPress ? boyfriend.noteskin : dad.noteskin);
-					if (isPixelStage)
-						n.texture = 'pixelUI/NOTE_assets';
 				}
 				for (i in strumLineNotes.members)
 					i.texture = "noteskins/" + (i.player == 0 ? dad.noteskin : boyfriend.noteskin);
@@ -5038,7 +5034,7 @@ var cameraTwn:FlxTween;
 					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 					Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
-					isPixelStage = true;
+					//isPixelStage = true;
 					baro.alpha = 1;
 					bart.alpha = 1;
 					defaultCamZoom -= 0.1;
@@ -5081,7 +5077,7 @@ var cameraTwn:FlxTween;
 			}
 			else
 			{
-				snowemitter.x = 9999;
+				if (snowemitter != null) snowemitter.x = 9999;
 			}
 		}
 		
