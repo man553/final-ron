@@ -82,7 +82,6 @@ class DynamicShaderHandler
 		//PlayState.instance.luaShaders[fileName] = this;
 		//#end
 		MusicBeatState.animatedShaders[fileName] = this;
-		MusicBeatState.allShaders.push(this);
 	
 			//trace(shader.data.get('rOffset'));
 		

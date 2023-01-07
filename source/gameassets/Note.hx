@@ -280,7 +280,6 @@ class Note extends FlxSprite
 				skin = 'noteskins/NOTE_assets';
 			}
 		}
-
 		var animName:String = null;
 		if(animation.curAnim != null) {
 			animName = animation.curAnim.name;

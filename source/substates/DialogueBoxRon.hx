@@ -134,8 +134,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		var d = dialogueJSON[curDialogue];
 
 		if (d.text != null) curText = d.text;
-		if (d.clickSound != null)
-		{
+		if (d.clickSound != null) {
 			dialogText.sounds = [];
 			if (d.clickSound[0] != null)
 			{

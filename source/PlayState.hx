@@ -1392,9 +1392,9 @@ class PlayState extends MusicBeatState
 				wbg.screenCenter(XY);
 				wbg.scrollFactor.set();
 				add(wbg);
-				trace("expect another trace here");
-				trace(curSong + "<-- theres nothing what the fuck");
-				trace("THIS IS PRETTY WACKY!!");
+				addShader(FlxG.camera, "mosaic");
+				addShader(camHUD, "mosaic");
+				Shaders["mosaic"].shader.data.uBlocksize.value = [0];
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 				fx.setGraphicSize(Std.int(2560 * 0.75));
 				fx.updateHitbox();
@@ -2672,7 +2672,7 @@ class PlayState extends MusicBeatState
 
 				var skin = 'NOTE_assets';
 				if (isPixelStage)
-					skin = 'pixelUI/NOTE_assets';
+					skin = 'noteskins/PIXELNOTE_assets';
 
 				if (songNotes[1] > 3)
 				{
@@ -5015,18 +5015,16 @@ var cameraTwn:FlxTween;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					fx.alpha = 0;
 				case 752:
-					FlxG.camera.setFilters([ShadersHandler.MosaicShader]);
-					camHUD.setFilters([ShadersHandler.MosaicShader]);
 					defaultCamZoom += 0.1;
-					setBlockSize(0);
-				case 761: setBlockSize(1);
-				case 762: setBlockSize(2);
-				case 763: setBlockSize(3);
-				case 764: setBlockSize(6);
-				case 765: setBlockSize(9);
-				case 766: setBlockSize(13);
-				case 767: setBlockSize(20);
+				case 761: Shaders["mosaic"].shader.data.uBlocksize.value = [1];
+				case 762: Shaders["mosaic"].shader.data.uBlocksize.value = [2];
+				case 763: Shaders["mosaic"].shader.data.uBlocksize.value = [3];
+				case 764: Shaders["mosaic"].shader.data.uBlocksize.value = [6];
+				case 765: Shaders["mosaic"].shader.data.uBlocksize.value = [9];
+				case 766: Shaders["mosaic"].shader.data.uBlocksize.value = [13];
+				case 767: Shaders["mosaic"].shader.data.uBlocksize.value = [20];
 				case 768:
+					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
 					cameraSpeed = 3;
 					graadienter.color = FlxColor.fromRGB(224,224,224);
 					wbg.color = FlxColor.fromRGB(224,224,224);
