@@ -4,7 +4,8 @@ uniform float bOffset;
 void main()
 {
     // Normalized pixel coordinates (from 0 to 1)
-    vec2 uv = fragCoord/iResolution.xy;
+    vec2 uv=openfl_TextureCoordv;
     // Output to screen
-    fragColor.rgb = vec3(texture(iChannel0,vec2(uv.x-rOffset,uv.y)).r,texture(iChannel0,vec2(uv.x-gOffset,uv.y)).g,texture(iChannel0,vec2(uv.x - bOffset,uv.y)).b);
+	gl_FragColor = texture2D(bitmap,uv);
+    gl_FragColor.rgb = vec3(texture2D(bitmap,vec2(uv.x-rOffset,uv.y)).r,texture2D(bitmap,vec2(uv.x-gOffset,uv.y)).g,texture2D(bitmap,vec2(uv.x - bOffset,uv.y)).b);
 }
