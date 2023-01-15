@@ -1223,10 +1223,12 @@ class FlxCamera extends FlxBasic
 			{
 				if (_fxShakeAxes.x)
 				{
+					if (target == null) scroll.x = 0;
 					scroll.x += FlxG.random.float(-_fxShakeIntensity * width, _fxShakeIntensity * width) * zoom * FlxG.scaleMode.scale.x;
 				}
 				if (_fxShakeAxes.y)
 				{
+					if (target == null) scroll.y = 0;
 					scroll.y += FlxG.random.float(-_fxShakeIntensity * height, _fxShakeIntensity * height) * zoom * FlxG.scaleMode.scale.y;
 				}
 			}

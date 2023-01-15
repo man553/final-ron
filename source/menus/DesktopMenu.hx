@@ -21,7 +21,7 @@ class DesktopMenu extends MusicBeatState
 		"settings" => new options.OptionsState(),
 		"freeplay" => new MasterFreeplayState(),
 		"story mode" => "story mode is idiot",
-		"credits" => new CreditsState()
+		"credits" => new CreditMenu()
 	];
 	var camWhat:FlxCamera;
 	var camText:FlxCamera;
