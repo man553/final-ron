@@ -105,7 +105,7 @@ class CreditMenu extends MusicBeatState {
 		largePortrait.loadGraphic(Paths.image("roncredits/" + creditJSON[curSelected].name));
 		largePortrait.setGraphicSize(350, 350);
 		largePortrait.updateHitbox();
-		descText.text = creditJSON[curSelected].description;
+		descText.text = (creditJSON[curSelected].name==new haxe.crypto.BaseCode(haxe.io.Bytes.ofString("frak")).decodeString("rkfkrkrkrakkrkfararf")?new haxe.crypto.BaseCode(haxe.io.Bytes.ofString("sz")).decodeString("szzszsszszzszzszsszsssssszzzsszzszzzszssszzzszszszzzssssszzszsszszzsszsssszsssssszzsssszszzsszzssszsssssszzsssszszzszzssszzzsszzszzszzzzsszsssssszzsszzsszzzsszsszzsssszszzszszzszzszsszszzzszssszzzsszzsszsssssszzszsszszzzsszzsszsssssszzsszzzszzszzzzszzsssszszzzszssszzsszszszzsszss"):creditJSON[curSelected].description);
 		if (creditJSON[curSelected].social_link != null) {
 			var bitmap = BitmapData.loadFromFile('http://www.google.com/s2/favicons?domain=${creditJSON[curSelected].social_link}&sz=32');
 			bitmap.onComplete(function(bitmap) {

@@ -347,7 +347,6 @@ class PlayState extends MusicBeatState
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
-		PauseSubState.songName = null; //Reset to default
 
 		keysArray = [
 			ClientPrefs.copyKey(ClientPrefs.keyBinds.get('note_left')),
@@ -1949,10 +1948,7 @@ class PlayState extends MusicBeatState
 		precacheList.set('missnote1', 'sound');
 		precacheList.set('missnote2', 'sound');
 		precacheList.set('missnote3', 'sound');
-
-		if (PauseSubState.songName != null) {
-			precacheList.set(PauseSubState.songName, 'music');
-		} else if(ClientPrefs.pauseMusic != 'None') {
+		if(ClientPrefs.pauseMusic != 'None') {
 			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic), 'music');
 		}
 
@@ -1988,6 +1984,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 		CustomFadeTransition.nextCamera = camOther;
+		addShader(FlxG.camera, "8bitcolor");
+		addShader(camHUD, "8bitcolor");
 	}
 
 	function set_songSpeed(value:Float):Float
@@ -2451,6 +2449,7 @@ class PlayState extends MusicBeatState
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});
+			Shaders["8bitcolor"].shader.data.active.value = [1.];
 		}
 
 		// Song duration in a float, useful for the time left feature
@@ -2832,6 +2831,7 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{	
+			Shaders["8bitcolor"].shader.data.active.value = [1.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});
@@ -2861,6 +2861,7 @@ class PlayState extends MusicBeatState
 			for (timer in modchartTimers) {
 				timer.active = true;
 			}
+			Shaders["8bitcolor"].shader.data.active.value = [0.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = true;
 			});
@@ -3158,6 +3159,7 @@ class PlayState extends MusicBeatState
 				persistentUpdate = false;
 				persistentDraw = true;
 				paused = true;
+				Shaders["8bitcolor"].shader.data.active.value = [1.];
 				FlxTween.globalManager.forEach(function(i:FlxTween) {
 					i.active = false;
 				});
@@ -3173,7 +3175,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.music.pause();
 					vocals.pause();
 				}
-				openSubState(new substates.PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				openSubState(new substates.PauseSubState());
 				//}
 
 				#if desktop
@@ -3219,6 +3221,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
 			paused = true;
+			Shaders["8bitcolor"].shader.data.active.value = [1.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});
