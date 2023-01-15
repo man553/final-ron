@@ -25,9 +25,6 @@ class CreditMenu extends MusicBeatState {
 	var time:Float = 0;
 
 	override function create() {
-		var bg = new FlxBackdrop(Paths.image('scroll'));
-		bg.velocity.set(100, 100);
-		add(bg);
 		creditJSON = Json.parse(Assets.getText(Paths.json("credit")));
 		for (i in 0...creditJSON.length){
 			var j = new Alphabet(0, 100 + (150 * i), creditJSON[i].handle,true);
