@@ -1,69 +1,73 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "dripron left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "dripron down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "dripron up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "dripron right",
+			"indices": []
+		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
+			"indices": [
+				0,
+				1,
+				2,
+				3
+			],
+			"fps": 12,
 			"anim": "idle",
 			"loop": true,
-			"name": "idle instance 1"
-		},
-		{
-			"offsets": [
-				40,
-				160
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
-			"name": "up instance 1"
-		},
-		{
-			"offsets": [
-				270,
-				-130
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
-			"name": "down instance 1"
-		},
-		{
-			"offsets": [
-				370,
-				80
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
-			"name": "left instance 1"
-		},
-		{
-			"offsets": [
-				58,
-				56
-			],
-			"indices": [],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
-			"name": "right instance 1"
+			"name": "dripron idle"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/hellron-drippin",
+	"image": "characters/newcharstest/dripron",
 	"position": [
-		0,
-		0
+		-800,
+		-350
 	],
-	"healthicon": "hellron",
+	"healthicon": "dripron",
 	"flip_x": false,
 	"healthbar_colors": [
 		0,
@@ -71,9 +75,9 @@
 		0
 	],
 	"camera_position": [
-		0,
-		0
+		320,
+		360
 	],
 	"sing_duration": 6.1,
-	"scale": 1
+	"scale": 0.5
 }

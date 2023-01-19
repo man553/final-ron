@@ -5,7 +5,7 @@
 #define color_rmaxValues (1. / color_maxValues)
 #define color_positions vec3( 1., color_values.x, color_values.x*color_values.y )
 #define color_rpositions (65535. / color_positions)
-uniform float active;
+uniform float enablethisbitch;
 float encodeColor(vec3 a){
 	const vec3 maxValues  = color_maxValues;
 	const vec3 constant1  = color_positions / 65535.;
@@ -21,7 +21,7 @@ vec3 decodeColor(float a){
 
 void main(){
 	vec2 uv = openfl_TextureCoordv;
-	if (active == 1.) {
+	if (enablethisbitch == 1.) {
 		gl_FragColor = texture2D(bitmap,uv);
 		gl_FragColor.r = encodeColor(texture2D(bitmap,uv).rgb);
 		gl_FragColor.rgb = decodeColor(gl_FragColor.r);

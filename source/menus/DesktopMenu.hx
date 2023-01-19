@@ -103,6 +103,8 @@ class DesktopMenu extends MusicBeatState
 		FlxG.cameras.add(camText);
 		addShader(camWhat, "chromatic aberration");
 		addShader(camWhat, "fake CRT");
+		addShader(camWhat, "8bitcolor");
+		Shaders["8bitcolor"].shader.data.enablethisbitch.value = [1.];
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];

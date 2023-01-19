@@ -1985,6 +1985,7 @@ class PlayState extends MusicBeatState
 		}
 		CustomFadeTransition.nextCamera = camOther;
 		addShader(FlxG.camera, "8bitcolor");
+		Shaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 		addShader(camHUD, "8bitcolor");
 	}
 
@@ -2449,7 +2450,7 @@ class PlayState extends MusicBeatState
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});
-			Shaders["8bitcolor"].shader.data.active.value = [1.];
+			Shaders["8bitcolor"].shader.data.enablethisbitch.value = [1.];
 		}
 
 		// Song duration in a float, useful for the time left feature
@@ -2831,7 +2832,7 @@ class PlayState extends MusicBeatState
 	{
 		if (paused)
 		{	
-			Shaders["8bitcolor"].shader.data.active.value = [1.];
+			Shaders["8bitcolor"].shader.data.enablethisbitch.value = [1.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});
@@ -2861,7 +2862,7 @@ class PlayState extends MusicBeatState
 			for (timer in modchartTimers) {
 				timer.active = true;
 			}
-			Shaders["8bitcolor"].shader.data.active.value = [0.];
+			Shaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = true;
 			});
@@ -3159,7 +3160,7 @@ class PlayState extends MusicBeatState
 				persistentUpdate = false;
 				persistentDraw = true;
 				paused = true;
-				Shaders["8bitcolor"].shader.data.active.value = [1.];
+				Shaders["8bitcolor"].shader.data.enablethisbitch.value = [1.];
 				FlxTween.globalManager.forEach(function(i:FlxTween) {
 					i.active = false;
 				});
@@ -3221,7 +3222,7 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.anyJustPressed(debugKeysCharacter) && !endingSong && !inCutscene) {
 			persistentUpdate = false;
 			paused = true;
-			Shaders["8bitcolor"].shader.data.active.value = [1.];
+			Shaders["8bitcolor"].shader.data.enablethisbitch.value = [1.];
 			FlxTween.globalManager.forEach(function(i:FlxTween) {
 				i.active = false;
 			});

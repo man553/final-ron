@@ -83,15 +83,6 @@
 			]
 		],
 		[
-			"double-trouble",
-			"onslaughthell",
-			[
-				64,
-				0,
-				16
-			]
-		],
-		[
 			"awesome-ron",
 			"awesome-ron",
 			[
@@ -116,6 +107,24 @@
 				0,
 				32,
 				128
+			]
+		],
+		[
+			"bleeding",
+			"dripron",
+			[
+				0,
+				0,
+				0
+			]
+		],
+		[
+			"haemorrhage",
+			"dripron",
+			[
+				0,
+				0,
+				0
 			]
 		]
 	],

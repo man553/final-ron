@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="dripron.png">
+<SubTexture name="dripron idle0000" x="0" y="0" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0001" x="2560" y="0" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0002" x="0" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0003" x="2560" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0004" x="0" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0005" x="2560" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0006" x="7680" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0007" x="5120" y="4320" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0008" x="2560" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0009" x="5120" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0010" x="5120" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0011" x="5120" y="4320" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0012" x="5120" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron idle0013" x="7680" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron down0000" x="0" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron down0001" x="2560" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron down0002" x="5120" y="0" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron right0000" x="5120" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron right0001" x="5120" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron right0002" x="0" y="4320" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron right0003" x="2560" y="4320" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron left0000" x="5120" y="4320" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron left0001" x="0" y="5760" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron left0002" x="2560" y="5760" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron left0003" x="5120" y="5760" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron up0000" x="7680" y="0" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron up0001" x="7680" y="1440" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+<SubTexture name="dripron up0002" x="7680" y="2880" width="2560" height="1440" frameX="0" frameY="0" frameWidth="2560" frameHeight="1440" />
+</TextureAtlas>

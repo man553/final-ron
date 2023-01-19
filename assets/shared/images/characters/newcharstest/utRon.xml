@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="utRon.png">
+	<!-- Created with Adobe Animate version 21.0.1.37179 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle instance 10000" x="0" y="0" width="98" height="103"/>
+	<SubTexture name="idle instance 10001" x="98" y="0" width="98" height="103"/>
+	<SubTexture name="idle instance 10002" x="196" y="0" width="98" height="103"/>
+	<SubTexture name="idle instance 10003" x="294" y="0" width="98" height="103"/>
+	<SubTexture name="idle instance 10004" x="392" y="0" width="98" height="103"/>
+	<SubTexture name="idle instance 10005" x="0" y="103" width="98" height="103"/>
+	<SubTexture name="idle instance 10006" x="98" y="103" width="98" height="103"/>
+	<SubTexture name="idle instance 10007" x="196" y="103" width="98" height="103"/>
+	<SubTexture name="idle instance 10008" x="294" y="103" width="98" height="103"/>
+	<SubTexture name="left instance 10000" x="392" y="103" width="98" height="103"/>
+	<SubTexture name="left instance 10001" x="0" y="206" width="98" height="103"/>
+	<SubTexture name="left instance 10002" x="98" y="206" width="98" height="103"/>
+	<SubTexture name="right instance 10000" x="196" y="206" width="98" height="103"/>
+	<SubTexture name="right instance 10001" x="294" y="206" width="98" height="103"/>
+	<SubTexture name="right instance 10002" x="392" y="206" width="98" height="103"/>	
+	<SubTexture name="up instance 10000" x="0" y="309" width="98" height="103"/>
+	<SubTexture name="up instance 10001" x="98" y="309" width="98" height="103"/>
+	<SubTexture name="up instance 10002" x="196" y="309" width="98" height="103"/>
+	<SubTexture name="down instance 10000" x="294" y="309" width="98" height="103"/>
+	<SubTexture name="down instance 10001" x="392" y="309" width="98" height="103"/>
+	<SubTexture name="down instance 10002" x="0" y="412" width="98" height="103"/>
+</TextureAtlas>
