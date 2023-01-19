@@ -6,7 +6,7 @@
 				0
 			],
 			"indices": [],
-			"fps": 12,
+			"fps": 6,
 			"anim": "idle",
 			"loop": true,
 			"name": "idle instance 1"

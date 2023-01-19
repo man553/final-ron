@@ -18,7 +18,7 @@
 				0
 			],
 			"anim": "idle",
-			"fps": 24,
+			"fps": 12,
 			"name": "idleAnimated instance 1",
 			"indices": []
 		},
@@ -67,7 +67,7 @@
 			"name": "right instance 1"
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/newcharstest/utHeart",
 	"position": [
 		0,

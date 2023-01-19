@@ -287,6 +287,7 @@ class PlayState extends MusicBeatState
 	var snowemitter:FlxEmitter;
 	var graadienter:FlxSprite;
 	var wbg:FlxSprite;
+	var heart:FlxSprite;
 	
 	var mountainsbackba:BGSprite;
 	var mountainsba:BGSprite;
@@ -971,7 +972,12 @@ class PlayState extends MusicBeatState
 				Estatic2.alpha = 0;
 				
 				add(bloodshedGrp);
-				add(ronGrp);
+				if (curSong.toLowerCase() == 'bloodshed')
+					add(ronGrp);
+				else	
+				{
+					remove(witheredRa);
+				}
 				addCharacterToList("hellron-drippin", 1);
 				addCharacterToList("hellron", 1);
 				addCharacterToList("BFrun", 0);
@@ -1921,6 +1927,36 @@ class PlayState extends MusicBeatState
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
+					startCountdown();
+				case 'haemorrhage':
+					camHUD.alpha = 0;
+					blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
+					blackeffect.updateHitbox();
+					blackeffect.antialiasing = true;
+					blackeffect.screenCenter(XY);
+					blackeffect.scrollFactor.set();
+					blackeffect.alpha = 1;
+					add(blackeffect);
+					heart = new FlxSprite();
+					heart.frames = Paths.getSparrowAtlas('characters/newcharstest/utHeart');
+					heart.animation.addByPrefix('idle', 'idle', 24, false);
+					heart.animation.play('idle');
+					heart.scrollFactor.set(1,1);
+					heart.screenCenter();
+					heart.alpha = 0;
+					heart.scale.set(0.75,0.75);
+					add(heart);
+					fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
+					fx.updateHitbox();
+					fx.antialiasing = true;
+					fx.screenCenter(XY);
+					fx.scrollFactor.set(0, 0);
+					fx.alpha = 0.5;
+					add(fx);
+					dad.x -= 60;
+					boyfriend.x += 20;
+					boyfriend.y += 30;
 					startCountdown();
 				default:
 					startCountdown();
@@ -4996,6 +5032,69 @@ var cameraTwn:FlxTween;
 					camGame.alpha = 1;
 				case 12:
 					dad.playAnim('bye');
+			}
+		}
+		
+		if (curSong == 'Haemorrhage')
+		{
+			healthBarBG.alpha = 0;
+			healthBar.alpha = 0;
+			iconP1.visible = true;
+			iconP2.visible = true;
+			iconP2.alpha = 0;
+			iconP1.alpha = 0;
+			if (curStep >= 256) {
+				if (FlxG.keys.pressed.UP) boyfriend.y -= 15;
+				if (FlxG.keys.pressed.DOWN) boyfriend.y += 15;
+				if (FlxG.keys.pressed.LEFT) boyfriend.x -= 15;
+				if (FlxG.keys.pressed.RIGHT) boyfriend.x += 15;
+			}
+			switch (curStep) {
+				case 0:
+					camHUD.alpha = 0;
+				case 1:
+					heart.x = boyfriend.x+boyfriend.width/2;
+					heart.y = boyfriend.y+boyfriend.height/2;
+					heart.alpha = 0;
+					heart.antialiasing = false;
+					FlxTween.tween(blackeffect, {alpha: 0}, 10);
+				case 128:
+					defaultCamZoom += 0.1;
+				case 240:
+					defaultCamZoom += 0.1;
+				case 248 | 250:
+					blackeffect.alpha = 1;
+					heart.alpha = 1;
+				case 249| 251:
+					blackeffect.alpha = 0;
+					heart.alpha = 0;
+				case 252:
+					heart.alpha = 1;
+					blackeffect.alpha = 1;
+					FlxTween.tween(heart, { x: FlxG.camera.scroll.x+((FlxG.width / 2) - (heart.width / 2)), y: FlxG.camera.scroll.y+((FlxG.height / 1.5) - (heart.height / 2))}, 0.25, {ease: FlxEase.quartOut});
+				case 256:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					triggerEventNote('Change Character', 'dad', 'utRon');
+					triggerEventNote('Change Character', 'bf', 'heartlo');
+					remove(dad);
+					remove(boyfriend);
+					add(dad);
+					add(boyfriend);
+					dad.scale.set(5,5);
+					boyfriend.scale.set(0.75,0.75);
+					dad.scrollFactor.set();
+					boyfriend.scrollFactor.set();
+					boyfriend.screenCenter();
+					dad.screenCenter();
+					boyfriend.y = heart.y-180;
+					dad.x += 92;
+					heart.alpha = 0;
+					var bg:BGSprite = new BGSprite('bgs/newbgtest/undertale/buttons', 0, 0, 1, 1);
+					bg.scrollFactor.set();
+					bg.antialiasing = false;
+					bg.screenCenter();
+					bg.scale.set(0.66,0.66);
+					add(bg);
 			}
 		}
 
