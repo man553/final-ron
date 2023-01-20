@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="warning.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="popup2 instance 10000" x="0" y="0" width="826" height="476" frameX="-36" frameY="-85" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10001" x="0" y="0" width="826" height="476" frameX="-36" frameY="-85" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10002" x="826" y="0" width="832" height="500" frameX="-33" frameY="-73" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10003" x="0" y="500" width="838" height="566" frameX="-30" frameY="-40" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10004" x="838" y="500" width="808" height="634" frameX="-45" frameY="-6" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10005" x="0" y="1134" width="698" height="646" frameX="-100" frameY="0" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10006" x="698" y="1134" width="486" height="548" frameX="-206" frameY="-49" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10007" x="1184" y="1134" width="220" height="342" frameX="-339" frameY="-152" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10008" x="1404" y="1134" width="184" height="256" frameX="-357" frameY="-195" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10009" x="1588" y="1134" width="126" height="148" frameX="-386" frameY="-249" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10010" x="1714" y="1134" width="60" height="64" frameX="-419" frameY="-291" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10011" x="1774" y="1134" width="16" height="16" frameX="-441" frameY="-315" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10012" x="1790" y="1134" width="2" height="2" frameX="-448" frameY="-322" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10013" x="1792" y="1134" width="17" height="17" frameX="-442" frameY="-316" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10014" x="1809" y="1134" width="15" height="3" frameX="-443" frameY="-323" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10015" x="1824" y="1134" width="59" height="27" frameX="-421" frameY="-311" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10016" x="1883" y="1134" width="47" height="21" frameX="-427" frameY="-314" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10017" x="1930" y="1134" width="91" height="59" frameX="-405" frameY="-295" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10018" x="0" y="1780" width="422" height="247" frameX="-240" frameY="-201" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10019" x="422" y="1780" width="753" height="435" frameX="-74" frameY="-107" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10020" x="0" y="2215" width="889" height="512" frameX="-6" frameY="-69" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10021" x="889" y="2215" width="901" height="519" frameX="0" frameY="-65" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10022" x="0" y="2734" width="856" height="493" frameX="-23" frameY="-78" frameWidth="901" frameHeight="646"/>
+	<SubTexture name="popup2 instance 10023" x="856" y="2734" width="826" height="476" frameX="-38" frameY="-87" frameWidth="901" frameHeight="646"/>
+</TextureAtlas>

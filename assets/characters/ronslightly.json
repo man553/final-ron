@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				705,
+				590
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "ronPissed idle"
+		},
+		{
+			"offsets": [
+				722,
+				583
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "ronPissed left"
+		},
+		{
+			"offsets": [
+				714,
+				594
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "ronPissed down"
+		},
+		{
+			"offsets": [
+				701,
+				597
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "ronPissed up"
+		},
+		{
+			"offsets": [
+				693,
+				591
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "ronPissed right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ronPissed",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "ronslightly",
+	"flip_x": false,
+	"healthbar_colors": [
+		170,
+		137,
+		0
+	],
+	"camera_position": [
+		-320,
+		-120
+	],
+	"sing_duration": 4,
+	"scale": 0.5
+}

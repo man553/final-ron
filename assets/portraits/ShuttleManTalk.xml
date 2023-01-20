@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Shuttle Man Talk Swag Awesome So Cool.png">
+	<!-- Created with Adobe Animate version 21.0.8.42666 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ShuttleStand0000" x="1503" y="0" width="250" height="308" frameX="0" frameY="0" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0000" x="0" y="0" width="250" height="308" frameX="-1" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0001" x="0" y="0" width="250" height="308" frameX="0" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0002" x="250" y="0" width="251" height="308" frameX="0" frameY="-4" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0003" x="501" y="0" width="250" height="308" frameX="-3" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0004" x="751" y="0" width="251" height="308" frameX="-3" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0005" x="1002" y="0" width="250" height="308" frameX="-3" frameY="-1" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0006" x="1252" y="0" width="251" height="308" frameX="-2" frameY="-1" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0007" x="501" y="0" width="250" height="308" frameX="-2" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0008" x="1503" y="0" width="250" height="308" frameX="-2" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0009" x="1753" y="0" width="250" height="308" frameX="0" frameY="-3" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0010" x="0" y="308" width="251" height="308" frameX="-3" frameY="-4" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0011" x="251" y="308" width="251" height="308" frameX="-1" frameY="-1" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0012" x="502" y="308" width="250" height="308" frameX="-5" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0013" x="752" y="308" width="250" height="308" frameX="-3" frameY="0" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0014" x="1002" y="308" width="251" height="308" frameX="-4" frameY="-2" frameWidth="255" frameHeight="312"/>
+	<SubTexture name="ShuttleTalkSwag0015" x="1253" y="308" width="250" height="308" frameX="-1" frameY="-1" frameWidth="255" frameHeight="312"/>
+</TextureAtlas>

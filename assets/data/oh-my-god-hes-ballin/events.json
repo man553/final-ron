@@ -1,0 +1,38 @@
+{
+	"song": {
+		"speed": 3,
+		"stage": "nothing",
+		"player1": "bf",
+		"player2": "ballerorina",
+		"events": [
+			[
+				0,
+				[
+					[
+						"Play Animation",
+						"hey",
+						"dad"
+					]
+				]
+			],
+			[
+				1200,
+				[
+					[
+						"Play Animation",
+						"bye",
+						"dad"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "noteSplashes",
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 150,
+		"arrowSkin": "",
+		"needsVoices": true,
+		"song": "oh-my-god-hes-ballin"
+	}
+}

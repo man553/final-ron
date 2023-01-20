@@ -1,0 +1,90 @@
+{
+	"noteskin": "NOTEold_assets",
+	"animations": [
+		{
+			"offsets": [
+				885,
+				720
+			],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [],
+			"name": "ron idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				900,
+				713
+			],
+			"anim": "singLEFT",
+			"fps": 8,
+			"name": "ron left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				886,
+				717
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "ron down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				887,
+				716
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "ron up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				894,
+				719
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "ron right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				885,
+				716
+			],
+			"anim": "hey",
+			"fps": 16,
+			"name": "ron death",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ron",
+	"position": [
+		0,
+		350
+	],
+	"healthicon": "ron",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		0
+	],
+	"camera_position": [
+		80,
+		-350
+	],
+	"sing_duration": 4,
+	"scale": 0.5
+}

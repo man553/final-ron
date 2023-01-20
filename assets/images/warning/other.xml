@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="other.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="popup3 instance 10000" x="0" y="0" width="826" height="476" frameX="-188" frameY="-23" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10001" x="0" y="0" width="826" height="476" frameX="-188" frameY="-23" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10002" x="826" y="0" width="818" height="486" frameX="-192" frameY="-18" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10003" x="0" y="486" width="802" height="507" frameX="-200" frameY="-8" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10004" x="802" y="486" width="790" height="522" frameX="-206" frameY="0" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10005" x="0" y="1008" width="793" height="517" frameX="-204" frameY="-3" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10006" x="793" y="1008" width="824" height="478" frameX="-189" frameY="-22" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10007" x="0" y="1525" width="894" height="389" frameX="-154" frameY="-67" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10008" x="894" y="1525" width="1016" height="235" frameX="-93" frameY="-144" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10009" x="0" y="1914" width="1201" height="1" frameX="0" frameY="-261" frameWidth="1201" frameHeight="522"/>
+	<SubTexture name="popup3 instance 10010" x="1201" y="1914" width="0" height="0" frameX="84" frameY="98" frameWidth="1201" frameHeight="522"/>
+</TextureAtlas>

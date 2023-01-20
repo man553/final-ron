@@ -1,0 +1,53 @@
+{
+	"storyName": "VS COOLER GUY B)",
+	"difficulties": "Hard",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"weekBefore": "mainweek",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"ron",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"Ron-b",
+			"ron",
+			[
+				255,
+				0,
+				255
+			]
+		],
+		[
+			"Wasted-b",
+			"ronslightly-b",
+			[
+				255,
+				64,
+				255
+			]
+		],
+		[
+			"Ayo-b",
+			"ronmad-b",
+			[
+				255,
+				160,
+				255
+			]
+		],
+		[
+			"Blizzard",
+			"godron",
+			[
+				255,
+				255,
+				255
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "Week 1 bsides"
+}

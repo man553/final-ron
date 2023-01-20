@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="doyneBetter_sprited.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle0000" x="0" y="0" width="47" height="50"/>
+	<SubTexture name="idle0001" x="47" y="0" width="47" height="50"/>
+	<SubTexture name="idle0002" x="94" y="0" width="47" height="50"/>
+	<SubTexture name="idle0003" x="141" y="0" width="47" height="50"/>
+	<SubTexture name="left0000" x="0" y="50" width="47" height="50"/>
+	<SubTexture name="left0001" x="47" y="50" width="47" height="50"/>
+	<SubTexture name="left0002" x="94" y="50" width="47" height="50"/>
+	<SubTexture name="down0000" x="141" y="50" width="47" height="50"/>
+	<SubTexture name="down0001" x="0" y="100" width="47" height="50"/>
+	<SubTexture name="down0002" x="47" y="100" width="47" height="50"/>
+	<SubTexture name="up0000" x="94" y="100" width="47" height="50"/>
+	<SubTexture name="up0001" x="141" y="100" width="47" height="50"/>
+	<SubTexture name="up0002" x="0" y="150" width="47" height="50"/>
+	<SubTexture name="right0000" x="47" y="150" width="47" height="50"/>
+	<SubTexture name="right0001" x="94" y="150" width="47" height="50"/>
+	<SubTexture name="right0002" x="141" y="150" width="47" height="50"/>
+</TextureAtlas>

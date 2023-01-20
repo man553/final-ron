@@ -1,0 +1,43 @@
+{
+	"song": {
+		"speed": 2.5,
+		"stage": "ronNormal",
+		"player1": "bf",
+		"player2": "ron",
+		"events": [
+			[
+				115058.823529412,
+				[
+					[
+						"Change Scroll Speed",
+						"1.1",
+						"1"
+					],
+					[
+						"Change Character",
+						"1",
+						"ronslightly"
+					],
+					[
+						"Change Character",
+						"0",
+						"bfDark"
+					],
+					[
+						"Change Character",
+						"2",
+						"gfDark"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "noteSplashes",
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 170,
+		"arrowSkin": "",
+		"needsVoices": true,
+		"song": "Ron"
+	}
+}

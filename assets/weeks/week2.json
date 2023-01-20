@@ -1,0 +1,32 @@
+{
+	"songs": [
+		[
+			"trojan virus",
+			"ronpower",
+			[
+				255,
+				255,
+				20
+			]
+		]
+	],
+	"hiddenUntilUnlocked": false,
+	"hideFreeplay": false,
+	"weekBackground": "ron",
+	"difficulties": "Easy, Normal, Hard, Cool",
+	"weekCharacters": [
+		"ron2",
+		"bf",
+		"gf"
+	],
+	"storyName": "O shit ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron ron",
+	"weekName": "Week 2",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"hideStoryMode": true,
+	"weekBefore": "mainweek",
+	"startUnlocked": true
+}

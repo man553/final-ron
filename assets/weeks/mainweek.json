@@ -1,0 +1,53 @@
+{
+	"storyName": "VS COOL GUY B)",
+	"difficulties": "Hard",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"weekBefore": "tutorial",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"ron",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"Ron",
+			"ron",
+			[
+				255,
+				255,
+				0
+			]
+		],
+		[
+			"Wasted",
+			"ronslightly",
+			[
+				255,
+				165,
+				0
+			]
+		],
+		[
+			"Ayo",
+			"ronmad",
+			[
+				139,
+				69,
+				19
+			]
+		],
+		[
+			"Bloodshed",
+			"hellron",
+			[
+				0,
+				0,
+				0
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "Week 1"
+}

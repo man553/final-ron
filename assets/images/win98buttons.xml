@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="win98buttons.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="log off select0000" x="4" y="4" width="169" height="36"/>
+	<SubTexture name="log off unselect0000" x="193" y="4" width="169" height="36"/>
+	<SubTexture name="restart song select0000" x="4" y="60" width="169" height="34"/>
+	<SubTexture name="restart song unselect0000" x="193" y="60" width="169" height="34"/>
+	<SubTexture name="resume song select0000" x="4" y="114" width="169" height="34"/>
+	<SubTexture name="resume song unselect0000" x="193" y="114" width="169" height="34"/>
+	<SubTexture name="shut down select0000" x="4" y="168" width="169" height="36"/>
+	<SubTexture name="shut down unselect0000" x="193" y="168" width="169" height="36"/>
+</TextureAtlas>

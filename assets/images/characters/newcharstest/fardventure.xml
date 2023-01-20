@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="fardventure.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="drunk_sonker instance 10000" x="0" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10001" x="401" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10002" x="802" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10003" x="1203" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10004" x="1604" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10005" x="2005" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10006" x="2406" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10007" x="2807" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10008" x="3208" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10009" x="3609" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10010" x="4010" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10011" x="4411" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10012" x="4812" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10013" x="5213" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10014" x="5614" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10015" x="6015" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10016" x="6416" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10017" x="6817" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10018" x="7218" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10019" x="7619" y="0" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10020" x="0" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10021" x="401" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10022" x="802" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10023" x="1203" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10024" x="1604" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10025" x="2005" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10026" x="2406" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10027" x="2807" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10028" x="3208" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10029" x="3609" y="481" width="401" height="481"/>
+	<SubTexture name="drunk_sonker instance 10030" x="4010" y="481" width="401" height="481"/>
+	<SubTexture name="fart_sonker instance 10000" x="4411" y="481" width="401" height="481" frameX="0" frameY="-10" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10001" x="4812" y="481" width="401" height="481" frameX="0" frameY="-10" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10002" x="5213" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10003" x="5614" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10004" x="6015" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10005" x="6416" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10006" x="6817" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10007" x="7218" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10008" x="7619" y="481" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10009" x="0" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10010" x="401" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10011" x="802" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10012" x="1203" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10013" x="1604" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10014" x="2005" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10015" x="2406" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10016" x="2807" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="fart_sonker instance 10017" x="3208" y="962" width="401" height="481" frameX="0" frameY="0" frameWidth="401" frameHeight="491"/>
+	<SubTexture name="idle_sonker instance 10000" x="3609" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10001" x="4010" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10002" x="4411" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10003" x="4812" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10004" x="5213" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10005" x="5614" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10006" x="6015" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10007" x="6416" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10008" x="6817" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10009" x="7218" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10010" x="7619" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10011" x="0" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10012" x="401" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10013" x="401" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10014" x="401" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10015" x="802" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10016" x="7619" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10017" x="7218" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10018" x="1203" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10019" x="1604" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10020" x="2005" y="1443" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10021" x="6015" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10022" x="5614" y="962" width="401" height="481"/>
+	<SubTexture name="idle_sonker instance 10023" x="2406" y="1443" width="401" height="481"/>
+	<SubTexture name="idontevenknow_sonker instance 10000" x="2807" y="1443" width="186" height="253" frameX="-10" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10001" x="2807" y="1443" width="186" height="253" frameX="-10" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10002" x="2993" y="1443" width="164" height="253" frameX="-42" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10003" x="2993" y="1443" width="164" height="253" frameX="-42" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10004" x="3157" y="1443" width="175" height="274" frameX="-31" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10005" x="3157" y="1443" width="175" height="274" frameX="-31" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10006" x="3332" y="1443" width="206" height="253" frameX="0" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10007" x="3332" y="1443" width="206" height="253" frameX="0" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10008" x="3538" y="1443" width="175" height="253" frameX="-31" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10009" x="3538" y="1443" width="175" height="253" frameX="-31" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10010" x="3713" y="1443" width="196" height="232" frameX="-10" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="idontevenknow_sonker instance 10011" x="3713" y="1443" width="196" height="232" frameX="-10" frameY="0" frameWidth="206" frameHeight="274"/>
+	<SubTexture name="punch_sonker instance 10000" x="3909" y="1443" width="673" height="497" frameX="0" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10001" x="4582" y="1443" width="569" height="509" frameX="-94" frameY="0" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10002" x="5151" y="1443" width="490" height="503" frameX="-165" frameY="-1" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10003" x="5641" y="1443" width="436" height="492" frameX="-214" frameY="-5" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10004" x="6077" y="1443" width="400" height="481" frameX="-247" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10005" x="6477" y="1443" width="417" height="479" frameX="-247" frameY="-10" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10006" x="6894" y="1443" width="425" height="480" frameX="-246" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10007" x="7319" y="1443" width="423" height="480" frameX="-247" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10008" x="7742" y="1443" width="417" height="479" frameX="-247" frameY="-10" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10009" x="0" y="1952" width="410" height="481" frameX="-247" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10010" x="410" y="1952" width="402" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10011" x="812" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10012" x="1212" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10013" x="1612" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10014" x="2012" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10015" x="2412" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10016" x="2812" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10017" x="3212" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="punch_sonker instance 10018" x="3612" y="1952" width="400" height="481" frameX="-248" frameY="-9" frameWidth="673" frameHeight="509"/>
+	<SubTexture name="run_sonker instance 10000" x="4012" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10001" x="4413" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10002" x="4814" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10003" x="5215" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10004" x="5616" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10005" x="6017" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10006" x="6418" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10007" x="6819" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10008" x="7220" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10009" x="7621" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10010" x="0" y="2433" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10011" x="401" y="2433" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10012" x="4413" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10013" x="4814" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10014" x="5215" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10015" x="5616" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10016" x="6017" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10017" x="802" y="2433" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10018" x="6819" y="1952" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10019" x="1203" y="2433" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10020" x="1604" y="2433" width="401" height="480"/>
+	<SubTexture name="run_sonker instance 10021" x="0" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10000" x="2005" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10001" x="2406" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10002" x="2807" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10003" x="3208" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10004" x="3609" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10005" x="4010" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10006" x="4411" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10007" x="4812" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10008" x="5213" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10009" x="5614" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10010" x="6015" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10011" x="6416" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10012" x="6817" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10013" x="7218" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10014" x="7619" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10015" x="0" y="2913" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10016" x="2005" y="2433" width="401" height="480"/>
+	<SubTexture name="special_sonker instance 10017" x="2406" y="2433" width="401" height="480"/>
+	<SubTexture name="up_sonker instance 10000" x="401" y="2913" width="439" height="529" frameX="-147" frameY="-330" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10001" x="840" y="2913" width="639" height="583" frameX="0" frameY="-172" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10002" x="1479" y="2913" width="686" height="678" frameX="-26" frameY="-20" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10003" x="2165" y="2913" width="449" height="536" frameX="-213" frameY="-60" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10004" x="2614" y="2913" width="678" height="686" frameX="-138" frameY="0" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10005" x="3292" y="2913" width="627" height="565" frameX="-169" frameY="-86" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10006" x="3919" y="2913" width="599" height="529" frameX="-169" frameY="-121" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10007" x="4518" y="2913" width="680" height="649" frameX="-107" frameY="-68" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10008" x="5198" y="2913" width="680" height="686" frameX="-86" frameY="-49" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10009" x="5878" y="2913" width="644" height="677" frameX="-87" frameY="-49" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10010" x="6522" y="2913" width="598" height="649" frameX="-96" frameY="-57" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10011" x="7120" y="2913" width="553" height="617" frameX="-109" frameY="-67" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10012" x="7673" y="2913" width="517" height="590" frameX="-120" frameY="-76" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10013" x="0" y="3599" width="488" height="568" frameX="-130" frameY="-83" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10014" x="488" y="3599" width="469" height="553" frameX="-137" frameY="-88" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10015" x="957" y="3599" width="456" height="542" frameX="-141" frameY="-92" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10016" x="1413" y="3599" width="447" height="535" frameX="-144" frameY="-94" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10017" x="1860" y="3599" width="442" height="530" frameX="-146" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10018" x="2302" y="3599" width="440" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10019" x="2742" y="3599" width="440" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10020" x="3182" y="3599" width="440" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10021" x="3622" y="3599" width="440" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10022" x="4062" y="3599" width="440" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="up_sonker instance 10023" x="401" y="2913" width="439" height="529" frameX="-147" frameY="-96" frameWidth="816" frameHeight="859"/>
+	<SubTexture name="walk_sonker instance 10000" x="4502" y="3599" width="401" height="481" frameX="0" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10001" x="4903" y="3599" width="401" height="481" frameX="-42" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10002" x="5304" y="3599" width="401" height="481" frameX="-83" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10003" x="5705" y="3599" width="401" height="481" frameX="-124" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10004" x="6106" y="3599" width="400" height="481" frameX="-166" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10005" x="6506" y="3599" width="401" height="481" frameX="-207" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10006" x="6907" y="3599" width="401" height="481" frameX="-248" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10007" x="7308" y="3599" width="401" height="481" frameX="-289" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10008" x="7709" y="3599" width="401" height="481" frameX="-331" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10009" x="0" y="4167" width="401" height="481" frameX="-372" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10010" x="401" y="4167" width="401" height="481" frameX="-413" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10011" x="802" y="4167" width="401" height="481" frameX="-454" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10012" x="1203" y="4167" width="401" height="481" frameX="-496" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10013" x="1604" y="4167" width="401" height="481" frameX="-537" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10014" x="2005" y="4167" width="401" height="481" frameX="-578" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10015" x="2406" y="4167" width="401" height="481" frameX="-619" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10016" x="2807" y="4167" width="401" height="481" frameX="-661" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10017" x="3208" y="4167" width="401" height="481" frameX="-702" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10018" x="3609" y="4167" width="401" height="481" frameX="-743" frameY="0" frameWidth="1185" frameHeight="481"/>
+	<SubTexture name="walk_sonker instance 10019" x="4010" y="4167" width="401" height="481" frameX="-784" frameY="0" frameWidth="1185" frameHeight="481"/>
+</TextureAtlas>

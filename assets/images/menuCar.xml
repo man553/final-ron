@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menuCar.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="car instance 10000" x="0" y="0" width="715" height="406"/>
+	<SubTexture name="car instance 10001" x="0" y="0" width="715" height="406"/>
+	<SubTexture name="car instance 10002" x="715" y="0" width="715" height="406"/>
+	<SubTexture name="car instance 10003" x="0" y="406" width="715" height="406"/>
+	<SubTexture name="car instance 10004" x="715" y="406" width="715" height="406"/>
+	<SubTexture name="car instance 10005" x="0" y="812" width="715" height="406"/>
+	<SubTexture name="car instance 10006" x="715" y="812" width="715" height="406"/>
+	<SubTexture name="car instance 10007" x="0" y="1218" width="715" height="406"/>
+	<SubTexture name="car instance 10008" x="715" y="1218" width="715" height="406"/>
+	<SubTexture name="car instance 10009" x="0" y="1624" width="715" height="406"/>
+	<SubTexture name="car instance 10010" x="715" y="1624" width="715" height="406"/>
+	<SubTexture name="car instance 10011" x="0" y="2030" width="715" height="406"/>
+	<SubTexture name="car instance 10012" x="715" y="2030" width="715" height="406"/>
+	<SubTexture name="car instance 10013" x="0" y="2436" width="715" height="406"/>
+	<SubTexture name="car instance 10014" x="715" y="2436" width="715" height="406"/>
+	<SubTexture name="car instance 10015" x="0" y="2842" width="715" height="406"/>
+	<SubTexture name="car instance 10016" x="715" y="2842" width="715" height="406"/>
+	<SubTexture name="car instance 10017" x="0" y="3248" width="715" height="406"/>
+	<SubTexture name="car instance 10018" x="715" y="3248" width="715" height="406"/>
+	<SubTexture name="car instance 10019" x="0" y="3654" width="715" height="406"/>
+	<SubTexture name="car instance 10020" x="715" y="3654" width="715" height="406"/>
+	<SubTexture name="car instance 10021" x="715" y="0" width="715" height="406"/>
+	<SubTexture name="car instance 10022" x="0" y="0" width="715" height="406"/>
+	<SubTexture name="car instance 10023" x="0" y="0" width="715" height="406"/>
+</TextureAtlas>

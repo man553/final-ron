@@ -1,0 +1,26 @@
+{
+	"storyName": "abcdefghijklmnopqrstuvwxyz",
+	"difficulties": "Legacy",
+	"hideFreeplay": false,
+	"weekBackground": "storyWeek1",
+	"weekBefore": "freeplayshit",
+	"startUnlocked": true,
+	"weekCharacters": [
+		"ron",
+		"bf",
+		"gf"
+	],
+	"songs": [
+		[
+			"bloodshed-legacy-redux",
+			"hahanotscary",
+			[
+				255,
+				0,
+				0
+			]
+		]
+	],
+	"hideStoryMode": true,
+	"weekName": "blr"
+}

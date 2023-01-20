@@ -1,0 +1,24 @@
+{
+	"dialogue_pos": "left",
+	"position": [
+		120,
+		160
+	],
+	"scale": 1.5,
+	"animations": [
+		{
+			"anim": "talk",
+			"loop_offsets": [
+				0,
+				0
+			],
+			"idle_offsets": [
+				-1,
+				-12
+			],
+			"loop_name": "ShuttleTalkSwag",
+			"idle_name": "ShuttleStand"
+		}
+	],
+	"image": "Shuttle_Man_Talk_Swag_Awesome_So_Cool"
+}

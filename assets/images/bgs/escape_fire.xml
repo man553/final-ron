@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="escape_fire.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="fire instance 10000" x="0" y="0" width="480" height="360"/>
+	<SubTexture name="fire instance 10001" x="480" y="0" width="480" height="360"/>
+	<SubTexture name="fire instance 10002" x="960" y="0" width="480" height="360"/>
+	<SubTexture name="fire instance 10003" x="1440" y="0" width="480" height="360"/>
+	<SubTexture name="fire instance 10004" x="0" y="360" width="480" height="360"/>
+	<SubTexture name="fire instance 10005" x="480" y="360" width="480" height="360"/>
+	<SubTexture name="fire instance 10006" x="960" y="360" width="480" height="360"/>
+	<SubTexture name="fire instance 10007" x="1440" y="360" width="480" height="360"/>
+	<SubTexture name="fire instance 10008" x="0" y="720" width="480" height="360"/>
+	<SubTexture name="fire instance 10009" x="480" y="720" width="480" height="360"/>
+	<SubTexture name="fire instance 10010" x="960" y="720" width="480" height="360"/>
+	<SubTexture name="fire instance 10011" x="1440" y="720" width="480" height="360"/>
+	<SubTexture name="fire instance 10012" x="0" y="1080" width="480" height="360"/>
+	<SubTexture name="fire instance 10013" x="480" y="1080" width="480" height="360"/>
+	<SubTexture name="fire instance 10014" x="960" y="1080" width="480" height="360"/>
+	<SubTexture name="fire instance 10015" x="1440" y="1080" width="480" height="360"/>
+	<SubTexture name="fire instance 10016" x="0" y="1440" width="480" height="360"/>
+	<SubTexture name="fire instance 10017" x="480" y="1440" width="480" height="360"/>
+	<SubTexture name="fire instance 10018" x="960" y="1440" width="480" height="360"/>
+	<SubTexture name="fire instance 10019" x="1440" y="1440" width="480" height="360"/>
+	<SubTexture name="fire instance 10020" x="0" y="1800" width="480" height="360"/>
+	<SubTexture name="fire instance 10021" x="480" y="1800" width="480" height="360"/>
+	<SubTexture name="fire instance 10022" x="960" y="1800" width="480" height="360"/>
+	<SubTexture name="fire instance 10023" x="1440" y="1800" width="480" height="360"/>
+	<SubTexture name="fire instance 10024" x="0" y="2160" width="480" height="360"/>
+</TextureAtlas>
