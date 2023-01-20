@@ -5083,25 +5083,46 @@ var cameraTwn:FlxTween;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					triggerEventNote('Change Character', 'dad', 'utRon');
 					triggerEventNote('Change Character', 'bf', 'heartlo');
+					FlxG.camera.follow(null);// using this instead of scroll factor for physics and collision
+					FlxG.camera.scroll.set();
 					remove(dad);
 					remove(boyfriend);
 					add(dad);
 					add(boyfriend);
 					dad.scale.set(5,5);
 					boyfriend.scale.set(0.75,0.75);
-					dad.scrollFactor.set();
-					boyfriend.scrollFactor.set();
 					boyfriend.screenCenter();
 					dad.screenCenter();
 					boyfriend.y = heart.y-180;
 					dad.x += 92;
 					heart.alpha = 0;
 					var bg:BGSprite = new BGSprite('bgs/newbgtest/undertale/buttons', 0, 0, 1, 1);
-					bg.scrollFactor.set();
 					bg.antialiasing = false;
 					bg.screenCenter();
 					bg.scale.set(0.66,0.66);
-					add(bg);
+					add(bg);	
+					notes.cameras = [camGame];
+					remove(notes);
+					add(notes);			
+					for (i in unspawnNotes) {
+						i.cameras = [camGame];
+					}	
+					for (i in strumLineNotes.members) {
+						if (i.player == 0) { i.cameras = [camGame];
+							remove(i);
+							add(i);
+							i.x += 290;
+							i.alpha = 0;
+						}
+					}
+				case 480:
+					var ogY = strumLineNotes.members[1].y;
+					for (i in strumLineNotes.members) {
+						if (i.player == 0) { 
+							i.y = 0;
+							FlxTween.tween(i, {y: ogY, alpha:1}, 3, {ease: FlxEase.quintOut});
+						}
+					}
 			}
 		}
 
