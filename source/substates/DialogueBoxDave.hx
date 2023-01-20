@@ -81,7 +81,7 @@ class DialogueBoxDave extends FlxSpriteGroup
 		add(blackScreen);
 		
 		var hasDialog = true;
-		box.frames = Paths.getSparrowAtlas('speech_bubble', 'shared');
+		box.frames = Paths.getSparrowAtlas('speech_bubble');
 		box.setGraphicSize(Std.int(box.width / textBoxSizeFix));
 		box.updateHitbox();
 		box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
@@ -105,14 +105,14 @@ class DialogueBoxDave extends FlxSpriteGroup
 
 		var leftPortrait:Portrait = getPortrait(portraitLeftCharacter);
 
-		portraitLeft.frames = Paths.getSparrowAtlas(leftPortrait.portraitPath, 'shared');
+		portraitLeft.frames = Paths.getSparrowAtlas(leftPortrait.portraitPath);
 		portraitLeft.animation.addByPrefix('enter', leftPortrait.portraitPrefix, 24, false);
 		portraitLeft.updateHitbox();
 		portraitLeft.scrollFactor.set();
 
 		var rightPortrait:Portrait = getPortrait(portraitRightCharacter);
 		
-		portraitRight.frames = Paths.getSparrowAtlas(rightPortrait.portraitPath, 'shared');
+		portraitRight.frames = Paths.getSparrowAtlas(rightPortrait.portraitPath);
 		portraitRight.animation.addByPrefix('enter', rightPortrait.portraitPrefix, 24, false);
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
@@ -269,7 +269,7 @@ class DialogueBoxDave extends FlxSpriteGroup
 	function getPortrait(character:String):Portrait
 	{
 		// just as a backup crash something idk
-		var portrait:Portrait = new Portrait('dialogue/ron/dave_house', 'shared', 'dave house portrait', true);
+		var portrait:Portrait = new Portrait('dialogue/ron/dave_house', '', 'dave house portrait', true);
 		switch (character)
 		{
 			case 'dave':

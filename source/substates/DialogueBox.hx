@@ -66,7 +66,7 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			case 'ron' | 'ayo' | 'wasted' | 'trojan-virus' | 'file-manipulation' | 'atelophobia' | 'factory-reset' | 'bloodshed-old' | 'pretty-wacky' | 'bloodshed-b':
 				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('speech_bubble', 'shared');
+				box.frames = Paths.getSparrowAtlas('speech_bubble');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByPrefix('normal', 'speech bubble normal', 24, false);
 				box.animation.addByPrefix('exaggerate', 'AHH speech bubble', 24, false);
@@ -76,7 +76,7 @@ class DialogueBox extends FlxSpriteGroup
 				box.y = 375;
 				hasDialog = true;
 			case 'bloodshed' | 'bleeding':
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking_invert', 'shared');
+				box.frames = Paths.getSparrowAtlas('speech_bubble_talking_invert');
 				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
 				box.animation.addByPrefix('normal', 'speech bubble normal', 24, false);
 				box.animation.addByPrefix('exaggerate', 'AHH speech bubble', 24, false);
@@ -92,7 +92,7 @@ class DialogueBox extends FlxSpriteGroup
 		//portrait preloader
 		for (i in 0...dialogueList.length)
 		{
-			preloadedPortraits[dialogueList[i].split(":")[1]] = Paths.getSparrowAtlas('dialogue/ron/' + dialogueList[i].split(":")[1], 'shared');
+			preloadedPortraits[dialogueList[i].split(":")[1]] = Paths.getSparrowAtlas('dialogue/ron/' + dialogueList[i].split(":")[1]);
 		}
 
 
@@ -101,7 +101,7 @@ class DialogueBox extends FlxSpriteGroup
 			return;
 		
 		portraitLeft = new FlxSprite();
-		portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/ronPortrait', 'shared');
+		portraitLeft.frames = Paths.getSparrowAtlas('dialogue/ron/ronPortrait');
 		portraitLeft.animation.addByPrefix('ron Portrait Enter', 'ron Portrait Enter', 24, false);
 		portraitLeft.setGraphicSize(Std.int(portraitLeft.width + PlayState.daPixelZoom * 0.175));
 		portraitLeft.updateHitbox();
@@ -114,7 +114,7 @@ class DialogueBox extends FlxSpriteGroup
 		portraitLeft.visible = true;
 
 		portraitRight = new FlxSprite();
-		portraitRight.frames = Paths.getSparrowAtlas('dialogue/bf', 'shared');
+		portraitRight.frames = Paths.getSparrowAtlas('dialogue/bf');
 		portraitRight.animation.addByPrefix('bf', 'FTalk', 24, false);
 		portraitRight.animation.addByPrefix('bside', 'BSIDE', 24, false);
 		portraitRight.animation.addByPrefix('BTalk', 'BTalk', 24, false);

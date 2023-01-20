@@ -82,8 +82,7 @@ class LoadingState extends MusicBeatState
 					if (PlayState.SONG.needsVoices)
 						checkLoadSong(getVocalPath());
 				}*/
-				checkLibrary("shared");
-				if(directory != null && directory.length > 0 && directory != 'shared') {
+				if(directory != null && directory.length > 0) {
 					checkLibrary(directory);
 				}
 
@@ -163,23 +162,17 @@ class LoadingState extends MusicBeatState
 	
 	static function getNextState(target:FlxState, stopMusic = false):FlxState
 	{
-		var directory:String = 'shared';
 		var weekDir:String = StageData.forceNextDirectory;
 		StageData.forceNextDirectory = null;
-
-		if(weekDir != null && weekDir.length > 0 && weekDir != '') directory = weekDir;
-
-		Paths.setCurrentLevel(directory);
-		trace('Setting asset folder to ' + directory);
 
 		
 		var loaded:Bool = false;
 		if (PlayState.SONG != null) {
-			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath())) && isLibraryLoaded("shared") && isLibraryLoaded(directory);
+			loaded = isSoundLoaded(getSongPath()) && (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()));
 		}
 		
 		if (!loaded)
-			return new LoadingState(target, stopMusic, directory);
+			return new LoadingState(target, stopMusic, weekDir);
 	
 		if (stopMusic && FlxG.sound.music != null)
 			FlxG.sound.music.stop();

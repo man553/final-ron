@@ -1,8 +1,0 @@
-COMPOSER(s)
-Gangster Spongebob
-
-CHARTER(s)
-Benju
-
-ARTIST(s)
-Benju

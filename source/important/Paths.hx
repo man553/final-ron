@@ -58,8 +58,8 @@ class Paths
 	public static var dumpExclusions:Array<String> =
 	[
 		'assets/music/freakyMenu.$SOUND_EXT',
-		'assets/shared/music/breakfast.$SOUND_EXT',
-		'assets/shared/music/tea-time.$SOUND_EXT',
+		'assets/music/breakfast.$SOUND_EXT',
+		'assets/music/tea-time.$SOUND_EXT',
 	];
 	/// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory() {
@@ -145,13 +145,7 @@ class Paths
 		if (currentLevel != null)
 		{
 			var levelPath:String = '';
-			if(currentLevel != 'shared') {
-				levelPath = getLibraryPathForce(file, currentLevel);
-				if (OpenFlAssets.exists(levelPath, type))
-					return levelPath;
-			}
-
-			levelPath = getLibraryPathForce(file, "shared");
+			levelPath = getLibraryPath(file, currentLevel);
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
 		}
@@ -182,7 +176,7 @@ class Paths
 
 	inline static public function txt(key:String, ?library:String)
 	{
-		return getPath('data/$key.txt', TEXT, library);
+		return getPreloadPath('data/$key.txt');
 	}
 
 	inline static public function xml(key:String, ?library:String)
@@ -277,15 +271,10 @@ class Paths
 		if (currentLevel != null)
 		{
 			var levelPath:String = '';
-			if(currentLevel != 'shared') {
-				levelPath = getLibraryPathForce(key, currentLevel);
-				if (FileSystem.exists(levelPath))
-					return File.getContent(levelPath);
-			}
-
-			levelPath = getLibraryPathForce(key, 'shared');
+			levelPath = getLibraryPathForce(key, currentLevel);
 			if (FileSystem.exists(levelPath))
 				return File.getContent(levelPath);
+
 		}
 		#end
 		return Assets.getText(getPath(key, TEXT));

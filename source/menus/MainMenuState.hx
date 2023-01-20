@@ -145,7 +145,7 @@ class MainMenuState extends MusicBeatState
 		car.scrollFactor.set();
 		car.animation.play('car instance 1');
 
-		therock = new FlxSprite().loadGraphic(Paths.image('therock', 'shared'));
+		therock = new FlxSprite().loadGraphic(Paths.image('therock'));
 		therock.x += 0;
 		therock.y += 0;
 		therock.alpha = 0;
