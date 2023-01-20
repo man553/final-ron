@@ -51,7 +51,7 @@ class PauseSubState extends MusicBeatSubstate
 							PlayState.instance.vocals.volume = 0;
 							FlxTransitionableState.skipNextTransOut = true;
 							FlxG.resetState();
-							MusicBeatState.animatedShaders["8bitcolor"].shader.data.active.value = [0.];
+							MusicBeatState.animatedShaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 						case "log off": 					
 							PlayState.deathCounter = 0;
 							PlayState.seenCutscene = false;

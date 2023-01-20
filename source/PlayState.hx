@@ -1080,6 +1080,13 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				ground.screenCenter(X);
 				add(ground);
+			case 'walmart':
+				var walmart = new FlxSprite().loadGraphic(Paths.image('bgs/wallmart'));
+				walmart.antialiasing = false;
+				walmart.setGraphicSize(Std.int(walmart.width * 1.2), Std.int(walmart.height * 1.2));
+				walmart.updateHitbox();
+				walmart.screenCenter(XY);
+				add(walmart);
 			case 'win':
 				{
 					defaultCamZoom = 0.8;
