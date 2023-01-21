@@ -4864,6 +4864,9 @@ var cameraTwn:FlxTween;
 	var daNoteMoveH5:Bool =false;
 
 	var lastStepHit:Int = -1;
+	var undertaleStep:Int = 0;
+	var undertaleGotHit:Bool = false;
+
 	override function stepHit()
 	{
 		super.stepHit();
@@ -5113,8 +5116,15 @@ var cameraTwn:FlxTween;
 						if (FlxG.keys.pressed.DOWN) boyfriend.y += 15;
 						if (FlxG.keys.pressed.LEFT) boyfriend.x -= 15;
 						if (FlxG.keys.pressed.RIGHT) boyfriend.x += 15;
+						if (curStep > undertaleStep + 20) {undertaleGotHit = false; boyfriend.alpha = 1;}
+						else boyfriend.alpha = 0.3;
 						FlxG.overlap(notes, boyfriend, function(note, bf){
-							FlxG.sound.play(Paths.sound("damage"));
+							if (!undertaleGotHit) {
+								FlxG.sound.play(Paths.sound("damage"));
+								health -= 0.2;
+								undertaleStep = curStep;
+								undertaleGotHit = true;
+							}
 						});
 					}
 					remove(notes);
