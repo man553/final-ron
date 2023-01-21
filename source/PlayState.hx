@@ -336,6 +336,8 @@ class PlayState extends MusicBeatState
 	var ronGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
 	var bloodshedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
 	// ok i dont care anymor
+	var haemorrhageCallback:Void->Void;
+
 
 	override public function create()
 	{
@@ -2582,7 +2584,7 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
 
 		notes = new FlxTypedGroup<Note>();
-		add(notes);
+		if (curSong != "Haemorrhage") add(notes);
 
 		var noteData:Array<SwagSection>;
 
@@ -3186,7 +3188,7 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-
+		if (haemorrhageCallback != null) haemorrhageCallback();
 		scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
 		if(ratingName != '?')
 			scoreTxt.text += ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
@@ -3807,7 +3809,7 @@ class PlayState extends MusicBeatState
 						}
 				}
 				reloadHealthBarColors();
-				for (i in 0...unspawnNotes.length - 1)
+				for (i in 0...unspawnNotes.length)
 				{
 					unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? boyfriend.noteskin : dad.noteskin);
 				}
@@ -5050,12 +5052,6 @@ var cameraTwn:FlxTween;
 			iconP2.visible = true;
 			iconP2.alpha = 0;
 			iconP1.alpha = 0;
-			if (curStep >= 256) {
-				if (FlxG.keys.pressed.UP) boyfriend.y -= 15;
-				if (FlxG.keys.pressed.DOWN) boyfriend.y += 15;
-				if (FlxG.keys.pressed.LEFT) boyfriend.x -= 15;
-				if (FlxG.keys.pressed.RIGHT) boyfriend.x += 15;
-			}
 			switch (curStep) {
 				case 0:
 					camHUD.alpha = 0;
@@ -5101,9 +5097,6 @@ var cameraTwn:FlxTween;
 					bg.screenCenter();
 					bg.scale.set(0.66,0.66);
 					add(bg);	
-					notes.cameras = [camGame];
-					remove(notes);
-					add(notes);			
 					for (i in unspawnNotes) {
 						i.cameras = [camGame];
 					}	
@@ -5115,6 +5108,18 @@ var cameraTwn:FlxTween;
 							i.alpha = 0;
 						}
 					}
+					haemorrhageCallback = function() {
+						if (FlxG.keys.pressed.UP) boyfriend.y -= 15;
+						if (FlxG.keys.pressed.DOWN) boyfriend.y += 15;
+						if (FlxG.keys.pressed.LEFT) boyfriend.x -= 15;
+						if (FlxG.keys.pressed.RIGHT) boyfriend.x += 15;
+						FlxG.overlap(notes, boyfriend, function(note, bf){
+							FlxG.sound.play(Paths.sound("damage"));
+						});
+					}
+					remove(notes);
+					notes = new FlxTypedGroup<Note>();
+					add(notes);
 				case 480:
 					var ogY = strumLineNotes.members[1].y;
 					for (i in strumLineNotes.members) {
