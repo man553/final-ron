@@ -62,7 +62,6 @@ class FreeplayState extends MusicBeatState
 	var camWhat:FlxCamera;
 	var camText:FlxCamera;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
-
 	public static var mode:String = 'main';
 
 	override function create()
@@ -230,6 +229,7 @@ class FreeplayState extends MusicBeatState
 			// songText.x += 40;
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// songText.screenCenter(X);
+			portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[i].songName.toLowerCase()));// it would be funny if this actually worked
 		}
 		WeekData.setDirectoryFromWeek();
 
@@ -258,6 +258,7 @@ class FreeplayState extends MusicBeatState
 		
 		changeSelection();
 		changeDiff();
+		updatePortrait();
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 
@@ -307,6 +308,7 @@ class FreeplayState extends MusicBeatState
 		modeText.setFormat(Paths.font("w95.otf"), 48, FlxColor.WHITE, LEFT);
 		add(modeText);
 		super.create();
+
 	}
 
 	override function closeSubState() {
