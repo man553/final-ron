@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menuCarNew.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="window0000" x="0" y="0" width="488" height="345"/>
+	<SubTexture name="window0001" x="488" y="0" width="488" height="345"/>
+	<SubTexture name="window0002" x="976" y="0" width="488" height="345"/>
+	<SubTexture name="window0003" x="1464" y="0" width="488" height="345"/>
+	<SubTexture name="window0004" x="1952" y="0" width="488" height="345"/>
+	<SubTexture name="window0005" x="2440" y="0" width="488" height="345"/>
+	<SubTexture name="window0006" x="2928" y="0" width="488" height="345"/>
+	<SubTexture name="window0007" x="3416" y="0" width="488" height="345"/>
+	<SubTexture name="window0008" x="0" y="345" width="488" height="345"/>
+	<SubTexture name="window0009" x="488" y="345" width="488" height="345"/>
+	<SubTexture name="window0010" x="976" y="345" width="488" height="345"/>
+	<SubTexture name="window0011" x="1464" y="345" width="488" height="345"/>
+	<SubTexture name="window0012" x="1952" y="345" width="488" height="345"/>
+	<SubTexture name="window0013" x="2440" y="345" width="488" height="345"/>
+	<SubTexture name="window0014" x="2928" y="345" width="488" height="345"/>
+	<SubTexture name="window0015" x="3416" y="345" width="488" height="345"/>
+	<SubTexture name="window0016" x="0" y="690" width="488" height="345"/>
+	<SubTexture name="window0017" x="488" y="690" width="488" height="345"/>
+	<SubTexture name="window0018" x="976" y="690" width="488" height="345"/>
+	<SubTexture name="window0019" x="1464" y="690" width="488" height="345"/>
+	<SubTexture name="window0020" x="1952" y="690" width="488" height="345"/>
+	<SubTexture name="window0021" x="2440" y="690" width="488" height="345"/>
+	<SubTexture name="window0022" x="2928" y="690" width="488" height="345"/>
+	<SubTexture name="window0023" x="3416" y="690" width="488" height="345"/>
+	<SubTexture name="window0024" x="0" y="1035" width="488" height="345"/>
+	<SubTexture name="window0025" x="488" y="1035" width="488" height="345"/>
+	<SubTexture name="window0026" x="976" y="1035" width="488" height="345"/>
+	<SubTexture name="window0027" x="1464" y="1035" width="488" height="345"/>
+	<SubTexture name="window0028" x="1952" y="1035" width="488" height="345"/>
+	<SubTexture name="window0029" x="2440" y="1035" width="488" height="345"/>
+	<SubTexture name="window0030" x="2928" y="1035" width="488" height="345"/>
+	<SubTexture name="window0031" x="3416" y="1035" width="488" height="345"/>
+	<SubTexture name="window0032" x="0" y="1380" width="488" height="345"/>
+	<SubTexture name="window0033" x="488" y="1380" width="488" height="345"/>
+	<SubTexture name="window0034" x="976" y="1380" width="488" height="345"/>
+	<SubTexture name="window0035" x="1464" y="1380" width="488" height="345"/>
+	<SubTexture name="window0036" x="1952" y="1380" width="488" height="345"/>
+	<SubTexture name="window0037" x="2440" y="1380" width="488" height="345"/>
+	<SubTexture name="window0038" x="2928" y="1380" width="488" height="345"/>
+	<SubTexture name="window0039" x="3416" y="1380" width="488" height="345"/>
+	<SubTexture name="window0040" x="0" y="1725" width="488" height="345"/>
+	<SubTexture name="window0041" x="488" y="1725" width="488" height="345"/>
+	<SubTexture name="window0042" x="976" y="1725" width="488" height="345"/>
+	<SubTexture name="window0043" x="1464" y="1725" width="488" height="345"/>
+	<SubTexture name="window0044" x="1952" y="1725" width="488" height="345"/>
+	<SubTexture name="window0045" x="2440" y="1725" width="488" height="345"/>
+	<SubTexture name="window0046" x="2928" y="1725" width="488" height="345"/>
+	<SubTexture name="window0047" x="3416" y="1725" width="488" height="345"/>
+</TextureAtlas>
