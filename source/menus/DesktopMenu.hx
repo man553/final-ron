@@ -1,5 +1,9 @@
 package menus;
 
+import important.Song;
+import flixel.addons.ui.FlxUIButton;
+import flixel.addons.ui.FlxMultiGamepadAnalogStick.XY;
+import flixel.addons.ui.FlxUIInputText;
 import misc.CustomFadeTransition;
 import flixel.FlxCamera;
 #if desktop
@@ -19,7 +23,7 @@ class DesktopMenu extends MusicBeatState
 {
 	var icons:Map<String, Dynamic> = [
 		"discord" => "https://discord.gg/ron-874366610918473748",
-		"random" => "https://www.facebook.com/",
+		"random" => "https://facebook.com",
 		"settings" => new options.OptionsState(),
 		"freeplay" => new MasterFreeplayState(),
 		"story mode" => "story mode is idiot",
@@ -39,6 +43,7 @@ class DesktopMenu extends MusicBeatState
 	var window:FlxSprite;
 	var ywindow:Float = FlxG.height/2-203;
 	var tweening:Bool = false;
+	var daButton:FlxUIButton;
 	override function create() {
 
 		#if desktop
@@ -111,6 +116,17 @@ class DesktopMenu extends MusicBeatState
 			buttons.push(button);
 			iconI++;
 		}
+
+		var input = new FlxUIInputText(0, FlxG.height - 38);
+		input.screenCenter(X);
+        add(input);
+
+        daButton = new FlxUIButton(0, FlxG.height - 18, 'Run', function hi() {
+            teleport(input.text);
+        });
+		daButton.screenCenter(X);
+        add(daButton);
+
 		camText = new FlxCamera();
 		camText.bgColor = 0;
 		camWhat = new FlxCamera();
@@ -163,5 +179,19 @@ class DesktopMenu extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * elapsed;
 		}
 		super.update(elapsed);
+	}
+
+	function teleport(a:String)
+	{
+		switch(a)
+		{
+			case 'ron-undertale':
+			    PlayState.SONG = Song.loadFromJson('haemorrhage-hard', 'haemorrhage');
+			    PlayState.isStoryMode = false;
+			    PlayState.storyDifficulty = 2;
+			    MusicBeatState.switchState(new PlayState());
+			default:
+				FlxG.sound.play(Paths.sound('vine'));
+		}
 	}
 }
