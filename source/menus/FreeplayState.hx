@@ -258,7 +258,7 @@ class FreeplayState extends MusicBeatState
 		
 		changeSelection();
 		changeDiff();
-		updatePortrait();
+		updateportrait();
 
 		var swag:Alphabet = new Alphabet(1, 0, "swag");
 
