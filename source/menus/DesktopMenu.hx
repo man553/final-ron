@@ -10,6 +10,8 @@ import flixel.addons.display.FlxBackdrop;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.FlxSprite;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 
@@ -34,6 +36,9 @@ class DesktopMenu extends MusicBeatState
 	var time:Float = 0;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var transitioningToIdiotism:Bool = false;
+	var window:FlxSprite;
+	var ywindow:Float = FlxG.height/2-203;
+	var tweening:Bool = false;
 	override function create() {
 
 		#if desktop
@@ -56,6 +61,16 @@ class DesktopMenu extends MusicBeatState
 		});
 		add(rainbowscreen);
 		add(new FlxSprite().loadGraphic(Paths.image("pcBg")));
+		
+		window = new FlxSprite(FlxG.width/1.3-405,ywindow);
+		window.frames = Paths.getSparrowAtlas('menuCarNew');
+		window.animation.addByPrefix('window', 'window', 24, true);
+		window.animation.play('window');
+		window.angle = 3;
+		FlxTween.tween(window, {y: ywindow + 10, angle: -3}, 1, {ease: FlxEase.circInOut, type: PINGPONG});
+		window.scale.set(1.5,1.5);
+		add(window);
+					
 		for (i in icons.keys()) {
 			var button:FlxButton;
 			button = new FlxButton((iconI > 2 ? 180 : 20), 20 + (150 * (iconI > 2 ? iconI - 3:iconI)), "", function() {
@@ -119,6 +134,22 @@ class DesktopMenu extends MusicBeatState
 		if (transitioningToIdiotism)
 			return;
 		time += elapsed;
+		/*if ((FlxG.mouse.justPressed) && (FlxG.mouse.overlaps(window)))
+		{
+			tweening = false;
+			FlxTween.cancelTweensOf(window);
+			window.x = FlxG.mouse.x-window.width/2;
+			window.y = FlxG.mouse.y-window.width/2;
+			ywindow = window.y;
+		}
+		else
+		{
+			if (tweening == false)
+			{
+				tweening = true;
+				FlxTween.tween(window, {y: ywindow + 10, angle: -10}, 1, {ease: FlxEase.circInOut, type: PINGPONG});
+			}
+		}*/
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		#if desktop
