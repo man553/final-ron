@@ -43,7 +43,6 @@ class DesktopMenu extends MusicBeatState
 	var window:FlxSprite;
 	var ywindow:Float = FlxG.height/2-203;
 	var tweening:Bool = false;
-	var daButton:FlxUIButton;
 	override function create() {
 
 		#if desktop
@@ -121,7 +120,7 @@ class DesktopMenu extends MusicBeatState
 		input.screenCenter(X);
         add(input);
 
-        daButton = new FlxUIButton(0, FlxG.height - 18, 'Run', function hi() {
+        var daButton = new FlxUIButton(0, FlxG.height - 18, 'Run', function hi() {
             teleport(input.text);
         });
 		daButton.screenCenter(X);
