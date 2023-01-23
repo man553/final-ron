@@ -246,7 +246,7 @@ class RunTab extends FlxGroup {
 	}
 	function triggerRunEvent(runText:String) {
 		switch (runText) {
-			default: trace(runText);
+			default: FlxG.sound.play(Paths.sound('vine'));
 			case "teevee": CoolUtil.browserLoad("https://youtu.be/X9hIJDzo9m0");
 			case "ron": #if windows Sys.command("start RON.exe"); #end
 			case "peak" | "ron undertale" | "for old times sake":
