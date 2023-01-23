@@ -22,17 +22,18 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 
+var rainbowscreen:FlxBackdrop;
+var camWhat:FlxCamera;
 class DesktopMenu extends MusicBeatState
 {
 	var icons:Map<String, Dynamic> = [
 		"discord" => "https://discord.gg/ron-874366610918473748",
-		"random" => "https://facebook.com",
+		"random" => "https://www.facebook.com",
 		"settings" => new options.OptionsState(),
 		"freeplay" => new MasterFreeplayState(),
 		"story mode" => "story mode is idiot",
 		"credits" => new CreditMenu()
 	];
-	var camWhat:FlxCamera;
 	var camText:FlxCamera;
 	public static var leftState:Bool = false;
 	public static var curClicked:String = "";
@@ -58,13 +59,16 @@ class DesktopMenu extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
 		var iconFrames = Paths.getSparrowAtlas("menuIcons");
-		var rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);
+		var sanstitre = new FlxBackdrop(Paths.image('sanstitre'), XY, 0, 0);
+		rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);
 		var rainbTmr = new FlxTimer().start(0.005, function(tmr:FlxTimer)
 		{
 			rainbowscreen.x += (Math.sin(time)/5)+2;
 			rainbowscreen.y += (Math.cos(time)/5)+1;
+			sanstitre.setPosition(rainbowscreen.x,rainbowscreen.y);
 			tmr.reset(0.005);
 		});
+		add(sanstitre);
 		add(rainbowscreen);
 		add(new FlxSprite().loadGraphic(Paths.image("pcBg")));
 		
@@ -246,7 +250,6 @@ class RunTab extends FlxGroup {
 	}
 	function triggerRunEvent(runText:String) {
 		switch (runText) {
-			default: FlxG.sound.play(Paths.sound('vine'));
 			case "teevee": CoolUtil.browserLoad("https://youtu.be/X9hIJDzo9m0");
 			case "ron": #if windows Sys.command("start RON.exe"); #end
 			case "peak" | "ron undertale" | "for old times sake":
@@ -256,6 +259,9 @@ class RunTab extends FlxGroup {
 			    PlayState.storyDifficulty = 2;
 			    MusicBeatState.switchState(new PlayState());
 			case "full" | "full version" | "2.5" | "3.0" | "demo 3" | "next demo": CoolUtil.browserLoad("https://youtu.be/pNzGTCEmf3U");
+			case "2012": 
+				rainbowscreen.visible = false;
+				FlxG.sound.play(Paths.sound('vine'));
 		}
 	}
 }

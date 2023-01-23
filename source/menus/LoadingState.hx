@@ -17,6 +17,8 @@ import lime.utils.AssetManifest;
 
 import haxe.io.Path;
 
+using StringTools;
+
 class LoadingState extends MusicBeatState
 {
 	inline static var MIN_TIME = 1.0;
@@ -45,11 +47,14 @@ class LoadingState extends MusicBeatState
 	var funkay:FlxSprite;
 	var ron:FlxSprite;
 	var loadBar:FlxSprite;
+	var loadingA:String = Std.string(FlxG.random.int(1, 8));
 	override function create()
 	{
+		if (PlayState.isStoryMode)
+			loadingA = 'Main';
 		var bg:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, FlxG.height);
 		add(bg);
-		funkay = new FlxSprite(0, 0).loadGraphic(Paths.image('loading-screens/loading' + FlxG.random.int(1, 8)));
+		funkay = new FlxSprite(0, 0).loadGraphic(Paths.image('loading-screens/loading' + loadingA));
 		funkay.setGraphicSize(0, FlxG.height);
 		funkay.updateHitbox();
 		funkay.antialiasing = ClientPrefs.globalAntialiasing;
@@ -95,7 +100,7 @@ class LoadingState extends MusicBeatState
 		camWhat = new FlxCamera();
 		FlxG.cameras.reset(camWhat);
 		FlxCamera.defaultCameras = [camWhat];
-		//addShader(camWhat, "fake CRT");
+		addShader(camWhat, "fake CRT");
 		//addShader(camWhat, "bloom");
 	}
 	
@@ -175,7 +180,9 @@ class LoadingState extends MusicBeatState
 			return new LoadingState(target, stopMusic, weekDir);
 	
 		if (stopMusic && FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+			FlxG.sound.music.fadeOut(3, 0.2);
+			
+		//FlxG.sound.music.stop();
 		
 		return target;
 	}

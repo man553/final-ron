@@ -665,53 +665,6 @@ class PlayState extends MusicBeatState
 
 			case 'ronNormal': //ron
 				addCharacterToList("rontriggered", 1);
-				var sky:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
-				sky.screenCenter();
-				sky.scrollFactor.set(0.1, 0.1);
-				wastedGrp.add(sky);
-
-				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
-				mountainsback.screenCenter();
-				mountainsback.scrollFactor.set(0.3, 0.3);
-				mountainsback.y -= 60;
-				wastedGrp.add(mountainsback);
-
-				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
-				clouds.screenCenter();
-				clouds.scrollFactor.set(0.1, 0.1);
-				wastedGrp.add(clouds);
-
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				wastedGrp.add(rain);
-				rain.animation.play('rain');
-
-				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
-				mountains.screenCenter();
-				mountains.scrollFactor.set(0.3, 0.3);
-				mountains.y -= 60;
-				wastedGrp.add(mountains);
-
-				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_hillfront', -100, 20);
-				hillfront.screenCenter();
-				hillfront.scrollFactor.set(0.4, 0.4);
-				hillfront.y -= 60;
-				wastedGrp.add(hillfront);
-
-				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
-				street.screenCenter();
-				wastedGrp.add(street);
-				
-				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
-				blackeffect.updateHitbox();
-				blackeffect.antialiasing = true;
-				blackeffect.screenCenter(XY);
-				blackeffect.scrollFactor.set();
-				blackeffect.alpha = 0;
-				wastedGrp.add(blackeffect);			
 
 				defaultCamZoom = 0.7;
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_sky', -100, 20);
@@ -757,6 +710,56 @@ class PlayState extends MusicBeatState
 				street.screenCenter();
 				add(street);
 
+				var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+				skyo.screenCenter();
+				skyo.scrollFactor.set(0.1, 0.1);
+				wastedGrp.add(skyo);
+
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				wastedGrp.add(mountainsback);
+
+				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
+				clouds.screenCenter();
+				clouds.scrollFactor.set(0.1, 0.1);
+				wastedGrp.add(clouds);
+
+				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				rain.animation.addByPrefix('rain', 'rain', 24, true);
+				rain.setGraphicSize(Std.int(rain.width * 4));
+				rain.updateHitbox();
+				rain.screenCenter(XY);
+				wastedGrp.add(rain);
+				rain.animation.play('rain');
+
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
+				mountains.screenCenter();
+				mountains.scrollFactor.set(0.3, 0.3);
+				mountains.y -= 60;
+				wastedGrp.add(mountains);
+
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_hillfront', -100, 20);
+				hillfront.screenCenter();
+				hillfront.scrollFactor.set(0.4, 0.4);
+				hillfront.y -= 60;
+				wastedGrp.add(hillfront);
+
+				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
+				street.screenCenter();
+				wastedGrp.add(street);
+				
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+				blackeffect.updateHitbox();
+				blackeffect.antialiasing = true;
+				blackeffect.screenCenter(XY);
+				blackeffect.scrollFactor.set();
+				blackeffect.alpha = 0;
+				wastedGrp.add(blackeffect);		
+				
+				add(wastedGrp);
+				wastedGrp.visible = false;
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
@@ -977,9 +980,8 @@ class PlayState extends MusicBeatState
 				if (curSong.toLowerCase() == 'bloodshed')
 					add(ronGrp);
 				else	
-				{
 					remove(witheredRa);
-				}
+
 				addCharacterToList("hellron-drippin", 1);
 				addCharacterToList("hellron", 1);
 				addCharacterToList("BFrun", 0);
@@ -5603,7 +5605,7 @@ var cameraTwn:FlxTween;
 		if (curSong == 'Ron') 
 		{
 			if (curStep == 540 || curStep == 604 || curStep == 668 || curStep == 732 || curStep == 1304)
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+				FlxTween.tween(FlxG.camera, {zoom: 1.3}, 0.4, {ease: FlxEase.expoOut,});
 			switch (curStep)
 			{
 				case 540 | 668:
@@ -5614,6 +5616,10 @@ var cameraTwn:FlxTween;
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
 					wastedGrp.visible = true;
+					addShader(FlxG.camera, "rain");
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.05];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
