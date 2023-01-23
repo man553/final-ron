@@ -722,7 +722,7 @@ class PlayState extends MusicBeatState
 				hillfront.y -= 60;
 				add(hillfront);
 				
-				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 40);
 				street.screenCenter();
 				add(street);
 
@@ -3523,21 +3523,21 @@ class PlayState extends MusicBeatState
 		if (!isCameraOnForcedPos)
 		{
 			if (section != null && section) {
-				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y);
+				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
 				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 					
-				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
-				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
+				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 30;
+				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 30;
 			}
 			else {
-				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y);
+				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y-75);
 				camFollow.x += dad.cameraPosition[0];
 				camFollow.y += dad.cameraPosition[1];
-				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
 				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 			}
@@ -5621,20 +5621,36 @@ var cameraTwn:FlxTween;
 
 		if (curSong == 'Ron') 
 		{
+			if ((curStep >= 272) && (curStep <= 1304))
+			{
+				var chromeOffset = ClientPrefs.rgbintense/350;
+				if (curStep % 8 == 0)
+				{
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						if(ClientPrefs.downScroll)
+							member.y -= 20;
+						else
+							member.y += 20;
+						FlxTween.tween(member, {y: defaultStrumY}, 0.7, {ease: FlxEase.quadOut});
+					}
+				}
+				trace(FlxG.camera.zoom);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*(FlxG.camera.zoom*1000/700)];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset *(FlxG.camera.zoom*1000/700)];
+			}
 			if (curStep == 540 || curStep == 604 || curStep == 668 || curStep == 732 || curStep == 1304)
 				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 0.4, {ease: FlxEase.backOut,});
 			switch (curStep)
 			{
 				case 208:
-					defaultCamZoom = 0.85;
-				case 264:
 					defaultCamZoom = 0.9;
+				case 264:
+					defaultCamZoom = 1.1;
 				case 272:
-					defaultCamZoom = 0.8;
-					addShader(camGame, "bloom");
-					baro.alpha = 1;
-					bart.alpha = 1;
-					camOverlay.angle = 90;
+					defaultCamZoom = 0.7;
+					//addShader(camGame, "bloom");
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 540 | 668:
 					dad.playAnim('hey');
