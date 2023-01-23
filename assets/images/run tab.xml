@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="run tab.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cancel highlighted0000" x="194" y="187" width="75" height="23"/>
+	<SubTexture name="cancel neutral0000" x="99" y="230" width="75" height="23"/>
+	<SubTexture name="cancel pressed0000" x="194" y="230" width="75" height="23"/>
+	<SubTexture name="exit highlighted0000" x="325" y="221" width="16" height="14"/>
+	<SubTexture name="exit neutral0000" x="289" y="255" width="16" height="14"/>
+	<SubTexture name="exit pressed0000" x="325" y="255" width="16" height="14"/>
+	<SubTexture name="help highlighted0000" x="325" y="187" width="16" height="14"/>
+	<SubTexture name="help neutral0000" x="289" y="187" width="16" height="14"/>
+	<SubTexture name="help pressed0000" x="289" y="221" width="16" height="14"/>
+	<SubTexture name="ok highlighted0000" x="4" y="230" width="75" height="23"/>
+	<SubTexture name="ok neutral0000" x="4" y="187" width="75" height="23"/>
+	<SubTexture name="ok pressed0000" x="99" y="187" width="75" height="23"/>
+	<SubTexture name="tab0000" x="4" y="4" width="347" height="163"/>
+</TextureAtlas>

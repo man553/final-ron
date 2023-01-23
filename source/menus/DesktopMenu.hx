@@ -6,6 +6,8 @@ import flixel.addons.ui.FlxMultiGamepadAnalogStick.XY;
 import flixel.addons.ui.FlxUIInputText;
 import misc.CustomFadeTransition;
 import flixel.FlxCamera;
+import flixel.math.FlxPoint;
+import flixel.group.FlxGroup;
 #if desktop
 import important.Discord.DiscordClient;
 #end
@@ -51,7 +53,6 @@ class DesktopMenu extends MusicBeatState
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		important.WeekData.loadTheFirstEnabledMod();
-		FlxG.mouse.visible = true;
 
 		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
@@ -111,20 +112,11 @@ class DesktopMenu extends MusicBeatState
 			button.animation.addByPrefix("normal", i);
 			button.animation.addByPrefix("highlight", i);
 			button.animation.addByPrefix("pressed", i);
+			button.allowSwiping = false;
 			add(button);
 			buttons.push(button);
 			iconI++;
 		}
-
-		var input = new FlxUIInputText(0, FlxG.height - 38);
-		input.screenCenter(X);
-        add(input);
-
-        var daButton = new FlxUIButton(0, FlxG.height - 18, 'Run', function hi() {
-            teleport(input.text);
-        });
-		daButton.screenCenter(X);
-        add(daButton);
 
 		camText = new FlxCamera();
 		camText.bgColor = 0;
@@ -141,9 +133,6 @@ class DesktopMenu extends MusicBeatState
 		FlxCamera.defaultCameras = [camWhat];
 		CustomFadeTransition.nextCamera = camText;
 		super.create();
-	}
-	override function closeSubState() {
-		super.closeSubState();
 	}
 	override function update(elapsed:Float) {
 		if (transitioningToIdiotism)
@@ -169,28 +158,94 @@ class DesktopMenu extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		#if desktop
 		if (FlxG.keys.anyJustPressed(debugKeys))
-		{
 			MusicBeatState.switchState(new editors.MasterEditorMenu());
-		}
 		#end
 		if (FlxG.sound.music.volume < 0.8)
-		{
 			FlxG.sound.music.volume += 0.5 * elapsed;
-		}
 		super.update(elapsed);
+		FlxG.mouse.visible = true;
+		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R) add(new RunTab());
 	}
-
-	function teleport(a:String)
-	{
-		switch(a)
-		{
-			case 'ron-undertale':
-			    PlayState.SONG = Song.loadFromJson('haemorrhage-hard', 'haemorrhage');
-			    PlayState.isStoryMode = false;
-			    PlayState.storyDifficulty = 2;
-			    MusicBeatState.switchState(new PlayState());
-			default:
-				FlxG.sound.play(Paths.sound('vine'));
+}
+class RunTab extends FlxGroup {
+	var tab:FlxSprite;
+	var ok:FlxButton;
+	var cancel:FlxButton;
+	var exit:FlxButton;
+	var help:FlxButton;
+	var field:FlxUIInputText;
+	var tabBar:FlxButton;
+	var t = Paths.getSparrowAtlas("run tab");
+	public function new() {
+		super();
+		field = new FlxUIInputText(58, 643, 270, "", 18);
+		field.font = Paths.font("w95.otf");
+		field.callback = function(text, action) {
+			if (action == "enter") {
+				triggerRunEvent(field.text);
+				field.text = "";
+				field.caretIndex = 0;
+			}
+		}
+		add(field);
+		tab = new FlxSprite(0, 560);
+		tab.frames = t;
+		tab.animation.addByPrefix("d", "tab");
+		tab.animation.play("d");
+		add(tab); //270 text field length
+		ok = new FlxButton(177, 685, "", function() {
+			triggerRunEvent(field.text);
+			field.text = "";
+			field.caretIndex = 0;
+		});
+		cancel = new FlxButton(258, 685, "", function() {
+			field.text = "";
+			field.caretIndex = 0;
+		});
+		help = new FlxButton(308, 566, "", function() {
+			CoolUtil.browserLoad("www.facebook.com");
+		});
+		exit = new FlxButton(327, 566, "", function() {
+			destroy();
+		});
+		for (i=>button in [ok, cancel, help, exit]) {
+			button.frames = t;
+			var animIndex = ["ok", "cancel", "help", "exit"];
+			button.animation.addByPrefix("normal", animIndex[i] + " neutral");
+			button.animation.addByPrefix("highlight", animIndex[i] + " highlighted");
+			button.animation.addByPrefix("pressed", animIndex[i] + " pressed");
+			button.updateHitbox();
+			add(button);
+		}
+		help.setSize(15,13);
+		exit.setSize(15,13);
+		tabBar = new FlxButton(0, 560, "");
+		tabBar.width = 347;
+		tabBar.height = 20;
+		tabBar.alpha = 0;
+		tabBar.allowSwiping = true;
+		add(tabBar);
+	}
+	var justMousePos = new FlxPoint();
+	var justTaskBarPos = new FlxPoint();
+	var movingTab = false;
+	override function update(elapsed) {
+		super.update(elapsed);
+		if (tabBar.status == 2) {
+			if (FlxG.mouse.justPressed) {justMousePos = FlxG.mouse.getScreenPosition(); justTaskBarPos.set(tab.x, tab.y);movingTab = true;}
+		}
+		if (FlxG.mouse.justReleased) movingTab = false;
+		if (movingTab) {
+			tab.setPosition((FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, (FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
+			for (button in [ok, cancel, help, exit, tabBar, field]) {
+				var offsetIndex:Map<Dynamic,Dynamic> =  [ok => [177, 125],cancel => [258, 125],help => [308, 6],exit => [327, 6],tabBar => [0, 0],field => [58, 84]];
+				button.setPosition(tab.x + offsetIndex[button][0], tab.y + offsetIndex[button][1]);
+			}
+		}
+	}
+	function triggerRunEvent(runText:String) {
+		switch (runText) {
+			default: trace(runText);
 		}
 	}
 }
