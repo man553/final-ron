@@ -2,6 +2,7 @@ package menus;
 
 import important.Song;
 import flixel.addons.ui.FlxUIButton;
+import flixel.FlxGame;
 import flixel.addons.ui.FlxMultiGamepadAnalogStick.XY;
 import flixel.addons.ui.FlxUIInputText;
 import misc.CustomFadeTransition;
@@ -246,6 +247,15 @@ class RunTab extends FlxGroup {
 	function triggerRunEvent(runText:String) {
 		switch (runText) {
 			default: trace(runText);
+			case "teevee": CoolUtil.browserLoad("https://youtu.be/X9hIJDzo9m0");
+			case "ron": #if windows Sys.command("start RON.exe"); #end
+			case "peak" | "ron undertale" | "for old times sake":
+				var songIndex = ["peak" => "awesome-ron", "ron undertale" => "haemorrhage", "for old times sake" => "oneirophobia"];
+				PlayState.SONG = Song.loadFromJson('${songIndex[runText]}-hard', songIndex[runText]);
+			    PlayState.isStoryMode = false;
+			    PlayState.storyDifficulty = 2;
+			    MusicBeatState.switchState(new PlayState());
+			case "full" | "full version" | "2.5" | "3.0" | "demo 3" | "next demo": CoolUtil.browserLoad("https://youtu.be/pNzGTCEmf3U");
 		}
 	}
 }
