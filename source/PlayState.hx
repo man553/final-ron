@@ -1361,21 +1361,25 @@ class PlayState extends MusicBeatState
 			case 'nothing':
 			{
 				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
+				wbg.scale.set(5,5);
 				wbg.updateHitbox();
 				wbg.screenCenter(XY);
 				wbg.scrollFactor.set();
 				add(wbg);
-				addShader(FlxG.camera, "mosaic");
-				addShader(camHUD, "mosaic");
-				Shaders["mosaic"].shader.data.uBlocksize.value = [0];
-				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-				fx.setGraphicSize(Std.int(2560 * 0.75));
-				fx.updateHitbox();
-				fx.antialiasing = true;
-				fx.screenCenter(XY);
-				fx.scrollFactor.set(0, 0);
-				fx.alpha = 0.75;		
-				wbg.color = FlxColor.BLACK;
+				if (curSong.toLowerCase() == 'pretty-wacky')
+				{
+					addShader(FlxG.camera, "mosaic");
+					addShader(camHUD, "mosaic");
+					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
+					fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fx.setGraphicSize(Std.int(2560 * 0.75));
+					fx.updateHitbox();
+					fx.antialiasing = true;
+					fx.screenCenter(XY);
+					fx.scrollFactor.set(0, 0);
+					fx.alpha = 0.75;		
+					wbg.color = FlxColor.BLACK;
+				}
 				snowemitter = new FlxEmitter(9999, 0, 300);
 				for (i in 0...150)
 				{
@@ -1557,12 +1561,11 @@ class PlayState extends MusicBeatState
 			case 'nothing':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
+					//maybe bob will sing idk
 					camGame.alpha = 0;
 					cameraSpeed = 3;
-					boyfriend.x = dad.x;
-					boyfriend.y = dad.y;
-					boyfriend.visible = false;
 					gf.visible = false;
+					boyfriend.scrollFactor.set(0.2,0.2);
 					defaultCamZoom += 0.2;
 				}
 		}
@@ -1960,7 +1963,6 @@ class PlayState extends MusicBeatState
 					addShader(camGame, "fake CRT");
 					startCountdown();
 				case 'oh-my-god-hes-ballin':
-					addShader(camGame, "bloom");
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
@@ -5077,6 +5079,9 @@ var cameraTwn:FlxTween;
 					camGame.alpha = 1;
 				case 12:
 					dad.playAnim('bye');
+				case 16:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					addShader(camGame, "bloom");
 			}
 		}
 		
@@ -5643,16 +5648,18 @@ var cameraTwn:FlxTween;
 					for (i in 0...8)
 					{ 
 						var member = strumLineNotes.members[i];
+						FlxTween.globalManager.completeTweensOf(member);
 						if(ClientPrefs.downScroll)
 							member.y -= 20;
 						else
 							member.y += 20;
-						FlxTween.tween(member, {y: defaultStrumY}, 0.7, {ease: FlxEase.quadOut});
+						FlxTween.tween(member, {y: defaultStrumY}, 0.65, {ease: FlxEase.backOut});
 					}
 				}
-				trace(FlxG.camera.zoom);
-				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*(FlxG.camera.zoom*1000/700)];
-				Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset *(FlxG.camera.zoom*1000/700)];
+				//might be just me but its way too laggy
+				//trace(FlxG.camera.zoom);
+				//Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*(FlxG.camera.zoom*1000/700)];
+				//Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset *(FlxG.camera.zoom*1000/700)];
 			}
 			if (curStep == 540 || curStep == 604 || curStep == 668 || curStep == 732 || curStep == 1304)
 				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 0.4, {ease: FlxEase.backOut,});
