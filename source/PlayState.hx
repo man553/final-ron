@@ -337,7 +337,8 @@ class PlayState extends MusicBeatState
 	var bloodshedGrp:FlxTypedGroup<Dynamic> = new FlxTypedGroup<Dynamic>();
 	// ok i dont care anymor
 	var haemorrhageCallback:Void->Void;
-
+	var bar1:FlxSprite;
+	var bar2:FlxSprite;
 
 	override public function create()
 	{
@@ -503,7 +504,15 @@ class PlayState extends MusicBeatState
 		boyfriendGroup = new FlxSpriteGroup(BF_X, BF_Y);
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
-			
+
+		bar1 = new FlxSprite(0, -560).makeGraphic(1600 * 2, 560, 0xFF000000);
+		bar2 = new FlxSprite(0, 720).makeGraphic(1600 * 2, 560, 0xFF000000);
+		bar1.cameras=[camHUD];
+		bar2.cameras=[camHUD];
+		add(bar1);
+		add(bar2);
+		bar2.y=720;
+		bar1.y=-560;
 		switch (curStage)
 		{ 	//all the stages here
 			case 'farm':
@@ -3853,6 +3862,11 @@ class PlayState extends MusicBeatState
 				} else {
 					FunkinLua.setVarInArray(this, value1, value2);
 				}
+			case 'Change Bar Size':
+				var val1 = Std.parseFloat(value1);
+				var val2 = Std.parseFloat(value2);
+				FlxTween.tween(bar1, {y: -560 + (val1 * 10)}, val2, {ease: FlxEase.quintOut});
+				FlxTween.tween(bar2, {y: 720 + -(val1 * 10)}, val2, {ease: FlxEase.quintOut});
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
