@@ -1,0 +1,4 @@
+flash an image on screen
+
+Value 1: Name of the image
+Value 2: Duration (in seconds)

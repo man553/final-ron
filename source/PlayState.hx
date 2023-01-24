@@ -606,11 +606,12 @@ class PlayState extends MusicBeatState
 				mountainsback.y -= 60;
 				add(mountainsback);
 				
-				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
+				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_clouds', -100, 20);
 				clouds.screenCenter();
 				clouds.scrollFactor.set(0.1, 0.1);
 				add(clouds);
 				
+				//another layer of rain soon
 				//var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
 				//rain.animation.addByPrefix('rain', 'rain', 24, true);
 				//rain.setGraphicSize(Std.int(rain.width * 4));
@@ -674,8 +675,11 @@ class PlayState extends MusicBeatState
 
 			case 'ronNormal': //ron
 				addCharacterToList("rontriggered", 1);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0]; // add 
 
-				defaultCamZoom = 0.7;
+				defaultCamZoom = 0.8;
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_sky', -100, 20);
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
@@ -696,11 +700,23 @@ class PlayState extends MusicBeatState
 				add(cloudssmall);
 				
 				FlxTween.tween(cloudssmall, {x: cloudssmall.x + 3000}, 360, {type: LOOPING});
+			
+				var cityback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_cityback', -100, 20);
+				cityback.screenCenter();
+				cityback.scrollFactor.set(0.2, 0.2);
+				cityback.y -= 60;
+				add(cityback);
+				
+				var cityj:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_city', -100, 20);
+				cityj.screenCenter();
+				cityj.scrollFactor.set(0.25, 0.25);
+				cityj.y -= 60;
+				add(cityj);
 				
 				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountainsback', -100, 20);
 				mountainsback.screenCenter();
 				mountainsback.scrollFactor.set(0.3, 0.3);
-				mountainsback.y -= 60;
+				mountainsback.y += 120;
 				add(mountainsback);
 				
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_mountains', -100, 20);
@@ -715,7 +731,7 @@ class PlayState extends MusicBeatState
 				hillfront.y -= 60;
 				add(hillfront);
 				
-				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 20);
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ron/ron_street', -100, 40);
 				street.screenCenter();
 				add(street);
 
@@ -730,7 +746,7 @@ class PlayState extends MusicBeatState
 				mountainsback.y -= 60;
 				wastedGrp.add(mountainsback);
 
-				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/clouds', -100, 20);
+				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_clouds', -100, 20);
 				clouds.screenCenter();
 				clouds.scrollFactor.set(0.1, 0.1);
 				wastedGrp.add(clouds);
@@ -1477,6 +1493,7 @@ class PlayState extends MusicBeatState
 
 
 		// STAGE SCRIPTS
+		/*
 		#if (MODS_ALLOWED && LUA_ALLOWED)
 		var doPush:Bool = false;
 		var luaFile:String = 'stages/' + curStage + '.lua';
@@ -1492,7 +1509,7 @@ class PlayState extends MusicBeatState
 
 		if(doPush)
 			luaArray.push(new FunkinLua(luaFile));
-		#end
+		#end*/
 
 		if(SONG.gfVersion == null || SONG.gfVersion.length < 1)
 			SONG.gfVersion = 'gf';
@@ -1609,11 +1626,11 @@ class PlayState extends MusicBeatState
 			
 		baro.x = 0;
 		baro.scrollFactor.set();
-		baro.cameras = [camHUD];
+		baro.cameras = [camOverlay];
 					
 		bart.x = FlxG.width-150;
 		bart.scrollFactor.set();
-		bart.cameras = [camHUD];
+		bart.cameras = [camOverlay];
 		
 		baro.alpha = 0;
 		bart.alpha = 0;
@@ -3515,21 +3532,21 @@ class PlayState extends MusicBeatState
 		if (!isCameraOnForcedPos)
 		{
 			if (section != null && section) {
-				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y);
+				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
 				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 					
-				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 50;
-				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 50;
+				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 30;
+				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 30;
 			}
 			else {
-				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y);
+				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y-75);
 				camFollow.x += dad.cameraPosition[0];
 				camFollow.y += dad.cameraPosition[1];
-				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 50;
-				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 50;
+				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
 				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
 			}
@@ -5618,10 +5635,37 @@ var cameraTwn:FlxTween;
 
 		if (curSong == 'Ron') 
 		{
+			if ((curStep >= 272) && (curStep <= 1304))
+			{
+				var chromeOffset = ClientPrefs.rgbintense/350;
+				if (curStep % 8 == 0)
+				{
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						if(ClientPrefs.downScroll)
+							member.y -= 20;
+						else
+							member.y += 20;
+						FlxTween.tween(member, {y: defaultStrumY}, 0.7, {ease: FlxEase.quadOut});
+					}
+				}
+				trace(FlxG.camera.zoom);
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*(FlxG.camera.zoom*1000/700)];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset *(FlxG.camera.zoom*1000/700)];
+			}
 			if (curStep == 540 || curStep == 604 || curStep == 668 || curStep == 732 || curStep == 1304)
-				FlxTween.tween(FlxG.camera, {zoom: 1.3}, 0.4, {ease: FlxEase.expoOut,});
+				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 0.4, {ease: FlxEase.backOut,});
 			switch (curStep)
 			{
+				case 208:
+					defaultCamZoom = 0.9;
+				case 264:
+					defaultCamZoom = 1.1;
+				case 272:
+					defaultCamZoom = 0.7;
+					//addShader(camGame, "bloom");
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 540 | 668:
 					dad.playAnim('hey');
 				case 604 | 732:
@@ -5634,6 +5678,15 @@ var cameraTwn:FlxTween;
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					Shaders["rain"].shader.data.opacity.value = [0.2];
+					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fxtwo.scale.set(0.55, 0.55);
+					fxtwo.updateHitbox();
+					fxtwo.antialiasing = true;
+					fxtwo.screenCenter();
+					fxtwo.alpha = 0.2;
+					fxtwo.scrollFactor.set(0, 0);
+					add(fxtwo);
+					fxtwo.cameras = [camOverlay];
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});

@@ -1,8 +1,8 @@
 [
 	{
 		"name": "seezee",
-		"handle": "SeeZee",
-		"description": "Leader, Artist, Coder, Composer, Charter etc.\n\nyo mommas hella gay!!",
+		"handle": "Seezee",
+		"description": "Leader, Lead Artist, Coder, Composer, Charter etc.\n\nyo mommas hella gay!!",
 		"social_link": "https://youtube.com/sz553"
 
 	},
@@ -36,12 +36,6 @@
 		"social_link": "https://youtube.com/channel/UCe0gpmS7b64huEbwH5xbmrA"
 	},
 	{
-		"name": "byok",
-		"handle": "BYOK",
-		"description": "Lead Artist\n\nballs",
-		"social_link": "https://youtube.com/channel/UCs9siIh64rD-uF2U7wgcOGA"
-	},
-	{
 		"name": "frakits",
 		"handle": "Frakits",
 		"description": "Lead Coder\n\nbeing seezee"
@@ -51,6 +45,12 @@
 		"handle": "Shoutsuo",
 		"description": "Lead Charter\n\nSHEEAAAGH!",
 		"social_link": "https://twitter.com/shoutsuo"
+	},
+	{
+		"name": "byok",
+		"handle": "BYOK",
+		"description": "Artist\n\nballs",
+		"social_link": "https://youtube.com/channel/UCs9siIh64rD-uF2U7wgcOGA"
 	},
 	{
 		"name": "zimmy",
