@@ -340,6 +340,9 @@ class PlayState extends MusicBeatState
 	var bar1:FlxSprite;
 	var bar2:FlxSprite;
 
+	//ok ig
+	var funnyTween:Bool = false;
+
 	override public function create()
 	{
 		//preventing duplicate shaders
@@ -348,6 +351,7 @@ class PlayState extends MusicBeatState
 
 		// for lua
 		instance = this;
+		funnyTween = false;
 
 		debugKeysChart = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 		debugKeysCharacter = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_2'));
@@ -1565,7 +1569,8 @@ class PlayState extends MusicBeatState
 					camGame.alpha = 0;
 					cameraSpeed = 3;
 					gf.visible = false;
-					boyfriend.scrollFactor.set(0.2,0.2);
+					boyfriend.scrollFactor.set(0.2,0.2); //what
+					boyfriend.alpha = 0;
 					defaultCamZoom += 0.2;
 				}
 		}
@@ -1766,18 +1771,13 @@ class PlayState extends MusicBeatState
 			var songName = SONG.song;
 			if (songName == 'Holy-Shit-Dave-Fnf')
 				songName = 'Dave-Fnf';
-			kadeEngineWatermark = new FlxText(4, healthBarBG.y
-				+ 50, 0,
-				songName
-				+ " - "
-				+ CoolUtil.difficulties[storyDifficulty]
-				+ " | " + "Tristan Engine (KE 1.2)", 16);
+
+			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
+			kadeEngineWatermark = new FlxText(4, 0, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
+			kadeEngineWatermark.cameras = [camHUD];
 			kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			kadeEngineWatermark.scrollFactor.set();
 			add(kadeEngineWatermark);
-
-			if (ClientPrefs.downScroll)
-				kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
 		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
@@ -1802,6 +1802,12 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
+		if(kadeEngineWatermark != null)
+		{
+			if (ClientPrefs.downScroll)
+				kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
+			else scoreTxt.y + 10;
+		}
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
@@ -4949,7 +4955,7 @@ var cameraTwn:FlxTween;
 				case 240:
 					defaultCamZoom += 0.1;
 				case 256:
-					FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 0.5);
 					blackeffect.alpha = 0;
 					bgbleffect.alpha = 0;
 					fx.alpha = 0;
@@ -5003,7 +5009,7 @@ var cameraTwn:FlxTween;
 					camHUD.alpha = 1;
 					graadienter.color = FlxColor.WHITE;
 					wbg.color = FlxColor.WHITE;
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);
 					fx.alpha = 0;
 				case 752:
 					defaultCamZoom += 0.1;
@@ -5027,7 +5033,7 @@ var cameraTwn:FlxTween;
 					baro.alpha = 1;
 					bart.alpha = 1;
 					defaultCamZoom -= 0.1;
-					FlxG.camera.flash(FlxColor.fromRGB(224,224,224), 3);
+					makeFlash(FlxG.camera, FlxColor.fromRGB(224, 224, 224), 3);
 					triggerEventNote('Change Character', 'dad', 'doyneSprited');
 					triggerEventNote('Change Character', 'bf', 'bfSprited');
 					dad.y -= 120;
@@ -5080,8 +5086,10 @@ var cameraTwn:FlxTween;
 				case 12:
 					dad.playAnim('bye');
 				case 16:
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);
 					addShader(camGame, "bloom");
+				case 144:
+					funnyTween = true;
 			}
 		}
 		
@@ -5117,7 +5125,7 @@ var cameraTwn:FlxTween;
 					blackeffect.alpha = 1;
 					FlxTween.tween(heart, { x: FlxG.camera.scroll.x+((FlxG.width / 2) - (heart.width / 2)), y: FlxG.camera.scroll.y+((FlxG.height / 1.5) - (heart.height / 2))}, 0.25, {ease: FlxEase.quartOut});
 				case 256:
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);
 					triggerEventNote('Change Character', 'dad', 'utRon');
 					triggerEventNote('Change Character', 'bf', 'heartlo');
 					FlxG.camera.follow(null);// using this instead of scroll factor for physics and collision
@@ -5193,7 +5201,7 @@ var cameraTwn:FlxTween;
 				Estatic.alpha = 0;
 			switch (curStep) {
 				case 128:
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);
 					hellbg.alpha = 1;
 					//triggerEventNote('Change Character', 'dad', 'hellron');
 					//triggerEventNote('Change Character', 'bf', 'BFrun');
@@ -5233,7 +5241,7 @@ var cameraTwn:FlxTween;
 					cameraSpeed = 3;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
-					FlxG.camera.flash(FlxColor.WHITE, 1);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);
 					camFollow.y -= 5600;
 					boyfriend.y -= 5600;
 					dad.y -= 5600;
@@ -5259,7 +5267,7 @@ var cameraTwn:FlxTween;
 					cameraSpeed = 1.5;
 					defaultCamZoom = 0.7;
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
-					FlxG.camera.flash(FlxColor.WHITE, 1);			
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1);			
 			}
 		}
 
@@ -5514,7 +5522,7 @@ var cameraTwn:FlxTween;
 				case 368:
 					defaultCamZoom = 1.2;
 				case 384:
-					FlxG.camera.flash(FlxColor.WHITE, 0.2);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 0.2);
 				case 400:
 					defaultCamZoom = 1.5;
 				case 448:
@@ -5672,7 +5680,7 @@ var cameraTwn:FlxTween;
 				case 272:
 					defaultCamZoom = 0.7;
 					//addShader(camGame, "bloom");
-					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1, null, true);
 				case 540 | 668:
 					dad.playAnim('hey');
 				case 604 | 732:
@@ -5694,7 +5702,7 @@ var cameraTwn:FlxTween;
 					fxtwo.scrollFactor.set(0, 0);
 					add(fxtwo);
 					fxtwo.cameras = [camOverlay];
-					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					makeFlash(FlxG.camera, FlxColor.WHITE, 1, null, true);
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
 					defaultCamZoom += 0.2;
@@ -5799,6 +5807,11 @@ var cameraTwn:FlxTween;
 		callOnLuas('onStepHit', []);
 	}
 
+	function makeFlash(camera:FlxCamera, color:FlxColor = FlxColor.WHITE, duration:Float = 1, onComplete:Void->Void = null, force:Bool = false)
+	{
+		if(ClientPrefs.flashing) camera.flash(color, duration, onComplete, force);
+	}
+
 	var lightningStrikeBeat:Int = 0;
 	var lightningOffset:Int = 8;
 
@@ -5811,6 +5824,28 @@ var cameraTwn:FlxTween;
 		if(lastBeatHit >= curBeat) {
 			//trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
+		}
+
+		function doCamsAngleMovement(angle:Int)
+		{
+			FlxTween.cancelTweensOf(camHUD);
+			FlxTween.cancelTweensOf(camGame);
+			camHUD.angle = angle;
+			camGame.angle = angle;
+			FlxTween.tween(camHUD, {angle: 0}, 0.5, {ease: FlxEase.backOut});
+			FlxTween.tween(camGame, {angle: 0}, 0.5, {ease: FlxEase.backOut});
+		}
+
+		if(funnyTween)
+		{
+			if(curBeat % 2 == 0) doCamsAngleMovement(5);
+			else doCamsAngleMovement(-5);
+
+			for(note in strumLineNotes.members)
+			{
+				note.y += 25;
+				FlxTween.tween(note, {y: note.y - 25}, 0.3, {ease: FlxEase.quartOut});
+			}
 		}
 
 		if (generatedMusic)
