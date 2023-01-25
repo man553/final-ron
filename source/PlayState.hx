@@ -786,15 +786,16 @@ class PlayState extends MusicBeatState
 
 				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
 				street.screenCenter();
-				wastedGrp.add(street);
-				
-				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+				wastedGrp.add(street);*/	
+
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width, FlxG.width, FlxColor.BLACK);
+				blackeffect.scale.set(4,4);
 				blackeffect.updateHitbox();
 				blackeffect.antialiasing = true;
 				blackeffect.screenCenter(XY);
 				blackeffect.scrollFactor.set();
 				blackeffect.alpha = 0;
-				wastedGrp.add(blackeffect);*/		
+				wastedGrp.add(blackeffect);			
 				
 				add(wastedGrp);
 				wastedGrp.visible = false;
@@ -5700,7 +5701,7 @@ var cameraTwn:FlxTween;
 					//going to spawn the wasted bg in the shittiest way possible
 					wastedGrp.visible = true;
 					addShader(FlxG.camera, "rain");
-					//addShader(camGame, "wasting");
+					addShader(camGame, "wasting");
 					addShader(camGame, "bloom");
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.05];
