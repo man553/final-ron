@@ -1804,6 +1804,7 @@ class PlayState extends MusicBeatState
 		add(scoreTxt);
 		if(kadeEngineWatermark != null)
 		{
+			//can someone please fix that im busy   - Sword352
 			if (ClientPrefs.downScroll)
 				kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
 			else scoreTxt.y + 10;
