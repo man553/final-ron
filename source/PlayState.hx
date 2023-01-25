@@ -688,6 +688,15 @@ class PlayState extends MusicBeatState
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
+
+				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
+				rain.animation.addByPrefix('rain', 'rain', 24, true);
+				rain.setGraphicSize(Std.int(rain.width * 4));
+				rain.updateHitbox();
+				rain.screenCenter(XY);
+				wastedGrp.add(rain);
+				rain.animation.play('rain');
+				
 				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudsbig.scrollFactor.set(0.1,0.1);
 				cloudsbig.screenCenter(XY);
@@ -739,7 +748,7 @@ class PlayState extends MusicBeatState
 				street.screenCenter();
 				add(street);
 
-				var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+				/*var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
 				skyo.screenCenter();
 				skyo.scrollFactor.set(0.1, 0.1);
 				wastedGrp.add(skyo);
@@ -785,7 +794,7 @@ class PlayState extends MusicBeatState
 				blackeffect.screenCenter(XY);
 				blackeffect.scrollFactor.set();
 				blackeffect.alpha = 0;
-				wastedGrp.add(blackeffect);		
+				wastedGrp.add(blackeffect);*/		
 				
 				add(wastedGrp);
 				wastedGrp.visible = false;
@@ -5691,6 +5700,8 @@ var cameraTwn:FlxTween;
 					//going to spawn the wasted bg in the shittiest way possible
 					wastedGrp.visible = true;
 					addShader(FlxG.camera, "rain");
+					//addShader(camGame, "wasting");
+					addShader(camGame, "bloom");
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					Shaders["rain"].shader.data.opacity.value = [0.2];
