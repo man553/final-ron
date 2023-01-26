@@ -1,4 +1,3 @@
-uniform sampler2D bitmap;
 
 void main()
 {
@@ -10,7 +9,7 @@ void main()
     {
         for(float i=1.0; i<=1.0; i+=1.0/3.)
         {
-            gl_FragColor += (texture2D(bitmap, uv+vec2(cos(d),sin(d))*Radius*i) / 100) * 2;        
+            gl_FragColor += (texture2D(bitmap, uv+vec2(cos(d),sin(d))*Radius*i) / 100.) * 2.;        
         }
     }
     gl_FragColor.rgb = vec3(sin(gl_FragColor.r) * 0.5, sin(gl_FragColor.g) * 0.3, sin(gl_FragColor.b) * 0.1) * 4.;
