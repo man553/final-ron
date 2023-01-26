@@ -80,9 +80,6 @@ class TitleState extends MusicBeatState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		// Just to load a mod on start up if ya got one. For mods that change the menu music and bg
-		important.WeekData.loadTheFirstEnabledMod();
-
 		//trace(path, FileSystem.exists(path));
 
 		/*#if (polymod && !html5)

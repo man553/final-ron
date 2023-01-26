@@ -7,13 +7,11 @@ datadir=${datarootdir}
 pkgincludedir=${prefix}/include/vlc
 pkgdatadir=${datadir}/vlc
 pkglibdir=${libdir}/vlc
-pluginsdir=${pkglibdir}/plugins
 
 Name: VLC plugin API
 Description: VLC media player plugin interface
 Version: 2.1.3
-Cflags: -I${includedir} -I${pkgincludedir}/plugins \
-	-D__PLUGIN__ \
+Cflags: -I${includedir} 
 	-D_FILE_OFFSET_BITS=64 \
 	 \
 	-D_REENTRANT \
