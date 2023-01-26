@@ -1,7 +1,7 @@
 {
 	"song": {
 		"player1": "bf",
-		"player2": "dad",
+		"player2": "ron-pissed",
 		"events": [],
 		"notes": [
 			{
@@ -5963,7 +5963,7 @@
 		"player3": null,
 		"splashSkin": "noteSplashes",
 		"song": "ayo",
-		"stage": "stage",
+		"stage": "ronMad",
 		"validScore": true,
 		"arrowSkin": "",
 		"needsVoices": true,
