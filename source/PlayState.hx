@@ -599,14 +599,6 @@ class PlayState extends MusicBeatState
 				clouds.scrollFactor.set(0.1, 0.1);
 				add(clouds);
 				
-				//another layer of rain soon
-				//var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				//rain.animation.addByPrefix('rain', 'rain', 24, true);
-				//rain.setGraphicSize(Std.int(rain.width * 4));
-				//rain.updateHitbox();
-				//rain.screenCenter(XY);
-				//add(rain);
-				//rain.animation.play('rain');
 				addShader(FlxG.camera, "rain");
 				Shaders["rain"].shader.data.zoom.value = [35];
 				Shaders["rain"].shader.data.raindropLength.value = [0.05];
@@ -672,14 +664,6 @@ class PlayState extends MusicBeatState
 				sky.screenCenter();
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
-
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				wastedGrp.add(rain);
-				rain.animation.play('rain');
 				
 				var cloudsbig = new FlxBackdrop(Paths.image('bgs/newbgtest/ron/ron_clouds'), X, 0, 0);
 				cloudsbig.scrollFactor.set(0.1,0.1);
@@ -748,14 +732,6 @@ class PlayState extends MusicBeatState
 				clouds.scrollFactor.set(0.1, 0.1);
 				wastedGrp.add(clouds);
 
-				var rain:BGSprite = new BGSprite('bgs/annoyed_rain', -300, 140, 0.5, 0.1, ['rain']);
-				rain.animation.addByPrefix('rain', 'rain', 24, true);
-				rain.setGraphicSize(Std.int(rain.width * 4));
-				rain.updateHitbox();
-				rain.screenCenter(XY);
-				wastedGrp.add(rain);
-				rain.animation.play('rain');
-
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
 				mountains.scrollFactor.set(0.3, 0.3);
@@ -786,7 +762,7 @@ class PlayState extends MusicBeatState
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
-				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
+				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
 				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
 				hellbg.updateHitbox();
@@ -857,7 +833,7 @@ class PlayState extends MusicBeatState
 				witheredRa.screenCenter();
 				witheredRa.scrollFactor.set(0.1, 0.1);
 				add(witheredRa);
-				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1, ['rain']);
+				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
 				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
 				hellbg.updateHitbox();
@@ -1079,16 +1055,6 @@ class PlayState extends MusicBeatState
 				sun.updateHitbox();
 				sun.screenCenter(XY);
 				add(sun);
-				/*witheredRa = new FlxSprite(-512, -260);
-				witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
-				witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
-				witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
-				witheredRa.updateHitbox();
-				witheredRa.antialiasing = true;
-				witheredRa.scrollFactor.set(0.5,0.1);
-				witheredRa.screenCenter(XY);
-				add(witheredRa);
-				witheredRa.animation.play('rain');*/
 				var wBackground:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bgs/bobtwerked/annoyed_back'));
 				wBackground.setGraphicSize(Std.int(wBackground.width * 0.95));
 				wBackground.scrollFactor.set(0.4,0.2);
@@ -1220,16 +1186,6 @@ class PlayState extends MusicBeatState
 					bgLol.screenCenter();
 					bgLol.scrollFactor.set(0.1, 0.1);
 					add(bgLol);
-					/*witheredRa = new FlxSprite(-512, -260);
-					witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
-					witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
-					witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
-					witheredRa.updateHitbox();
-					witheredRa.antialiasing = true;
-					witheredRa.scrollFactor.set(0.5, 0.1);
-					witheredRa.screenCenter(XY);
-					add(witheredRa);
-					witheredRa.animation.play('rain');*/
 
 					cloudsa = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_clouds'));
 					cloudsa.updateHitbox();
@@ -1765,20 +1721,6 @@ class PlayState extends MusicBeatState
 			{
 				case "ron" | 'trojan-virus':
 					schoolIntro(doof);
-				case "ayo" | 'wasted':
-					//witheredRa = new FlxSprite(-512, -260);
-					//witheredRa.frames = Paths.getSparrowAtlas('bgs/annoyed_rain');
-					//witheredRa.setGraphicSize(Std.int(witheredRa.width * 4));
-					//witheredRa.animation.addByPrefix('rain', 'rain', 24, true);
-					//witheredRa.updateHitbox();
-					//witheredRa.antialiasing = true;
-					//witheredRa.scrollFactor.set(0.05, 0.05);
-					//witheredRa.screenCenter(XY);
-					//add(witheredRa);
-					//witheredRa.animation.play('rain');
-					schoolIntro(doof);
-					//FlxG.camera.setFilters([ShadersHandler.Rain]);
-					//camHUD.setFilters([ShadersHandler.Rain]);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
