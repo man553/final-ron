@@ -1825,8 +1825,6 @@ class PlayState extends MusicBeatState
 				case 'bloodshed-legacy-redux':
 					addShader(camGame, "fake CRT");
 					startCountdown();
-				case 'oh-my-god-hes-ballin':
-					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
 					startCountdown();
@@ -5399,6 +5397,7 @@ var cameraTwn:FlxTween;
 				FlxTween.cancelTweensOf(cam);
 				var offset = 1;
 				cam.angle = curBeat % 2 == 0 ? -3 + (offset * 0.5) : 3 - (offset * 0.5);
+				cam.zoom += 0.1;
 				cam.scroll.x = curBeat % 2 == 0 ? 100 - (20 * offset) : -100 + (20 * offset);
 				cam.scroll.y += 100 - (20 * offset);
 				FlxTween.tween(cam, {angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.circOut});

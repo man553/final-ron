@@ -36,8 +36,7 @@ class DynamicShaderHandler
 		var fragSource:String = "";
 		var vertSource:String = "";
 		#if sys
-		var path = Paths.modsShaderFragment(fileName);
-		if (!FileSystem.exists(path)) path = Paths.shaderFragment(fileName);
+		var path = Paths.shaderFragment(fileName);
 		
 
 		if (FileSystem.exists(path))
@@ -46,8 +45,7 @@ class DynamicShaderHandler
 		}
 
 		
-		var path2 = Paths.modsShaderVertex(fileName);
-		if (!FileSystem.exists(path2)) path2 = Paths.shaderVertex(fileName);
+		var path2 = Paths.shaderVertex(fileName);
 		
 
 		if (FileSystem.exists(path2))
