@@ -54,7 +54,6 @@ class DesktopMenu extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
-		important.WeekData.loadTheFirstEnabledMod();
 
 		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
