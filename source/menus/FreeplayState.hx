@@ -224,7 +224,6 @@ class FreeplayState extends MusicBeatState
 			// songText.screenCenter(X);
 			portrait.loadGraphic(Paths.image('freeplayportraits/'+songs[i].songName.toLowerCase()));// it would be funny if this actually worked
 		}
-		WeekData.setDirectoryFromWeek();
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("w95.otf"), 32, FlxColor.WHITE, RIGHT);
@@ -692,7 +691,6 @@ class SongMetadata
 		this.week = week;
 		this.songCharacter = songCharacter;
 		this.color = color;
-		this.folder = Paths.currentModDirectory;
 		if(this.folder == null) this.folder = '';
 	}
 }
