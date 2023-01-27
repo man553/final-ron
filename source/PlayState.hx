@@ -312,7 +312,7 @@ class PlayState extends MusicBeatState
 
 	var moveing:Bool = false;
 
-	var bgLol:FlxSprite;
+	var bgLol:BGSprite;
 	var cloudsa:FlxSprite;
 
 	var leBlack:FlxSprite;
@@ -625,6 +625,8 @@ class PlayState extends MusicBeatState
 				sky.scrollFactor.set(0.1, 0.1);
 				add(sky);
 				
+				defaultCamZoom = 1.1;
+				
 				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_mountainsback', -100, 20);
 				mountainsback.screenCenter();
 				mountainsback.scrollFactor.set(0.3, 0.3);
@@ -643,9 +645,21 @@ class PlayState extends MusicBeatState
 				hillfront.y -= 60;
 				add(hillfront);
 				
-				var street:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_street', -100, 20);
+				graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
+				graadienter.updateHitbox();
+				graadienter.screenCenter();
+				graadienter.active = false;
+				graadienter.antialiasing = true;
+				graadienter.visible = false;
+				add(graadienter);				
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_street', -100, 40);
 				street.screenCenter();
 				add(street);
+				
+				bgLol = new BGSprite('bgs/newbgtest/ayo/ayo_streetNoLight', -100, 40);
+				bgLol.screenCenter();
+				add(bgLol);
 				
 				addShader(FlxG.camera, "rain");
 				Shaders["rain"].shader.data.zoom.value = [35];
@@ -1079,66 +1093,6 @@ class PlayState extends MusicBeatState
 				walmart.updateHitbox();
 				walmart.screenCenter(XY);
 				add(walmart);
-			case 'win':
-				{
-					defaultCamZoom = 0.8;
-					var bg:FlxSprite = new FlxSprite();
-					bg.frames = Paths.getSparrowAtlas('bgs/trojan_bg');
-					bg.scale.set(4, 4);
-					bg.animation.addByPrefix('idle', 'bg instance 1', 24, true);
-					bg.animation.play('idle');
-					bg.scrollFactor.set(0.05, 0.05);
-					bg.screenCenter();
-					add(bg);
-					Estatic2 = new FlxSprite().loadGraphic(Paths.image('bgs/deadly'));
-					Estatic2.scrollFactor.set();
-					Estatic2.screenCenter();
-					Estatic2.alpha = 0;
-					var console:FlxSprite = new FlxSprite();
-					console.frames = Paths.getSparrowAtlas('bgs/trojan_console');
-					console.scale.set(4, 4);
-					console.animation.addByPrefix('idle', 'ezgif.com-gif-maker (7)_gif instance 1', 24, true);
-					console.animation.play('idle');
-					console.scrollFactor.set(0.05, 0.05);
-					console.screenCenter();
-					console.alpha = 0.3;
-					add(console);
-					var popup:FlxSprite = new FlxSprite();
-					popup.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
-					popup.scale.set(4, 4);
-					popup.animation.addByPrefix('idle', 'popups instance 1', 24, true);
-					popup.animation.play('idle');
-					popup.scrollFactor.set(0.05, 0.05);
-					popup.screenCenter();
-					add(popup);
-					var lamp:FlxSprite = new FlxSprite(900, 100);
-					lamp.frames = Paths.getSparrowAtlas('bgs/glitch_lamp');
-					lamp.scale.set(2, 2);
-					lamp.animation.addByPrefix('idle', 'lamppost', 24, true);
-					lamp.animation.play('idle');
-					lamp.scrollFactor.set(0.9, 0.9);
-					add(lamp);
-					var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/trojan_ground'));
-					ground.updateHitbox();
-					ground.active = false;
-					ground.antialiasing = true;
-					add(ground);
-					var error:FlxSprite = new FlxSprite(900, 550);
-					error.frames = Paths.getSparrowAtlas('bgs/error');
-					error.scale.set(2, 2);
-					error.animation.addByPrefix('idle', 'error instance 1', 24, true);
-					error.animation.play('idle');
-					error.updateHitbox();
-					error.antialiasing = true;
-					add(error);
-					Estatic = new FlxSprite();
-					Estatic.frames = Paths.getSparrowAtlas('bgs/trojan_static');
-					Estatic.scale.set(4, 4);
-					Estatic.animation.addByPrefix('idle', 'static instance 1', 24, true);
-					Estatic.animation.play('idle');
-					Estatic.scrollFactor.set();
-					Estatic.screenCenter();
-				}
 			case 'verymad': // trojan virus
 				{
 					defaultCamZoom = 0.9;
@@ -1176,15 +1130,11 @@ class PlayState extends MusicBeatState
 					popup.scrollFactor.set(0.05, 0.05);
 					popup.screenCenter();
 					add(popup);
-					bgLol = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_sky'));
-					bgLol.updateHitbox();
-					bgLol.scale.x = 1;
-					bgLol.scale.y = 1;
-					bgLol.active = false;
-					bgLol.antialiasing = true;
-					bgLol.screenCenter();
-					bgLol.scrollFactor.set(0.1, 0.1);
-					add(bgLol);
+					var bgs = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_sky'));
+					bgs.updateHitbox();
+					bgs.screenCenter();
+					bgs.scrollFactor.set(0.1, 0.1);
+					add(bgs);
 
 					cloudsa = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_clouds'));
 					cloudsa.updateHitbox();
@@ -1217,99 +1167,6 @@ class PlayState extends MusicBeatState
 				groundBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
 				groundBLR.updateHitbox();
 				add(groundBLR);
-			}
-			case 'snow':
-			{
-				defaultCamZoom = 0.85;
-				curStage = 'snow';
-				bgLol = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_sky'));
-				bgLol.updateHitbox();
-				bgLol.scale.x = 1;
-				bgLol.scale.y = 1;
-				bgLol.active = false;
-				bgLol.antialiasing = true;
-				bgLol.screenCenter();
-				bgLol.scrollFactor.set(0.1, 0.1);
-				add(bgLol);
-				var graadienter:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
-				graadienter.updateHitbox();
-				graadienter.screenCenter();
-				graadienter.active = false;
-				graadienter.antialiasing = true;
-				graadienter.scrollFactor.set(0.2, 0.2);
-				add(graadienter);
-				cloudsa = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_clouds'));
-				cloudsa.updateHitbox();
-				cloudsa.scale.x = 0.7;
-				cloudsa.scale.y = 0.7;
-				cloudsa.screenCenter();
-				cloudsa.active = false;
-				cloudsa.antialiasing = true;
-				cloudsa.scrollFactor.set(0.2, 0.2);
-				add(cloudsa);
-				var icicleb:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_iciclesbehind'));
-				icicleb.updateHitbox();
-				icicleb.scale.set(0.65,0.65);
-				icicleb.screenCenter();
-				icicleb.active = false;
-				icicleb.antialiasing = true;
-				icicleb.scrollFactor.set(0.3, 0.3);
-				add(icicleb);
-				var iciclef:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_iciclesnbulb'));
-				iciclef.updateHitbox();
-				iciclef.scale.set(0.65,0.65);
-				iciclef.screenCenter();
-				iciclef.active = false;
-				iciclef.antialiasing = true;
-				iciclef.scrollFactor.set(0.3, 0.3);
-				add(iciclef);
-				bgbleffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
-				bgbleffect.updateHitbox();
-				bgbleffect.antialiasing = true;
-				bgbleffect.screenCenter(XY);
-				bgbleffect.scrollFactor.set();
-				bgbleffect.alpha = 0.5;
-				add(bgbleffect);
-				satan = new BGSprite('bgs/ss_pentagram', 300, 20, 0.15, 0.15);
-				satan.antialiasing = true;
-				satan.scale.set(1.2,1.2);
-				satan.screenCenter(XY);
-				satan.y -= 100;
-				satan.active = true;
-				add(satan);	
-				var diamond:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_diamond'));
-				diamond.updateHitbox();
-				diamond.screenCenter();
-				diamond.active = false;
-				diamond.antialiasing = true;
-				diamond.scrollFactor.set(0.15, 0.15);
-				diamond.y -= 160;
-				add(diamond);
-				var ground:FlxSprite = new FlxSprite(300,200).loadGraphic(Paths.image('bgs/ss_ground'));
-				ground.antialiasing = true;
-				ground.screenCenter(XY);
-				ground.scrollFactor.set(0.9, 0.9);
-				ground.active = false;
-				add(ground);
-				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-				fx.setGraphicSize(Std.int(2560 * 0.75));
-				fx.updateHitbox();
-				fx.antialiasing = true;
-				fx.screenCenter(XY);
-				fx.scrollFactor.set(0, 0);
-				fx.alpha = 0.3;		
-				Estatic = new FlxSprite().loadGraphic(Paths.image('bgs/deadly2'));
-				Estatic.scrollFactor.set();
-				Estatic.screenCenter();
-				Estatic.alpha = 0;
-					Estatic2 = new FlxSprite();
-				Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
-				Estatic2.scale.set(4,4);
-				Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
-				Estatic2.animation.play('idle');
-				Estatic2.scrollFactor.set();
-				Estatic2.screenCenter();
-				Estatic2.alpha = 0;
 			}
 			case 'nothing':
 			{
@@ -1350,20 +1207,6 @@ class PlayState extends MusicBeatState
 				snowemitter.lifespan.set(5);
 				add(snowemitter);
 				snowemitter.start(false, 0.05);
-			}
-			case 'normal':
-			{
-				var bg:BGSprite = new BGSprite('bgs/old/kd');
-				bg.scale.set(3,3);
-				bg.screenCenter();
-				add(bg);
-			}
-			case 'win-old':
-			{
-				var bg:BGSprite = new BGSprite('bgs/old/bg');
-				bg.scale.set(1.5,1.5);
-				bg.screenCenter();
-				add(bg);
 			}
 			case 'awesome':
 			{
@@ -1671,6 +1514,9 @@ class PlayState extends MusicBeatState
 			case 'ron':
 				boyfriend.x += 160;
 				gf.x += 50;
+			default:
+				//stop fucking flying you dipshit
+				boyfriend.y += 40;
 		}
 
 		if (curSong == 'Withered-Tweaked')
@@ -1732,36 +1578,16 @@ class PlayState extends MusicBeatState
 					add(fx);
 					camHUD.alpha = 0.5;
 					startCountdown();
-				case 'blizzard':
-					add(fx);
-					gf.visible = false;
-					blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
-					blackeffect.updateHitbox();
-					blackeffect.antialiasing = true;
-					blackeffect.screenCenter(XY);
-					blackeffect.scrollFactor.set();
-					blackeffect.alpha = 0.25;
-					add(blackeffect);
-					add(Estatic);
-					FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
-					snowemitter = new FlxEmitter(9999, 0, 300);
-					for (i in 0...150)
-					{
-						var p = new FlxParticle();
-						var p2 = new FlxParticle();
-
-						p.loadGraphic(Paths.image('bgs/smallSnow'));
-						p2.loadGraphic(Paths.image('bgs/bigSnow'));
-
-						snowemitter.add(p);
-						snowemitter.add(p2);
-					}
-					snowemitter.width = FlxG.width*1.5;
-					snowemitter.launchMode = SQUARE;
-					snowemitter.velocity.set(-120, 240, -200, 320);
-					snowemitter.lifespan.set(5);
-					add(snowemitter);
-					snowemitter.start(false, 0.05);
+				case 'ayo':
+					camGame.color = 0xFFAAAAAA;
+					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fxtwo.scale.set(1.5, 1.5);
+					fxtwo.updateHitbox();
+					fxtwo.antialiasing = true;
+					fxtwo.screenCenter();
+					fxtwo.alpha = 0.25;
+					fxtwo.scrollFactor.set(0, 0);
+					add(fxtwo);
 					startCountdown();
 				case 'bloodshed-legacy-redux':
 					addShader(camGame, "fake CRT");
@@ -5065,6 +4891,27 @@ var cameraTwn:FlxTween;
 						FlxTween.cancelTweensOf(skyBLR);
 				}
 		}
+		
+		if (curSong.toLowerCase() == 'ayo')
+		{
+			if (curStep % 8 == 0)
+			{
+				FlxTween.globalManager.completeTweensOf(graadienter);
+				graadienter.y += 40;
+				FlxTween.tween(graadienter, {y: graadienter.y - 40}, 0.4, {ease: FlxEase.backOut});
+			}
+			switch(curStep){
+				case 128:
+					defaultCamZoom = 0.8;
+					camGame.color = FlxColor.WHITE;
+					graadienter.alpha = 0.5;
+					graadienter.visible = true;
+					fxtwo.visible = false;
+					bgLol.visible = false;
+					triggerEventNote('Change Bars Size', '12', '1');
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+			}
+		}
 
 		if (curSong == 'Trojan-Virus')
 		{
@@ -5208,7 +5055,6 @@ var cameraTwn:FlxTween;
 					wastedGrp.visible = true;
 					addShader(FlxG.camera, "rain");
 					addShader(camGame, "wasting");
-					addShader(camGame, "bloom");
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					Shaders["rain"].shader.data.opacity.value = [0.2];
