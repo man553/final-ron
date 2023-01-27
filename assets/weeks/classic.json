@@ -65,7 +65,7 @@
 			]
 		]
 	],
-	"weekBefore": "freeplayshit",
-	"hideStoryMode": true,
+	"weekBefore": "mainweek",
+	"hideStoryMode": false,
 	"weekName": "classic"
 }

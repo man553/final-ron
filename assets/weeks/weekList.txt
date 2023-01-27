@@ -1,4 +1,6 @@
 mainweek
+classic
+blr
 week1b
 week2
 freeplayshit

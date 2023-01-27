@@ -64,7 +64,6 @@ import gameassets.Character;
 import gameassets.Boyfriend;
 import gameassets.Achievements;
 import gameassets.StageData;
-import substates.DialogueBoxPsych;
 import substates.DialogueBoxRon;
 import important.Conductor.Rating;
 import substates.*;
@@ -2813,7 +2812,8 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-		camHUD.scroll.set(FlxMath.lerp(camHUD.scroll.x, 0, 0.2 / (60 / ClientPrefs.framerate)), FlxMath.lerp(camHUD.scroll.y, 0, 0.2 / (60 / ClientPrefs.framerate)));
+		camHUD.x = FlxMath.lerp(camHUD.x, 0, 0.2 / (60 / ClientPrefs.framerate));
+		camHUD.y = FlxMath.lerp(camHUD.y, 0, 0.2 / (60 / ClientPrefs.framerate));
 		if (bar1.y <= -520) bar1.visible = false;
 		if (bar2.y >= 720) bar2.visible = false;
 		if (haemorrhageCallback != null) haemorrhageCallback();
@@ -5340,8 +5340,8 @@ var cameraTwn:FlxTween;
 				var offset = 1;
 				cam.angle = curBeat % 2 == 0 ? -3 + (offset * 0.5) : 3 - (offset * 0.5);
 				cam.zoom += 0.1;
-				cam.scroll.x = curBeat % 2 == 0 ? 100 - (20 * offset) : -100 + (20 * offset);
-				cam.scroll.y += 100 - (20 * offset);
+				camHUD.x = curBeat % 2 == 0 ? 10 - (20 * offset) : -10 + (20 * offset);
+				camHUD.y += 10 - (20 * offset);
 				FlxTween.tween(cam, {angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.circOut});
 			}
 
