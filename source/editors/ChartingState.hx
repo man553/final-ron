@@ -3,22 +3,12 @@ package editors;
 #if desktop
 import important.Discord.DiscordClient;
 #end
-import important.Conductor.BPMChangeEvent;
-import important.Section.SwagSection;
-import important.Song.SwagSong;
-import gameassets.StrumNote;
-import gameassets.Note;
-import gameassets.HealthIcon;
-import gameassets.FlxUIDropDownMenuCustom;
-import gameassets.Character;
-import important.Song;
-import gameassets.Character;
+import flash.geom.Rectangle;
 import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.FlxObject;
-import flixel.group.FlxSpriteGroup;
-import flixel.input.keyboard.FlxKey;
+import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxInputText;
 import flixel.addons.ui.FlxUI9SliceSprite;
 import flixel.addons.ui.FlxUI;
@@ -27,9 +17,10 @@ import flixel.addons.ui.FlxUIInputText;
 import flixel.addons.ui.FlxUINumericStepper;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUITooltip.FlxUITooltipStyle;
-import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
+import flixel.group.FlxSpriteGroup;
+import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.system.FlxSound;
@@ -39,27 +30,37 @@ import flixel.tweens.FlxTween;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
+import flixel.util.FlxSort;
+import gameassets.AttachedSprite;
+import gameassets.Character;
+import gameassets.Character;
+import gameassets.FlxUIDropDownMenuCustom;
+import gameassets.HealthIcon;
+import gameassets.Note;
+import gameassets.StrumNote;
 import haxe.Json;
 import haxe.format.JsonParser;
+import haxe.io.Bytes;
+import important.Conductor.BPMChangeEvent;
+import important.Section.SwagSection;
+import important.Song.SwagSong;
+import important.Song;
+import lime.media.AudioBuffer;
 import lime.utils.Assets;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
-import openfl.utils.ByteArray;
 import openfl.utils.Assets as OpenFlAssets;
-import lime.media.AudioBuffer;
-import haxe.io.Bytes;
-import flash.geom.Rectangle;
-import flixel.util.FlxSort;
-import gameassets.AttachedSprite;
-#if sys
-import sys.io.File;
-import sys.FileSystem;
-import flash.media.Sound;
-#end
+import openfl.utils.ByteArray;
 
 using StringTools;
+#if sys
+import flash.media.Sound;
+import sys.FileSystem;
+import sys.io.File;
+#end
+
 
 @:access(flixel.system.FlxSound._sound)
 @:access(openfl.media.Sound.__buffer)
@@ -94,7 +95,10 @@ class ChartingState extends MusicBeatState
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
-		['Change Bar Size', "Value 1: new Bar Size ron ronronronronronronronronronronronron   ronron  ron ron, Value 2: timer i shit myself fuuuuuuuuuuck",]
+		[
+			'Change Bar Size',
+			"Value 1: new Bar Size ron ronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronronron   ronron  ron ron,
+			Value 2: timer i shit myself fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuck",]
 	];
 
 	var _file:FileReference;
