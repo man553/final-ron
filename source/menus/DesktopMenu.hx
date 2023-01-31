@@ -237,7 +237,7 @@ class RunTab extends FlxGroup {
 		}
 		if (FlxG.mouse.justReleased) movingTab = false;
 		if (movingTab) {
-			tab.setPosition((FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, (FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
+			tab.setPosition(Math.round(FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, Math.round(FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
 			for (button in [ok, cancel, help, exit, tabBar, field]) {
 				var offsetIndex:Map<Dynamic,Dynamic> =  [ok => [177, 125],cancel => [258, 125],help => [308, 6],exit => [327, 6],tabBar => [0, 0],field => [58, 84]];
 				button.setPosition(tab.x + offsetIndex[button][0], tab.y + offsetIndex[button][1]);
@@ -302,7 +302,7 @@ class Winver extends FlxGroup {
 		}
 		if (FlxG.mouse.justReleased) movingTab = false;
 		if (movingTab) {
-			tab.setPosition((FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, (FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
+			tab.setPosition(Math.round(FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, Math.round(FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
 			for (button in [ok, exit, tabBar]) {
 				var offsetIndex:Map<Dynamic,Dynamic> =  [ok => [120, 183],exit => [285, 6],tabBar => [0, 0]];
 				button.setPosition(tab.x + offsetIndex[button][0], tab.y + offsetIndex[button][1]);
