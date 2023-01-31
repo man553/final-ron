@@ -4355,7 +4355,7 @@ var cameraTwn:FlxTween;
 					graadienter.color = FlxColor.WHITE;
 					wbg.color = FlxColor.WHITE;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					fx.alpha = 0;
+					//fx.alpha = 0;
 				case 752:
 					defaultCamZoom += 0.1;
 				case 761: Shaders["mosaic"].shader.data.uBlocksize.value = [1];

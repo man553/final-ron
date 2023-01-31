@@ -377,7 +377,7 @@ class FlxCamera extends FlxBasic
 	/**
 	 * Enables or disables the filters set via `setFilters()`.
 	 */
-	public var filtersEnabled:Bool = true;
+	public static var filtersEnabled:Bool = true;
 
 	/**
 	 * Internal, used in blit render mode in camera's `fill()` method for less garbage creation.

@@ -22,11 +22,14 @@ class RonSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Shaders', //Name
-		'If checked, enable shaders. MAY NOT WORK ON BAD PCS!', //Description
+		'If checked, enables shaders. MAY NOT WORK ON LOW-END COMPUTERS!', //Description
 		'shaders', //Save data variable name
 		'bool', //Variable type
 		true); //Default value
 		addOption(option);
+		option.onChange = function() {
+			flixel.FlxCamera.filtersEnabled = important.ClientPrefs.shaders;
+		};
 
 		var option:Option = new Option('RGB Enabled', //Name
 			'Enables a RGB shader in some songs.', //Description
