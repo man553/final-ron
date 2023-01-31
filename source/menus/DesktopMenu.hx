@@ -22,6 +22,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.transition.FlxTransitionableState;
 
+using StringTools;
+
 var rainbowscreen:FlxBackdrop;
 var camWhat:FlxCamera;
 class DesktopMenu extends MusicBeatState
@@ -187,8 +189,7 @@ class RunTab extends FlxGroup {
 		field.callback = function(text, action) {
 			if (action == "enter") {
 				triggerRunEvent(field.text);
-				field.text = "";
-				field.caretIndex = 0;
+				destroy();
 			}
 		}
 		add(field);
@@ -199,24 +200,20 @@ class RunTab extends FlxGroup {
 		add(tab); //270 text field length
 		ok = new FlxButton(177, 685, "", function() {
 			triggerRunEvent(field.text);
-			field.text = "";
-			field.caretIndex = 0;
+			destroy();
 		});
 		cancel = new FlxButton(258, 685, "", function() {
-			field.text = "";
-			field.caretIndex = 0;
+			destroy();
 		});
 		help = new FlxButton(308, 566, "", function() {
 			CoolUtil.browserLoad("www.facebook.com");
 		});
-		exit = new FlxButton(327, 566, "", function() {
-			destroy();
-		});
+		exit = new FlxButton(327, 566, "", cancel.onUp.callback);
 		for (i=>button in [ok, cancel, help, exit]) {
 			button.frames = t;
 			var animIndex = ["ok", "cancel", "help", "exit"];
 			button.animation.addByPrefix("normal", animIndex[i] + " neutral");
-			button.animation.addByPrefix("highlight", animIndex[i] + " highlighted");
+			button.animation.addByPrefix("highlight", animIndex[i] + " neutral");
 			button.animation.addByPrefix("pressed", animIndex[i] + " pressed");
 			button.updateHitbox();
 			add(button);
@@ -261,6 +258,55 @@ class RunTab extends FlxGroup {
 			case "2012": 
 				rainbowscreen.visible = false;
 				FlxG.sound.play(Paths.sound('vine'));
+			case "winver": FlxG.state.add(new Winver());
+			default: if (runText.contains("www") || runText.contains("http") || runText.contains("com")) CoolUtil.browserLoad(runText);
+		}
+	}
+}
+
+class Winver extends FlxGroup {
+	var tab = new FlxSprite(55, 55).loadGraphic(Paths.image("winver"));
+	var ok:FlxButton;
+	var exit:FlxButton;
+	var tabBar:FlxButton;
+	public function new() {
+		super();
+		add(tab);
+		ok = new FlxButton(175, 238, "", function() {
+			destroy();
+		});
+		exit = new FlxButton(340, 60, "", ok.onUp.callback);
+		for (i=>button in [ok,exit]) {
+			button.frames = Paths.getSparrowAtlas("run tab");
+			var animIndex = ["ok", "exit"];
+			button.animation.addByPrefix("normal", animIndex[i] + " neutral");
+			button.animation.addByPrefix("highlight", animIndex[i] + " neutral");
+			button.animation.addByPrefix("pressed", animIndex[i] + " pressed");
+			button.updateHitbox();
+			add(button);
+		}
+		tabBar = new FlxButton(55, 55, "");
+		tabBar.width = 305;
+		tabBar.height = 20;
+		tabBar.alpha = 0;
+		tabBar.allowSwiping = true;
+		add(tabBar);
+	}
+	var justMousePos = new FlxPoint();
+	var justTaskBarPos = new FlxPoint();
+	var movingTab = false;
+	override function update(elapsed) {
+		super.update(elapsed);
+		if (tabBar.status == 2) {
+			if (FlxG.mouse.justPressed) {justMousePos = FlxG.mouse.getScreenPosition(); justTaskBarPos.set(tab.x, tab.y);movingTab = true;}
+		}
+		if (FlxG.mouse.justReleased) movingTab = false;
+		if (movingTab) {
+			tab.setPosition((FlxG.mouse.getScreenPosition().x - justMousePos.x) + justTaskBarPos.x, (FlxG.mouse.getScreenPosition().y - justMousePos.y) + justTaskBarPos.y);
+			for (button in [ok, exit, tabBar]) {
+				var offsetIndex:Map<Dynamic,Dynamic> =  [ok => [120, 183],exit => [285, 6],tabBar => [0, 0]];
+				button.setPosition(tab.x + offsetIndex[button][0], tab.y + offsetIndex[button][1]);
+			}
 		}
 	}
 }
