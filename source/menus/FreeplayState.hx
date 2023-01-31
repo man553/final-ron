@@ -138,13 +138,6 @@ class FreeplayState extends MusicBeatState
 		darkportrait.screenCenter(XY);
 		darkportrait.color = FlxColor.BLACK;
 
-		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
-		portrait.scale.set(0.5,0.5);
-		portrait.updateHitbox();
-		portrait.antialiasing = ClientPrefs.globalAntialiasing;
-		add(portrait);
-		portrait.screenCenter(XY);
-		
 		var bar:FlxSprite = new FlxSprite();
 		bar.frames = Paths.getSparrowAtlas('freeplayportraits/bar');
 		bar.animation.addByPrefix('bar', 'bar', 24, true);
@@ -152,6 +145,13 @@ class FreeplayState extends MusicBeatState
 		bar.screenCenter();
 		add(bar);
 		bar.x += 30;
+		
+		portrait = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
+		portrait.scale.set(0.5,0.5);
+		portrait.updateHitbox();
+		portrait.antialiasing = ClientPrefs.globalAntialiasing;
+		add(portrait);
+		portrait.screenCenter(XY);
 		
 		var coolemitter:FlxEmitter = new FlxEmitter();
 		coolemitter.width = FlxG.width*1.5;
