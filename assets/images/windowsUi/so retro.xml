@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="so retro.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="backwards neutral" x="5" y="5" width="24" height="22"/>
+	<SubTexture name="backwards pressed" x="34" y="5" width="24" height="22"/>
+	<SubTexture name="forward neutral" x="63" y="5" width="24" height="22"/>
+	<SubTexture name="forward pressed" x="92" y="5" width="24" height="22"/>
+	<SubTexture name="pause neutral" x="121" y="5" width="24" height="22"/>
+	<SubTexture name="pause pressed" x="150" y="5" width="24" height="22"/>
+	<SubTexture name="play neutral" x="179" y="5" width="48" height="22"/>
+	<SubTexture name="play pressed" x="232" y="5" width="48" height="22"/>
+	<SubTexture name="select neutral" x="285" y="5" width="16" height="17"/>
+	<SubTexture name="select pressed" x="5" y="32" width="16" height="17"/>
+	<SubTexture name="tab" x="5" y="54" width="304" height="168"/>
+	<SubTexture name="voice neutral" x="5" y="227" width="24" height="22"/>
+	<SubTexture name="voice pressed" x="34" y="227" width="24" height="22"/>
+</TextureAtlas>
