@@ -65,6 +65,15 @@
 			]
 		],
 		[
+			"triad",
+			"rewrite",
+			[
+				0,
+				0,
+				64
+			]
+		],
+		[
 			"certified-champion",
 			"shittle",
 			[
@@ -111,15 +120,6 @@
 		],
 		[
 			"bleeding",
-			"dripron",
-			[
-				0,
-				0,
-				0
-			]
-		],
-		[
-			"haemorrhage",
 			"dripron",
 			[
 				0,

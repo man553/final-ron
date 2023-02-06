@@ -392,10 +392,10 @@ class PlayState extends MusicBeatState
 		camOverlay = new FlxCamera();
 		camOverlay.bgColor.alpha = 0;
 
+		FlxG.cameras.add(camOverlay);
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camOther);
-		FlxG.cameras.add(camOverlay);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
 		FlxCamera.defaultCameras = [camGame];
@@ -579,6 +579,27 @@ class PlayState extends MusicBeatState
 				bg.screenCenter();
 				bg.y -= 200;
 				add(bg);
+			}
+			case 'triad':
+			{
+				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), XY, 0, 0);
+				bg.scale.set(6,6);
+				var bruhgoing = new FlxTimer().start(0.005, function(tmr:FlxTimer)
+				{
+					bg.x += 2;
+					bg.y += 1;
+					tmr.reset(0.005);
+				});
+				bg.scrollFactor.set(0.5,0.5);
+				bg.cameras = [camOverlay];
+				add(bg);
+				var chromeOffset = (ClientPrefs.rgbintense/350);
+				addShader(FlxG.camera, "chromatic aberration");
+				addShader(FlxG.camera, "fake CRT");
+				addShader(camOverlay, "fisheye");
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 			}
 			case 'ronPissed': //ron
 				defaultCamZoom = 0.7;
@@ -1306,6 +1327,8 @@ class PlayState extends MusicBeatState
 					boyfriend.alpha = 0;
 					defaultCamZoom += 0.2;
 				}
+			case 'triad':
+				gf.visible = false;
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
