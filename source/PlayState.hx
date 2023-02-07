@@ -1327,8 +1327,6 @@ class PlayState extends MusicBeatState
 					boyfriend.alpha = 0;
 					defaultCamZoom += 0.2;
 				}
-			case 'triad':
-				gf.visible = false;
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
@@ -2550,13 +2548,15 @@ class PlayState extends MusicBeatState
 		camFollowPos.acceleration.set(((camFollow.x - camFollowPos.x) - (camFollowPos.velocity.x * 0.8)) / lerpVal, ((camFollow.y - camFollowPos.y) - (camFollowPos.velocity.y * 0.8)) / lerpVal);
 		if(!inCutscene)
 		{
+			/* who fucking cares
 			if(!startingSong && !endingSong && boyfriend.animation.curAnim.name.startsWith('idle'))
 			{
 				boyfriendIdleTime += elapsed;
 				if(boyfriendIdleTime >= 0.15) // Kind of a mercy thing for making the achievement easier to get as it's apparently frustrating to some playerss
 					boyfriendIdled = true;
 			} else
-				boyfriendIdleTime = 0;
+			*/
+			boyfriendIdleTime = 0;
 		}
 
 		if (curSong.toLowerCase() == 'bloodbath')
