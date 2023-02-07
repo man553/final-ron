@@ -665,7 +665,7 @@ class FlxCamera extends FlxBasic
 			&& _headTriangles.blending == blendInt
 			#if !flash
 			&& _headTriangles.hasColorOffsets == hasColorOffsets
-			//&& _headTriangles.shader == shader
+			&& _headTriangles.shader == shader
 			#end
 			)
 		{
@@ -699,7 +699,7 @@ class FlxCamera extends FlxBasic
 		itemToReturn.blending = blendInt;
 		#if !flash
 		itemToReturn.hasColorOffsets = hasColorOffsets;
-		//itemToReturn.shader = shader;
+		itemToReturn.shader = shader;
 		#end
 
 		itemToReturn.nextTyped = _headTriangles;
@@ -925,7 +925,7 @@ class FlxCamera extends FlxBasic
 			var hasColorOffsets:Bool = (transform != null && transform.hasRGBAOffsets());
 			isColored = isColored || (transform != null && transform.hasRGBMultipliers());
 			var drawItem:FlxDrawTrianglesItem = startTrianglesBatch(graphic, smoothing, isColored, blend, hasColorOffsets, shader);
-			drawItem.addTriangles(vertices, indices, uvtData, colors, position, _bounds);
+			drawItem.addTriangles(vertices, indices, uvtData, colors, position, _bounds, transform);
 			#else
 			var drawItem:FlxDrawTrianglesItem = startTrianglesBatch(graphic, smoothing, isColored, blend);
 			drawItem.addTriangles(vertices, indices, uvtData, colors, position, _bounds);
