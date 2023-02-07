@@ -344,7 +344,7 @@ class MusicPlayer extends FlxGroup {
 		tab.animation.play("t");
 		add(tab);
 		exit = new FlxButton(tab.x + 283, tab.y + 5, "", function() {
-			destroy();
+			destroy(); ronmusic.destroy(); ronmusicvox.destroy();
 			FlxG.sound.music.volume = 1;
 		});
 		exit.frames = Paths.getSparrowAtlas("windowsUi/run tab");
