@@ -599,6 +599,7 @@ class PlayState extends MusicBeatState
 				var chromeOffset = (ClientPrefs.rgbintense/350);
 				addShader(FlxG.camera, "chromatic aberration");
 				addShader(FlxG.camera, "fisheye");
+				Shaders["fisheye"].shader.data.MAX_POWER.value = [0.2];
 				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1/2];

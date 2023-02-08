@@ -1,5 +1,5 @@
 
-#define MAX_POWER 0.2 // negative : anti fish eye. positive = fisheye
+uniform float MAX_POWER; // negative : anti fish eye. positive = fisheye
 
 //Inspired by http://stackoverflow.com/questions/6030814/add-fisheye-effect-to-images-at-runtime-using-opengl-es
 void main()//Drag mouse over rendering area
