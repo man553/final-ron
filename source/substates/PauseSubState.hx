@@ -26,7 +26,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(startMenu);
 		for (i in 0...optionArray.length) {
 			var button = new FlxSprite(25, (723 - startMenu.height) + (34 * i) + (i > 1 ? 270 : 0));
-			button.frames = Paths.getSparrowAtlas("win98buttons");
+			button.frames = Paths.getSparrowAtlas("windowsUi/win98buttons");
 			button.animation.addByPrefix("unselect", optionArray[i] + " unselect");
 			button.animation.addByPrefix("select", optionArray[i] + " select");
 			button.ID = i;
@@ -34,7 +34,7 @@ class PauseSubState extends MusicBeatSubstate
 			button.animation.play("unselect");
 			optionButtons.push(button);
 		}
-		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		cameras = [camera];
 		trace(cameras);
 		super.create();
 	}
