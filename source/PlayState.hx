@@ -305,6 +305,7 @@ class PlayState extends MusicBeatState
 	var witheredClouds:FlxBackdrop;
 	var fxtwo:FlxSprite;
 	public var camOverlay:FlxCamera;
+	public var camBg:FlxCamera;
 
 	var WHATTHEFUCK:Bool = false;
 	var WTFending:Bool = false;
@@ -582,24 +583,34 @@ class PlayState extends MusicBeatState
 			}
 			case 'triad':
 			{
-				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), XY, 0, 0);
-				bg.scale.set(6,6);
+				defaultCamZoom = 0.7;
+				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/nomajin'), XY, 0, 0);
+				bg.scale.set(2,2);
+				var bgt = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), XY, 0, 0);
+				bgt.scale.set(2,2);
+				bg.scrollFactor.set(0.5,0.5);
+				//bg.cameras = [camBg];
+				bgt.scrollFactor.set(0.5,0.5);
+				//bgt.cameras = [camBg];
+				add(bg);
+				wastedGrp.add(bgt);			
+				add(wastedGrp);
+				wastedGrp.visible = false;
+				var chromeOffset = (ClientPrefs.rgbintense/350);
+				addShader(FlxG.camera, "chromatic aberration");
+				addShader(FlxG.camera, "fisheye");
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1/2];
+				
 				var bruhgoing = new FlxTimer().start(0.005, function(tmr:FlxTimer)
 				{
 					bg.x += 2;
 					bg.y += 1;
+					bgt.x += 3;
+					bgt.y += 2;
 					tmr.reset(0.005);
 				});
-				bg.scrollFactor.set(0.5,0.5);
-				bg.cameras = [camOverlay];
-				add(bg);
-				var chromeOffset = (ClientPrefs.rgbintense/350);
-				addShader(FlxG.camera, "chromatic aberration");
-				addShader(FlxG.camera, "fake CRT");
-				addShader(camOverlay, "fisheye");
-				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
-				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 			}
 			case 'ronPissed': //ron
 				defaultCamZoom = 0.7;
@@ -1535,6 +1546,8 @@ class PlayState extends MusicBeatState
 			case 'ron':
 				boyfriend.x += 160;
 				gf.x += 50;
+			case 'ronthreedee':
+				gf.visible = false;
 			default:
 				//stop fucking flying you dipshit
 				boyfriend.y += 40;
@@ -1598,6 +1611,10 @@ class PlayState extends MusicBeatState
 					graadienter.color = FlxColor.BLACK;
 					add(fx);
 					camHUD.alpha = 0.5;
+					startCountdown();
+				case 'triad':
+					dad.x -= 375;
+					boyfriend.scrollFactor.set(0.3,0.1);
 					startCountdown();
 				case 'ayo':
 					camGame.color = 0xFFAAAAAA;
@@ -2977,6 +2994,7 @@ class PlayState extends MusicBeatState
 		if (!isCameraOnForcedPos)
 		{
 			if (section != null && section) {
+				if (curSong == 'Triad')	defaultCamZoom = 0.7;
 				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
 				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -2987,6 +3005,7 @@ class PlayState extends MusicBeatState
 				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 30;
 			}
 			else {
+				if (curSong == 'Triad')	defaultCamZoom = 0.9;
 				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y-75);
 				camFollow.x += dad.cameraPosition[0];
 				camFollow.y += dad.cameraPosition[1];
@@ -4297,6 +4316,34 @@ var cameraTwn:FlxTween;
 					bruh();
 				case 1148:
 					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+			}
+		}
+		
+		if (curSong == 'Triad')
+		{
+			//boyfriend.scale.set(defaultCamZoom+1.3,defaultCamZoom+1.3);
+			if ((curStep >= 256) && (curStep <= 512))
+			{
+				var chromeOffset = ClientPrefs.rgbintense/350;
+				if (curStep % 8 == 0)
+				{
+					for (i in 4...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.globalManager.completeTweensOf(member);
+						if(ClientPrefs.downScroll)
+							member.y -= 10;
+						else
+							member.y += 10;
+						FlxTween.tween(member, {y: defaultStrumY}, 0.3, {ease: FlxEase.backOut});
+					}
+				}
+			}
+			switch (curStep)
+			{
+				case 256:
+					wastedGrp.visible = true;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
 			}
 		}
 		

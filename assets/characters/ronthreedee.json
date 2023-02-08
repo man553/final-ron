@@ -1,47 +1,46 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"fps": 24,
+			"name": "left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-4,
 				-10
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				10
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"name": "up",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "idle",
+			"anim": "idle",
 			"indices": [
 				0,
 				1,
@@ -63,16 +62,18 @@
 				17,
 				18,
 				19
-			]
+			],
+			"name": "idle"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-30,
 				-30
 			],
-			"loop": false,
-			"fps": 16,
 			"anim": "singRIGHT",
+			"fps": 16,
+			"name": "right",
 			"indices": [
 				3,
 				4,
@@ -81,12 +82,11 @@
 				6,
 				6,
 				4
-			],
-			"name": "right"
+			]
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/newcharstest/ron",
+	"image": "characters/newcharstest/ronthreedee",
 	"position": [
 		410,
 		250
