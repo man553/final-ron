@@ -1,10 +1,10 @@
 COMPOSER(s)
-Sic
+Seezee
+KyleGFX
 
 CHARTER(s)
-Shoutsuo
+Kurtfan
 
 ARTIST(s)
 Seezee
-Knocks
 Wildythomas

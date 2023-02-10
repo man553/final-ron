@@ -1,12 +1,9 @@
 COMPOSER(s)
-Sic
-Seezee
 ArmandRonan
 
 CHARTER(s)
-Spaceveta
+Idk
 
 ARTIST(s)
-Seezee
 Byok
-Wildythomas
+Dave and Bambi Assets

@@ -1,10 +1,9 @@
 COMPOSER(s)
-Sic
+Jacks
 
 CHARTER(s)
-Shoutsuo
+Kurtfan
 
 ARTIST(s)
 Seezee
-Knocks
 Wildythomas
