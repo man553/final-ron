@@ -583,7 +583,7 @@ class PlayState extends MusicBeatState
 			}
 			case 'triad':
 			{
-				defaultCamZoom = 0.7;
+				defaultCamZoom = 0.75;
 				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/nomajin'), XY, 0, 0);
 				bg.scale.set(2,2);
 				var bgt = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), XY, 0, 0);
@@ -1547,8 +1547,9 @@ class PlayState extends MusicBeatState
 			case 'ron':
 				boyfriend.x += 160;
 				gf.x += 50;
-			case 'ronthreedee':
-				gf.visible = false;
+			case 'majin':
+				dad.x -= 120;
+				boyfriend.x -= 80;
 			default:
 				//stop fucking flying you dipshit
 				boyfriend.y += 40;
@@ -2995,7 +2996,7 @@ class PlayState extends MusicBeatState
 		if (!isCameraOnForcedPos)
 		{
 			if (section != null && section) {
-				if (curSong == 'Triad')	defaultCamZoom = 0.7;
+				if (curSong == 'Triad')	defaultCamZoom = 0.75;
 				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
 				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -4325,6 +4326,9 @@ var cameraTwn:FlxTween;
 			//boyfriend.scale.set(defaultCamZoom+1.3,defaultCamZoom+1.3);
 			if ((curStep >= 256) && (curStep <= 512))
 			{
+				var currentBeat:Float = (Conductor.songPosition / 1000)*(Conductor.bpm/60);
+				camHUD.angle = 5 * Math.sin((currentBeat/6) * Math.PI);
+				FlxG.camera.angle = 2 * Math.sin((currentBeat/6) * Math.PI);
 				var chromeOffset = ClientPrefs.rgbintense/350;
 				if (curStep % 8 == 0)
 				{

@@ -1,10 +1,9 @@
 COMPOSER(s)
-Sic
+Seezee
 
 CHARTER(s)
-Shoutsuo
+Seezee
 
 ARTIST(s)
 Seezee
-Knocks
-Wildythomas
+Vs Rewrite Assets

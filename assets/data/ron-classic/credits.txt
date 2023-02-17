@@ -2,9 +2,8 @@ COMPOSER(s)
 Sic
 
 CHARTER(s)
-Shoutsuo
+Idk
 
 ARTIST(s)
-Seezee
-Knocks
+Terionic
 Wildythomas

@@ -1,10 +1,10 @@
 COMPOSER(s)
-Sic
+Jacks
 
 CHARTER(s)
-Shoutsuo
+?
 
 ARTIST(s)
 Seezee
-Knocks
+Benju
 Wildythomas

@@ -1,10 +1,10 @@
 COMPOSER(s)
-Sic
+Seezee
+ArmandRonan
 
 CHARTER(s)
-Shoutsuo
+Seezee
 
 ARTIST(s)
 Seezee
-Knocks
 Wildythomas
