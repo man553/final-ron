@@ -1,59 +1,60 @@
 {
+	"noteskin": "ronsip",
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				705,
 				590
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "ronPissed idle"
+			"fps": 24,
+			"name": "ronPissed idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				722,
 				583
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "ronPissed left"
+			"fps": 24,
+			"name": "ronPissed left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				714,
 				594
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "ronPissed down"
+			"fps": 24,
+			"name": "ronPissed down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				701,
 				597
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "ronPissed up"
+			"fps": 24,
+			"name": "ronPissed up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				693,
 				591
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "ronPissed right"
+			"fps": 24,
+			"name": "ronPissed right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -70,8 +71,8 @@
 		0
 	],
 	"camera_position": [
-		-320,
-		-120
+		-240,
+		-240
 	],
 	"sing_duration": 4,
 	"scale": 0.5

@@ -614,43 +614,63 @@ class PlayState extends MusicBeatState
 				});
 			}
 			case 'ronPissed': //ron
-				defaultCamZoom = 0.7;
-				var sky:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
-				sky.screenCenter();
-				sky.scrollFactor.set(0.1, 0.1);
-				add(sky);
-				
-				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
-				mountainsback.screenCenter();
-				mountainsback.scrollFactor.set(0.3, 0.3);
-				mountainsback.y -= 60;
-				add(mountainsback);
-				
-				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_clouds', -100, 20);
-				clouds.screenCenter();
-				clouds.scrollFactor.set(0.1, 0.1);
-				add(clouds);
-				
-				addShader(FlxG.camera, "rain");
-				Shaders["rain"].shader.data.zoom.value = [35];
-				Shaders["rain"].shader.data.raindropLength.value = [0.05];
-				Shaders["rain"].shader.data.opacity.value = [0.2];
-				
+				defaultCamZoom = 0.8;
+				var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+				skyo.screenCenter();
+				skyo.scrollFactor.set(0.1, 0.1);
+				add(skyo);
+			
+				var cityzj:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_city', -100, 20);
+				cityzj.screenCenter();
+				cityzj.scrollFactor.set(0.25, 0.25);
+				cityzj.y -= 60;
+				add(cityzj);
+
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
 				mountains.scrollFactor.set(0.3, 0.3);
 				mountains.y -= 60;
 				add(mountains);
-			
+
 				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_hillfront', -100, 20);
 				hillfront.screenCenter();
 				hillfront.scrollFactor.set(0.4, 0.4);
 				hillfront.y -= 60;
 				add(hillfront);
 				
-				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
+				var fgfxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/wasted/fog'));
+				fgfxtwo.scale.set(3, 3);
+				fgfxtwo.updateHitbox();
+				fgfxtwo.antialiasing = true;
+				fgfxtwo.screenCenter();
+				fgfxtwo.alpha = 0.5;
+				fgfxtwo.color = FlxColor.BLACK;
+				fgfxtwo.scrollFactor.set(0.4, 0.4);
+				wastedGrp.add(fgfxtwo);			
+				add(wastedGrp);
+				wastedGrp.visible = false;
+
+				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 40);
 				street.screenCenter();
 				add(street);
+
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width, FlxG.width, FlxColor.BLACK);
+				blackeffect.scale.set(4,4);
+				blackeffect.updateHitbox();
+				blackeffect.antialiasing = true;
+				blackeffect.screenCenter(XY);
+				blackeffect.scrollFactor.set();
+				blackeffect.alpha = 0;
+				add(blackeffect);
+				
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/wasted/underwater'));
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.scale.set(4,4);
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0.1, 0.1);
+				add(fx);
+				fx.alpha = 0;
 
 			case 'ronMad': //ron
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
@@ -762,21 +782,16 @@ class PlayState extends MusicBeatState
 				street.screenCenter();
 				add(street);
 
-				/*var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
+				var skyo:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_sky', -100, 20);
 				skyo.screenCenter();
 				skyo.scrollFactor.set(0.1, 0.1);
 				wastedGrp.add(skyo);
-
-				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountainsback', -100, 20);
-				mountainsback.screenCenter();
-				mountainsback.scrollFactor.set(0.3, 0.3);
-				mountainsback.y -= 60;
-				wastedGrp.add(mountainsback);
-
-				var clouds:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_clouds', -100, 20);
-				clouds.screenCenter();
-				clouds.scrollFactor.set(0.1, 0.1);
-				wastedGrp.add(clouds);
+			
+				var cityzj:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_city', -100, 20);
+				cityzj.screenCenter();
+				cityzj.scrollFactor.set(0.25, 0.25);
+				cityzj.y -= 60;
+				wastedGrp.add(cityzj);
 
 				var mountains:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_mountains', -100, 20);
 				mountains.screenCenter();
@@ -790,9 +805,9 @@ class PlayState extends MusicBeatState
 				hillfront.y -= 60;
 				wastedGrp.add(hillfront);
 
-				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 20);
+				var street:BGSprite = new BGSprite('bgs/newbgtest/wasted/wasted_street', -100, 40);
 				street.screenCenter();
-				wastedGrp.add(street);*/	
+				wastedGrp.add(street);	
 
 				blackeffect = new FlxSprite().makeGraphic(FlxG.width, FlxG.width, FlxColor.BLACK);
 				blackeffect.scale.set(4,4);
@@ -2576,6 +2591,25 @@ class PlayState extends MusicBeatState
 			} else
 			*/
 			boyfriendIdleTime = 0;
+		}
+		
+		if (curSong == 'wasted')
+		{
+			if (curStep >= 1104)
+			{
+				var chromeOffset = ClientPrefs.rgbintense/350;
+				for (i in 0...8)
+				{ 
+					var member = strumLineNotes.members[i];
+					member.y += Math.sin((curStep+i*2)/4)/2;
+				}
+				boyfriend.y += Math.sin(curStep/6)/2;
+				dad.y -= Math.sin(curStep/6)/2;
+				gf.y += Math.sin(curStep/4)/2;
+				gf.angle += 1;
+				boyfriend.angle += Math.sin(curStep/8)/6;
+				dad.angle -= Math.sin(curStep/8)/6;
+			}
 		}
 
 		if (curSong.toLowerCase() == 'bloodbath')
@@ -5084,6 +5118,85 @@ var cameraTwn:FlxTween;
 					FlxTween.tween(fxtwo, {alpha: 0}, 1, {ease: FlxEase.expoOut,});
 			}
 		}
+		
+		if (curSong == 'wasted') 
+		{
+			if (((curStep >= 320) && (curStep <= 576)) || ((curStep >= 832) && (curStep <= 1088)))
+			{
+				var chromeOffset = ClientPrefs.rgbintense/350;
+				if (curStep % 4 == 0)
+				{
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						FlxTween.globalManager.completeTweensOf(member);
+						if(ClientPrefs.downScroll)
+							member.y -= 20;
+						else
+							member.y += 20;
+						FlxTween.tween(member, {y: defaultStrumY}, 0.3, {ease: FlxEase.backOut});
+					}
+				}
+			}
+			switch (curStep)
+			{
+				case 192:
+					defaultCamZoom = 0.9;
+					cameraSpeed = 8;
+				case 320:
+					defaultCamZoom = 0.95;
+					//penile injection
+					wastedGrp.visible = true;
+					addShader(FlxG.camera, "rain");
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.075];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
+					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/wasted/fog'));
+					fxtwo.scale.set(2, 2);
+					fxtwo.updateHitbox();
+					fxtwo.antialiasing = true;
+					fxtwo.screenCenter();
+					fxtwo.alpha = 0.5;
+					fxtwo.scrollFactor.set(0.8, 0.8);
+					fxtwo.color = FlxColor.BLACK;
+					add(fxtwo);
+					cameraSpeed = 0.2;
+					fxtwo.cameras = [camOverlay];
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+				case 576:
+					wastedGrp.visible = false;
+					fxtwo.visible = false;
+					cameraSpeed = 1;
+					defaultCamZoom = 0.8;
+				case 816:
+					defaultCamZoom = 0.9;
+				case 836:
+					defaultCamZoom = 0.95;
+					cameraSpeed = 0.2;
+					fxtwo.visible = true;
+					wastedGrp.visible = true;
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+				case 1088:
+					wastedGrp.visible = false;
+					cameraSpeed = 1;
+					defaultCamZoom = 0.9;
+					camGame.alpha = 0;
+					Shaders["rain"].shader.data.opacity.value = [0];
+				case 1104:
+					camGame.alpha = 1;
+					defaultCamZoom = 0.65;
+					triggerEventNote('Change Character', 'bf', 'bfUnderwater');
+					triggerEventNote('Change Character', 'dad', 'ronUnderwater');
+					triggerEventNote('Change Character', 'gf', 'gfUnderwater');
+					dad.scale.set(1.2,1.2);
+					boyfriend.x += 60;
+					dad.x -= 60;
+					addShader(FlxG.camera, "fake CRT");
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					fx.alpha = 1;
+			}
+		}
+
 
 		if (curSong == 'Ron') 
 		{
@@ -5128,11 +5241,6 @@ var cameraTwn:FlxTween;
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
 					wastedGrp.visible = true;
-					addShader(FlxG.camera, "rain");
-					addShader(camGame, "wasting");
-					Shaders["rain"].shader.data.zoom.value = [35];
-					Shaders["rain"].shader.data.raindropLength.value = [0.05];
-					Shaders["rain"].shader.data.opacity.value = [0.2];
 					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 					fxtwo.scale.set(0.55, 0.55);
 					fxtwo.updateHitbox();
