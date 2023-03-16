@@ -1619,8 +1619,6 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case "ron" | 'trojan-virus':
-					schoolIntro(doof);
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
@@ -1653,7 +1651,6 @@ class PlayState extends MusicBeatState
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
-					startCountdown();
 				case 'haemorrhage':
 					camHUD.alpha = 0;
 					blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
@@ -1685,7 +1682,8 @@ class PlayState extends MusicBeatState
 					boyfriend.y += 30;
 					startCountdown();
 				default:
-					startCountdown();
+					if (dialogueJson == null) startCountdown();
+					else schoolIntro(doof);
 			}
 			seenCutscene = false;
 		}
@@ -5203,7 +5201,7 @@ var cameraTwn:FlxTween;
 					boyfriend.x += 120;
 					dad.x -= 120;
 					addShader(FlxG.camera, "fake CRT");
-					addShader(camGame, "bloom");
+					addShader(camGame, "godray");
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 					fx.alpha = 1;
 				case 1232:

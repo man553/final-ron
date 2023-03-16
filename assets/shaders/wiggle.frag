@@ -1,5 +1,4 @@
-#pragma header
-uniform float uTime;
+uniform float iTime;
 uniform float uSpeed;
 uniform float uFrequency;
 uniform float uWaveAmplitude;
@@ -13,7 +12,7 @@ void main()
 	uv.y += sin(uv.x * uFrequency - uTime * uSpeed) * (uWaveAmplitude / uv.y * uv.x);
 	
 	// Get the pixel color at the index.
-	vec4 color = flixel_texture2D(bitmap, uv);
+	vec4 color = texture2D(bitmap, uv);
 	
 	gl_FragColor = color;
 }
