@@ -2607,6 +2607,7 @@ class PlayState extends MusicBeatState
 					var member = strumLineNotes.members[i];
 					member.y += Math.sin((curStep+i*2)/4)/2;
 				}
+				fx.angle -= Math.sin(curStep/10)/6;
 				boyfriend.y += Math.sin(curStep/6)/2;
 				dad.y -= Math.sin(curStep/6)/2;
 				gf.y += Math.sin(curStep/4)/2;
