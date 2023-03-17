@@ -55,7 +55,6 @@ class TitleState extends MusicBeatState
 	public static var muteKeys:Array<FlxKey> = [FlxKey.ZERO];
 	public static var volumeDownKeys:Array<FlxKey> = [FlxKey.NUMPADMINUS, FlxKey.MINUS];
 	public static var volumeUpKeys:Array<FlxKey> = [FlxKey.NUMPADPLUS, FlxKey.PLUS];
-
 	public static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
@@ -66,6 +65,16 @@ class TitleState extends MusicBeatState
 	var time:Float = 0;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var curWacky:Array<String> = [];
+
+	var logoBl:FlxSprite;
+	var logoBi:FlxSprite;
+	var gfDance:FlxSprite;
+	var animScreen:FlxSprite;
+	var danceLeft:Bool = false;
+	var titleText:FlxSprite;
+	var animbarScrt:FlxBackdrop;
+	var animbarScrb:FlxBackdrop;
+	var swagShader:ColorSwap = null;
 
 	var wackyImage:FlxSprite;
 
@@ -161,19 +170,12 @@ class TitleState extends MusicBeatState
 		});
 		#end
 		addShader(FlxG.camera, "chromatic aberration");
-		addShader(FlxG.camera, "fake CRT");
 		addShader(FlxG.camera, "colorizer");
 		var chromeOffset = (ClientPrefs.rgbintense/350);
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 	}
-
-	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
-	var danceLeft:Bool = false;
-	var titleText:FlxSprite;
-	var swagShader:ColorSwap = null;
 
 	function startIntro()
 	{
@@ -244,12 +246,19 @@ class TitleState extends MusicBeatState
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 		
-		var animScreen = new FlxBackdrop(Paths.image('titleBackground'), XY, 0, 0);
-		var animbarScrt = new FlxBackdrop(Paths.image('titleBarTop'), XY, 0, 0);
-		var animbarScrb = new FlxBackdrop(Paths.image('titleBarBottom'), XY, 0, 0);
+		animScreen = new FlxSprite(titleJSON.titlex, titleJSON.titley);
+		animScreen.scale.set(2,2);
+		animScreen.frames = Paths.getSparrowAtlas('trueTitleBgAnimated');
+		animScreen.animation.addByPrefix('animate', 'animate', 24, true);
+		animScreen.animation.play('animate');
+		animScreen.updateHitbox();
+		animScreen.screenCenter(XY);
+		animbarScrt = new FlxBackdrop(Paths.image('trueTitleBarTop'), X, 0, 0);
+		animbarScrb = new FlxBackdrop(Paths.image('trueTitleBarBottom'), X, 0, 0);
+		animbarScrt.screenCenter(XY);
+		animbarScrb.screenCenter(XY);
 		new FlxTimer().start(0.005, function(tmr:FlxTimer)
 		{
-			animScreen.x += Math.sin(time/4)/4;
 			animbarScrb.x -= 2;
 			animbarScrt.x += 2;
 			tmr.reset(0.005);
@@ -257,27 +266,19 @@ class TitleState extends MusicBeatState
 		add(animScreen);
 		add(animbarScrt);
 		add(animbarScrb);
-		
-		logoBl = new FlxSprite(titleJSON.titlex, titleJSON.titley);
-		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
-		logoBl.antialiasing = ClientPrefs.globalAntialiasing;
-		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24, false);
-		logoBl.animation.play('bump');
+	
+		logoBi = new FlxSprite().loadGraphic(Paths.image('trueTitleBack'));
+		logoBi.updateHitbox();
+		logoBi.screenCenter(XY);	
+		logoBl = new FlxSprite().loadGraphic(Paths.image('trueTitleLogo'));
 		logoBl.updateHitbox();
-		logoBl.screenCenter(X);
+		logoBl.screenCenter(XY);
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
-		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
-		titleText.frames = Paths.getSparrowAtlas('titleEnter');
-		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
-		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
-		titleText.antialiasing = ClientPrefs.globalAntialiasing;
-		titleText.animation.play('idle');
+		titleText = new FlxSprite().loadGraphic(Paths.image('trueTitlePlay'));
 		titleText.updateHitbox();
-		titleText.screenCenter(X);
-		titleText.y -= 40;
-		titleText.x += 240;
-		titleText.scale.set(0.5,0.5);
+		titleText.screenCenter(XY);
+		add(logoBi);
 		add(logoBl);
 		add(titleText);
 		
@@ -360,11 +361,10 @@ class TitleState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		if (skippedIntro) {
-			logoBl.angle += Math.cos(-time*4)/8;
+			logoBl.angle = Math.sin(-time*5)/8;
+			logoBi.angle = logoBl.angle;
 			logoBl.screenCenter(XY);
 			titleText.angle += Math.sin(-time*8)/16;
-			FlxG.camera.scroll.x += Math.sin(time/2)/10;
-			FlxG.camera.scroll.y += Math.cos(time/2)/10;
 			Shaders["colorizer"].shader.data.colors.value = time/2;
 		}
 
@@ -405,17 +405,26 @@ class TitleState extends MusicBeatState
 		{
 			if(pressedEnter)
 			{
-				if(titleText != null) titleText.animation.play('press');
+				FlxTween.tween(titleText, {y: titleText.y - 500}, 2, {ease: FlxEase.backIn});
 
-				FlxG.camera.flash(FlxColor.WHITE, 1);
 				FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
+				
+				FlxTween.cancelTweensOf(FlxG.camera);
+				blackScreen.color = FlxColor.BLACK;
+				blackScreen.scale.set(10,10);
+				blackScreen.screenCenter(XY);
+				FlxTween.tween(blackScreen, {alpha: 1}, 1.1, {ease: FlxEase.circIn});
+				FlxTween.tween(FlxG.camera, {zoom: 3, angle: 22}, 1.5, {ease: FlxEase.quartIn});
+				FlxTween.tween(animbarScrt, {y: animbarScrt.y - 200}, 0.5, {ease: FlxEase.quadIn});
+				FlxTween.tween(animbarScrb, {y: animbarScrb.y + 200}, 0.5, {ease: FlxEase.quadIn});
 
 				transitioning = true;
 				// FlxG.sound.music.stop();
 
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
-					MusicBeatState.switchState((ClientPrefs.warnings ? new substates.WarningSubState() : new menus.DesktopMenu()));
+					//MusicBeatState.switchState((ClientPrefs.warnings ? new substates.WarningSubState() : new menus.DesktopMenu()));
+					MusicBeatState.switchState(new menus.DesktopMenu());
 				});
 				// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 			}
@@ -496,8 +505,12 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-		FlxG.camera.zoom = 1.03;
-		FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.circOut});
+		if (transitioning == false)
+		{
+			FlxG.camera.zoom = 1.03;
+			FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.circOut});
+			animScreen.animation.play('animate');
+		}
 
 		if(logoBl != null)
 			logoBl.animation.play('bump', true);
@@ -572,7 +585,7 @@ class TitleState extends MusicBeatState
 			remove(ngSpr);
 			remove(credGroup);
 			FlxG.camera.flash(FlxColor.WHITE, 4);
-
+			addShader(FlxG.camera, "godray");
 			var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 			if (easteregg == null) easteregg = '';
 			easteregg = easteregg.toUpperCase();
