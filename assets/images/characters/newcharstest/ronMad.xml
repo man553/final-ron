@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="ronMad.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ron angery down0000" x="0" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0001" x="0" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0002" x="351" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0003" x="351" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0004" x="702" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0005" x="702" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0006" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0007" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0008" x="1404" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0009" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0010" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0011" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0012" x="1404" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0013" x="1404" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery down0014" x="1053" y="0" width="351" height="427"/>
+	<SubTexture name="ron angery bridle alt0000" x="1755" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0001" x="1755" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0002" x="2083" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0003" x="2411" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0004" x="2739" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0005" x="3067" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0006" x="3395" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0007" x="3723" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0008" x="0" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0009" x="0" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0010" x="328" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0011" x="328" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0012" x="3067" y="0" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0013" x="656" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery bridle alt0014" x="984" y="439" width="328" height="439"/>
+	<SubTexture name="ron angery idle0000" x="1312" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0001" x="1312" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0002" x="1635" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0003" x="1958" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0004" x="2281" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0005" x="2604" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0006" x="2927" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0007" x="3250" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0008" x="3573" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0009" x="3573" y="439" width="323" height="446"/>
+	<SubTexture name="ron angery idle0010" x="0" y="885" width="323" height="446"/>
+	<SubTexture name="ron angery idle0011" x="0" y="885" width="323" height="446"/>
+	<SubTexture name="ron angery idle0012" x="323" y="885" width="323" height="446"/>
+	<SubTexture name="ron angery idle0013" x="646" y="885" width="323" height="446"/>
+	<SubTexture name="ron angery idle0014" x="0" y="885" width="323" height="446"/>
+	<SubTexture name="ron angery left0000" x="969" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0001" x="969" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0002" x="1360" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0003" x="1751" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0004" x="2142" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0005" x="2533" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0006" x="2924" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0007" x="3315" y="885" width="391" height="432"/>
+	<SubTexture name="ron angery left0008" x="0" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0009" x="391" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0010" x="782" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0011" x="782" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0012" x="1173" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0013" x="1564" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery left0014" x="782" y="1331" width="391" height="432"/>
+	<SubTexture name="ron angery right0000" x="1955" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0001" x="1955" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0002" x="2348" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0003" x="2741" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0004" x="3134" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0005" x="3527" y="1331" width="393" height="433"/>
+	<SubTexture name="ron angery right0006" x="0" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0007" x="393" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0008" x="786" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0009" x="1179" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0010" x="1572" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0011" x="1572" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0012" x="1965" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0013" x="2358" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery right0014" x="1572" y="1764" width="393" height="433"/>
+	<SubTexture name="ron angery up0000" x="2751" y="1764" width="441" height="486"/>
+	<SubTexture name="ron angery up0001" x="3192" y="1764" width="441" height="486"/>
+	<SubTexture name="ron angery up0002" x="3633" y="1764" width="441" height="486"/>
+	<SubTexture name="ron angery up0003" x="0" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0004" x="441" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0005" x="882" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0006" x="1323" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0007" x="1764" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0008" x="2205" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0009" x="2646" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0010" x="3087" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0011" x="3087" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0012" x="3528" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery up0013" x="0" y="2736" width="441" height="486"/>
+	<SubTexture name="ron angery up0014" x="3087" y="2250" width="441" height="486"/>
+	<SubTexture name="ron angery yes0000" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0001" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0002" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0003" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0004" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0005" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0006" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0007" x="441" y="2736" width="406" height="398"/>
+	<SubTexture name="ron angery yes0008" x="441" y="2736" width="406" height="398"/>
+</TextureAtlas>
