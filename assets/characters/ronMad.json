@@ -1,0 +1,100 @@
+{
+	"noteskin": "ronsip",
+	"animations": [
+		{
+			"offsets": [
+				104,
+				-18
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ron angery left"
+		},
+		{
+			"offsets": [
+				-59,
+				-11
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "ron angery down"
+		},
+		{
+			"offsets": [
+				45,
+				40
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "ron angery up"
+		},
+		{
+			"offsets": [
+				-62,
+				10
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ron angery right"
+		},
+		{
+			"offsets": [
+				-61,
+				-6
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle-alt",
+			"indices": [],
+			"name": "ron angery bridle alt"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "hey",
+			"indices": [],
+			"name": "ron angery yes"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "ron angery idle"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ronMad",
+	"position": [
+		-110,
+		220
+	],
+	"healthicon": "ronmad",
+	"flip_x": false,
+	"healthbar_colors": [
+		91,
+		78,
+		0
+	],
+	"camera_position": [
+		60,
+		-30
+	],
+	"sing_duration": 4,
+	"scale": 1.2
+}
