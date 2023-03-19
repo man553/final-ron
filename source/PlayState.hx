@@ -1670,18 +1670,21 @@ class PlayState extends MusicBeatState
 					{
 						var p = new FlxParticle();
 						var p2 = new FlxParticle();
+						var p3 = new FlxParticle();
 						p.makeGraphic(12,16,FlxColor.BLACK);
 						p2.makeGraphic(8,12,FlxColor.BLACK);
+						p3.makeGraphic(16,20,FlxColor.BLACK);
 						
 						snowemitter.add(p);
 						snowemitter.add(p2);
+						snowemitter.add(p3);
 					}
 					snowemitter.width = FlxG.width*1.5;
 					snowemitter.launchMode = SQUARE;
-					snowemitter.velocity.set(-10, 1500, 10, 2000);
+					snowemitter.velocity.set(-10, 1600, 10, 2200);
 					snowemitter.lifespan.set(5);
 					add(snowemitter);
-					snowemitter.start(false, 0.05);
+					snowemitter.start(false, 0.035);
 					startCountdown();
 				case 'haemorrhage':
 					camHUD.alpha = 0;
@@ -4778,6 +4781,7 @@ var cameraTwn:FlxTween;
 					camFollow.y -= 5600;
 					boyfriend.y -= 5600;
 					dad.y -= 5600;
+					triggerEventNote('Change Bars Size', '12', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
