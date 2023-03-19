@@ -1,103 +1,88 @@
 {
+	"noteskin": "ronsip",
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
-				101,
+				104,
 				-18
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "ron angery left",
-			"indices": []
+			"indices": [],
+			"name": "ron angery left"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				-70,
-				-25
+				-59,
+				-11
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "ron angery down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "ron angery down"
 		},
 		{
-			"loop": false,
 			"offsets": [
-				105,
+				45,
 				40
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "ron angery up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "ron angery up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-62,
-				-10
+				10
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "ron angery right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ron angery right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-61,
-				0
+				-6
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle-alt",
-			"fps": 24,
-			"name": "ron angery bridle alt",
-			"indices": []
+			"indices": [],
+			"name": "ron angery bridle alt"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "hey",
-			"fps": 24,
-			"name": "ron angery yes",
-			"indices": []
+			"indices": [],
+			"name": "ron angery yes"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [
-				4,
-				5,
-				6,
-				7,
-				8,
-				9,
-				10,
-				11,
-				12,
-				13,
-				14,
-				1,
-				2,
-				3
-			],
-			"fps": 20,
 			"anim": "idle",
-			"loop": false,
+			"fps": 24,
 			"name": "ron angery idle"
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/newcharstest/ronMad",
 	"position": [
-		-120,
-		200
+		-110,
+		220
 	],
 	"healthicon": "ronmad",
 	"flip_x": false,

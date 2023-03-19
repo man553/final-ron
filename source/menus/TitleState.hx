@@ -249,7 +249,7 @@ class TitleState extends MusicBeatState
 		animScreen = new FlxSprite(titleJSON.titlex, titleJSON.titley);
 		animScreen.scale.set(2,2);
 		animScreen.frames = Paths.getSparrowAtlas('trueTitleBgAnimated');
-		animScreen.animation.addByPrefix('animate', 'animate', 24, true);
+		animScreen.animation.addByPrefix('animate', 'animate', 30, true);
 		animScreen.animation.play('animate');
 		animScreen.updateHitbox();
 		animScreen.screenCenter(XY);
@@ -509,7 +509,7 @@ class TitleState extends MusicBeatState
 		{
 			FlxG.camera.zoom = 1.03;
 			FlxTween.tween(FlxG.camera, {zoom: 1}, 0.2, {ease: FlxEase.circOut});
-			animScreen.animation.play('animate');
+			animScreen.animation.play('animate', true);
 		}
 
 		if(logoBl != null)
