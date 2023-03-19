@@ -2757,7 +2757,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 		camHUD.x = FlxMath.lerp(camHUD.x, 0, 0.2 / (60 / ClientPrefs.framerate));
 		camHUD.y = FlxMath.lerp(camHUD.y, 0, 0.2 / (60 / ClientPrefs.framerate));
-		if (bar1.y <= -520) bar1.visible = false; else bar1.visble = true;
+		if (bar1.y <= -520) bar1.visible = false; else bar1.visible = true;
 		if (bar2.y >= 720) bar2.visible = false; else bar2.visible = true;
 		if (haemorrhageCallback != null) haemorrhageCallback();
 		scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
