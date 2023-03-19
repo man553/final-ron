@@ -398,8 +398,8 @@ class PlayState extends MusicBeatState
 		camOverlay.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camOther);
+		FlxG.cameras.add(camHUD);
 		FlxG.cameras.add(camOverlay);
 		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
 
@@ -497,10 +497,10 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
-		bar1 = new FlxSprite(0, -560).makeGraphic(1600 * 2, 560, 0xFF000000);
-		bar2 = new FlxSprite(0, 720).makeGraphic(1600 * 2, 560, 0xFF000000);
-		bar1.cameras=[camHUD];
-		bar2.cameras=[camHUD];
+		bar1 = new FlxSprite(-2400, -560).makeGraphic(2400 * 2, 560, 0xFF000000);
+		bar2 = new FlxSprite(-2400, 720).makeGraphic(2400 * 2, 560, 0xFF000000);
+		bar1.cameras=[camOther];
+		bar2.cameras=[camOther];
 		add(bar1);
 		add(bar2);
 		bar2.y=720;
@@ -4781,7 +4781,7 @@ var cameraTwn:FlxTween;
 					camFollow.y -= 5600;
 					boyfriend.y -= 5600;
 					dad.y -= 5600;
-					triggerEventNote('Change Bars Size', '12', '1');
+					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
@@ -4794,8 +4794,8 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.75;
 					cameraSpeed = 2.5;
 				case 576:
-					FlxTween.tween(dad, {y: dad.y + 5600}, 5.4, {ease: FlxEase.quartIn});
-					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.4, {ease: FlxEase.quartIn});
+					FlxTween.tween(dad, {y: dad.y + 5600}, 5.4, {ease: FlxEase.quadIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.4, {ease: FlxEase.quadIn});
 					defaultCamZoom = 0.85;
 					cameraSpeed = 2;
 				case 632:
