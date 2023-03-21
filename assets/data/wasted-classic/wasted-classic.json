@@ -1,6 +1,6 @@
 {
 	"song": {
-		"player1": "bfDark",
+		"player1": "bf",
 		"events": [
 			[
 				36884.6153846154,
@@ -8120,8 +8120,8 @@
 		],
 		"player2": "ronslightly",
 		"player3": null,
-		"song": "wasted",
-		"stage": "ronPissed",
+		"song": "wasted-classic",
+		"stage": "mad",
 		"needsVoices": true,
 		"validScore": true,
 		"bpm": 130,

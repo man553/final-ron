@@ -5284,7 +5284,6 @@ var cameraTwn:FlxTween;
 					dad.x -= 120;
 					addShader(FlxG.camera, "fake CRT");
 					addShader(camGame, "godray");
-					addShader(camGame, "wiggle");
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 					fx.alpha = 1;
 				case 1232:
