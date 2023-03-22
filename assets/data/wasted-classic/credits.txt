@@ -1,12 +1,11 @@
 COMPOSER(s)
-Seezee
-Terionic
-JaceLOL
+ArmandRonan
 /coquers_
 
 CHARTER(s)
-Seezee
-SpaceVeta
+Sam
 
 ARTIST(s)
 Seezee
+Benju
+Wildythomas

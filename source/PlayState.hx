@@ -289,7 +289,7 @@ class PlayState extends MusicBeatState
 	var hillfrontbl:BGSprite;
 	var streetbl:BGSprite;
 
-	var Estatic2:FlxSprite;
+	var Estatic2:BGSprite;
 
 	var funnywindow:Bool = false;
 	var funnywindowsmall:Bool = false;
@@ -556,27 +556,27 @@ class PlayState extends MusicBeatState
 			case 'mad':
 			{
 				defaultCamZoom = 0.9;
-				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_sky'));
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/pissedRon_sky'));
 				bg.antialiasing = true;
 				bg.screenCenter();
 				bg.scrollFactor.set(0.1, 0.1);
 				add(bg);
 				
-				var clouds:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/pissedRon_clouds'));
+				var clouds:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/pissedRon_clouds'));
 				clouds.scale.set(0.7, 0.7);
 				clouds.screenCenter();
 				clouds.antialiasing = true;
 				clouds.scrollFactor.set(0.2, 0.2);
 				add(clouds);
 				
-				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('updateron/bg/pissedRon_ground'));
+				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bgs/pissedRon_ground'));
 				ground.antialiasing = true;
 				add(ground);
 			}
 			case 'fard':
 			{
 				defaultCamZoom = 0.9;
-				var bg:FlxSprite = new FlxSprite(300,200).loadGraphic(Paths.image('updateron/bg/sonker_bg'));
+				var bg:FlxSprite = new FlxSprite(300,200).loadGraphic(Paths.image('bgs/sonker_bg'));
 				bg.updateHitbox();
 				bg.active = false;
 				bg.antialiasing = true;
@@ -886,15 +886,6 @@ class PlayState extends MusicBeatState
 				Estatic.screenCenter();
 				Estatic.alpha = 0;
 
-				Estatic2 = new FlxSprite();
-				Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
-				Estatic2.scale.set(4,4);
-				Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
-				Estatic2.animation.play('idle');
-				Estatic2.scrollFactor.set();
-				Estatic2.screenCenter();
-				Estatic2.alpha = 0;
-
 			case 'ronHell':
 				defaultCamZoom = 0.8;
 				precacheList.set('hellexplode', 'sound');
@@ -1045,15 +1036,11 @@ class PlayState extends MusicBeatState
 				Estatic.scrollFactor.set();
 				Estatic.screenCenter();
 				Estatic.alpha = 0;
-
-				Estatic2 = new FlxSprite();
-				Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
-				Estatic2.scale.set(4,4);
-				Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
-				Estatic2.animation.play('idle');
-				Estatic2.scrollFactor.set();
+				
+				Estatic2 = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_streetBroken', -100, -5560);
 				Estatic2.screenCenter();
-				Estatic2.alpha = 0;
+				add(Estatic2);
+				Estatic2.visible = false;
 				
 				add(bloodshedGrp);
 				bloodshedGrp.visible = false;
@@ -1170,14 +1157,6 @@ class PlayState extends MusicBeatState
 					bg2.scrollFactor.set(0.05, 0.05);
 					bg2.screenCenter();
 					add(bg2);
-					Estatic2 = new FlxSprite();
-					Estatic2.frames = Paths.getSparrowAtlas('bgs/trojan_static');
-					Estatic2.scale.set(4, 4);
-					Estatic2.animation.addByPrefix('idle', 'static instance 1', 24, true);
-					Estatic2.animation.play('idle');
-					Estatic2.scrollFactor.set();
-					Estatic2.screenCenter();
-					add(Estatic2);
 					var console:FlxSprite = new FlxSprite();
 					console.frames = Paths.getSparrowAtlas('bgs/trojan_console');
 					console.scale.set(4, 4);
@@ -1632,6 +1611,10 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
+				case 'tutorial':
+					addShader(camHUD, "mosaic");
+					Shaders["mosaic"].shader.data.uBlocksize.value = [4];
+					startCountdown();
 				case 'pretty-wacky':
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
@@ -2667,7 +2650,9 @@ class PlayState extends MusicBeatState
 		if (curSong.toLowerCase() == 'bleeding')
 		{
 			if (windowmove)
+			{
 				setWindowPos(Math.round(24 * Math.sin(currentBeat * Math.PI) + 327), Math.round(24 * Math.sin(currentBeat * 3) + 160));
+			}
 			if (cameramove)
 			{
 				camHUD.angle = 22 * Math.sin((currentBeat/4) * Math.PI);
@@ -4721,6 +4706,10 @@ var cameraTwn:FlxTween;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
 			Estatic.alpha = (((2-health)/3)+0.3)/2;
+			var chromeOffset = (FlxMath.lerp(2 - health, 2, 0.5)*ClientPrefs.rgbintense/350);
+			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 			if (curStep >= 384)
 			{
 				snowemitter.x = FlxG.camera.scroll.x;
@@ -4778,9 +4767,9 @@ var cameraTwn:FlxTween;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					camFollow.y -= 5600;
-					boyfriend.y -= 5600;
-					dad.y -= 5600;
+					camFollow.y -= 6400;
+					boyfriend.y -= 6400;
+					dad.y -= 6400;
 					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
@@ -4794,6 +4783,7 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.75;
 					cameraSpeed = 2.5;
 				case 576:
+					Estatic2.visible = true;
 					FlxTween.tween(dad, {y: dad.y + 5600}, 5.4, {ease: FlxEase.quadIn});
 					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.4, {ease: FlxEase.quadIn});
 					defaultCamZoom = 0.85;
