@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="retroIcons.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bf0000" x="0" y="0" width="85" height="115"/>
+	<SubTexture name="bf0001" x="0" y="0" width="85" height="115"/>
+	<SubTexture name="bf0002" x="85" y="0" width="85" height="115"/>
+	<SubTexture name="bf0003" x="85" y="0" width="85" height="115"/>
+	<SubTexture name="bf0004" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0005" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0006" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0007" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0008" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0009" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0010" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0011" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0012" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0013" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="bf0014" x="170" y="0" width="85" height="115"/>
+	<SubTexture name="ron0000" x="0" y="115" width="75" height="102"/>
+	<SubTexture name="ron0001" x="0" y="115" width="75" height="102"/>
+	<SubTexture name="ron0002" x="75" y="115" width="75" height="102"/>
+	<SubTexture name="ron0003" x="75" y="115" width="75" height="102"/>
+	<SubTexture name="ron0004" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0005" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0006" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0007" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0008" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0009" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0010" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0011" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0012" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0013" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ron0014" x="150" y="115" width="75" height="102"/>
+	<SubTexture name="ronBloodshed0000" x="0" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0001" x="0" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0002" x="77" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0003" x="77" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0004" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0005" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0006" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0007" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0008" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0009" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0010" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0011" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0012" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0013" x="154" y="217" width="77" height="103"/>
+	<SubTexture name="ronBloodshed0014" x="154" y="217" width="77" height="103"/>
+</TextureAtlas>
