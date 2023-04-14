@@ -1,55 +1,82 @@
 [
 	{
+		"textColor": "#FFFF00",
 		"text": "hehehehehehehehehe i knew you'd do the funny",
 		"character": "ron",
+		"retroes": "ron",
+		"alias": "coolguy11",
+		"isLeftSide": true,
 		"expression": "happy"
 	},
 	{
+		"textColor": "#FF0000",
 		"text": "what",
+		"retroes": "bf",
+		"alias": "arcade04",
 		"character": "bf",
 		"expression": "confused"
 	},
 	{
+		"alias": "arcade04",
 		"text": "btw why are you wearing a jumpsuit"
 	},
 	{
+		"alias": "arcade04",
 		"text": "also WHAT THE FRICK HOW ARE YOU HERE YOU LITERALLY DIED LIKE YESTERDAY",
 		"boxState": "angry",
 		"expression": "shocked"
 	},
 	{
+		"textColor": "#FFFF00",
 		"text": "fuck you",
 		"character": "ron",
+		"alias": "coolguy11",
+		"isLeftSide": true,
 		"expression": "happy"
 	},
 	{
+		"isLeftSide": true,
+		"alias": "coolguy11",
 		"text": "i'm wearing my pajamas (in a cool way)"
 	},
 	{
+		"isLeftSide": true,
+		"alias": "coolguy11",
 		"text": "and i'm too cool to die in a beep bop game lmao"
 	},
 	{
+		"textColor": "#FF0000",
+		"alias": "arcade04",
 		"text": "what",
 		"character": "bf",
 		"expression": "confused"
 	},
 	{
+		"alias": "arcade04",
 		"text": "what do you mean game",
 		"expression": "shocked"
 	},
 	{
+		"alias": "arcade04",
 		"text": "???????????"
 	},
 	{
-		"text": "uuuuuuuuuuuuuuuuuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
+		"textColor": "#FFFF00",
+		"isLeftSide": true,
+		"alias": "coolguy11",
+		"text": "uuuuuuuuuuuuuuuuuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
 		"character": "ron",
 		"expression": "happy",
 		"events" : [["playSound", ["among"]]]
 	},
 	{
+		"isLeftSide": true,
+		"alias": "coolguy11",
 		"text": "beep boop battle :)"
 	},
 	{
+		"textColor": "#FF0000",
+		"alias": "arcade04",
 		"text": ":)",
 		"character": "bf",
 		"expression": "talk"

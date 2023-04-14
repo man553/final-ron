@@ -45,7 +45,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var bg:FlxSprite;
 	var STOP:Bool = false;
 	var dialogText:FlxTypeText;
-	var dialogHand:FlxSprite = new FlxSprite(950, 575).loadGraphic(Paths.image('hand'));
+	var dialogHand:FlxSprite = new FlxSprite(1075, 625).loadGraphic(Paths.image('hand'));
 	var aliases:Array<Array<String>> = [];
 	var retroes:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	public function new(dialogueJson:Dynamic, callback:Void->Void) {
@@ -75,7 +75,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 				portraiter.push(a.character);
 			}
 			if (a.retroes != null) {
-				var retroer = new FlxSprite(84 + 147 * i, 668);
+				var retroer = new FlxSprite(104 + 147 * i, 668);
 				retroer.frames = Paths.getSparrowAtlas('rondialogue/retroIcons');
 				retroer.animation.addByPrefix("idle", a.retroes + "0", 24, true);
 				retroer.animation.play("idle");
@@ -93,7 +93,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 			char.alpha = 0.5;
 			char.updateHitbox();
 			char.x = character[1] ? 100 : FlxG.width - 40 - char.width;
-			char.y = 507 - char.height;
+			char.y = 517 - char.height;
 			char.scale.set(0.9,0.9);
 			char.origin.set(char.width / 2, char.height);
 			preloadPortraits[character[0]] = char;
@@ -137,7 +137,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 			if (!finishedTyping) dialogText.skip() else nextDialogue(1);
 		super.update(elapsed);
 		time += elapsed;
-		dialogHand.x = 950 + (Math.abs(Math.sin(3.5 * time)) * 10);
+		dialogHand.x = 1075 + (Math.abs(Math.sin(3.5 * time)) * 10);
 		if (dialogText.height + 14 > 129) {
 			dialogText.y = 664 - dialogText.height;
 			dialogText.clipRect.y = dialogText.height - 119;
