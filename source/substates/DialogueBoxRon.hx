@@ -17,7 +17,10 @@ import haxe.Json;
 using StringTools;
 typedef FuckingDialogue = {
 	var text:String;
+	var alias:String;
 	var character:String;
+	var retroes:String;
+	var isLeftSide:Bool;
 	var expression:String;
 	var events:Array<Dynamic>;
 	var dialogueBox:String;
@@ -31,15 +34,20 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var music:FlxSound = new FlxSound().loadEmbedded(Paths.music("talking-in-a-cool-way"));
 	public var finishCallback:Void->Void;
 	var dialogueJSON:Array<FuckingDialogue>;
-	var preloadPortraits:Map<String, DialogueCharacter> = new Map<String, DialogueCharacter>();
+	var preloadPortraits:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	var curDialogue:Int;
-	var tempPortrait = [];
-	var preloadBoxes:Map<String, FlxAtlasFrames> = new Map<String, FlxAtlasFrames>();
+	var backdropThingy:Dynamic;
+	var targetGoer = 1;
+	var goer:Float = 1;
+	var tempPortrait:Array<Dynamic> = [];
+	var preloadBoxes:Map<String, flixel.graphics.FlxGraphic> = new Map<String, flixel.graphics.FlxGraphic>();
 	var dialoguebox:FlxSprite;
-	var bg:FlxSprite = FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), [0xFFB3DFd8, 0xFF6572c2]);
+	var bg:FlxSprite;
 	var STOP:Bool = false;
 	var dialogText:FlxTypeText;
 	var dialogHand:FlxSprite = new FlxSprite(950, 575).loadGraphic(Paths.image('hand'));
+	var aliases:Array<Array<String>> = [];
+	var retroes:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	public function new(dialogueJson:Dynamic, callback:Void->Void) {
 		super();
 		FlxG.sound.list.add(music);
@@ -49,60 +57,79 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 			dialogueWorks = false;
 			return;
 		}
+		backdropThingy = new flixel.addons.display.FlxBackdrop(Paths.image("rondialogue/barsLoopable"), X);
+		bg = new FlxSprite().loadGraphic(Paths.image("rondialogue/bg"));
 		add(bg);
+		add(backdropThingy);
 		dialogueJSON = cast dialogueJson;
+		var portraiter = [];
+		var alieasesesae = [];
 		//portrait loading
-		for (a in dialogueJSON)
-			if (!tempPortrait.contains(a.character))
-				tempPortrait.push(a.character);
-
+		for (i=>a in dialogueJSON){
+			if (a.textColor != null && !alieasesesae.contains(a.alias)) {
+				aliases.push([a.alias, a.textColor, ["%","#","^","*"][aliases.length]]);
+				alieasesesae.push(a.alias);
+			}
+			if (a.character != null && !portraiter.contains(a.character)) {
+				tempPortrait.push([a.character, a.isLeftSide]);
+				portraiter.push(a.character);
+			}
+			if (a.retroes != null) {
+				var retroer = new FlxSprite(84 + 147 * i, 668);
+				retroer.frames = Paths.getSparrowAtlas('rondialogue/retroIcons');
+				retroer.animation.addByPrefix("idle", a.retroes + "0", 24, true);
+				retroer.animation.play("idle");
+				retroer.updateHitbox();
+				retroer.y -= retroer.height;
+				retroes[a.retroes] = retroer;
+			}
+		}
+		trace(aliases);
+		trace(tempPortrait);
 		for (character in tempPortrait)
 		{
-			var char:DialogueCharacter = new DialogueCharacter(0, 0, character);
-			char.setGraphicSize(Std.int(char.width * DialogueCharacter.DEFAULT_SCALE * char.jsonFile.scale));
-			char.setPosition(FlxG.width - char.width + (char.jsonFile.dialogue_pos == "left" ? -60 : -100) + char.jsonFile.position[0], 60 + char.jsonFile.position[1]);
-			char.updateHitbox();
+			var char:FlxSprite = new FlxSprite().loadGraphic(Paths.image('rondialogue/' + character[0]));
 			add(char);
-			char.visible = false;
-			preloadPortraits[character] = char;
+			char.alpha = 0.5;
+			char.updateHitbox();
+			char.x = character[1] ? 100 : FlxG.width - 40 - char.width;
+			char.y = 507 - char.height;
+			char.scale.set(0.9,0.9);
+			char.origin.set(char.width / 2, char.height);
+			preloadPortraits[character[0]] = char;
+			char.antialiasing = ClientPrefs.globalAntialiasing;
 		}
-
+		trace(preloadPortraits);
 
 		//box loading
-		dialoguebox = new FlxSprite(70, 370);
-		dialoguebox.frames = Paths.getSparrowAtlas('speech_bubble');
-		preloadBoxes['speech_bubble'] = Paths.getSparrowAtlas('speech_bubble');
+		dialoguebox = new FlxSprite().loadGraphic(Paths.image('rondialogue/window'));
+		preloadBoxes['speech_bubble'] = Paths.image('rondialogue/window');
 		dialoguebox.scrollFactor.set();
 		dialoguebox.antialiasing = ClientPrefs.globalAntialiasing;
-		dialoguebox.animation.addByPrefix('normal', 'speech bubble normal', 24);
-		dialoguebox.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-		dialoguebox.animation.addByPrefix('angry', 'AHH speech bubble', 24);
-		dialoguebox.animation.addByPrefix('angryOpen', 'speech bubble loud open', 24, false);
-		dialoguebox.animation.addByPrefix('center-normal', 'speech bubble middle', 24);
-		dialoguebox.animation.addByPrefix('center-normalOpen', 'Speech Bubble Middle Open', 24, false);
-		dialoguebox.animation.addByPrefix('center-angry', 'AHH Speech Bubble middle', 24);
-		dialoguebox.animation.addByPrefix('center-angryOpen', 'speech bubble Middle loud open', 24, false);
-		dialoguebox.animation.finishCallback = function(name:String) {dialoguebox.animation.play(name.replace("Open", ""));};
-		dialoguebox.setGraphicSize(Std.int(dialoguebox.width * 0.9));
-		dialoguebox.updateHitbox();
 		dialoguebox.visible = false;
 		add(dialoguebox);
 		for (a in dialogueJSON)
 			if (a.dialogueBox != null && preloadBoxes[a.dialogueBox] == null)
-				preloadBoxes[a.dialogueBox] = Paths.getSparrowAtlas(a.dialogueBox);
+				preloadBoxes[a.dialogueBox] = Paths.image('rondialogue/${a.dialogueBox}');
 
 		bg.alpha = 0;
 		FlxTween.tween(bg, {alpha: 0.8}, 1, {startDelay: 1, ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {nextDialogue(0);		music.play();
 			music.fadeIn(0.5);
 			music.looped = true;}});
-		dialogText = new FlxTypeText(200, 500, 955, "", 32);
+		var textRect = new flixel.math.FlxRect(0, 0, 816, 119);
+		dialogText = new FlxTypeText(385, 543, 810, "", 14);
+		dialogText.font = Paths.font("w95.otf");
 		dialogText.sounds = [new FlxSound().loadEmbedded(Paths.sound('Metronome_Tick'))];
 		dialogText.font = 'Pixel Arial 11 Bold';
+		dialogText.clipRect = textRect;
+		dialogText.clipRect = dialogText.clipRect;
+		dialogText.start(0.05);
 		curTextDelay = 0.05;
 		dialogText.color = 0xFF000000;
 		add(dialogText);
 		add(dialogHand);
 		dialogHand.visible = false;
+		for (i in retroes) add(i);
 	}
 	var time:Float = 0;
 	override function update(elapsed:Float) {
@@ -111,12 +138,20 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		super.update(elapsed);
 		time += elapsed;
 		dialogHand.x = 950 + (Math.abs(Math.sin(3.5 * time)) * 10);
+		if (dialogText.height + 14 > 129) {
+			dialogText.y = 664 - dialogText.height;
+			dialogText.clipRect.y = dialogText.height - 119;
+			dialogText.clipRect = dialogText.clipRect;
+		}
+		goer = flixel.math.FlxMath.lerp(goer,targetGoer, 0.01);
+		backdropThingy.velocity.x = goer * 15;
 	}
 	var expression:String = '';
 	var curPortrait:Dynamic = "";
 	var curText:String;
 	var curTextDelay:Float;
 	var finishedTyping:Bool = false;
+	var aliasColor:flixel.util.FlxColor;
 	function nextDialogue(e:Int) {
 		dialoguebox.visible = true;
 		dialogHand.visible = false;
@@ -145,39 +180,43 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 				dialogText.sounds = [new FlxSound().loadEmbedded(Paths.sound(d.clickSound))];
 		}
 		if (!Math.isNaN(d.textDelay)) dialogText.delay = d.textDelay;
-		if (d.textColor != null) dialogText.color = Std.parseInt(d.textColor);
+		if (d.textColor != null) aliasColor = flixel.util.FlxColor.fromString(d.textColor);
 
 		if (d.expression != null) expression = d.expression;
 
 		if (preloadBoxes[d.dialogueBox] != null) {
-			dialoguebox.frames = preloadBoxes[d.dialogueBox];
-			reloadBoxAnims(dialoguebox);
+			dialoguebox.loadGraphic(preloadBoxes[d.dialogueBox]);
 		}
+		targetGoer = d.isLeftSide ? -1 : 1;
 		if (d.character != null && curPortrait != preloadPortraits[d.character]) {
 			curPortrait = preloadPortraits[d.character];
-			curPortrait.visible = true;
-			dialoguebox.animation.play((d.boxState != null ? d.boxState : "normal") + "Open", true);
+			FlxTween.completeTweensOf(curPortrait);
+			FlxTween.tween(curPortrait.scale, {x: 1, y: 1}, 0.4, {ease: FlxEase.circOut});
+			FlxTween.tween(curPortrait, {alpha: 1}, 0.3, {ease: FlxEase.circOut});
 		}
-		curPortrait.playAnim(expression, false);
-
 		
 		for (c in tempPortrait) {
-			if (preloadPortraits[c] != curPortrait)
-				preloadPortraits[c].visible = false;
+			if (preloadPortraits[c[0]] != curPortrait){
+				FlxTween.completeTweensOf(preloadPortraits[c[0]]);
+				FlxTween.tween(preloadPortraits[c[0]].scale, {x: 0.9, y: 0.9}, 0.5, {ease: FlxEase.circOut});
+				FlxTween.tween(preloadPortraits[c[0]], {alpha: 0.5}, 0.5, {ease: FlxEase.circOut});
+			}
 		}
-		
-		if (dialoguebox.animation.curAnim != null && !dialoguebox.animation.curAnim.name.contains(d.boxState))
-			dialoguebox.animation.play((d.boxState != null ? d.boxState : "normal"), true);
-		dialoguebox.flipX = (curPortrait.jsonFile.dialogue_pos == "left" ? true : false);
-		updateBoxOffsets(dialoguebox);
 
 		if (d.events != null)
 			for (i in 0...d.events.length)
 				Reflect.callMethod(this, Reflect.field(this, d.events[i][0]), d.events[i][1]);
 		finishedTyping = false;
-		dialogText.resetText(curText);
-		dialogText.start(curTextDelay, true);
-		dialogText.completeCallback = function() {curPortrait.playAnim(expression, true);finishedTyping = true;dialogHand.visible = true;}
+		@:privateAccess(dialogText._finalText) dialogText._finalText += '${d.alias}:\n';
+		@:privateAccess(dialogText._finalText) for (i in aliases) dialogText._finalText = dialogText._finalText.replace(i[0], i[2] + i[0] + i[2]);
+		@:privateAccess(dialogText._finalText) dialogText.applyMarkup(dialogText._finalText, [for (i in aliases) new flixel.text.FlxText.FlxTextFormatMarkerPair(
+			new flixel.text.FlxText.FlxTextFormat(flixel.util.FlxColor.fromString(i[1]), true, true), i[2]
+		)]);
+		dialogText.start(curTextDelay);
+		dialogText.skip();
+		@:privateAccess(dialogText._finalText) dialogText._finalText += curText + '\n';
+		dialogText.start(curTextDelay);
+		dialogText.completeCallback = function() {finishedTyping = true;dialogHand.visible = true;}
 	}
 	function updateBoxOffsets(box:FlxSprite) { //Had to make it static because of the editors -- shadow mario's mid code
 		box.centerOffsets();
