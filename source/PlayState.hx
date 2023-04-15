@@ -5327,12 +5327,13 @@ var cameraTwn:FlxTween;
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
 					addShader(FlxG.camera, "rain");
+					addShader(FlxG.camera, "godray");
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.075];
 					Shaders["rain"].shader.data.opacity.value = [0.2];
 					wastedGrp.visible = true;
 					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-					fxtwo.scale.set(0.55, 0.55);
+					fxtwo.scale.set(0.75, 0.75);
 					fxtwo.updateHitbox();
 					fxtwo.antialiasing = true;
 					fxtwo.screenCenter();
@@ -5341,12 +5342,18 @@ var cameraTwn:FlxTween;
 					add(fxtwo);
 					fxtwo.cameras = [camOverlay];
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					boyfriend.y -= 40;
+					boyfriend.x -= 10;
+				case 1312:
+					defaultCamZoom = 0.8;
+				case 1440:
+					defaultCamZoom = 0.9;
 				case 1568:
 					FlxTween.tween(blackeffect, {alpha: 1}, 0.5, {ease: FlxEase.circInOut,});
-					defaultCamZoom += 0.2;
+					defaultCamZoom = 1.05;
 				case 1600:
 					FlxTween.tween(blackeffect, {alpha: 0}, 0.5, {ease: FlxEase.circOut,});
-					defaultCamZoom -= 0.2;
+					defaultCamZoom = 0.8;
 			}
 		}
 
