@@ -113,8 +113,10 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 				preloadBoxes[a.dialogueBox] = Paths.image('rondialogue/${a.dialogueBox}');
 
 		bg.alpha = 0;
+		var blackBox = new FlxSprite().makeGraphic(1280, 720, 0xFF000000);
 		FlxTween.tween(bg, {alpha: 0.8}, 1, {startDelay: 1, ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {nextDialogue(0);		music.play();
 			music.fadeIn(0.5);
+			FlxTween.tween(blackBox, {alpha:0}, 1, {ease: FlxEase.quartOut});
 			music.looped = true;}});
 		var textRect = new flixel.math.FlxRect(0, 0, 816, 119);
 		dialogText = new FlxTypeText(385, 543, 810, "", 14);
@@ -130,6 +132,8 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		add(dialogHand);
 		dialogHand.visible = false;
 		for (i in retroes) add(i);
+
+		add(blackBox);
 	}
 	var time:Float = 0;
 	override function update(elapsed:Float) {
@@ -161,7 +165,9 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 			music.fadeOut(2,0,function(twn:FlxTween) {
 				music.destroy();
 			});
-			for (a in [bg, curPortrait, dialoguebox, dialogText, dialogHand])
+			for (i in retroes) FlxTween.tween(i, {alpha:0}, 1, {ease: FlxEase.quintOut});
+			for (i in preloadPortraits) FlxTween.tween(i, {alpha:0}, 1, {ease: FlxEase.quintOut});
+			for (a in [bg, curPortrait, dialoguebox, dialogText, dialogHand, backdropThingy])
 				FlxTween.tween(a, {alpha: 0}, 1, {ease: FlxEase.quintOut, onComplete: function(twn:FlxTween) {finishCallback();kill();
 				}});
 			return;
