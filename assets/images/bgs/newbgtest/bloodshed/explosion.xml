@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="explosion.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="explosion0000" x="0" y="0" width="1514" height="1081"/>
+	<SubTexture name="explosion0001" x="0" y="0" width="1514" height="1081"/>
+	<SubTexture name="explosion0002" x="1514" y="0" width="1514" height="1081"/>
+	<SubTexture name="explosion0003" x="1514" y="0" width="1514" height="1081"/>
+	<SubTexture name="explosion0004" x="0" y="1081" width="1514" height="1081"/>
+	<SubTexture name="explosion0005" x="0" y="1081" width="1514" height="1081"/>
+	<SubTexture name="explosion0006" x="1514" y="1081" width="1514" height="1081"/>
+	<SubTexture name="explosion0007" x="1514" y="1081" width="1514" height="1081"/>
+	<SubTexture name="explosion0008" x="0" y="2162" width="1514" height="1081"/>
+	<SubTexture name="explosion0009" x="0" y="2162" width="1514" height="1081"/>
+	<SubTexture name="explosion0010" x="1514" y="2162" width="1514" height="1081"/>
+	<SubTexture name="explosion0011" x="1514" y="2162" width="1514" height="1081"/>
+	<SubTexture name="explosion0012" x="0" y="3243" width="1514" height="1081"/>
+	<SubTexture name="explosion0013" x="0" y="3243" width="1514" height="1081"/>
+	<SubTexture name="explosion0014" x="1514" y="3243" width="1514" height="1081"/>
+	<SubTexture name="explosion0015" x="1514" y="3243" width="1514" height="1081"/>
+</TextureAtlas>
