@@ -288,6 +288,10 @@ class PlayState extends MusicBeatState
 	var mountainsbl:BGSprite;
 	var hillfrontbl:BGSprite;
 	var streetbl:BGSprite;
+	
+	var islands:FlxSprite;
+	var space:FlxSprite;
+	var earth:FlxSprite;
 
 	var Estatic2:BGSprite;
 
@@ -1045,6 +1049,25 @@ class PlayState extends MusicBeatState
 				add(bloodshedGrp);
 				bloodshedGrp.visible = false;
 				add(wastedGrp);
+
+				islands = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
+				islands.scale.set(1,1);
+				islands.visible = false;
+				add(islands);				
+				
+				space = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/spacebg'));
+				space.scale.set(2,2);
+				space.scrollFactor.set(0.1, 0.1);
+				space.screenCenter();
+				space.visible = false;
+				add(space);
+				
+				earth = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/space'));
+				earth.scale.set(2,2);
+				earth.scrollFactor.set(0.25, 0.25);
+				earth.screenCenter();
+				earth.visible = false;
+				add(earth);
 
 				addCharacterToList("hellron-drippin", 1);
 				addCharacterToList("hellron", 1);
@@ -4706,7 +4729,7 @@ var cameraTwn:FlxTween;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
 			Estatic.alpha = (((2-health)/3)+0.3)/2;
-			var chromeOffset = (FlxMath.lerp(2 - health, 2, 0.5)*ClientPrefs.rgbintense/350);
+			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
@@ -4760,6 +4783,13 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 1;
 				case 376:
 					FlxG.camera.shake(0.03, 1);
+					var exploders:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/explosion'));
+					exploders.scrollFactor.set(0, 0);
+					exploders.animation.addByPrefix('explosion', 'explosion', 24, false);
+					exploders.updateHitbox();
+					exploders.screenCenter(XY);
+					add(exploders);
+					exploders.animation.play('explosion');
 				case 384:
 					cameramove = true;
 					defaultCamZoom = 0.7;
@@ -4767,15 +4797,16 @@ var cameraTwn:FlxTween;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					camFollow.y -= 6400;
-					boyfriend.y -= 6400;
-					dad.y -= 6400;
+					camFollow.y -= 8400;
+					boyfriend.y -= 8400;
+					dad.y -= 8400;
 					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
+					
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
-					FlxTween.tween(dad, {y: dad.y + 5600}, 23, {ease: FlxEase.quartIn});
-					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23, {ease: FlxEase.quartIn});
+					FlxTween.tween(dad, {y: dad.y + 5600}, 23);
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23);
 					FlxTween.tween(boyfriend, {angle: 359.99 * 4}, 23);
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					wbg.alpha = 1;
