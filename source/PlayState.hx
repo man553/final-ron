@@ -4733,6 +4733,16 @@ var cameraTwn:FlxTween;
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+			var exploders:FlxSprite = new FlxSprite();
+			exploders.frames = Paths.getSparrowAtlas('bgs/newbgtest/bloodshed/explosion');
+			exploders.scrollFactor.set(0, 0);
+			exploders.animation.addByPrefix('explosion', 'explosion', 24, false);
+			exploders.updateHitbox();
+			exploders.screenCenter(XY);
+			add(exploders);
+			exploders.animation.play('explosion');
+			exploders.scale.set(0.01,0.01);
+			exploders.alpha = 0.01;
 			if (curStep >= 384)
 			{
 				snowemitter.x = FlxG.camera.scroll.x;
@@ -4744,6 +4754,7 @@ var cameraTwn:FlxTween;
 				snowemitter.x = 99999;
 			}
 			switch (curStep) {
+				case 1:
 				case 128:
 					addShader(camGame, "rain");
 					Shaders["rain"].shader.data.zoom.value = [40];
@@ -4783,30 +4794,29 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 1;
 				case 376:
 					FlxG.camera.shake(0.03, 1);
-					var exploders:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/explosion'));
-					exploders.scrollFactor.set(0, 0);
-					exploders.animation.addByPrefix('explosion', 'explosion', 24, false);
-					exploders.updateHitbox();
-					exploders.screenCenter(XY);
-					add(exploders);
+				case 382:
 					exploders.animation.play('explosion');
+					exploders.scale.set(2,2);
+					exploders.alpha = 1;
+					exploders.screenCenter(XY);
 				case 384:
 					cameramove = true;
 					defaultCamZoom = 0.7;
-					cameraSpeed = 3;
+					cameraSpeed = 8;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					camFollow.y -= 8400;
-					boyfriend.y -= 8400;
-					dad.y -= 8400;
+					camFollow.y -= 10400;
+					boyfriend.y -= 10400;
+					dad.y -= 10400;
 					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
-					
+					islands.visible = true;
+					islands.y = boyfriend.y + 4600;
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
-					FlxTween.tween(dad, {y: dad.y + 5600}, 23);
-					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23);
+					FlxTween.tween(dad, {y: dad.y + 5600}, 23, {ease: FlxEase.circIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 23, {ease: FlxEase.circIn});
 					FlxTween.tween(boyfriend, {angle: 359.99 * 4}, 23);
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					wbg.alpha = 1;
