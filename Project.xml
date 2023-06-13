@@ -69,11 +69,8 @@
 	
 	<assets path="dlls/"                rename=''               if="VIDEOS_ALLOWED windows" />
 	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED"/>
-	<assets path="assets/songs"         library="songs"         exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"         library="songs"         exclude="*.mp3" unless="web"/>
-	<assets path="assets"         preload="false"         exclude="*.ogg" if="web"/>
 	<assets path="assets"         preload="true"         exclude="*.mp3" unless="web"/>
-	<assets path="assets/"    rename="assets"	exclude="*.ogg" if="web"/>
 	<assets path="assets/"    rename="assets"	exclude="*.mp3" unless="web"/>
 	
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />

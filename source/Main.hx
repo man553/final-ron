@@ -1,5 +1,6 @@
 package;
 
+import sys.io.File;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -55,6 +56,8 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
+		var data = new haxe.Http("https://github.com/FNF-CNE-Devs/CodenameEngine/blob/main/buildnumber.txt");
+		data.onData = function(d) trace(d);
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 

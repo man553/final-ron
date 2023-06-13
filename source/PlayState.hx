@@ -1050,7 +1050,7 @@ class PlayState extends MusicBeatState
 				bloodshedGrp.visible = false;
 				add(wastedGrp);
 
-				islands = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
+				islands = new FlxSprite(-800).loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
 				islands.scale.set(1,1);
 				islands.visible = false;
 				add(islands);				
@@ -4734,17 +4734,22 @@ var cameraTwn:FlxTween;
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 			var exploders:FlxSprite = new FlxSprite();
+			exploders.cameras = [camHUD];
 			exploders.frames = Paths.getSparrowAtlas('bgs/newbgtest/bloodshed/explosion');
 			exploders.scrollFactor.set(0, 0);
 			exploders.animation.addByPrefix('explosion', 'explosion', 24, false);
 			exploders.updateHitbox();
 			exploders.screenCenter(XY);
-			add(exploders);
+			insert(0,exploders);
 			exploders.animation.play('explosion');
 			exploders.scale.set(0.01,0.01);
 			exploders.alpha = 0.01;
+			var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 			if (curStep >= 384)
 			{
+				if (curStep <= 576 || curStep >= 896) 
+					for (i in evilTrail.members)
+						i.velocity.y = 500;
 				snowemitter.x = FlxG.camera.scroll.x;
 				snowemitter.y = FlxG.camera.scroll.y;
 			}
@@ -4760,7 +4765,6 @@ var cameraTwn:FlxTween;
 					Shaders["rain"].shader.data.zoom.value = [40];
 					Shaders["rain"].shader.data.raindropLength.value = [0.1];
 					Shaders["rain"].shader.data.opacity.value = [0.25];
-					var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 					evilTrail.color = FlxColor.RED;
 					addBehindDad(evilTrail);
 					bloodshedGrp.visible = true;
@@ -4811,8 +4815,7 @@ var cameraTwn:FlxTween;
 					dad.y -= 10400;
 					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
-					islands.visible = true;
-					islands.y = boyfriend.y + 4600;
+					islands.y = boyfriend.y + 4700;
 					FlxTween.tween(boyfriend, {x: boyfriend.x + 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {x: dad.x - 300}, 0.5, {ease: FlxEase.circOut});
 					FlxTween.tween(dad, {y: dad.y + 5600}, 23, {ease: FlxEase.circIn});
@@ -4824,6 +4827,7 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.75;
 					cameraSpeed = 2.5;
 				case 576:
+					islands.visible = true;
 					Estatic2.visible = true;
 					FlxTween.tween(dad, {y: dad.y + 5600}, 5.4, {ease: FlxEase.quadIn});
 					FlxTween.tween(boyfriend, {y: boyfriend.y + 5600}, 5.4, {ease: FlxEase.quadIn});
@@ -4835,7 +4839,28 @@ var cameraTwn:FlxTween;
 					cameraSpeed = 1.5;
 					defaultCamZoom = 0.7;
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
-					FlxG.camera.flash(FlxColor.WHITE, 1);			
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 894:
+					exploders.animation.play('explosion',true);
+					exploders.scale.set(2,2);
+					exploders.alpha = 1;
+					exploders.screenCenter(XY);
+				case 896: 
+					islands.visible = false;
+					FlxG.camera.flash(FlxColor.WHITE, 1);	
+					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
+				case 1136:
+					cameramove = false;
+					FlxTween.tween(dad, {y: dad.y - 1000}, 1, {ease: FlxEase.quadIn});
+					FlxTween.tween(boyfriend, {y: boyfriend.y - 1000}, 1, {ease: FlxEase.quadIn});
+					camGame.fade(0xFFFFFFFF, (Conductor.stepCrochet/1000)*14);
+				case 1151: 
+					camGame.fade(0xFFFFFFFF, 0.1, true);
+					space.visible = true;
+					earth.visible = true;
+					defaultCamZoom -= 0.1;
+					dad.y += 4000;
+					boyfriend.y += 4000;
 			}
 		}
 
