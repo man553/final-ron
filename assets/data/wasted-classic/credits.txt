@@ -1,6 +1,6 @@
 COMPOSER(s)
 ArmandRonan
-/coquers_
+Sic
 
 CHARTER(s)
 Sam

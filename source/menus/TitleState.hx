@@ -417,6 +417,7 @@ class TitleState extends MusicBeatState
 				FlxTween.tween(FlxG.camera, {zoom: 3, angle: 22}, 1.5, {ease: FlxEase.quartIn});
 				FlxTween.tween(animbarScrt, {y: animbarScrt.y - 200}, 0.5, {ease: FlxEase.quadIn});
 				FlxTween.tween(animbarScrb, {y: animbarScrb.y + 200}, 0.5, {ease: FlxEase.quadIn});
+				FlxG.camera.fade(0xFF000000, 0.8, true);
 
 				transitioning = true;
 				// FlxG.sound.music.stop();

@@ -1,6 +1,7 @@
 package menus;
 import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxTimer;
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import haxe.Json;
 import openfl.Assets;
@@ -23,8 +24,18 @@ class CreditMenu extends MusicBeatState {
 	var socialMediaText:FlxText;
 	var socialMediaFavicon:FlxSprite;
 	var time:Float = 0;
+	var	bg:FlxSprite;
 
 	override function create() {
+		bg = new FlxSprite();
+		bg.frames = Paths.getSparrowAtlas('freeplaymenu/classicbgAnimate');
+		bg.color = FlxColor.RED;
+		bg.animation.addByPrefix('animate', 'animate', 24, true);
+		bg.animation.play('animate');
+		bg.scale.set(2,2);
+		bg.updateHitbox();
+		bg.screenCenter();
+		add(bg);
 		creditJSON = Json.parse(Assets.getText(Paths.json("credit")));
 		for (i in 0...creditJSON.length){
 			var j = new Alphabet(0, 100 + (150 * i), creditJSON[i].handle,true);
@@ -46,6 +57,10 @@ class CreditMenu extends MusicBeatState {
 		descText = new FlxText(780, 425, 490, "seezee", 20);
 		socialMediaText = new FlxText(675,675,0,"Press enter to open social media link", 20);
 		socialMediaFavicon = new FlxSprite(1165, 673);
+		var loBg = new FlxSprite(700, 0).makeGraphic(999, 999, 0xFF000000);
+		loBg.alpha = 1;
+		loBg.scrollFactor.set();
+		add(loBg);
 		add(socialMediaFavicon);
 		socialMediaFavicon.visible = false;
 		add(socialMediaText);
@@ -73,7 +88,7 @@ class CreditMenu extends MusicBeatState {
 			j.y = FlxMath.lerp(j.y, 360 + (150 * (j.ID - curSelected)), 0.1 / (60 / ClientPrefs.framerate));
 			if (j.text != null)
 				if (!antiSpam) j.scale.set(FlxMath.lerp(j.scale.x, (4 - Math.abs(j.ID - curSelected)) * (0.3 - (j.text.length * 0.01)), 0.2 / (60 / ClientPrefs.framerate)), FlxMath.lerp(j.scale.y, (4 - Math.abs(j.ID - curSelected)) * (0.3 - (j.text.length * 0.01)), 0.05 / (60 / ClientPrefs.framerate)));
-			j.forceX = FlxMath.lerp(j.forceX, 100 + -Math.abs(25 * (j.ID - curSelected)), 0.2 / (60 / ClientPrefs.framerate));
+			j.forceX = 20+FlxMath.lerp(j.forceX, 100 + -Math.abs(25 * (j.ID - curSelected)), 0.2 / (60 / ClientPrefs.framerate));
 		}
 		super.update(elapsed);
 	}

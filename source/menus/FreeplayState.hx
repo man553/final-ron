@@ -85,7 +85,7 @@ class FreeplayState extends MusicBeatState
 			if(weekIsLocked(WeekData.weeksList[i])) continue;
 
 			if (mode == 'main' && WeekData.weeksList[i] != 'mainweek' && WeekData.weeksList[i] != 'week2') continue;
-			else if (mode == 'extras' && WeekData.weeksList[i] != 'freeplayshit'  && WeekData.weeksList[i] != 'blr') continue;
+			else if (mode == 'extras' && WeekData.weeksList[i] != 'freeplayshit') continue;
 			else if (mode == 'classic' && WeekData.weeksList[i] != 'classic') continue;
 
 			var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[i]);

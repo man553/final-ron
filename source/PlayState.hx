@@ -292,6 +292,7 @@ class PlayState extends MusicBeatState
 	var islands:FlxSprite;
 	var space:FlxSprite;
 	var earth:FlxSprite;
+	var freindly:FlxSprite;
 
 	var Estatic2:BGSprite;
 
@@ -1056,15 +1057,23 @@ class PlayState extends MusicBeatState
 				add(islands);				
 				
 				space = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/spacebg'));
-				space.scale.set(2,2);
+				space.scale.set(1.5,1.5);
 				space.scrollFactor.set(0.1, 0.1);
 				space.screenCenter();
 				space.visible = false;
 				add(space);
 				
+				freindly = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/freindlystars'));
+				freindly.scale.set(1,1);
+				freindly.scrollFactor.set(0.05, 0.05);
+				freindly.screenCenter();
+				freindly.alpha = 0.5;
+				freindly.visible = false;
+				add(freindly);
+				
 				earth = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/space'));
-				earth.scale.set(2,2);
-				earth.scrollFactor.set(0.25, 0.25);
+				earth.scale.set(1.5,1.5);
+				earth.scrollFactor.set(0.3, 0.3);
 				earth.screenCenter();
 				earth.visible = false;
 				add(earth);
@@ -2668,6 +2677,11 @@ class PlayState extends MusicBeatState
 				camHUD.angle = 11 * Math.sin((currentBeat/6) * Math.PI);
 				FlxG.camera.angle = 2 * Math.sin((currentBeat/6) * Math.PI);
 			}
+			if (intensecameramove)
+			{
+				camHUD.angle = 22 * Math.sin((currentBeat/2) * Math.PI);
+				FlxG.camera.angle = 4 * Math.sin((currentBeat/2) * Math.PI);
+			}
 		}
 
 		if (curSong.toLowerCase() == 'bleeding')
@@ -4241,11 +4255,13 @@ var cameraTwn:FlxTween;
 			}
 			if (!SCREWYOU)
 			{
+				var bruh = 1.0;
+				if (curSong == 'Bloodshed') bruh = 1.5; 
 				// i just dont like how psych engine's health mechanics work
 				if (note.isSustainNote)
-					health += note.hitHealth * healthGain / 2;
+					health += (note.hitHealth * healthGain / 2) / bruh;
 				else
-					health += note.hitHealth * healthGain * 4;
+					health += (note.hitHealth * healthGain * 4) / bruh;
 			}
 
 			if(!note.noAnimation) {
@@ -4728,7 +4744,6 @@ var cameraTwn:FlxTween;
 			iconP2.visible = true;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
-			Estatic.alpha = (((2-health)/3)+0.3)/2;
 			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -4745,9 +4760,13 @@ var cameraTwn:FlxTween;
 			exploders.scale.set(0.01,0.01);
 			exploders.alpha = 0.01;
 			var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+			if (curStep < 1151)
+				Estatic.alpha = (((2-health)/3)+0.3)/2;
+			else
+				Estatic.alpha = 0;
 			if (curStep >= 384)
 			{
-				if (curStep <= 576 || curStep >= 896) 
+				if (curStep <= 576 || ((curStep >= 896) && (curStep <= 1151)))				
 					for (i in evilTrail.members)
 						i.velocity.y = 500;
 				snowemitter.x = FlxG.camera.scroll.x;
@@ -4804,7 +4823,10 @@ var cameraTwn:FlxTween;
 					exploders.alpha = 1;
 					exploders.screenCenter(XY);
 				case 384:
+					FlxG.camera.follow(camFollowPos, LOCKON, cameraSpeed*2);
 					cameramove = true;
+					Shaders["rain"].shader.data.zoom.value = [20];
+					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					defaultCamZoom = 0.7;
 					cameraSpeed = 8;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
@@ -4813,6 +4835,7 @@ var cameraTwn:FlxTween;
 					camFollow.y -= 10400;
 					boyfriend.y -= 10400;
 					dad.y -= 10400;
+					gf.visible = false;
 					triggerEventNote('Change Bars Size', '8', '1');
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					islands.y = boyfriend.y + 4700;
@@ -4837,30 +4860,58 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 1.1;
 				case 640:
 					cameraSpeed = 1.5;
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					cameramove = false;
 					defaultCamZoom = 0.7;
+					FlxTween.tween(camGame, {angle: 0}, 1, {ease: FlxEase.circOut});
+					FlxTween.tween(camHUD, {angle: 0}, 1, {ease: FlxEase.circOut});
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
+					FlxG.camera.follow(camFollowPos, LOCKON, cameraSpeed);
 				case 894:
 					exploders.animation.play('explosion',true);
 					exploders.scale.set(2,2);
 					exploders.alpha = 1;
 					exploders.screenCenter(XY);
 				case 896: 
+					cameramove = true;
 					islands.visible = false;
+					Shaders["rain"].shader.data.zoom.value = [20];
+					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					FlxG.camera.flash(FlxColor.WHITE, 1);	
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
+					dad.y -= 5400;
+					boyfriend.y -= 5400;
+					FlxTween.tween(boyfriend, {angle: 359.99 * 8}, 23);
+					FlxG.camera.follow(camFollowPos, LOCKON, cameraSpeed*2);
+				case 1016:
+					satan.y = boyfriend.y + 2000;
+					FlxTween.tween(satan, {y: boyfriend.y - 2000}, 4);
 				case 1136:
 					cameramove = false;
 					FlxTween.tween(dad, {y: dad.y - 1000}, 1, {ease: FlxEase.quadIn});
 					FlxTween.tween(boyfriend, {y: boyfriend.y - 1000}, 1, {ease: FlxEase.quadIn});
 					camGame.fade(0xFFFFFFFF, (Conductor.stepCrochet/1000)*14);
+					FlxTween.tween(camGame, {angle: 0}, 0.3, {ease: FlxEase.circOut});
+					FlxTween.tween(camHUD, {angle: 0}, 0.3, {ease: FlxEase.circOut});
 				case 1151: 
+					FlxG.camera.follow(camFollowPos, LOCKON, 0.5);
+					defaultCamZoom = 0.9;
+					FlxG.camera.flash(FlxColor.WHITE, 1);	
+					Shaders["rain"].shader.data.opacity.value = [0.0];
+					FlxTween.angle(boyfriend, 0, boyfriend.angle + 359.99, 3, { type: FlxTweenType.LOOPING } );
+					FlxTween.angle(freindly, 0, 5, 3, { type: FlxTweenType.PINGPONG } );
 					camGame.fade(0xFFFFFFFF, 0.1, true);
+					intensecameramove = true;
 					space.visible = true;
 					earth.visible = true;
+					freindly.visible = true;
 					defaultCamZoom -= 0.1;
-					dad.y += 4000;
-					boyfriend.y += 4000;
+					dad.y += 9400;
+					boyfriend.y = dad.y;
+				case 1152: 
+					boyfriend.y = dad.y;
 			}
 		}
 
@@ -5151,13 +5202,42 @@ var cameraTwn:FlxTween;
 				FlxTween.tween(graadienter, {y: graadienter.y - 40}, 0.4, {ease: FlxEase.backOut});
 			}
 			switch(curStep){
+				case 1:
+					camGame.fade(0xFF000000, 12.8, true);
 				case 128:
-					defaultCamZoom = 0.8;
+					defaultCamZoom = 0.7;
 					camGame.color = FlxColor.WHITE;
-					graadienter.alpha = 0.5;
+					graadienter.alpha = 1;
 					graadienter.visible = true;
 					fxtwo.visible = false;
 					bgLol.visible = false;
+					triggerEventNote('Change Bars Size', '12', '1');
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 384:
+					graadienter.alpha = 1;
+					graadienter.visible = false;
+					defaultCamZoom = 0.8;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 786:
+					defaultCamZoom = 1;
+					camGame.color = FlxColor.GRAY;
+					fxtwo.visible = true;
+					bgLol.visible = true;
+					FlxG.camera.flash(FlxColor.BLACK, 1);
+				case 1024:
+					defaultCamZoom = 0.9;
+					fxtwo.visible = false;
+					bgLol.visible = false;
+					FlxG.camera.flash(FlxColor.WHITE, 1);		
+				case 1152:
+					defaultCamZoom = 1;
+				case 1264:
+					defaultCamZoom = 0.9;
+				case 1280:
+					defaultCamZoom = 0.7;
+					camGame.color = FlxColor.WHITE;
+					graadienter.alpha = 1;
+					graadienter.visible = true;
 					triggerEventNote('Change Bars Size', '12', '1');
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 			}
@@ -5296,7 +5376,7 @@ var cameraTwn:FlxTween;
 					fxtwo.updateHitbox();
 					fxtwo.antialiasing = true;
 					fxtwo.screenCenter();
-					fxtwo.alpha = 0.8;
+					fxtwo.alpha = 0.2;
 					fxtwo.scrollFactor.set(0.8, 0.8);
 					fxtwo.color = FlxColor.BLACK;
 					add(fxtwo);
@@ -5346,6 +5426,12 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.85;
 				case 1360:
 					camGame.alpha = 0;
+				case 1488:
+					wastedGrp.visible = true;
+					cameraSpeed = 1;
+					defaultCamZoom = 0.9;
+					camGame.alpha = 0;
+					Shaders["rain"].shader.data.opacity.value = [0];
 			}
 		}
 

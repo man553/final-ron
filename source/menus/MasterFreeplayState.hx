@@ -28,6 +28,9 @@ class MasterFreeplayState extends MusicBeatState
 {
 	var bg:FlxSprite;
 	var image:FlxSprite;
+	var vimage:FlxSprite;
+	var intendedColor:Int;
+	var colorTween:FlxTween;
 	var extraImage:FlxSprite;
 	var classicImage:FlxSprite;
 	static var curSelectedMaster:Int = 0;
@@ -36,6 +39,8 @@ class MasterFreeplayState extends MusicBeatState
 	var cameraText:FlxCamera;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
 	var time:Float = 0;
+	var loBg:FlxSprite;
+	var loBgt:FlxSprite;
 
 	override function create()
 	{
@@ -48,61 +53,86 @@ class MasterFreeplayState extends MusicBeatState
 		FlxG.cameras.add(cameraText);
 		FlxCamera.defaultCameras = [cameraWhat];
 		CustomFadeTransition.nextCamera = cameraText;
+		
 		bg = new FlxSprite();
 		bg.frames = Paths.getSparrowAtlas('freeplaymenu/mainbgAnimate');
 		bg.animation.addByPrefix('animate', 'animate', 24, true);
 		bg.scale.set(2,2);
 		bg.updateHitbox();
 		bg.screenCenter();
+		bg.alpha = 0.5;
+		bg.cameras = [cameraText];
 		add(bg);
-		bg.animation.play('animate');
-
-		image = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/main'), false, 1, 1);
+		
+		vimage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/ground'), false, 1, 1);
+		vimage.scale.set(0.5,0.5);
+		vimage.scrollFactor.set();
+		vimage.screenCenter();
+		vimage.antialiasing = ClientPrefs.globalAntialiasing;
+		vimage.cameras = [cameraText];
+		add(vimage);
+		
+		image = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/ron'), false, 1, 1);
+		image.scale.set(0.5,0.5);
 		image.scrollFactor.set();
-		image.x = 0;
-		image.y = 0;
-		image.scale.y = 0.50;
-		image.scale.x = 0.50;
+		image.screenCenter();
 		image.ID = 0;
-		image.cameras = [cameraText];
 		image.antialiasing = ClientPrefs.globalAntialiasing;
+		image.cameras = [cameraText];
 		add(image);
 
-		classicImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/classic'), false, 1, 1);
+		loBg = new FlxSprite(0, 0).makeGraphic(433, 999, 0xFF000000);
+		loBg.alpha = 0.5;
+		loBg.scrollFactor.set();
+		add(loBg);
+		
+		loBgt = new FlxSprite(0, 0).makeGraphic(866, 999, 0xFF000000);
+		loBgt.alpha = 0.5;
+		loBgt.scrollFactor.set();
+		add(loBgt);
+		
+		loBgt.cameras = [cameraText];
+		loBg.cameras = [cameraText];
+
+		image = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/ron'), false, 1, 1);
+		image.scale.set(0.5,0.5);
+		image.scrollFactor.set();
+		image.screenCenter();
+		image.ID = 0;
+		image.antialiasing = ClientPrefs.globalAntialiasing;
+		image.cameras = [cameraText];
+		add(image);
+
+		classicImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/evilron'), false, 1, 1);
+		classicImage.scale.set(0.65,0.65);
 		classicImage.scrollFactor.set();
-		classicImage.x = 1000;
-		classicImage.y = 100;
-		classicImage.scale.y = 0.50;
-		classicImage.scale.x = 0.50;
+		classicImage.screenCenter();
 		classicImage.ID = 1;
-		classicImage.cameras = [cameraText];
 		classicImage.antialiasing = ClientPrefs.globalAntialiasing;
+		classicImage.y += 100;
+		classicImage.cameras = [cameraText];
 		add(classicImage);
 		
-		extraImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/extras'), false, 1, 1);
+		extraImage = new FlxSprite().loadGraphic(Paths.image('freeplaymenu/doyne'), false, 1, 1);
+		extraImage.scale.set(0.5,0.5);
 		extraImage.scrollFactor.set();
-		extraImage.x = 2000;
-		extraImage.y = 200;
-		extraImage.scale.y = 0.50;
-		extraImage.scale.x = 0.50;
+		extraImage.screenCenter();
 		extraImage.ID = 2;
-		extraImage.cameras = [cameraText];
 		extraImage.antialiasing = ClientPrefs.globalAntialiasing;
+		extraImage.cameras = [cameraText];
 		add(extraImage);
 		changeSelection(0);
 		
 		cooltext = new FlxText(0, 5, 0, "", 96);
 		cooltext.setFormat(Paths.font("vcr.ttf"), 96, FlxColor.WHITE, CENTER);
 		cooltext.scrollFactor.set(0,0);
-		cooltext.screenCenter(XY);
+		cooltext.screenCenter(X);
 		cooltext.cameras = [cameraText];
 		add(cooltext);
-		cooltext.y += 200;
+		cooltext.y = 125;
 
-		addShader(cameraText, "fisheye");
 		addShader(cameraText, "chromatic aberration");
 		addShader(cameraText, "fake CRT");
-		Shaders["fisheye"].shader.data.MAX_POWER.value = [0.2];
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
@@ -112,6 +142,7 @@ class MasterFreeplayState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
+		vimage.color = bg.color;
 		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(time)];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [-chromeOffset*Math.sin(time)];
 		cooltext.y += Math.sin(time*4)/2;
@@ -126,6 +157,7 @@ class MasterFreeplayState extends MusicBeatState
 				cooltext.text = "EXTRAS";
 				FreeplayState.mode = 'extras';
 		}
+		cooltext.screenCenter(X);
 		if(controls.UI_RIGHT_P)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'));
@@ -161,9 +193,38 @@ class MasterFreeplayState extends MusicBeatState
 		FlxTween.globalManager.cancelTweensOf(image);
 		FlxTween.globalManager.cancelTweensOf(classicImage);
 		FlxTween.globalManager.cancelTweensOf(extraImage);
-	
-		FlxTween.tween(image, {x:  1000*(image.ID - curSelectedMaster), y: 100*(image.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
-		FlxTween.tween(extraImage, {x: 1000*(extraImage.ID - curSelectedMaster), y: 100*(extraImage.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
-		FlxTween.tween(classicImage, {x: 1000*(classicImage.ID - curSelectedMaster), y: 100*(classicImage.ID - curSelectedMaster)}, 0.8, {ease: FlxEase.elasticOut});
+		image.color = FlxColor.GRAY;
+		classicImage.color = FlxColor.GRAY;
+		extraImage.color = FlxColor.GRAY;
+		
+		var newColor = 0xFF8C81D9;
+		switch (curSelectedMaster)
+		{
+			case 0:
+				loBgt.x = 866;
+				loBg.x = 433;
+				image.color = FlxColor.WHITE;
+			case 1:
+				loBgt.x = 866;
+				loBg.x = 0;
+				newColor = 0xFFC63C3f;				
+				classicImage.color = FlxColor.WHITE;
+			case 2:
+				loBgt.x = 0;
+				loBg.x = 433;
+				newColor = 0xFFDCF5F4;
+				extraImage.color = FlxColor.WHITE;
+		}
+		if(newColor != intendedColor) {
+			if(colorTween != null) {
+				colorTween.cancel();
+			}
+			intendedColor = newColor;
+			colorTween = FlxTween.color(bg, 1, bg.color, intendedColor, {
+				onComplete: function(twn:FlxTween) {
+					colorTween = null;
+				}
+			});
+		}
 	}
 }

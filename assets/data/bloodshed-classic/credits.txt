@@ -1,0 +1,11 @@
+COMPOSER(s)
+Seezee
+Karpov
+
+CHARTER(s)
+Seezee
+
+ARTIST(s)
+Seezee
+Terionic
+Wildythomas
