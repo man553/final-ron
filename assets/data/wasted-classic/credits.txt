@@ -1,5 +1,7 @@
 COMPOSER(s)
 ArmandRonan
+
+ADDITIONAL HELPER(s)
 Sic
 
 CHARTER(s)
@@ -8,4 +10,3 @@ Sam
 ARTIST(s)
 Seezee
 Benju
-Wildythomas

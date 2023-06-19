@@ -1,9 +1,11 @@
 COMPOSER(s)
 Sic
 
+ADDITIONAL HELPER(s)
+ArmandRonan
+
 CHARTER(s)
-Idk
+Seezee
 
 ARTIST(s)
 Terionic
-Wildythomas

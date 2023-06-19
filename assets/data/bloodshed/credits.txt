@@ -1,5 +1,7 @@
 COMPOSER(s)
-Tailsfan01
+Blueboyeet
+
+ADDITIONAL HELPER(s)
 Seezee
 
 CHARTER(s)

@@ -307,6 +307,7 @@ class PlayState extends MusicBeatState
 	var defaultStrumY:Float = 50;
 
 	public static var SCREWYOU:Bool = false;
+	public static var missval:Bool = true;
 
 	var kadeEngineWatermark:FlxText;
 
@@ -1181,38 +1182,13 @@ class PlayState extends MusicBeatState
 				{
 					defaultCamZoom = 0.9;
 					curStage = 'verymad';
-					var bg2:FlxSprite = new FlxSprite();
-					bg2.frames = Paths.getSparrowAtlas('bgs/trojan_bg');
-					bg2.scale.set(4, 4);
-					bg2.animation.addByPrefix('idle', 'bg instance 1', 24, true);
-					bg2.animation.play('idle');
-					bg2.scrollFactor.set(0.05, 0.05);
-					bg2.screenCenter();
-					add(bg2);
-					var console:FlxSprite = new FlxSprite();
-					console.frames = Paths.getSparrowAtlas('bgs/trojan_console');
-					console.scale.set(4, 4);
-					console.animation.addByPrefix('idle', 'ezgif.com-gif-maker (7)_gif instance 1', 24, true);
-					console.animation.play('idle');
-					console.scrollFactor.set(0.05, 0.05);
-					console.screenCenter();
-					console.alpha = 0.3;
-					add(console);
-					var popup:FlxSprite = new FlxSprite();
-					popup.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
-					popup.scale.set(4, 4);
-					popup.animation.addByPrefix('idle', 'popups instance 1', 24, true);
-					popup.animation.play('idle');
-					popup.scrollFactor.set(0.05, 0.05);
-					popup.screenCenter();
-					add(popup);
-					var bgs = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_sky'));
+					var bgs = new FlxSprite(-100, -80).loadGraphic(Paths.image('bgs/veryAngreRon_sky'));
 					bgs.updateHitbox();
 					bgs.screenCenter();
 					bgs.scrollFactor.set(0.1, 0.1);
 					add(bgs);
 
-					cloudsa = new FlxSprite(-100, 10).loadGraphic(Paths.image('bgs/veryAngreRon_clouds'));
+					cloudsa = new FlxSprite(-100, -80).loadGraphic(Paths.image('bgs/veryAngreRon_clouds'));
 					cloudsa.updateHitbox();
 					cloudsa.scale.x = 0.7;
 					cloudsa.scale.y = 0.7;
@@ -1225,7 +1201,7 @@ class PlayState extends MusicBeatState
 						var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
 						add(glitchSprite); */
 
-					var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bgs/veryAngreRon_ground'));
+					var ground:FlxSprite = new FlxSprite(-537, -320).loadGraphic(Paths.image('bgs/veryAngreRon_ground'));
 					ground.updateHitbox();
 					ground.active = false;
 					ground.antialiasing = true;
@@ -1292,10 +1268,10 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = false;
 				add(bg);
 			}
-			default:
+			case 'normal':
 			{
 				defaultCamZoom = 0.9;
-				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/happyRon_sky'));
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/happyRon_sky'));
 				bg.updateHitbox();
 				bg.scale.x = 1.2;
 				bg.scale.y = 1.2;
@@ -1307,7 +1283,28 @@ class PlayState extends MusicBeatState
 				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
 				add(glitchSprite);*/
 				
-				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('updateron/bg/happyRon_ground'));
+				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/happyRon_ground'));
+				ground.updateHitbox();
+				ground.active = false;
+				ground.antialiasing = true;
+				add(ground);
+			}
+			default:
+			{
+				defaultCamZoom = 0.9;
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/happyRon_sky'));
+				bg.updateHitbox();
+				bg.scale.x = 1.2;
+				bg.scale.y = 1.2;
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.scrollFactor.set(1,1);
+				add(bg);
+				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
+				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
+				add(glitchSprite);*/
+				
+				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/happyRon_ground'));
 				ground.updateHitbox();
 				ground.active = false;
 				ground.antialiasing = true;
@@ -1740,11 +1737,11 @@ class PlayState extends MusicBeatState
 		else
 			startCountdown();
 
-		if (daSong == 'bloodshed' || daSong == 'bleeding')
+		if (daSong == 'bloodshed' || daSong == 'bleeding' || daSong == 'bloodshed-classic' || daSong == 'bloodbath')
 		{
 			add(fx);
 			add(Estatic);
-			FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, 0.5, {ease: FlxEase.quadInOut, type: PINGPONG});
+			FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, Conductor.crochet / 1000, {ease: FlxEase.quadInOut, type: PINGPONG});
 			var chromeOffset = (ClientPrefs.rgbintense/350);
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -4050,7 +4047,8 @@ var cameraTwn:FlxTween;
 		//For testing purposes
 		//trace(daNote.missHealth);
 		songMisses++;
-		vocals.volume = 0;
+		if (missval)
+			vocals.volume = 0;
 		if(!practiceMode) songScore -= 10;
 
 		totalPlayed++;
@@ -4061,7 +4059,7 @@ var cameraTwn:FlxTween;
 			char = gf;
 		}
 
-		if(char != null && !daNote.noMissAnimation && char.hasMissAnimations)
+		if(char != null && !daNote.noMissAnimation && char.hasMissAnimations && missval)
 		{
 			var daAlt = '';
 			if(daNote.noteType == 'Alt Animation') daAlt = '-alt';
@@ -4113,7 +4111,8 @@ var cameraTwn:FlxTween;
 			if(boyfriend.hasMissAnimations) {
 				boyfriend.playAnim(singAnimations[Std.int(Math.abs(direction))] + 'miss', true);
 			}
-			vocals.volume = 0;
+			if (missval)
+				vocals.volume = 0;
 		}
 	}
 
@@ -4162,7 +4161,7 @@ var cameraTwn:FlxTween;
 
 		//shakes the fuck out of your screen and hud -ekical
 		// now it drains your health because fuck you -ekical
-		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'devilron'))
+		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron'))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -4483,6 +4482,16 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
+		if (curSong == 'Haemorrhage')
+		{
+			healthBarBG.alpha = 0;
+			healthBar.alpha = 0;
+			iconP1.visible = true;
+			iconP2.visible = true;
+			iconP2.alpha = 0;
+			iconP1.alpha = 0;
+		}
+		
 		if (curSong == 'blizzard')
 		{
 			healthBarBG.alpha = 0;
@@ -4735,6 +4744,106 @@ var cameraTwn:FlxTween;
 					}
 			}
 		}
+		
+		//256 288 544 864 896 912 928 992 1056 1184
+		if (curSong == 'bloodshed-classic') 
+		{
+			healthBarBG.alpha = 0;
+			healthBar.alpha = 0;
+			iconP1.visible = true;
+			iconP2.visible = true;
+			iconP2.alpha = (2-(health)-0.25)/2+0.2;
+			iconP1.alpha = (health-0.25)/2+0.2;
+			Estatic.alpha = (((2-health)/3)+0.2);
+			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
+			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
+			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+			var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+			switch (curStep) {
+				case 256:
+					defaultCamZoom = 1;
+				case 288:
+					defaultCamZoom = 0.65;
+					addShader(camGame, "rain");
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
+					evilTrail.color = FlxColor.RED;
+					addBehindDad(evilTrail);
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.circOut});
+					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
+				case 544:
+					defaultCamZoom = 0.8;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.circOut});
+					FlxTween.cancelTweensOf(satan);
+					FlxTween.angle(satan, 0, satan.angle+359.99, 3, {ease: FlxEase.circOut} );
+					Shaders["rain"].shader.data.opacity.value = [0];
+				case 864:
+					defaultCamZoom = 0.9;
+				case 896:
+					defaultCamZoom = 1;
+				case 912:
+					defaultCamZoom = 1.05;	
+				case 928:
+					missval = false;
+					defaultCamZoom = 0.65;
+					addShader(camGame, "rain");
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.08];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.circOut});
+					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
+				case 992:
+					defaultCamZoom = 0.9;
+				case 1056:
+					defaultCamZoom = 0.65;
+				case 1184:
+					defaultCamZoom = 0.8;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					missval = true;
+					FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.circOut});
+					FlxTween.cancelTweensOf(satan);
+					FlxTween.angle(satan, 0, satan.angle+359.99, 3, {ease: FlxEase.circOut} );
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.0];
+			}
+		}
+		
+		if (curSong == 'bijuu') 
+		{
+			switch (curStep)
+			{
+				case 248:
+					defaultCamZoom += 0.2;
+				case 256:
+					defaultCamZoom -= 0.1;
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 416:
+					defaultCamZoom += 0.1;
+				case 448:
+					defaultCamZoom -= 0.1;
+				case 480:
+					defaultCamZoom += 0.1;
+				case 512:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					defaultCamZoom -= 0.2;
+				case 888:
+					defaultCamZoom += 0.3;
+				case 896:
+					defaultCamZoom -= 0.1;
+				case 1152:
+					defaultCamZoom += 0.05;
+				case 1168:
+					defaultCamZoom += 0.05;
+				case 1184:
+					defaultCamZoom -= 0.3;
+			}
+		}
 
 		if (curSong == 'Bloodshed') 
 		{
@@ -4789,10 +4898,8 @@ var cameraTwn:FlxTween;
 					bloodshedGrp.visible = true;
 					wastedGrp.visible = false;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
-					hellbg.alpha = 0.45;
-					//triggerEventNote('Change Character', 'dad', 'hellron');
-					//triggerEventNote('Change Character', 'bf', 'BFrun');
-					//triggerEventNote('Change Character', 'gf', 'GFrun');
+					hellbg.alpha = 0.5;
+					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
 					triggerEventNote('Change Scroll Speed', '1.3', '1');
 					witheredRa.color = 0xFF660000;
 					addShader(camGame, "chromatic aberration");

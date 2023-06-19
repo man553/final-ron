@@ -2,10 +2,8 @@ COMPOSER(s)
 ArmandRonan
 
 CHARTER(s)
-ZesCrew
+Bitto
 
 ARTIST(s)
+Gumbalino
 SonicAccelerate
-ZesCrew
-Wildythomas
-Seezee

@@ -1,5 +1,7 @@
 COMPOSER(s)
 Seezee
+
+ADDITIONAL HELPER(s)
 Karpov
 
 CHARTER(s)
@@ -7,5 +9,3 @@ Seezee
 
 ARTIST(s)
 Seezee
-Terionic
-Wildythomas

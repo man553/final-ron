@@ -1,5 +1,5 @@
 COMPOSER(s)
-Tailsfan01
+Blueboyeet
 
 CHARTER(s)
 WitherJPG
@@ -7,4 +7,3 @@ WitherJPG
 ARTIST(s)
 Seezee
 Gumbalino
-Wildythomas

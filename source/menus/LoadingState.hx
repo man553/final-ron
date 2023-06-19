@@ -47,7 +47,7 @@ class LoadingState extends MusicBeatState
 	var funkay:FlxSprite;
 	var ron:FlxSprite;
 	var loadBar:FlxSprite;
-	var loadingA:String = Std.string(FlxG.random.int(1, 8));
+	var loadingA:String = Std.string(FlxG.random.int(1, 9));
 	override function create()
 	{
 		if (PlayState.isStoryMode)
@@ -100,7 +100,7 @@ class LoadingState extends MusicBeatState
 		camWhat = new FlxCamera();
 		FlxG.cameras.reset(camWhat);
 		FlxCamera.defaultCameras = [camWhat];
-		addShader(camWhat, "fake CRT");
+		//addShader(camWhat, "fake CRT");
 		//addShader(camWhat, "bloom");
 	}
 	

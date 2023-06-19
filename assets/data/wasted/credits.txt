@@ -1,6 +1,8 @@
 COMPOSER(s)
 Seezee
 Terionic
+
+ADDITIONAL HELPER(s)
 JaceLOL
 
 CHARTER(s)

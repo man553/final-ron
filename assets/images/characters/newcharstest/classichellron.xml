@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="classichellron.png">
+<SubTexture name="classichellron idle0000" x="412" y="574" width="180" height="255" frameX="-173" frameY="-129" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron idle0001" x="663" y="261" width="173" height="256" frameX="-175" frameY="-128" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron idle0002" x="592" y="574" width="168" height="255" frameX="-176" frameY="-129" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron idle0003" x="873" y="510" width="167" height="254" frameX="-176" frameY="-130" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron left0000" x="166" y="303" width="212" height="262" frameX="-114" frameY="-122" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron left0001" x="663" y="0" width="210" height="261" frameX="-116" frameY="-123" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron down0000" x="1240" y="451" width="255" height="196" frameX="-139" frameY="-196" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron down0001" x="1240" y="647" width="253" height="195" frameX="-140" frameY="-197" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron up0000" x="495" y="0" width="168" height="274" frameX="-166" frameY="-107" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron up0001" x="0" y="303" width="166" height="271" frameX="-167" frameY="-110" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron right0000" x="509" y="835" width="224" height="233" frameX="-185" frameY="-151" frameWidth="500" frameHeight="500" />
+<SubTexture name="classichellron right0001" x="0" y="835" width="222" height="234" frameX="-185" frameY="-150" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron idle0000" x="873" y="0" width="184" height="255" frameX="-173" frameY="-129" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron idle0001" x="229" y="574" width="183" height="256" frameX="-173" frameY="-128" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron idle0002" x="873" y="255" width="183" height="255" frameX="-172" frameY="-129" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron idle0003" x="1057" y="0" width="183" height="254" frameX="-172" frameY="-130" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron left0000" x="378" y="303" width="231" height="262" frameX="-116" frameY="-122" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron left0001" x="0" y="574" width="229" height="261" frameX="-120" frameY="-123" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron down0000" x="1240" y="0" width="255" height="226" frameX="-139" frameY="-196" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron down0001" x="1240" y="226" width="253" height="225" frameX="-140" frameY="-197" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron up0000" x="0" y="0" width="247" height="303" frameX="-167" frameY="-78" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron up0001" x="247" y="0" width="248" height="301" frameX="-168" frameY="-80" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron right0000" x="733" y="835" width="288" height="233" frameX="-185" frameY="-151" frameWidth="500" frameHeight="500" />
+<SubTexture name="guitarclassichellron right0001" x="222" y="835" width="287" height="234" frameX="-185" frameY="-150" frameWidth="500" frameHeight="500" />
+</TextureAtlas>

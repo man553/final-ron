@@ -2,9 +2,7 @@ COMPOSER(s)
 Sic
 
 CHARTER(s)
-Shoutsuo
+Seezee
 
 ARTIST(s)
-Seezee
 Knocks
-Wildythomas
