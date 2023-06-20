@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bg.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="BG instance 10000" x="0" y="0" width="1377" height="722"/>
+	<SubTexture name="BG instance 10001" x="1377" y="0" width="1377" height="722"/>
+	<SubTexture name="BG instance 10002" x="0" y="722" width="1377" height="722"/>
+	<SubTexture name="BG instance 10003" x="1377" y="722" width="1377" height="722"/>
+	<SubTexture name="BG instance 10004" x="0" y="1444" width="1377" height="722"/>
+	<SubTexture name="BG instance 10005" x="1377" y="1444" width="1377" height="722"/>
+	<SubTexture name="BG instance 10006" x="0" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10007" x="0" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10008" x="1377" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10009" x="1377" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10010" x="1377" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10011" x="1377" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10012" x="0" y="2888" width="1377" height="722"/>
+	<SubTexture name="BG instance 10013" x="0" y="2888" width="1377" height="722"/>
+	<SubTexture name="BG instance 10014" x="0" y="2166" width="1377" height="722"/>
+	<SubTexture name="BG instance 10015" x="0" y="2166" width="1377" height="722"/>
+</TextureAtlas>
