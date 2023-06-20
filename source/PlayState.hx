@@ -591,6 +591,17 @@ class PlayState extends MusicBeatState
 				bg.y -= 200;
 				add(bg);
 			}
+			case 'clusterfunk':
+			{
+				defaultCamZoom = 0.6;
+				firebg = new FlxSprite();
+				firebg.frames = Paths.getSparrowAtlas('bgs/newbgtest/clusterfunk/bg');
+				firebg.scale.set(2,2);
+				firebg.animation.addByPrefix('idle', 'BG instance 1', 24, false);
+				firebg.animation.play('idle');
+				firebg.screenCenter();
+				add(firebg);
+			}
 			case 'triad':
 			{
 				defaultCamZoom = 0.75;
@@ -4746,6 +4757,12 @@ var cameraTwn:FlxTween;
 		}
 		
 		//256 288 544 864 896 912 928 992 1056 1184
+		if ((curSong == 'clusterfunk') && (curStep == 4))
+		{
+			FlxG.camera.flash(FlxColor.WHITE, 1);
+			defaultCamZoom = 0.8;
+		}
+		
 		if (curSong == 'bloodshed-classic') 
 		{
 			healthBarBG.alpha = 0;
@@ -5736,6 +5753,8 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
+		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0))
+			firebg.animation.play('idle');
 
 		if (generatedMusic)
 		{

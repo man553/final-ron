@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "ronidle instance 1"
+		},
+		{
+			"offsets": [
+				15,
+				-13
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ronleft instance 1"
+		},
+		{
+			"offsets": [
+				-8,
+				-31
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "rondown instance 1"
+		},
+		{
+			"offsets": [
+				-17,
+				36
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "ronup instance 1"
+		},
+		{
+			"offsets": [
+				-58,
+				-14
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ronright instance 1"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/newcharstest/ronGeometrydash",
+	"position": [
+		90,
+		105
+	],
+	"healthicon": "rongd",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		246,
+		0
+	],
+	"camera_position": [
+		0,
+		60
+	],
+	"sing_duration": 4,
+	"scale": 0.999999999999999
+}
