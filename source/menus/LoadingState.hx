@@ -128,6 +128,7 @@ class LoadingState extends MusicBeatState
 				throw "Missing library: " + library;
 
 			var callback = callbacks.add("library:" + library);
+			trace(library);
 			Assets.loadLibrary(library).onComplete(function (_) { callback(); });
 		}
 	}
