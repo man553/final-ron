@@ -73,23 +73,34 @@ class DiscordClient
 	{
 		var startTimestamp:Float = if(hasStartTimestamp) Date.now().getTime() else 0;
 		var image:String = 'uhhhh';
+		
+		if ((state.toLowerCase().contains('blood')) || (state.toLowerCase().contains('bleed')))
+			image = 'ruhoh';
 		if (endTimestamp > 0)
 		{
 			endTimestamp = startTimestamp + endTimestamp;
 		}
 		
+		if (Math.ceil(endTimestamp / 1000) % 2 == 0)
+		{
+			if (image == 'uhhhh')
+				image = 'uhhhht';
+			else
+				image = 'ruhoh2';
+		}
+		
 		DiscordRpc.presence({
-			details: "no leaks bruh",
-			state: "hurb skael on",
+			details: details,
+			state: state,
 			largeImageKey: image,
-			largeImageText: "no leaks bruh",
+			largeImageText: "Development Progress: 85%",
 			smallImageKey : smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
-			startTimestamp : Std.int(0),
-            endTimestamp : Std.int(0)
+			startTimestamp : Std.int(startTimestamp / 1000),
+            endTimestamp : Std.int(endTimestamp / 1000)
 		});
 
-		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
+		//trace('Discord RPC Updated. Arguments: $details, $state, $image, $hasStartTimestamp, $endTimestamp');
 	}
 
 	#if LUA_ALLOWED
