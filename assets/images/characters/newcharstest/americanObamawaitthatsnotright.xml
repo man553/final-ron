@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="americanObamawaitthatsnotright.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="obamadown0000" x="0" y="0" width="831" height="1096" frameX="-148" frameY="-44" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0001" x="0" y="0" width="831" height="1096" frameX="-148" frameY="-44" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0002" x="831" y="0" width="893" height="1128" frameX="-73" frameY="-29" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0003" x="831" y="0" width="893" height="1128" frameX="-73" frameY="-29" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0004" x="1724" y="0" width="948" height="1169" frameX="-24" frameY="-6" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0005" x="1724" y="0" width="948" height="1169" frameX="-24" frameY="-6" frameWidth="983" frameHeight="1189"/>
+	<SubTexture name="obamadown0006" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0007" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0008" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0009" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0010" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0011" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0012" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0013" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0014" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamadown0015" x="2672" y="0" width="983" height="1189"/>
+	<SubTexture name="obamaidle0000" x="0" y="1189" width="556" height="728" frameX="-4" frameY="-7" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0001" x="0" y="1189" width="556" height="728" frameX="-4" frameY="-7" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0002" x="556" y="1189" width="581" height="740"/>
+	<SubTexture name="obamaidle0003" x="556" y="1189" width="581" height="740"/>
+	<SubTexture name="obamaidle0004" x="1137" y="1189" width="527" height="713" frameX="-18" frameY="-6" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0005" x="1137" y="1189" width="527" height="713" frameX="-18" frameY="-6" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0006" x="1664" y="1189" width="437" height="659" frameX="-46" frameY="-25" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0007" x="1664" y="1189" width="437" height="659" frameX="-46" frameY="-25" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0008" x="2101" y="1189" width="430" height="655" frameX="-48" frameY="-26" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0009" x="2101" y="1189" width="430" height="655" frameX="-48" frameY="-26" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0010" x="2531" y="1189" width="426" height="653" frameX="-50" frameY="-27" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0011" x="2531" y="1189" width="426" height="653" frameX="-50" frameY="-27" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0012" x="2531" y="1189" width="426" height="653" frameX="-50" frameY="-27" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0013" x="2531" y="1189" width="426" height="653" frameX="-50" frameY="-27" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaidle0014" x="2531" y="1189" width="426" height="653" frameX="-50" frameY="-27" frameWidth="581" frameHeight="740"/>
+	<SubTexture name="obamaleft0000" x="0" y="1929" width="1238" height="1179"/>
+	<SubTexture name="obamaleft0001" x="0" y="1929" width="1238" height="1179"/>
+	<SubTexture name="obamaleft0002" x="1238" y="1929" width="1122" height="1114" frameX="-37" frameY="-42" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0003" x="1238" y="1929" width="1122" height="1114" frameX="-37" frameY="-42" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0004" x="2360" y="1929" width="1090" height="1099" frameX="-49" frameY="-50" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0005" x="2360" y="1929" width="1090" height="1099" frameX="-49" frameY="-50" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0006" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0007" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0008" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0009" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0010" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0011" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0012" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0013" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaleft0014" x="0" y="3108" width="1084" height="1094" frameX="-51" frameY="-53" frameWidth="1238" frameHeight="1179"/>
+	<SubTexture name="obamaright0000" x="1084" y="3108" width="668" height="641"/>
+	<SubTexture name="obamaright0001" x="1084" y="3108" width="668" height="641"/>
+	<SubTexture name="obamaright0002" x="1752" y="3108" width="592" height="565" frameX="-15" frameY="-57" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0003" x="1752" y="3108" width="592" height="565" frameX="-15" frameY="-57" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0004" x="2344" y="3108" width="577" height="549" frameX="-19" frameY="-69" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0005" x="2344" y="3108" width="577" height="549" frameX="-19" frameY="-69" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0006" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0007" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0008" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0009" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0010" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0011" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0012" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0013" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaright0014" x="2921" y="3108" width="574" height="548" frameX="-21" frameY="-70" frameWidth="668" frameHeight="641"/>
+	<SubTexture name="obamaup0000" x="0" y="4202" width="1546" height="1841" frameX="0" frameY="-109" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0001" x="0" y="4202" width="1546" height="1841" frameX="0" frameY="-109" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0002" x="1546" y="4202" width="1740" height="1948" frameX="-79" frameY="-42" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0003" x="1546" y="4202" width="1740" height="1948" frameX="-79" frameY="-42" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0004" x="0" y="6150" width="1786" height="1993" frameX="-88" frameY="-12" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0005" x="0" y="6150" width="1786" height="1993" frameX="-88" frameY="-12" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0006" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0007" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0008" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0009" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0010" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0011" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0012" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0013" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+	<SubTexture name="obamaup0014" x="1786" y="6150" width="1806" height="2007" frameX="-89" frameY="0" frameWidth="1895" frameHeight="2007"/>
+</TextureAtlas>

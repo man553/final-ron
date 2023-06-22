@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="americanBob.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bob0000" x="0" y="0" width="527" height="416" frameX="0" frameY="-6" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0001" x="527" y="0" width="529" height="416" frameX="0" frameY="-6" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0002" x="1056" y="0" width="524" height="419" frameX="-5" frameY="-3" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0003" x="0" y="419" width="522" height="419" frameX="-5" frameY="-3" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0004" x="522" y="419" width="521" height="422" frameX="-6" frameY="0" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0005" x="522" y="419" width="521" height="422" frameX="-6" frameY="0" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0006" x="1043" y="419" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0007" x="1043" y="419" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0008" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0009" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0010" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0011" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0012" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0013" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0014" x="0" y="841" width="521" height="421" frameX="-6" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0015" x="521" y="841" width="515" height="415" frameX="-12" frameY="-7" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0016" x="1036" y="841" width="517" height="415" frameX="-12" frameY="-7" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0017" x="0" y="1262" width="519" height="415" frameX="-10" frameY="-7" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0018" x="519" y="1262" width="517" height="415" frameX="-10" frameY="-7" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0019" x="1036" y="1262" width="518" height="418" frameX="-9" frameY="-4" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0020" x="1036" y="1262" width="518" height="418" frameX="-9" frameY="-4" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0021" x="0" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0022" x="0" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0023" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0024" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0025" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0026" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0027" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0028" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0029" x="518" y="1680" width="518" height="421" frameX="-9" frameY="-1" frameWidth="529" frameHeight="422"/>
+	<SubTexture name="bob0030" x="0" y="0" width="527" height="416" frameX="0" frameY="-6" frameWidth="529" frameHeight="422"/>
+</TextureAtlas>
