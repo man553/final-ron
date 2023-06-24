@@ -2,7 +2,7 @@ package menus;
 
 import important.Song;
 import flixel.addons.ui.FlxUIButton;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.FlxGame;
 import flixel.addons.ui.FlxMultiGamepadAnalogStick.XY;
 import flixel.addons.ui.FlxUIInputText;

@@ -30,7 +30,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -3217,12 +3217,12 @@ class PlayState extends MusicBeatState
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
 			case "Bitto's zoom event":
-				switch (v1) {
+				switch (value1) {
 					case 'regular':
 						defaultCamZoom = Std.parseFloat(value1);
 					case 'custom':
-						FlxTween.tween(camGame, {zoom: v2.split(',')[0]}, v2.split(',')[1], {ease:
-							switch(v2.split(',')[2]) {
+						FlxTween.tween(camGame, {zoom: value2.split(',')[0]}, value2.split(',')[1], {ease:
+							switch(value2.split(',')[2]) {
 								case 'backin': FlxEase.backIn;
 								case 'backinout': FlxEase.backInOut;
 								case 'backout': FlxEase.backOut;

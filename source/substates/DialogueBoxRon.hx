@@ -5,7 +5,7 @@ import Math;
 import flixel.group.FlxSpriteGroup;
 import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import substates.DialogueBoxPsych;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
