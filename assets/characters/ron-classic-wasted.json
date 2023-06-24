@@ -1,73 +1,74 @@
 {
+	"noteskin": "ronsip",
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "ron idle"
+			"fps": 24,
+			"name": "ron idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "ron left"
+			"fps": 24,
+			"name": "ron left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "ron down"
+			"fps": 24,
+			"name": "ron down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "ron up"
+			"fps": 24,
+			"name": "ron up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "ron right"
+			"fps": 24,
+			"name": "ron right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/wastedfucker",
 	"position": [
-		-150,
-		160
+		-380,
+		170
 	],
 	"healthicon": "icon-ronslightly-classic",
 	"flip_x": false,
 	"healthbar_colors": [
 		189,
 		170,
-		0
+		20
 	],
 	"camera_position": [
 		0,

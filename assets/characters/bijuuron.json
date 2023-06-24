@@ -1,5 +1,4 @@
 {
-	"noteskin": "ronsip",
 	"animations": [
 		{
 			"offsets": [
@@ -61,18 +60,18 @@
 	"image": "characters/kill_yourself",
 	"position": [
 		-80,
-		250
+		200
 	],
 	"healthicon": "bijuuron",
 	"flip_x": false,
 	"healthbar_colors": [
+		0,
 		255,
-		200,
 		0
 	],
 	"camera_position": [
 		300,
-		0
+		230
 	],
 	"sing_duration": 6.1,
 	"scale": 1

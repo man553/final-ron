@@ -6,66 +6,66 @@
 				0,
 				0
 			],
-			"loop": true,
+			"loop": false,
+			"fps": 8,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ron left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "ron down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "ron up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ron right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 16,
+			"anim": "hey",
+			"indices": [],
+			"name": "ron death"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 12,
 			"anim": "idle",
-			"indices": [],
+			"loop": false,
 			"name": "ron idle"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singLEFT",
-			"fps": 8,
-			"name": "ron left",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singDOWN",
-			"fps": 12,
-			"name": "ron down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singUP",
-			"fps": 12,
-			"name": "ron up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "ron right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "hey",
-			"fps": 16,
-			"name": "ron death",
-			"indices": []
 		}
 	],
 	"no_antialiasing": true,

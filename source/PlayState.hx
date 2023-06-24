@@ -513,7 +513,7 @@ class PlayState extends MusicBeatState
 		bar1.y=-560;
 
 		rain = new flixel.effects.particles.FlxEmitter(0,-1280, 1280);
-		rain.loadParticles(Paths.image("bgs/newbgtest/bloodshed/raindrop"));
+		rain.loadParticles(Paths.image("bgs/raindrop"));
 		rain.start(false, 0.01);
 		rain.scale.set(0.5, 0.5, 1, 1);
 		rain.lifespan.set(100,100);
@@ -1653,6 +1653,7 @@ class PlayState extends MusicBeatState
 			{
 				case 'tutorial':
 					addShader(camHUD, "mosaic");
+					addShader(camGame, "mosaic");
 					Shaders["mosaic"].shader.data.uBlocksize.value = [4];
 					startCountdown();
 				case 'pretty-wacky':
@@ -1666,6 +1667,8 @@ class PlayState extends MusicBeatState
 					graadienter.color = FlxColor.BLACK;
 					add(fx);
 					camHUD.alpha = 0.5;
+					graadienter.color = FlxColor.BLACK;
+					wbg.color = FlxColor.BLACK;
 					startCountdown();
 				case 'triad':
 					dad.x -= 375;
@@ -2658,7 +2661,7 @@ class PlayState extends MusicBeatState
 		
 		if (curSong == 'wasted')
 		{
-			if (curStep >= 1104)
+			if ((curStep >= 1104) && (curStep < 1408))
 			{
 				var chromeOffset = ClientPrefs.rgbintense/350;
 				for (i in 0...8)
@@ -2673,6 +2676,15 @@ class PlayState extends MusicBeatState
 				gf.angle += 1;
 				boyfriend.angle += Math.sin(curStep/8)/6;
 				dad.angle -= Math.sin(curStep/8)/6;
+			}
+			if (curStep == 1408)
+			{
+				gf.angle = 0;
+				boyfriend.angle = 0;
+				dad.angle = 0;
+				startCharacterPos(boyfriend);
+				startCharacterPos(gf, true);
+				startCharacterPos(dad);
 			}
 		}
 
@@ -2915,7 +2927,6 @@ class PlayState extends MusicBeatState
 					if(ClientPrefs.timeBarType != 'Song Name')
 						timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
 						
-					DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", "icon-"+iconP2.getCharacter(), true, songLength - Conductor.songPosition - ClientPrefs.noteOffset);
 				}
 			}
 
@@ -3105,8 +3116,8 @@ class PlayState extends MusicBeatState
 			if (section != null && section) {
 				if (curSong == 'Triad')	defaultCamZoom = 0.75;
 				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
-				camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
-				camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
+				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
 				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 					
@@ -3115,13 +3126,11 @@ class PlayState extends MusicBeatState
 			}
 			else {
 				if (curSong == 'Triad')	defaultCamZoom = 0.9;
-				camFollow.set(dad.getMidpoint().x, dad.getMidpoint().y-75);
-				camFollow.x += dad.cameraPosition[0];
-				camFollow.y += dad.cameraPosition[1];
+				camFollow.set(dad.x+dad.cameraPosition[0], dad.y+dad.cameraPosition[1]);
 				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
 				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
-				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 50;
-				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 50;
+				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 30;
+				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 30;
 			}
 		}
 		//if ((SONG.song.toLowerCase() == 'oh-my-god-hes-ballin') && (boyfriend.animation.curAnim.curFrame == 0))
@@ -5523,7 +5532,7 @@ var cameraTwn:FlxTween;
 					wastedGrp.visible = true;
 					cameraSpeed = 1;
 					defaultCamZoom = 0.9;
-					camGame.alpha = 0;
+					camGame.alpha = 1;
 			}
 		}
 

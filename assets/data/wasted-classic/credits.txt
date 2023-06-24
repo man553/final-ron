@@ -1,12 +1,13 @@
 COMPOSER(s)
 ArmandRonan
+Sic
 
 ADDITIONAL HELPER(s)
-Sic
+Seezee
 
 CHARTER(s)
 Sam
 
 ARTIST(s)
+Terionic
 Seezee
-Benju
