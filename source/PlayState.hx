@@ -3219,9 +3219,9 @@ class PlayState extends MusicBeatState
 			case "Bitto's zoom event":
 				switch (value1) {
 					case 'regular':
-						defaultCamZoom = Std.parseFloat(value1);
+						defaultCamZoom = Std.parseFloat(value2);
 					case 'custom':
-						FlxTween.tween(camGame, {zoom: value2.split(',')[0]}, value2.split(',')[1], {ease:
+						FlxTween.tween(camGame, {zoom: Std.parseFloat(value2.split(',')[0])}, Std.parseFloat(value2.split(',')[1]), {ease:
 							switch(value2.split(',')[2]) {
 								case 'backin': FlxEase.backIn;
 								case 'backinout': FlxEase.backInOut;
