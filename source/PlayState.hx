@@ -1220,7 +1220,7 @@ class PlayState extends MusicBeatState
 				}
 			case 'blr': {
 				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2); //this works every time. - Sword352
+				skyBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
 				skyBLR.updateHitbox();
 				skyBLR.x = -500;
 				skyBLR.y = 150;
@@ -3220,7 +3220,8 @@ class PlayState extends MusicBeatState
 				switch (value1) {
 					case 'regular':
 						defaultCamZoom = Std.parseFloat(value2);
-					case 'custom':
+					default:
+						defaultCamZoom = Std.parseFloat(value2);
 						FlxTween.tween(camGame, {zoom: Std.parseFloat(value2.split(',')[0])}, Std.parseFloat(value2.split(',')[1]), {ease:
 							switch(value2.split(',')[2]) {
 								case 'backin': FlxEase.backIn;
@@ -3306,6 +3307,13 @@ class PlayState extends MusicBeatState
 					FlxG.camera.zoom += camZoom;
 					camHUD.zoom += hudZoom;
 				}
+				
+
+			case 'Set Zoom':
+				defaultCamZoom = Std.parseFloat(value1);
+				
+			case 'Flash Screen':
+				FlxG.camera.flash(FlxColor.fromString(value1), Std.parseFloat(value2));
 
 			case 'Play Animation':
 				//trace('Anim to play: ' + value1);
@@ -3489,6 +3497,7 @@ class PlayState extends MusicBeatState
 				var val2 = Std.parseFloat(value2);
 				FlxTween.tween(bar1, {y: -560 + (val1 * 10)}, val2, {ease: FlxEase.quintOut});
 				FlxTween.tween(bar2, {y: 720 + -(val1 * 10)}, val2, {ease: FlxEase.quintOut});
+
 		}
 	}
 

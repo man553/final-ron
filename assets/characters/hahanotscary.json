@@ -1,77 +1,78 @@
 {
+	"noteskin": "demon",
 	"animations": [
 		{
 			"loop": false,
 			"offsets": [
-				40,
-				-114
+				10,
+				-4
 			],
 			"anim": "singDOWN",
-			"fps": 48,
-			"name": "Sing Down",
+			"fps": 24,
+			"name": "down",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				31,
-				15
+				-14,
+				1
 			],
-			"anim": "singUP",
-			"fps": 48,
-			"name": "Sing Up",
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
 				2,
-				-31
+				-1
 			],
 			"anim": "singRIGHT",
-			"fps": 48,
-			"name": "Sing Right",
+			"fps": 24,
+			"name": "right",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				6,
-				-19
+				-9,
+				-5
 			],
-			"anim": "singLEFT",
-			"fps": 48,
-			"name": "Sing Left",
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
 			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"indices": [],
-			"fps": 48,
 			"anim": "idle",
-			"loop": true,
-			"name": "Idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
-				71,
-				-12
+				-10,
+				-2
 			],
-			"indices": [],
+			"anim": "bruh",
 			"fps": 24,
-			"anim": "Bruh",
-			"loop": true,
-			"name": "Bruh"
+			"name": "bruh",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/hahanotscary",
 	"position": [
-		0,
-		250
+		-120,
+		190
 	],
 	"healthicon": "hahanotscary",
 	"flip_x": false,
@@ -81,8 +82,8 @@
 		2
 	],
 	"camera_position": [
-		140,
-		10
+		440,
+		260
 	],
 	"sing_duration": 4,
 	"scale": 1

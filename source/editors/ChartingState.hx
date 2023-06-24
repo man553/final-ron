@@ -94,6 +94,9 @@ class ChartingState extends MusicBeatState
 		['Screen Shake', "Value 1: Camera shake\nValue 2: HUD shake\n\nEvery value works as the following example: \"1, 0.05\".\nThe first number (1) is the duration.\nThe second number (0.05) is the intensity."],
 		['Change Character', "Value 1: Character to change (Dad, BF, GF)\nValue 2: New character's name"],
 		['Change Scroll Speed', "Value 1: Scroll Speed Multiplier (1 is default)\nValue 2: Time it takes to change fully in seconds."],
+		['Flash Screen', "Value 1: Color of Flash Screen\nValue 2: Time it takes to the funny"],
+		['Set Zoom', "Set defaultCamZoom"],
+		["Bitto's zoom event", "value 1 sets the zoom type:\n	regular (sets the zoom like all other zoom events)\n 	custom (Bitto's Zoom Event)\nvalue 2 is the zoom amount, or 3 different values, depending on the zoom type:\n		1 - zoom amount: what value to zoom into (not relative)\n	2 - zoom duration: how long it takes to zoom (in seconds, CUSTOM ONLY)\n		3 - tween ease: which movement easing to use (CUSTOM ONLY)\n			regular ex. 2.1\n		custom ex. 2.1,0.5,expoOut"],
 		['Set Property', "Value 1: Variable name\nValue 2: New value"],
 		[
 			'Change Bar Size',
