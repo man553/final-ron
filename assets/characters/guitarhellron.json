@@ -1,60 +1,59 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
 		{
+			"offsets": [
+				0,
+				0
+			],
 			"loop": true,
-			"offsets": [
-				0,
-				0
-			],
+			"fps": 12,
 			"anim": "idle",
-			"fps": 12,
-			"name": "guitarclassichellron idle",
-			"indices": []
+			"indices": [],
+			"name": "guitarclassichellron idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singLEFT",
-			"fps": 12,
-			"name": "guitarclassichellron left",
-			"indices": []
+			"indices": [],
+			"name": "guitarclassichellron left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singDOWN",
-			"fps": 12,
-			"name": "guitarclassichellron down",
-			"indices": []
+			"indices": [],
+			"name": "guitarclassichellron down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singUP",
-			"fps": 12,
-			"name": "guitarclassichellron up",
-			"indices": []
+			"indices": [],
+			"name": "guitarclassichellron up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 12,
-			"name": "guitarclassichellron right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "guitarclassichellron right"
 		}
 	],
 	"no_antialiasing": true,
@@ -71,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		0,
-		-300
+		250,
+		100
 	],
 	"sing_duration": 4,
 	"scale": 2

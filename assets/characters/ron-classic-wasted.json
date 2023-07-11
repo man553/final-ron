@@ -1,5 +1,4 @@
 {
-	"noteskin": "ron",
 	"animations": [
 		{
 			"loop": false,
@@ -60,7 +59,7 @@
 	"no_antialiasing": true,
 	"image": "characters/wastedfucker",
 	"position": [
-		-380,
+		-260,
 		170
 	],
 	"healthicon": "icon-ronslightly-classic",
@@ -71,8 +70,8 @@
 		20
 	],
 	"camera_position": [
-		0,
-		0
+		760,
+		190
 	],
 	"sing_duration": 4,
 	"scale": 0.999999999999999

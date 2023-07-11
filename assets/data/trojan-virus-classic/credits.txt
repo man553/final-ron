@@ -2,8 +2,7 @@ COMPOSER(s)
 Jacks
 
 CHARTER(s)
-Kurtfan
+Seezee
 
 ARTIST(s)
 Seezee
-Wildythomas

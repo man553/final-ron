@@ -191,7 +191,7 @@
 	"image": "characters/dark/dGF_assets",
 	"position": [
 		0,
-		0
+		-100
 	],
 	"healthicon": "gf",
 	"flip_x": false,

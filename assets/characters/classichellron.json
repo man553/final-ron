@@ -1,5 +1,4 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
 		{
 			"loop": true,
@@ -126,8 +125,8 @@
 		0
 	],
 	"camera_position": [
-		0,
-		-300
+		250,
+		100
 	],
 	"sing_duration": 4,
 	"scale": 2

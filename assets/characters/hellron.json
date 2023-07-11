@@ -1,5 +1,4 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
 		{
 			"loop": true,
@@ -57,7 +56,7 @@
 			"name": "right normal"
 		}
 	],
-	"no_antialiasing": false,
+	"no_antialiasing": true,
 	"image": "characters/hellron",
 	"position": [
 		0,
@@ -71,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		-80,
-		-120
+		170,
+		20
 	],
 	"sing_duration": 4,
 	"scale": 1.125

@@ -286,14 +286,7 @@ class FreeplayState extends MusicBeatState
 		add(text);
 		
 		var chromeOffset = (ClientPrefs.rgbintense/350);
-		clearShader(camWhat);
-		addShader(camWhat, "chromatic aberration");
-		addShader(camWhat, "fake CRT");
-		addShader(camText, "fisheye");
-		Shaders["fisheye"].shader.data.MAX_POWER.value = [0.2];
-		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
-		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
-		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+		shadering();
 		
 		var modeText = new FlxText(10, 10, 0, FreeplayState.mode.toUpperCase(), 48);
 		modeText.setFormat(Paths.font("w95.otf"), 48, FlxColor.WHITE, LEFT);
@@ -490,13 +483,15 @@ class FreeplayState extends MusicBeatState
 			openSubState(new substates.ResetScoreSubState(songName, curDifficulty, songs[curSelected].songCharacter));
 			FlxG.sound.play(Paths.sound('scrollMenu'));
 		}
-		super.update(elapsed);
-			
+		
 		switch(songs[curSelected].songName.toLowerCase())
 		{
 			case 'bleeding':
 				FlxG.camera.shake(0.1,0.01);
+			case 'bleeding-classic':
+				FlxG.camera.shake(0.1,0.01);
 		}
+		super.update(elapsed);
 	}
 
 	public static function destroyFreeplayVocals() {
@@ -565,6 +560,13 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songName, curDifficulty);
 		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
+		
+		switch(songs[curSelected].songName.toLowerCase())
+		{
+			case 'trojan-virus':
+				shadering();
+				addShader(camWhat, "vhs");
+		}
 
 		var bullShit:Int = 0;
 
@@ -646,6 +648,8 @@ class FreeplayState extends MusicBeatState
 		}
 		else
 			updateportrait();
+			
+
 	}
 
 	private function positionHighscore() {
@@ -663,6 +667,21 @@ class FreeplayState extends MusicBeatState
 		portrait.updateHitbox();
 		portrait.screenCenter(XY);
 	}
+	
+	private function shadering() {
+		clearShader(camWhat);
+		addShader(camWhat, "chromatic aberration");
+		addShader(camWhat, "fake CRT");
+		addShader(camText, "fisheye");
+		Shaders["fisheye"].shader.data.MAX_POWER.value = [0.2];
+		Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+		
+		if (mode == 'classic')
+			addShader(camWhat, "vhs");
+	}
+	
 	
 	override function beatHit()
 	{

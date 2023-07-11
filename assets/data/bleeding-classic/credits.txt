@@ -1,6 +1,7 @@
 COMPOSER(s)
-Seezee
 ArmandRonan
+Ekical
+Azurizore
 
 CHARTER(s)
 Seezee
