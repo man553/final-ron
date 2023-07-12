@@ -491,7 +491,7 @@ class FreeplayState extends MusicBeatState
 			case 'bleeding-classic':
 				camWhat.zoom = 1.2;
 			default:
-				camWhat.zoom = 1
+				camWhat.zoom = 1;
 		}
 		super.update(elapsed);
 	}

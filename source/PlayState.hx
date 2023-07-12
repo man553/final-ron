@@ -1358,9 +1358,6 @@ class PlayState extends MusicBeatState
 				add(wbg);
 				if (curSong.toLowerCase() == 'pretty-wacky')
 				{
-					addShader(FlxG.camera, "mosaic");
-					addShader(camHUD, "mosaic");
-					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
 					fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 					fx.setGraphicSize(Std.int(2560 * 0.75));
 					fx.updateHitbox();
@@ -1766,6 +1763,9 @@ class PlayState extends MusicBeatState
 					Shaders["mosaic"].shader.data.uBlocksize.value = [4];
 					startCountdown();
 				case 'pretty-wacky':
+					addShader(camHUD, "mosaic");
+					addShader(camGame, "mosaic");
+					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
 					graadienter = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/ss_gradient'));
 					graadienter.updateHitbox();
 					graadienter.screenCenter();
@@ -1775,7 +1775,11 @@ class PlayState extends MusicBeatState
 					add(graadienter);				
 					graadienter.color = FlxColor.BLACK;
 					add(fx);
-					camHUD.alpha = 0.5;
+					healthBarBG.alpha = 0;
+					healthBar.alpha = 0;
+					scoreTxt.alpha = 0;
+					iconP1.visible = false;
+					iconP2.visible = false;
 					graadienter.color = FlxColor.BLACK;
 					wbg.color = FlxColor.BLACK;
 					startCountdown();
@@ -4747,6 +4751,11 @@ var cameraTwn:FlxTween;
 				case 250:
 					defaultCamZoom += 0.2;
 				case 256:
+					healthBarBG.alpha = 1;
+					healthBar.alpha = 1;
+					scoreTxt.alpha = 1;
+					iconP1.visible = true;
+					iconP2.visible = true;
 					defaultCamZoom -= 0.1;
 					camHUD.alpha = 1;
 					graadienter.color = FlxColor.WHITE;
@@ -4763,6 +4772,10 @@ var cameraTwn:FlxTween;
 				case 766: Shaders["mosaic"].shader.data.uBlocksize.value = [13];
 				case 767: Shaders["mosaic"].shader.data.uBlocksize.value = [20];
 				case 768:
+					triggerEventNote('Change Character', 'dad', 'doyneSprited');
+					triggerEventNote('Change Character', 'bf', 'bfSprited');
+					dad.y -= 120;
+					dad.x -= 60;
 					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
 					cameraSpeed = 3;
 					graadienter.color = FlxColor.fromRGB(224,224,224);
@@ -4775,11 +4788,8 @@ var cameraTwn:FlxTween;
 					baro.alpha = 1;
 					bart.alpha = 1;
 					defaultCamZoom -= 0.1;
+					FlxG.camera.zoom -= 0.1;
 					FlxG.camera.flash(FlxColor.fromRGB(224, 224, 224), 3);
-					triggerEventNote('Change Character', 'dad', 'doyneSprited');
-					triggerEventNote('Change Character', 'bf', 'bfSprited');
-					dad.y -= 120;
-					dad.x -= 60;
 					var bruh:FlxSprite = new FlxSprite();
 					bruh.loadGraphic(Paths.image('bgs/scanlines'));
 					bruh.antialiasing = false;
