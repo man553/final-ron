@@ -6505,11 +6505,11 @@
 		"gfVersion": "gf",
 		"events": [],
 		"player3": null,
-		"song": "Election",
+		"song": "Official-Debate",
 		"arrowSkin": "",
 		"validScore": true,
 		"needsVoices": true,
-		"stage": "stage",
+		"stage": "whitehouse",
 		"speed": 2.7,
 		"bpm": 195
 	}

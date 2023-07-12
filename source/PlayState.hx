@@ -1393,6 +1393,14 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = false;
 				add(bg);
 			}
+			case 'whitehouse':
+			{
+				var bg:BGSprite = new BGSprite('bgs/newbgtest/official-debate/whitehouse');
+				bg.scale.set(2,2);
+				bg.screenCenter();
+				bg.antialiasing = true;
+				add(bg);
+			}
 			case 'normal':
 			{
 				defaultCamZoom = 0.9;
@@ -1569,11 +1577,11 @@ class PlayState extends MusicBeatState
 			
 		baro.x = 0;
 		baro.scrollFactor.set();
-		baro.cameras = [camOverlay];
+		baro.cameras = [camHUD];
 					
 		bart.x = FlxG.width-150;
 		bart.scrollFactor.set();
-		bart.cameras = [camOverlay];
+		bart.cameras = [camHUD];
 		
 		baro.alpha = 0;
 		bart.alpha = 0;
@@ -1775,9 +1783,13 @@ class PlayState extends MusicBeatState
 					add(graadienter);				
 					graadienter.color = FlxColor.BLACK;
 					add(fx);
+					timeBarBG.visible = false;
+					timeBar.visible = false;
+					timeTxt.visible = false;
 					healthBarBG.alpha = 0;
 					healthBar.alpha = 0;
 					scoreTxt.alpha = 0;
+					camHUD.color = FlxColor.GRAY;
 					iconP1.visible = false;
 					iconP2.visible = false;
 					graadienter.color = FlxColor.BLACK;
@@ -4751,12 +4763,16 @@ var cameraTwn:FlxTween;
 				case 250:
 					defaultCamZoom += 0.2;
 				case 256:
+					camHUD.color = FlxColor.WHITE;
 					healthBarBG.alpha = 1;
 					healthBar.alpha = 1;
 					scoreTxt.alpha = 1;
 					iconP1.visible = true;
 					iconP2.visible = true;
 					defaultCamZoom -= 0.1;
+					timeBarBG.visible = true;
+					timeBar.visible = true;
+					timeTxt.visible = true;
 					camHUD.alpha = 1;
 					graadienter.color = FlxColor.WHITE;
 					wbg.color = FlxColor.WHITE;
