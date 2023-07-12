@@ -1089,11 +1089,128 @@ class PlayState extends MusicBeatState
 				earth.screenCenter();
 				earth.visible = false;
 				add(earth);
+			case 'immediateHell':
+				defaultCamZoom = 0.8;
+				precacheList.set('hellexplode', 'sound');
+				var asdfsa:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_sky', 0, 0);
+				asdfsa.screenCenter();
+				asdfsa.scrollFactor.set(0.1, 0.1);
+				add(asdfsa);
+				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1);
+				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
+				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
+				hellbg.updateHitbox();
+				hellbg.screenCenter(XY);
+				hellbg.y += hellbg.height / 5;
+				add(hellbg);
+				hellbg.animation.play('idle instance 1');
+				
+				firebg = new FlxSprite();
+				firebg.frames = Paths.getSparrowAtlas('bgs/escape_fire');
+				firebg.scale.set(5,3);
+				firebg.animation.addByPrefix('idle', 'fire instance 1', 24, true);
+				firebg.animation.play('idle');
+				firebg.scrollFactor.set();
+				firebg.screenCenter();
+				firebg.alpha = 0;
+				add(firebg);
+				
+				wbg = new FlxSprite();
+				wbg.frames = Paths.getSparrowAtlas('bgs/newbgtest/bloodshed/lava');
+			    wbg.animation.addByPrefix('lava', 'lava', 24, true);
+				wbg.scale.set(2,2);
+				wbg.updateHitbox();
+				wbg.antialiasing = true;
+				wbg.screenCenter(XY);
+				wbg.scrollFactor.set(0.2, 0.05);
+				wbg.alpha = 0;	
+				add(wbg);
+				wbg.animation.play('lava');
+		
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+				fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0, 0);
+				fx.alpha = 0.3;
+				
+				var mountainsbackbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_mountainsback', -100, 10);
+				mountainsbackbl.screenCenter();
+				mountainsbackbl.scrollFactor.set(0.3, 0.3);
+				mountainsbackbl.y -= 60;
+				add(mountainsbackbl);
+				
+				hillfrontbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_city', -100, 20);
+				hillfrontbl.screenCenter();
+				hillfrontbl.scrollFactor.set(0.4, 0.4);
+				add(hillfrontbl);
+				
+				mountainsbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_mountains', -100, 20);
+				mountainsbl.screenCenter();
+				mountainsbl.scrollFactor.set(0.3, 0.3);
+				mountainsbl.y -= 60;
+				add(mountainsbl);
+				
+				satan = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
+				satan.setGraphicSize(Std.int(satan.width * 1.2));
+				satan.scrollFactor.set(0.2, 0.4);
+				satan.screenCenter(XY);
+				satan.y += 600;
+				satan.x -= 100;
+				satan.updateHitbox();
+				add(satan);
+				
+				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 40);
+				streetbl.screenCenter();
+				add(streetbl);
 
-				addCharacterToList("hellron-drippin", 1);
-				addCharacterToList("hellron", 1);
-				addCharacterToList("BFrun", 0);
-				addCharacterToList("GFrun", 2);
+				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
+				blackeffect.updateHitbox();
+				blackeffect.antialiasing = true;
+				blackeffect.screenCenter(XY);
+				blackeffect.scrollFactor.set();
+				blackeffect.alpha = 1;
+				if (SONG.song != 'Bloodshed-b')
+					blackeffect.alpha = 0;
+				add(blackeffect);
+
+				Estatic = new FlxSprite().loadGraphic(Paths.image('bgs/deadly'));
+				Estatic.scrollFactor.set();
+				Estatic.screenCenter();
+				Estatic.alpha = 0;
+				
+				Estatic2 = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_streetBroken', -100, -5560);
+				Estatic2.screenCenter();
+				add(Estatic2);
+				Estatic2.visible = false;
+			
+				islands = new FlxSprite(-800).loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
+				islands.scale.set(1,1);
+				islands.visible = false;
+				add(islands);				
+				
+				space = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/spacebg'));
+				space.scale.set(1.5,1.5);
+				space.scrollFactor.set(0.1, 0.1);
+				space.screenCenter();
+				space.visible = false;
+				add(space);
+				
+				freindly = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/freindlystars'));
+				freindly.scale.set(1,1);
+				freindly.scrollFactor.set(0.05, 0.05);
+				freindly.screenCenter();
+				freindly.alpha = 0.5;
+				freindly.visible = false;
+				add(freindly);
+				
+				earth = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/space'));
+				earth.scale.set(1.5,1.5);
+				earth.scrollFactor.set(0.3, 0.3);
+				earth.screenCenter();
+				earth.visible = false;
+				add(earth);
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -537, 100, 0.9, 0.9);
 				add(bg);
@@ -1377,8 +1494,12 @@ class PlayState extends MusicBeatState
 			case 'hell':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				addBehindDad(evilTrail);
-				if (SONG.song.toLowerCase() == 'bleeding')
-					remove(evilTrail);
+			case 'ronHell':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(evilTrail);
+			case 'immediateHell':
+				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(evilTrail);
 			case 'nothing':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
@@ -1533,7 +1654,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
-		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
+		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm' || SONG.song.toLowerCase().contains('classic'))
 		{
 			var songName = SONG.song;
 			if (songName == 'Holy-Shit-Dave-Fnf')
@@ -1544,6 +1665,10 @@ class PlayState extends MusicBeatState
 			kadeEngineWatermark.cameras = [camHUD];
 			kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			kadeEngineWatermark.scrollFactor.set();
+			if (SONG.song.toLowerCase().contains('classic'))
+			{
+				kadeEngineWatermark = new FlxText(4, 0, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)', 16);
+			}
 			add(kadeEngineWatermark);
 		}
 
@@ -1604,22 +1729,6 @@ class PlayState extends MusicBeatState
 			default:
 				//stop fucking flying you dipshit
 				boyfriend.y += 40;
-		}
-
-		if (curSong == 'Withered-Tweaked')
-		{
-			fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/bobtwerked/effect'));
-			fxtwo.scale.set(0.55, 0.55);
-			fxtwo.updateHitbox();
-			fxtwo.antialiasing = true;
-			fxtwo.screenCenter();
-			fxtwo.alpha = 0.2;
-			fxtwo.scrollFactor.set(0, 0);
-			add(fxtwo);
-			fxtwo.cameras = [camOverlay];
-
-			dad.x += 500;
-			dad.y += 50;
 		}
 
 		strumLineNotes.cameras = [camHUD];
@@ -1751,7 +1860,7 @@ class PlayState extends MusicBeatState
 		else
 			startCountdown();
 
-		if (daSong == 'bloodshed' || daSong == 'bleeding' || daSong == 'bloodshed-classic' || daSong == 'bloodbath')
+		if (daSong == 'bloodshed' || daSong == 'bleeding' || daSong == 'bleeding-classic' || daSong == 'bloodshed-classic' || daSong == 'bloodbath')
 		{
 			add(fx);
 			add(Estatic);
@@ -2704,7 +2813,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong.toLowerCase() == 'bleeding')
+		if (curSong.toLowerCase() == 'bleeding-classic')
 		{
 			if (windowmove)
 			{
@@ -4265,11 +4374,12 @@ var cameraTwn:FlxTween;
 				multiplier = multiplier + ((1 - health));
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
 			camHUD.shake(0.0055 * multiplier / 4, 0.15);
-			if (health > 0.03)
-				health -= 0.007;
+			if (health > 0.1)
+				health -= 0.1;
 			else
 				health = 0.02;
-			Lib.application.window.move(Lib.application.window.x + FlxG.random.int(-4, 4), Lib.application.window.y + FlxG.random.int(-4, 4));
+			//really annoying
+			//Lib.application.window.move(Lib.application.window.x + FlxG.random.int(-4, 4), Lib.application.window.y + FlxG.random.int(-4, 4));
 		}
 
 		if (!note.isSustainNote)
@@ -5161,7 +5271,7 @@ var cameraTwn:FlxTween;
 			Estatic.alpha = (((2-health)/3)+0.2);
 		}
 
-		if (curSong == 'Bleeding') {
+		if (curSong.toLowerCase() == 'bleeding-classic') {
 			healthBarBG.alpha = 0;
 			healthBar.alpha = 0;
 			iconP1.visible = true;

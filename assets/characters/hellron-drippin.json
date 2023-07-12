@@ -49,15 +49,15 @@
 				0,
 				0
 			],
+			"loop": true,
+			"fps": 12,
+			"anim": "idle",
 			"indices": [
 				0,
 				1,
 				2,
 				3
 			],
-			"fps": 12,
-			"anim": "idle",
-			"loop": true,
 			"name": "dripron idle"
 		}
 	],
@@ -75,8 +75,8 @@
 		0
 	],
 	"camera_position": [
-		320,
-		360
+		960,
+		780
 	],
 	"sing_duration": 6.1,
 	"scale": 0.5

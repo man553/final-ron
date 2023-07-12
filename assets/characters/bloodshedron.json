@@ -1,60 +1,59 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": true,
-			"fps": 16,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "idle",
-			"indices": [],
-			"name": "bloodshedron idle"
+			"fps": 16,
+			"name": "bloodshedron idle",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 8,
-			"name": "bloodshedron left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "bloodshedron left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "bloodshedron down",
-			"indices": []
+			"indices": [],
+			"name": "bloodshedron down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "bloodshedron up",
-			"indices": []
+			"indices": [],
+			"name": "bloodshedron up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "bloodshedron right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "bloodshedron right"
 		}
 	],
 	"no_antialiasing": false,
@@ -71,8 +70,8 @@
 		0
 	],
 	"camera_position": [
-		400,
-		480
+		920,
+		720
 	],
 	"sing_duration": 4,
 	"scale": 0.5
