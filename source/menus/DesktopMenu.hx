@@ -100,12 +100,31 @@ class DesktopMenu extends MusicBeatState
 					if (clickAmounts == 2) {
 						if (icons[i] == "story mode is idiot") {
 							StoryMenuState.musicTime = FlxG.sound.music.time;
-							new StoryMenuState();
-							transitioningToIdiotism = true;
-							rainbTmr.cancel();
-							new FlxTimer().start(1.5, function(tmr:FlxTimer){
-								FlxG.camera.fade(0x88FFFFFF, 0.6, false);
-								new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
+							//new StoryMenuState();
+							//transitioningToIdiotism = true;
+							//rainbTmr.cancel();
+							//new FlxTimer().start(1.5, function(tmr:FlxTimer){
+							//	FlxG.camera.fade(0x88FFFFFF, 0.6, false);
+							//	new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
+							//});
+							var video:misc.MP4Handler = new misc.MP4Handler();
+							openSubState(new misc.CustomFadeTransition(1.5, false));
+							new FlxTimer().start(1, function(tmr:FlxTimer)
+							{
+								PlayState.storyPlaylist = ["Ron","Wasted","Ayo","Bloodshed"];
+								PlayState.isStoryMode = true;
+								PlayState.storyWeek =0;
+
+								var diffic = "-hard";
+
+								PlayState.storyDifficulty = 0;
+	
+								PlayState.SONG = important.Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
+								PlayState.campaignScore = 0;
+								PlayState.campaignMisses = 0;
+								CoolUtil.difficulties = ["Hard"];
+								important.WeekData.reloadWeekFiles(true);
+								video.playMP4(Paths.videoRon('ron'), new PlayState(), false, false, false);
 							});
 						}
 						else if (icons[i].length != 0)

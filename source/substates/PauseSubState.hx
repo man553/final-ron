@@ -56,7 +56,7 @@ class PauseSubState extends MusicBeatSubstate
 							PlayState.deathCounter = 0;
 							PlayState.seenCutscene = false;
 							if(PlayState.isStoryMode) {
-								MusicBeatState.switchState(new menus.StoryMenuState());
+								MusicBeatState.switchState(new menus.DesktopMenu());
 							} else {
 								MusicBeatState.switchState(new menus.FreeplayState());
 							}

@@ -124,16 +124,11 @@ class VlcBitmap extends Bitmap
 	{
 		#if (cpp && !mobile)
 		libvlc.setRepeat(repeat);
-		trace("yeah");
-		trace(source);
 
 		if (!inWindow)
 		{
-			trace("OK..");
 			if (source != null) {
-				trace("mhm");
 				libvlc.play(source);
-				trace("WWOASD");
 			} else {
 				libvlc.play();
 			}
@@ -164,7 +159,7 @@ class VlcBitmap extends Bitmap
 		if (onStop != null)
 			onStop();
 		#end
-	}
+	}	
 
 	public function pause()
 	{

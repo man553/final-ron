@@ -82,6 +82,12 @@ class MP4Handler
 			onVLCComplete();
 			return;
 		}, true);
+		video2.onEncounteredError.add(function() {
+			video2.dispose();
+			finishCallback = callback;
+			onVLCComplete();
+			return;
+		}, true);
 		#end
 	}
 

@@ -324,6 +324,12 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = important.Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+			
+			trace(PlayState.storyPlaylist);
+			trace(PlayState.storyDifficulty);
+			trace(PlayState.storyPlaylist[0].toLowerCase() + diffic);
+			trace(PlayState.storyPlaylist[0].toLowerCase());
+			trace(CoolUtil.difficulties);
 			switch (curWeek)
 			{
 				case 0:
