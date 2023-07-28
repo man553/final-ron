@@ -74,6 +74,7 @@ class LoadingState extends MusicBeatState
 		loadBar = new FlxSprite(0, 20).makeGraphic(FlxG.width, 10, 0xFF000000);
 		loadBar.screenCenter(X);
 		loadBar.antialiasing = ClientPrefs.globalAntialiasing;
+		loadBar.alpha = 0; // it never moves anyways
 		add(loadBar);
 		
 		initSongsManifest().onComplete

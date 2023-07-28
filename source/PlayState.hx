@@ -1672,7 +1672,7 @@ class PlayState extends MusicBeatState
 			kadeEngineWatermark.scrollFactor.set();
 			if (SONG.song.toLowerCase().contains('classic'))
 			{
-				kadeEngineWatermark = new FlxText(4, 0, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)', 16);
+				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)';
 			}
 			add(kadeEngineWatermark);
 		}

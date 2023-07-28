@@ -2,6 +2,7 @@ const float range = 0.05;
 const float noiseQuality = 250.0;
 const float noiseIntensity = 0.0088;
 const float offsetIntensity = 0.02;
+uniform float iTime;
 
 float rand(vec2 co)
 {
