@@ -11,9 +11,11 @@ import vlc.VlcBitmap;
 import important.Controls.Control;
 import flixel.util.FlxTimer;
 import flixel.FlxSprite;
+import hxcodec.flixel.FlxVideo;
 
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
+// yo code sux
 
 class MP4Handler
 {
@@ -71,39 +73,15 @@ class MP4Handler
 
 		netStream.play(path);
 		#else
-		finishCallback = callback;
-
-		vlcBitmap = new VlcBitmap();
-		vlcBitmap.set_height(FlxG.stage.stageHeight);
-		vlcBitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
-
-		trace("Setting width to " + FlxG.stage.stageHeight * (16 / 9));
-		trace("Setting height to " + FlxG.stage.stageHeight);
-
-		vlcBitmap.onVideoReady = onVLCVideoReady;
-		vlcBitmap.onComplete = onVLCComplete;
-		vlcBitmap.onError = onVLCError;
-
-		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
-
-		if (repeat)
-			vlcBitmap.repeat = -1;
-		else
-			vlcBitmap.repeat = 0;
-
-		vlcBitmap.inWindow = isWindow;
-		vlcBitmap.fullscreen = isFullscreen;
-
-		FlxG.addChildBelowMouse(vlcBitmap);
-		vlcBitmap.play(checkFile(path));
-		
-		if (outputTo != null)
+		var video2 = new FlxVideo();
+		video2.play(path);
+		video2.onEndReached.add(function()
 		{
-			// lol this is bad kek
-			vlcBitmap.alpha = 0;
-	
-			sprite = outputTo;
-		}
+			video2.dispose();
+			finishCallback = callback;
+			onVLCComplete();
+			return;
+		}, true);
 		#end
 	}
 
@@ -132,7 +110,7 @@ class MP4Handler
 
 	public function onVLCComplete()
 	{
-		vlcBitmap.stop();
+		//vlcBitmap.stop();
 
 		// Clean player, just in case! Actually no.
 
@@ -147,7 +125,7 @@ class MP4Handler
 			{
 				menus.LoadingState.loadAndSwitchState(finishCallback);
 			}
-			vlcBitmap.dispose();
+			//vlcBitmap.dispose();
 
 			if (FlxG.game.contains(vlcBitmap))
 			{

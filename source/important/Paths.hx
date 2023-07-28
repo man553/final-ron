@@ -188,8 +188,8 @@ class Paths
 
 	static public function videoRon(key:String, ?library:String)
 	{
-		trace('assets/videos/$key.mp4');
-		return getPath('videos/$key.mp4', BINARY, library);
+		var result:String = getPath('videos/$key.mp4', BINARY, library);
+		return result;
 	}
 
 	static public function sound(key:String, ?library:String):Sound

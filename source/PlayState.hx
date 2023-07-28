@@ -2017,6 +2017,7 @@ class PlayState extends MusicBeatState
 		}
 
 		if(foundFile) {
+			trace(fileName);
 			inCutscene = true;
 			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 			bg.scrollFactor.set();
@@ -2026,7 +2027,7 @@ class PlayState extends MusicBeatState
 			(new FlxVideo(fileName)).finishCallback = function() {
 				remove(bg);
 				startAndEnd();
-			}
+			};
 			return;
 		}
 		else
