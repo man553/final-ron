@@ -1507,8 +1507,8 @@ class PlayState extends MusicBeatState
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				addBehindDad(evilTrail);
 			case 'ronHell':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				addBehindDad(evilTrail);
+				//var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				//addBehindDad(evilTrail);
 			case 'immediateHell':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				addBehindDad(evilTrail);
@@ -2813,6 +2813,11 @@ class PlayState extends MusicBeatState
 			}
 			if (curStep == 1408)
 			{
+				for (i in 0...8)
+				{ 
+					var member = strumLineNotes.members[i];
+					member.y = defaultStrumY;
+				}
 				gf.angle = 0;
 				boyfriend.angle = 0;
 				dad.angle = 0;
@@ -3255,25 +3260,37 @@ class PlayState extends MusicBeatState
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
-				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
-				if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
+				if (ClientPrefs.directionalCamera) {
+					if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+					if (boyfriend.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 					
-				if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 30;
-				if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 30;
+					if (boyfriend.animation.curAnim.name == "singUP") camFollow.y -= 30;
+					if (boyfriend.animation.curAnim.name == "singDOWN") camFollow.y += 30;
+				}
 			}
 			else {
 				if (curSong == 'Triad')	defaultCamZoom = 0.9;
 				var baseX:Float = dad.x;
 				var baseY:Float = dad.y;
+				var offsetX:Int = 0;
+				var offsetY:Int = 0;
 				if (!curSong.toLowerCase().contains("classic")) {
 					baseX = dad.getMidpoint().x;
 					baseY = dad.getMidpoint().y;
 				}
-				camFollow.set(baseX+dad.cameraPosition[0], baseY+dad.cameraPosition[1]);
-				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
-				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
-				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 30;
-				if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 30;
+				if (curSong.toLowerCase() == "awesome-ron") {
+					offsetY = -150;
+				} else if (curSong.toLowerCase() == "ayo") {
+					offsetY = -200;
+				}
+				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
+				
+				if (ClientPrefs.directionalCamera) {
+					if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
+					if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
+					if (dad.animation.curAnim.name == "singUP") camFollow.y -= 30;
+					if (dad.animation.curAnim.name == "singDOWN") camFollow.y += 30;
+				}
 			}
 		}
 		//if ((SONG.song.toLowerCase() == 'oh-my-god-hes-ballin') && (boyfriend.animation.curAnim.curFrame == 0))
@@ -5088,7 +5105,10 @@ var cameraTwn:FlxTween;
 			exploders.animation.play('explosion');
 			exploders.scale.set(0.01,0.01);
 			exploders.alpha = 0.01;
-			var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+			var evilTrail = null;
+			if (curStep >= 128 && evilTrail == null) {
+				evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+			}
 			if (curStep < 1151)
 				Estatic.alpha = (((2-health)/3)+0.3)/2;
 			else

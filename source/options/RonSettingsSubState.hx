@@ -30,6 +30,12 @@ class RonSettingsSubState extends BaseOptionsMenu
 		option.onChange = function() {
 			flixel.FlxCamera.filtersEnabled = important.ClientPrefs.shaders;
 		};
+		var option:Option = new Option('Directional Camera', //Name
+		'If checked, makes it so hitting notes moves the camera.', //Description
+		'directionalCamera', //Save data variable name
+		'bool', //Variable type
+		true); //Default value
+		addOption(option);
 
 		var option:Option = new Option('RGB Enabled', //Name
 			'Enables a RGB shader in some songs.', //Description

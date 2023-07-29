@@ -1,66 +1,66 @@
 {
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				-700,
 				-560
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 12,
-			"name": "awesome-ron idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "awesome-ron idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-695,
 				-560
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 8,
-			"name": "awesome-ron left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "awesome-ron left"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-700,
 				-560
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "awesome-ron down"
+			"fps": 12,
+			"name": "awesome-ron down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-674,
 				-550
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "awesome-ron up"
+			"fps": 12,
+			"name": "awesome-ron up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-700,
 				-555
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "awesome-ron right"
+			"fps": 12,
+			"name": "awesome-ron right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/newcharstest/awesome-ron",
 	"position": [
 		-940,
-		-400
+		-330
 	],
 	"healthicon": "awesome-ron",
 	"flip_x": false,
@@ -70,9 +70,10 @@
 		0
 	],
 	"camera_position": [
-		400,
-		480
+		1020,
+		700
 	],
 	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
 	"scale": 1
 }
