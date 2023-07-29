@@ -209,6 +209,7 @@ class PlayState extends MusicBeatState
 	var dadTimer:Int = 0;
 	var bfTimer:Int = 0;
 	var bfoldnote:Float = 0;
+	var bloodshedTrail = null;
 
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
@@ -1504,8 +1505,8 @@ class PlayState extends MusicBeatState
 		switch(curStage)
 		{
 			case 'hell':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				addBehindDad(evilTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(bloodshedTrail);
 			case 'ronHell':
 				//var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				//addBehindDad(evilTrail);
@@ -1670,8 +1671,10 @@ class PlayState extends MusicBeatState
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm' || SONG.song.toLowerCase().contains('classic'))
 		{
 			var songName = SONG.song;
-			if (songName == 'Holy-Shit-Dave-Fnf')
+			if (songName == 'Holy-Shit-Dave-Fnf') {
 				songName = 'Dave-Fnf';
+				boyfriend.y += 175;
+			}
 
 			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
 			kadeEngineWatermark = new FlxText(4, 0, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
@@ -1683,6 +1686,9 @@ class PlayState extends MusicBeatState
 				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)';
 			}
 			add(kadeEngineWatermark);
+		}
+		if (SONG.song.toLowerCase().contains("champion")) {
+			boyfriend.y -= 275;
 		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
@@ -3256,7 +3262,8 @@ class PlayState extends MusicBeatState
 				if (curSong == 'Triad')	defaultCamZoom = 0.75;
 				var offsetX:Int = 0;
 				var offsetY:Int = 0;
-				if (curSong == "slammed") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
+				if (curSong == "slammed" || curSong == "Official-Debate") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
+				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -200; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -3280,7 +3287,7 @@ class PlayState extends MusicBeatState
 				}
 				if (curSong.toLowerCase() == "awesome-ron") {
 					offsetY = -150;
-				} else if (curSong.toLowerCase() == "ayo") {
+				} else if (curSong.toLowerCase() == "ayo" || curSong.toLowerCase() == "pretty-wacky") {
 					offsetY = -200;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
@@ -5342,6 +5349,11 @@ var cameraTwn:FlxTween;
 			iconP2.visible = true;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
+			function resetTrail() {
+				remove(bloodshedTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(bloodshedTrail);
+			}
 			switch (curStep)
 			{
 				case 256:
@@ -5350,6 +5362,7 @@ var cameraTwn:FlxTween;
 					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
 					//dad.x = xx-80;
 					//dad.y = yy-200;
+					resetTrail();
 					defaultCamZoom += 0.1;
 					SCREWYOU = true;
 					botplayTxt.visible = true;
@@ -5368,6 +5381,7 @@ var cameraTwn:FlxTween;
 					var xx = dad.x;
 					var yy = dad.y;
 					triggerEventNote('Change Character', 'dad', 'hellron');
+					resetTrail();
 					//dad.x = xx+80;
 					//dad.y = yy+200;
 					defaultCamZoom -= 0.25;
@@ -5383,6 +5397,7 @@ var cameraTwn:FlxTween;
 					var xx = dad.x;
 					var yy = dad.y;
 					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
+					resetTrail();
 					//dad.x = xx-80;
 					//dad.y = yy-200;
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
@@ -5853,6 +5868,8 @@ var cameraTwn:FlxTween;
 			}
 			if (curStep == 518)
 			{
+				camHUD.angle = 0;
+				FlxG.camera.angle = 0;
 				windowmove = false;
 				cameramove = false;
 			}
