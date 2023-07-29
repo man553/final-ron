@@ -1776,7 +1776,9 @@ class PlayState extends MusicBeatState
 
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
-		addShader(FlxG.camera, "chromatic aberration");
+		if (ClientPrefs.chromaticAbberationEverywhere) {
+			addShader(FlxG.camera, "chromatic aberration");
+		}
 
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (!seenCutscene)
@@ -3270,6 +3272,7 @@ class PlayState extends MusicBeatState
 				var offsetX:Int = 0;
 				var offsetY:Int = 0;
 				if (curSong == "slammed" || curSong == "Official-Debate") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
+				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
 				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -200; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];

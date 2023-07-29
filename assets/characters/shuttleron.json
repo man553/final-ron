@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-10,
 				-190
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "shuttle ron down"
+			"fps": 24,
+			"name": "shuttle ron down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				-190
 			],
-			"loop": false,
-			"fps": 14,
 			"anim": "idle",
-			"indices": [],
-			"name": "shuttle ron idle"
+			"fps": 14,
+			"name": "shuttle ron idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-10,
 				-195
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "shuttle ron right"
+			"fps": 24,
+			"name": "shuttle ron right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				-190
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "shuttle ron left"
+			"fps": 24,
+			"name": "shuttle ron left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				10,
 				-170
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "singUP",
-			"loop": false,
-			"name": "shuttle ron up"
+			"fps": 24,
+			"name": "shuttle ron up",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
@@ -62,7 +62,7 @@
 		20,
 		10
 	],
-	"healthicon": "ronathan",
+	"healthicon": "ron",
 	"flip_x": false,
 	"healthbar_colors": [
 		127,
@@ -74,5 +74,6 @@
 		220
 	],
 	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
 	"scale": 1
 }

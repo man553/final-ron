@@ -34,6 +34,7 @@ class ClientPrefs {
 	public static var hitsoundVolume:Float = 0;
 	public static var pauseMusic:String = 'Tea Time';
 	public static var directionalCamera:Bool = true;
+	public static var chromaticAbberationEverywhere:Bool = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -140,6 +141,7 @@ class ClientPrefs {
 		FlxG.save.data.rgbenable = rgbenable;
 		FlxG.save.data.rgbintense = rgbintense;
 		FlxG.save.data.directionalCamera = directionalCamera;
+		FlxG.save.data.chromaticAbberationEverywhere = chromaticAbberationEverywhere;
 	
 		FlxG.save.flush();
 
@@ -257,6 +259,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.directionalCamera != null) {
 			directionalCamera = FlxG.save.data.directionalCamera;
+		}
+		if (FlxG.save.data.chromaticAbberationEverywhere != null) {
+			chromaticAbberationEverywhere = FlxG.save.data.chromaticAbberationEverywhere;
 		}
 		if(FlxG.save.data.gameplaySettings != null)
 		{
