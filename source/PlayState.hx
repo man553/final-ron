@@ -512,6 +512,7 @@ class PlayState extends MusicBeatState
 		bar2.y=720;
 		bar1.y=-560;
 
+		//well this rain stuff aint working
 		rain = new flixel.effects.particles.FlxEmitter(0,-1280, 1280);
 		rain.loadParticles(Paths.image("bgs/raindrop"));
 		rain.start(false, 0.01);
@@ -1299,13 +1300,13 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				ground.screenCenter(X);
 				add(ground);
-			case 'walmart':
+			/*case 'walmart':
 				var walmart = new FlxSprite().loadGraphic(Paths.image('bgs/wallmart'));
 				walmart.antialiasing = false;
 				walmart.setGraphicSize(Std.int(walmart.width * 1.2), Std.int(walmart.height * 1.2));
 				walmart.updateHitbox();
 				walmart.screenCenter(XY);
-				add(walmart);
+				add(walmart);*/
 			case 'verymad': // trojan virus
 				{
 					defaultCamZoom = 0.9;
@@ -1401,6 +1402,12 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				add(bg);
 			}
+			case 'cool':
+				var bg:BGSprite = new BGSprite('bgs/bg_less_concept', -600, -200, 0.9, 0.9);
+				add(bg);
+			case 'walmart':
+				var bg:BGSprite = new BGSprite('bgs/wallmart', -600, -450, 0.9, 0.9);
+				add(bg);
 			case 'normal':
 			{
 				defaultCamZoom = 0.9;
@@ -1810,7 +1817,7 @@ class PlayState extends MusicBeatState
 					fxtwo.alpha = 0.25;
 					fxtwo.scrollFactor.set(0, 0);
 					add(fxtwo);
-					startCountdown();
+					schoolIntro(doof);
 				case 'bloodshed-legacy-redux':
 					addShader(camGame, "fake CRT");
 					startCountdown();

@@ -1,70 +1,70 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 8,
-			"name": "ron left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "ron left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singDOWN",
-			"fps": 12,
-			"name": "ron down",
-			"indices": []
+			"indices": [],
+			"name": "ron down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singUP",
-			"fps": 12,
-			"name": "ron up",
-			"indices": []
+			"indices": [],
+			"name": "ron up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 12,
 			"anim": "singRIGHT",
-			"fps": 12,
-			"name": "ron right",
-			"indices": []
+			"indices": [],
+			"name": "ron right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "hey",
+			"loop": false,
 			"fps": 16,
-			"name": "ron death",
-			"indices": []
+			"anim": "hey",
+			"indices": [],
+			"name": "ron death"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 12,
-			"name": "ron idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "ron idle"
 		}
 	],
 	"no_antialiasing": true,
@@ -85,5 +85,6 @@
 		60
 	],
 	"sing_duration": 4,
+	"noteskin": "ron",
 	"scale": 2
 }

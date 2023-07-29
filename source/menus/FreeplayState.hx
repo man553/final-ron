@@ -486,9 +486,9 @@ class FreeplayState extends MusicBeatState
 		switch(songs[curSelected].songName.toLowerCase())
 		{
 			case 'bleeding':
-				camWhat.zoom = 1.2;
+				//camWhat.zoom = 1.2;
 			case 'bleeding-classic':
-				camWhat.zoom = 1.2;
+				//camWhat.zoom = 1.2;
 			default:
 				camWhat.zoom = 1;
 		}

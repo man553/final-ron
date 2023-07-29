@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "idle",
-			"fps": 24,
-			"name": "ron idle",
-			"indices": []
+			"indices": [],
+			"name": "ron idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"name": "ron left",
-			"indices": []
+			"indices": [],
+			"name": "ron left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"name": "ron down",
-			"indices": []
+			"indices": [],
+			"name": "ron down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"name": "ron up",
-			"indices": []
+			"indices": [],
+			"name": "ron up"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "ron right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "ron right"
 		}
 	],
 	"no_antialiasing": true,
@@ -74,5 +74,6 @@
 		190
 	],
 	"sing_duration": 4,
+	"noteskin": "ron",
 	"scale": 0.999999999999999
 }
