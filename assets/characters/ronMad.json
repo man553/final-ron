@@ -2,79 +2,79 @@
 	"noteskin": "ron",
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				104,
 				-18
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "ron angery left"
+			"fps": 24,
+			"name": "ron angery left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-59,
 				-11
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "ron angery down"
+			"fps": 24,
+			"name": "ron angery down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				45,
 				40
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "ron angery up"
+			"fps": 24,
+			"name": "ron angery up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-62,
 				10
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "ron angery right"
+			"fps": 24,
+			"name": "ron angery right",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-61,
 				-6
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle-alt",
-			"indices": [],
-			"name": "ron angery bridle alt"
+			"fps": 24,
+			"name": "ron angery bridle alt",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "hey",
-			"indices": [],
-			"name": "ron angery yes"
+			"fps": 24,
+			"name": "ron angery yes",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
+			"anim": "idle",
 			"name": "ron angery idle"
 		}
 	],
@@ -92,8 +92,8 @@
 		0
 	],
 	"camera_position": [
-		60,
-		-30
+		280,
+		120
 	],
 	"sing_duration": 4,
 	"scale": 1.2

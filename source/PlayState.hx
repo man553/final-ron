@@ -512,6 +512,7 @@ class PlayState extends MusicBeatState
 		bar2.y=720;
 		bar1.y=-560;
 
+		//well this rain stuff aint working
 		rain = new flixel.effects.particles.FlxEmitter(0,-1280, 1280);
 		rain.loadParticles(Paths.image("bgs/raindrop"));
 		rain.start(false, 0.01);
@@ -1809,7 +1810,7 @@ class PlayState extends MusicBeatState
 					fxtwo.alpha = 0.25;
 					fxtwo.scrollFactor.set(0, 0);
 					add(fxtwo);
-					startCountdown();
+					schoolIntro(doof);
 				case 'bloodshed-legacy-redux':
 					addShader(camGame, "fake CRT");
 					startCountdown();
