@@ -124,6 +124,7 @@ class MP4Handler
 
 
 		trace("Big, Big Chungus, Big Chungus!");
+		FlxG.autoPause = true;
 
 		new FlxTimer().start(0.3, function (tmr:FlxTimer)
 		{

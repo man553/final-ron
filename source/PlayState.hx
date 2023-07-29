@@ -344,6 +344,7 @@ class PlayState extends MusicBeatState
 		//preventing duplicate shaders
 		//MusicBeatState.allShaders = [];
 		Paths.clearStoredMemory();
+		FlxG.mouse.visible = false;
 
 		// for lua
 		instance = this;
@@ -514,13 +515,16 @@ class PlayState extends MusicBeatState
 		bar1.y=-560;
 
 		//well this rain stuff aint working
-		rain = new flixel.effects.particles.FlxEmitter(0,-1280, 1280);
-		rain.loadParticles(Paths.image("bgs/raindrop"));
-		rain.start(false, 0.01);
+		rain = new flixel.effects.particles.FlxEmitter(-1280,0, 1280);
+		rain.loadParticles(Paths.image("bgs/raindrop"),500);
 		rain.scale.set(0.5, 0.5, 1, 1);
-		rain.lifespan.set(100,100);
-		rain.velocity.set(0, 200,0,400);
+		rain.lifespan.set(0);
+		rain.velocity.set(-20, 400,20,800);
 		rain.keepScaleRatio = true;
+		//rain.cameras = [camHUD];
+		rain.launchMode = SQUARE;
+		rain.width = 1280*4;
+		rain.start(false, 0.01);
 		switch (curStage)
 		{ 	//all the stages here
 			case 'farm':
@@ -702,7 +706,7 @@ class PlayState extends MusicBeatState
 				fx.scrollFactor.set(0.1, 0.1);
 				add(fx);
 				fx.alpha = 0;
-				add(rain);
+				addShader(camGame,"rain");
 			case 'ronMad': //ron
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
 				sky.screenCenter();
@@ -1919,7 +1923,7 @@ class PlayState extends MusicBeatState
 				ClientPrefs.pauseMusic = "Breakfast"; // failsafe
 			}
 			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic), 'music');
-		}
+		};
 
 		#if desktop
 		// Updating Discord Rich Presence.
@@ -2794,6 +2798,15 @@ class PlayState extends MusicBeatState
 		var currentBeat:Float = (Conductor.songPosition / 1000)*(Conductor.bpm/60);
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed, 0, 1);
+		
+		//if (camFollowPos.velocity == null) {
+		//	var newFlxObject:FlxObject = new FlxObject(camFollowPos.x,camFollowPos.y,camFollowPos.width,camFollowPos.height);
+			//newFlxObject.scrollFactor.set(camFollowPos.scrollFactor.x,camFollowPos.scrollFactor.y);
+		//	trace(camFollowPos);
+		//	trace(newFlxObject);
+		//	camFollowPos = newFlxObject;
+		//}
+		
 		camFollowPos.acceleration.set(((camFollow.x - camFollowPos.x) - (camFollowPos.velocity.x * 0.8)) / lerpVal, ((camFollow.y - camFollowPos.y) - (camFollowPos.velocity.y * 0.8)) / lerpVal);
 		if(!inCutscene)
 		{
@@ -2807,7 +2820,6 @@ class PlayState extends MusicBeatState
 			*/
 			boyfriendIdleTime = 0;
 		}
-		
 		if (curSong == 'wasted')
 		{
 			if ((curStep >= 1104) && (curStep < 1408))
@@ -3837,7 +3849,7 @@ var cameraTwn:FlxTween;
 				FlxTransitionableState.skipNextTransOut = true;
 
 				prevCamFollow = camFollow;
-				prevCamFollowPos = camFollowPos;
+				prevCamFollowPos = new FlxObject(camFollowPos.x,camFollowPos.y,1,1);
 
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0] + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
