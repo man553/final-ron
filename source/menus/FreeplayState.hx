@@ -561,13 +561,7 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songName, curDifficulty);
 		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
-		
-		switch(songs[curSelected].songName.toLowerCase())
-		{
-			case 'trojan-virus':
-				shadering();
-				addShader(camWhat, "vhs");
-		}
+		shadering();
 
 		var bullShit:Int = 0;
 
@@ -671,6 +665,7 @@ class FreeplayState extends MusicBeatState
 	
 	private function shadering() {
 		clearShader(camWhat);
+		clearShader(camText);
 		addShader(camWhat, "chromatic aberration");
 		addShader(camWhat, "fake CRT");
 		addShader(camText, "fisheye");
@@ -679,7 +674,7 @@ class FreeplayState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		
-		if (mode == 'classic')
+		if (mode == 'classic' || songs[curSelected].songName.toLowerCase() == "trojan virus")
 			addShader(camWhat, "vhs");
 	}
 	

@@ -1531,6 +1531,7 @@ class PlayState extends MusicBeatState
 
 		strumLine = new FlxSprite(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, 50).makeGraphic(FlxG.width, 10);
 		if(ClientPrefs.downScroll) strumLine.y = FlxG.height - 150;
+		defaultStrumY = strumLine.y;
 		strumLine.scrollFactor.set();
 
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
@@ -3241,7 +3242,10 @@ class PlayState extends MusicBeatState
 		{
 			if (section != null && section) {
 				if (curSong == 'Triad')	defaultCamZoom = 0.75;
-				camFollow.set(boyfriend.getMidpoint().x, boyfriend.getMidpoint().y-75);
+				var offsetX:Int = 0;
+				var offsetY:Int = 0;
+				if (curSong == "slammed") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
+				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
 				if (boyfriend.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
@@ -3252,7 +3256,7 @@ class PlayState extends MusicBeatState
 			}
 			else {
 				if (curSong == 'Triad')	defaultCamZoom = 0.9;
-				camFollow.set(dad.x+dad.cameraPosition[0], dad.y+dad.cameraPosition[1]);
+				camFollow.set(dad.getMidpoint().x+dad.cameraPosition[0], dad.getMidpoint().y+dad.cameraPosition[1]);
 				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
 				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 30;
