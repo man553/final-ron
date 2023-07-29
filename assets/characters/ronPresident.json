@@ -1,0 +1,147 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-700,
+				-570
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "ron idle"
+		},
+		{
+			"offsets": [
+				-515,
+				-545
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "ron left"
+		},
+		{
+			"offsets": [
+				-646,
+				-650
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "ron down"
+		},
+		{
+			"offsets": [
+				-682,
+				-519
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "ron up"
+		},
+		{
+			"offsets": [
+				-770,
+				-605
+			],
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4
+			],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "ron right"
+		},
+		{
+			"offsets": [
+				-515,
+				-545
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFTmiss",
+			"loop": false,
+			"name": "ron left miss"
+		},
+		{
+			"offsets": [
+				-646,
+				-650
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWNmiss",
+			"loop": false,
+			"name": "ron down miss"
+		},
+		{
+			"offsets": [
+				-682,
+				-519
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUPmiss",
+			"loop": false,
+			"name": "ron up miss"
+		},
+		{
+			"offsets": [
+				-770,
+				-605
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHTmiss",
+			"loop": false,
+			"name": "ron right miss"
+		},
+	],
+	"no_antialiasing": true,
+	"image": "characters/newcharstest/americanRon",
+	"position": [
+		-940,
+		-400
+	],
+	"healthicon": "ron",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		246,
+		0
+	],
+	"camera_position": [
+		400,
+		480
+	],
+	"sing_duration": 4,
+	"noteskin": "ron",
+	"scale": 1
+}

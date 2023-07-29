@@ -3821,7 +3821,7 @@ var cameraTwn:FlxTween;
 				cancelMusicFadeTween();
 				if(FlxTransitionableState.skipNextTransIn)
 					CustomFadeTransition.nextCamera = null;
-				MusicBeatState.switchState(new menus.StoryMenuState());
+				MusicBeatState.switchState(new menus.DesktopMenu());
 
 				// if ()
 				if(!ClientPrefs.getGameplaySetting('practice', false) && !ClientPrefs.getGameplaySetting('botplay', false)) {

@@ -1,60 +1,59 @@
 {
-	"noteskin": "ronhell",
 	"animations": [
 		{
-			"loop": true,
 			"offsets": [
 				-85,
 				160
 			],
-			"anim": "idle",
+			"loop": true,
 			"fps": 24,
-			"name": "idle normal",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "idle normal"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				47,
 				260
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "up normal",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "up normal"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-10,
 				99
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "down normal",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down normal"
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-25,
 				154
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "left normal"
+			"fps": 24,
+			"name": "left normal",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				125,
 				164
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "right normal"
+			"fps": 24,
+			"name": "right normal",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -63,7 +62,7 @@
 		0,
 		350
 	],
-	"healthicon": "hellron",
+	"healthicon": "hellron-classic",
 	"flip_x": false,
 	"healthbar_colors": [
 		0,
@@ -75,5 +74,6 @@
 		20
 	],
 	"sing_duration": 4,
+	"noteskin": "ronhell",
 	"scale": 1.125
 }
