@@ -49,7 +49,8 @@ class PauseSubState extends MusicBeatSubstate
 							PlayState.instance.paused = true; // For lua
 							FlxG.sound.music.volume = 0;
 							PlayState.instance.vocals.volume = 0;
-							FlxTransitionableState.skipNextTransOut = true;
+							//but why though
+							//FlxTransitionableState.skipNextTransOut = true;
 							FlxG.resetState();
 							MusicBeatState.animatedShaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 						case "log off": 					
