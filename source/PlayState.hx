@@ -1690,6 +1690,10 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase().contains("champion")) {
 			boyfriend.y -= 275;
 		}
+		if (SONG.song.toLowerCase() == "official-debate") {
+			boyfriend.x -= 1250;
+			boyfriend.y -= 625;
+		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
@@ -1909,6 +1913,9 @@ class PlayState extends MusicBeatState
 		precacheList.set('missnote2', 'sound');
 		precacheList.set('missnote3', 'sound');
 		if(ClientPrefs.pauseMusic != 'None') {
+			if (ClientPrefs.pauseMusic != "Tea Time" && ClientPrefs.pauseMusic != "Breakfast") {
+				ClientPrefs.pauseMusic = "Breakfast"; // failsafe
+			}
 			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic), 'music');
 		}
 
@@ -3281,7 +3288,7 @@ class PlayState extends MusicBeatState
 				var baseY:Float = dad.y;
 				var offsetX:Int = 0;
 				var offsetY:Int = 0;
-				if (!curSong.toLowerCase().contains("classic")) {
+				if (!curSong.toLowerCase().contains("classic") && !(curSong.toLowerCase() == "bleeding" && dad.curCharacter == "hellron-drippin")) {
 					baseX = dad.getMidpoint().x;
 					baseY = dad.getMidpoint().y;
 				}
@@ -3289,6 +3296,9 @@ class PlayState extends MusicBeatState
 					offsetY = -150;
 				} else if (curSong.toLowerCase() == "ayo" || curSong.toLowerCase() == "pretty-wacky") {
 					offsetY = -200;
+				} else if (curSong.toLowerCase().contains("redux") || curSong.toLowerCase() == "bijuu") {
+					offsetY = -250;
+					offsetX = -225;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				
@@ -3384,6 +3394,11 @@ class PlayState extends MusicBeatState
 	public function triggerEventNote(eventName:String, value1:String, value2:String) {
 		switch(eventName) {
 			case "Bitto's zoom event":
+				if (value1 != "regular" && value1 != "custom" && value1 != "") {
+					// bloodshed legacy redux zooms. they r fucked up for some reason
+					value2 = value1.split(",")[1] + "," + value1.split(",")[2] + "," + value2;
+					value1 = "custom";
+				}
 				defaultCamZoom = Std.parseFloat(value2);
 				FlxTween.tween(camGame, {zoom: Std.parseFloat(value2.split(',')[0])}, Std.parseFloat(value2.split(',')[1]), {ease:
 				switch(value2.split(',')[2]) {
