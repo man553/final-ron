@@ -17,7 +17,7 @@ import flixel.util.FlxStringUtil;
 
 class PauseSubState extends MusicBeatSubstate
 {
-	var optionArray = ["resume song", "restart song", "log off", "shut down"];
+	var optionArray = ["resume song", "restart song", "shut down", "log off"];
 	var optionButtons = [];
 	var curSelected = 0;
 	override function create() {

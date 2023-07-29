@@ -50,13 +50,13 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 	var retroes:Map<String, FlxSprite> = new Map<String, FlxSprite>();
 	public function new(dialogueJson:Dynamic, callback:Void->Void) {
 		super();
-		FlxG.sound.list.add(music);
 		finishCallback = callback;
 		if (dialogueJson == null)
 		{
 			dialogueWorks = false;
 			return;
 		}
+		FlxG.sound.list.add(music);
 		backdropThingy = new flixel.addons.display.FlxBackdrop(Paths.image("rondialogue/barsLoopable"), X);
 		bg = new FlxSprite().loadGraphic(Paths.image("rondialogue/bg"));
 		add(bg);

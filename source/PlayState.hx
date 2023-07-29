@@ -3263,7 +3263,13 @@ class PlayState extends MusicBeatState
 			}
 			else {
 				if (curSong == 'Triad')	defaultCamZoom = 0.9;
-				camFollow.set(dad.getMidpoint().x+dad.cameraPosition[0], dad.getMidpoint().y+dad.cameraPosition[1]);
+				var baseX:Float = dad.x;
+				var baseY:Float = dad.y;
+				if (!curSong.toLowerCase().contains("classic")) {
+					baseX = dad.getMidpoint().x;
+					baseY = dad.getMidpoint().y;
+				}
+				camFollow.set(baseX+dad.cameraPosition[0], baseY+dad.cameraPosition[1]);
 				if (dad.animation.curAnim.name == "singLEFT") camFollow.x -= 30;
 				if (dad.animation.curAnim.name == "singRIGHT") camFollow.x += 30;
 				if (dad.animation.curAnim.name == "singUP") camFollow.y -= 30;
@@ -5559,8 +5565,8 @@ var cameraTwn:FlxTween;
 			{
 				case 384:
 					FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
-					FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
-					FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					//FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					//FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					camHUD.shake(0.002);
 					defaultCamZoom += 0.2;
 				case 640:
