@@ -1403,10 +1403,10 @@ class PlayState extends MusicBeatState
 				add(bg);
 			}
 			case 'cool':
-				var bg:BGSprite = new BGSprite('bg_less_concept', -600, -200, 0.9, 0.9);
+				var bg:BGSprite = new BGSprite('bgs/bg_less_concept', -600, -200, 0.9, 0.9);
 				add(bg);
 			case 'walmart':
-				var bg:BGSprite = new BGSprite('wallmart', -600, -450, 0.9, 0.9);
+				var bg:BGSprite = new BGSprite('bgs/wallmart', -600, -450, 0.9, 0.9);
 				add(bg);
 			case 'normal':
 			{
