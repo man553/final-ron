@@ -1300,13 +1300,13 @@ class PlayState extends MusicBeatState
 				ground.updateHitbox();
 				ground.screenCenter(X);
 				add(ground);
-			case 'walmart':
+			/*case 'walmart':
 				var walmart = new FlxSprite().loadGraphic(Paths.image('bgs/wallmart'));
 				walmart.antialiasing = false;
 				walmart.setGraphicSize(Std.int(walmart.width * 1.2), Std.int(walmart.height * 1.2));
 				walmart.updateHitbox();
 				walmart.screenCenter(XY);
-				add(walmart);
+				add(walmart);*/
 			case 'verymad': // trojan virus
 				{
 					defaultCamZoom = 0.9;
@@ -1402,6 +1402,12 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				add(bg);
 			}
+			case 'cool':
+				var bg:BGSprite = new BGSprite('bg_less_concept', -600, -200, 0.9, 0.9);
+				add(bg);
+			case 'walmart':
+				var bg:BGSprite = new BGSprite('wallmart', -600, -450, 0.9, 0.9);
+				add(bg);
 			case 'normal':
 			{
 				defaultCamZoom = 0.9;
