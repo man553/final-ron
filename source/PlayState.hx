@@ -1888,7 +1888,7 @@ class PlayState extends MusicBeatState
 		{
 			add(fx);
 			add(Estatic);
-			FlxTween.tween(Estatic, {"scale.x":0.8,"scale.y":0.8}, Conductor.crochet / 1000, {ease: FlxEase.quadInOut, type: PINGPONG});
+			FlxTween.tween(Estatic, {"scale.x":1.2,"scale.y":1.2}, Conductor.crochet / 1000, {ease: FlxEase.quadInOut, type: PINGPONG});
 			var chromeOffset = (ClientPrefs.rgbintense/350);
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -5348,8 +5348,8 @@ var cameraTwn:FlxTween;
 					var xx = dad.x;
 					var yy = dad.y;
 					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
-					dad.x = xx-80;
-					dad.y = yy-200;
+					//dad.x = xx-80;
+					//dad.y = yy-200;
 					defaultCamZoom += 0.1;
 					SCREWYOU = true;
 					botplayTxt.visible = true;
@@ -5368,8 +5368,8 @@ var cameraTwn:FlxTween;
 					var xx = dad.x;
 					var yy = dad.y;
 					triggerEventNote('Change Character', 'dad', 'hellron');
-					dad.x = xx+80;
-					dad.y = yy+200;
+					//dad.x = xx+80;
+					//dad.y = yy+200;
 					defaultCamZoom -= 0.25;
 				case 664:
 					defaultCamZoom += 0.3;
@@ -5383,8 +5383,8 @@ var cameraTwn:FlxTween;
 					var xx = dad.x;
 					var yy = dad.y;
 					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
-					dad.x = xx-80;
-					dad.y = yy-200;
+					//dad.x = xx-80;
+					//dad.y = yy-200;
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 					defaultCamZoom += 0.1;
 				case 832:
