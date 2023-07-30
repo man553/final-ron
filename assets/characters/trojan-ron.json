@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				190,
+				30
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				150,
+				-210
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				70,
+				130
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				10,
+				-10
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/myrage",
+	"position": [
+		-110,
+		150
+	],
+	"healthicon": "ronpower",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		215,
+		0
+	],
+	"camera_position": [
+		-110,
+		20
+	],
+	"sing_duration": 6.1,
+	"noteskin": "ron",
+	"scale": 1
+}

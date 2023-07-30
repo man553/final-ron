@@ -1697,7 +1697,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
-		healthBarBG.scale.set(1,.75);
+		healthBarBG.scale.set(1,.85);
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 		healthBarBG2 = new AttachedSprite('healthBarintheworks');
@@ -1707,7 +1707,7 @@ class PlayState extends MusicBeatState
 		healthBarBG2.visible = !ClientPrefs.hideHud;
 		healthBarBG2.xAdd = -4;
 		healthBarBG2.yAdd = -4;
-		healthBarBG2.scale.set(1,.75);
+		healthBarBG2.scale.set(1,.85);
 		add(healthBarBG2);
 		if(ClientPrefs.downScroll) healthBarBG2.y = 0.11 * FlxG.height;
 		
@@ -1762,7 +1762,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36+7, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
