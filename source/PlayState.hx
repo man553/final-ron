@@ -164,6 +164,7 @@ class PlayState extends MusicBeatState
 	public var combo:Int = 0;
 
 	private var healthBarBG:AttachedSprite;
+	private var healthBarBG2:AttachedSprite;
 	public var healthBar:FlxBar;
 	var songPercent:Float = 0;
 
@@ -706,7 +707,7 @@ class PlayState extends MusicBeatState
 				fx.scrollFactor.set(0.1, 0.1);
 				add(fx);
 				fx.alpha = 0;
-				addShader(camGame,"rain");
+				addShader(FlxG.camera,"rain");
 			case 'ronMad': //ron
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
 				sky.screenCenter();
@@ -1678,7 +1679,7 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection(0);
 
-		healthBarBG = new AttachedSprite('healthBar');
+		healthBarBG = new AttachedSprite('healthBarintheworks');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
@@ -1687,15 +1688,26 @@ class PlayState extends MusicBeatState
 		healthBarBG.yAdd = -4;
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
+		healthBarBG2 = new AttachedSprite('healthBarintheworks');
+		healthBarBG2.y = FlxG.height * 0.89;
+		healthBarBG2.screenCenter(X);
+		healthBarBG2.scrollFactor.set();
+		healthBarBG2.visible = !ClientPrefs.hideHud;
+		healthBarBG2.xAdd = -4;
+		healthBarBG2.yAdd = -4;
+		add(healthBarBG2);
+		if(ClientPrefs.downScroll) healthBarBG2.y = 0.11 * FlxG.height;
+		
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		// healthBar
-		healthBar.visible = !ClientPrefs.hideHud;
+		healthBar.visible = false;
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
 		add(healthBar);
-		healthBarBG.sprTracker = healthBar;
+		healthBarBG.sprTracker = healthBar; // Compatability
+		healthBarBG2.sprTracker = healthBar;
 
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm' || SONG.song.toLowerCase().contains('classic'))
 		{
@@ -1737,7 +1749,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36+7, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -1788,6 +1800,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		healthBarBG2.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -2003,6 +2016,8 @@ class PlayState extends MusicBeatState
 			FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]));
 
 		healthBar.updateBar();
+		healthBarBG.color = FlxColor.fromRGB(boyfriend.healthColorArray[0], boyfriend.healthColorArray[1], boyfriend.healthColorArray[2]);
+		healthBarBG2.color = FlxColor.fromRGB(dad.healthColorArray[0], dad.healthColorArray[1], dad.healthColorArray[2]);
 	}
 
 	public function addCharacterToList(newCharacter:String, type:Int) {
@@ -3052,6 +3067,12 @@ class PlayState extends MusicBeatState
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		healthBarBG2.alpha = healthBarBG.alpha;
+		// reminder: healthbarbg2 is dad and healthbarbg is bf
+		healthBarBG.clipRect = new FlxRect((2-health)/2*healthBarBG.width,0,health/2*healthBarBG.width,healthBarBG.height);
+		healthBarBG2.clipRect = new FlxRect(0,0,(2-health)/2*healthBarBG2.width,healthBarBG2.height);
+		healthBarBG.clipRect = healthBarBG.clipRect;
+		healthBarBG2.clipRect = healthBarBG2.clipRect; // why do i need to reassign it
 
 		if (health > 2)
 			health = 2;
@@ -3334,7 +3355,7 @@ class PlayState extends MusicBeatState
 				}
 				if (curSong.toLowerCase() == "awesome-ron") {
 					offsetY = -150;
-				} else if (curSong.toLowerCase() == "ayo" || curSong.toLowerCase() == "pretty-wacky") {
+				} else if (curSong.toLowerCase() == "ayo" || curSong.toLowerCase() == "pretty-wacky" || (curSong.toLowerCase() == "wasted" && cameraSpeed == 1 && wastedGrp.visible && defaultCamZoom == .9)) {
 					offsetY = -200;
 				} else if (curSong.toLowerCase().contains("redux") || curSong.toLowerCase() == "bijuu") {
 					offsetY = -250;
