@@ -3,19 +3,22 @@
 		{
 			"offsets": [
 				-700,
-				-570
+				-490
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"indices": [],
 			"name": "ron idle"
 		},
 		{
 			"offsets": [
 				-515,
-				-545
+				-465
 			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
 			"indices": [
 				0,
 				1,
@@ -23,16 +26,16 @@
 				3,
 				4
 			],
-			"fps": 24,
-			"anim": "singLEFT",
-			"loop": false,
 			"name": "ron left"
 		},
 		{
 			"offsets": [
 				-646,
-				-650
+				-570
 			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
 			"indices": [
 				0,
 				1,
@@ -40,16 +43,16 @@
 				3,
 				4
 			],
-			"fps": 24,
-			"anim": "singDOWN",
-			"loop": false,
 			"name": "ron down"
 		},
 		{
 			"offsets": [
 				-682,
-				-519
+				-439
 			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
 			"indices": [
 				0,
 				1,
@@ -57,16 +60,16 @@
 				3,
 				4
 			],
-			"fps": 24,
-			"anim": "singUP",
-			"loop": false,
 			"name": "ron up"
 		},
 		{
 			"offsets": [
 				-770,
-				-605
+				-535
 			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
 			"indices": [
 				0,
 				1,
@@ -74,74 +77,71 @@
 				3,
 				4
 			],
-			"fps": 24,
-			"anim": "singRIGHT",
-			"loop": false,
 			"name": "ron right"
 		},
 		{
 			"offsets": [
 				-515,
-				-545
+				-465
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "ron left miss"
 		},
 		{
 			"offsets": [
 				-646,
-				-650
+				-570
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singDOWNmiss",
-			"loop": false,
+			"indices": [],
 			"name": "ron down miss"
 		},
 		{
 			"offsets": [
 				-682,
-				-519
+				-439
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singUPmiss",
-			"loop": false,
+			"indices": [],
 			"name": "ron up miss"
 		},
 		{
 			"offsets": [
 				-770,
-				-605
+				-525
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"loop": false,
+			"indices": [],
 			"name": "ron right miss"
-		},
+		}
 	],
-	"no_antialiasing": true,
+	"no_antialiasing": false,
 	"image": "characters/newcharstest/americanRon",
 	"position": [
 		-940,
-		-400
+		-620
 	],
 	"healthicon": "ron",
-	"flip_x": false,
+	"flip_x": true,
 	"healthbar_colors": [
 		255,
 		246,
 		0
 	],
 	"camera_position": [
-		400,
-		480
+		-740,
+		-360
 	],
 	"sing_duration": 4,
 	"noteskin": "ron",
-	"scale": 1
+	"scale": 1.5
 }

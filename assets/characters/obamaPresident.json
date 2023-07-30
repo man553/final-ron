@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "obamaidle"
+		},
+		{
+			"offsets": [
+				320,
+				90
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "obamaleft"
+		},
+		{
+			"offsets": [
+				450,
+				-230
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "obamadown"
+		},
+		{
+			"offsets": [
+				710,
+				430
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "obamaup"
+		},
+		{
+			"offsets": [
+				-50,
+				40
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "obamaright"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/americanObamawaitthatsnotright",
+	"position": [
+		800,
+		90
+	],
+	"healthicon": "obama",
+	"flip_x": false,
+	"healthbar_colors": [
+		175,
+		120,
+		80
+	],
+	"camera_position": [
+		-610,
+		-440
+	],
+	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
+	"scale": 1.2
+}
