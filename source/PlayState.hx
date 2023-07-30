@@ -1762,7 +1762,7 @@ class PlayState extends MusicBeatState
 		add(iconP2);
 		reloadHealthBarColors();
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36+5, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -5711,7 +5711,7 @@ var cameraTwn:FlxTween;
 			switch (curStep)
 			{
 				case 384:
-					FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					//FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					camHUD.shake(0.002);
