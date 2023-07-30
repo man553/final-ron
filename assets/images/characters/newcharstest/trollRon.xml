@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="trollRon.png">
+<SubTexture name="trollRon idle0000" x="919" y="0" width="189" height="319" frameX="-103" frameY="-52" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon idle0001" x="733" y="0" width="186" height="322" frameX="-104" frameY="-49" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon idle0002" x="431" y="337" width="184" height="324" frameX="-105" frameY="-47" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon idle0003" x="247" y="337" width="184" height="326" frameX="-105" frameY="-45" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon right0000" x="0" y="986" width="244" height="313" frameX="-91" frameY="-59" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon right0001" x="1108" y="632" width="246" height="314" frameX="-86" frameY="-57" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon right0002" x="672" y="669" width="247" height="316" frameX="-84" frameY="-55" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon missr0000" x="1108" y="0" width="247" height="316" frameX="-84" frameY="-55" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon down0000" x="1038" y="986" width="270" height="257" frameX="-64" frameY="-118" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon down0001" x="772" y="986" width="266" height="260" frameX="-66" frameY="-115" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon down0002" x="244" y="986" width="264" height="261" frameX="-67" frameY="-114" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon missd0000" x="508" y="986" width="264" height="261" frameX="-67" frameY="-114" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon up0000" x="0" y="0" width="241" height="337" frameX="-70" frameY="-33" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon up0001" x="241" y="0" width="245" height="334" frameX="-68" frameY="-36" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon up0002" x="486" y="0" width="247" height="332" frameX="-67" frameY="-38" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon missu0000" x="0" y="337" width="247" height="332" frameX="-67" frameY="-38" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon left0000" x="1108" y="316" width="224" height="316" frameX="-54" frameY="-55" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon left0001" x="0" y="669" width="224" height="317" frameX="-58" frameY="-54" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon left0002" x="224" y="669" width="224" height="317" frameX="-61" frameY="-54" frameWidth="400" frameHeight="400" />
+<SubTexture name="trollRon missl0000" x="448" y="669" width="224" height="317" frameX="-61" frameY="-54" frameWidth="400" frameHeight="400" />
+</TextureAtlas>

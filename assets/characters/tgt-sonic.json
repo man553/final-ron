@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-700,
+				-560
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "tgt-sonic idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-699,
+				-560
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "tgt-sonic left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-702,
+				-564
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "tgt-sonic down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-700,
+				-560
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "tgt-sonic up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-699,
+				-565
+			],
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "tgt-sonic right",
+			"indices": []
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/newcharstest/tgt-sonic",
+	"position": [
+		-900,
+		-420
+	],
+	"healthicon": "tgt-sonic",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		162,
+		232
+	],
+	"camera_position": [
+		830,
+		660
+	],
+	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
+	"scale": 1.1
+}
