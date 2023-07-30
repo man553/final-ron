@@ -127,7 +127,11 @@ class StrumNote extends FlxSprite
 		playAnim('static');
 		x += Note.swagWidth * noteData;
 		x += 50;
-		x += ((FlxG.width / 2) * player);
+		var fakePlayer:Int = player;
+		if (PlayState.SONG.song == "Official-Debate" && !ClientPrefs.middleScroll) {
+			fakePlayer = fakePlayer == 1 ? 0 : 1;
+		}
+		x += ((FlxG.width / 2) * fakePlayer);
 		ID = noteData;
 	}
 

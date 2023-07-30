@@ -1761,8 +1761,18 @@ class PlayState extends MusicBeatState
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP2);
 		reloadHealthBarColors();
+		
+		if (curSong == "Official-Debate") {
+			iconP1.changeIcon(dad.healthIcon);
+			iconP2.changeIcon(boyfriend.healthIcon);
+			
+			var tempDadColors = dad.healthColorArray.copy();
+			dad.healthColorArray = boyfriend.healthColorArray;
+			boyfriend.healthColorArray = tempDadColors;
+			reloadHealthBarColors();
+		}
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36+5, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36+6, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -3077,25 +3087,34 @@ class PlayState extends MusicBeatState
 		iconP2.updateHitbox();
 
 		var iconOffset:Int = 26;
-
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+		
+		var fakeHealth2:Float = healthBar.percent;
+		if (curSong=="Official-Debate") {
+			fakeHealth2 = 100-fakeHealth2;
+		}
+		
+		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(fakeHealth2, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(fakeHealth2, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 		healthBarBG2.alpha = healthBarBG.alpha;
 		// reminder: healthbarbg2 is dad and healthbarbg is bf
-		healthBarBG.clipRect = new FlxRect((2-health)/2*healthBarBG.width,0,health/2*healthBarBG.width,healthBarBG.height);
-		healthBarBG2.clipRect = new FlxRect(0,0,(2-health)/2*healthBarBG2.width,healthBarBG2.height);
+		var fakeHealth:Float = health;
+		if (curSong == "Official-Debate") {
+			fakeHealth = 2-health;
+		}
+		healthBarBG.clipRect = new FlxRect((2-fakeHealth)/2*healthBarBG.width,0,fakeHealth/2*healthBarBG.width,healthBarBG.height);
+		healthBarBG2.clipRect = new FlxRect(0,0,(2-fakeHealth)/2*healthBarBG2.width,healthBarBG2.height);
 		healthBarBG.clipRect = healthBarBG.clipRect;
 		healthBarBG2.clipRect = healthBarBG2.clipRect; // why do i need to reassign it
 
 		if (health > 2)
 			health = 2;
 
-		if (healthBar.percent < 20)
+		if (fakeHealth2 < 20)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
 			iconP1.animation.curAnim.curFrame = 0;
 
-		if (healthBar.percent > 80)
+		if (fakeHealth2 > 80)
 			iconP2.animation.curAnim.curFrame = 1;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
@@ -3338,11 +3357,15 @@ class PlayState extends MusicBeatState
 		var section = (SONG.notes[Math.floor(curStep / 16)] != null ? SONG.notes[Math.floor(curStep / 16)].mustHitSection : null);
 		if (!isCameraOnForcedPos)
 		{
+			if (curSong == "Official-Debate") {
+				camFollow.set(boyfriend.getMidpoint().x+850, boyfriend.getMidpoint().y+100);
+				return;
+			}
 			if (section != null && section) {
 				if (curSong == 'Triad')	defaultCamZoom = 0.75;
 				var offsetX:Int = 0;
 				var offsetY:Int = 0;
-				if (curSong == "slammed" || curSong == "Official-Debate") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
+				if (curSong == "slammed") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
 				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
 				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -200; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
