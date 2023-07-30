@@ -98,7 +98,7 @@ class StoryMenuState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Story Mode!", null);
+		DiscordClient.changePresence("In the Menus", null);
 		#end
 
 		var num:Int = 0;
@@ -292,6 +292,7 @@ class StoryMenuState extends MusicBeatState
 	{
 		if (!weekIsLocked(loadedWeeks[curWeek].fileName))
 		{
+			if (curWeek == 2) { return; }
 			if (stopspamming == false)
 			{
 				FlxG.sound.play(Paths.sound('confirmMenu'));
@@ -323,6 +324,12 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = important.Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 			PlayState.campaignScore = 0;
 			PlayState.campaignMisses = 0;
+			
+			trace(PlayState.storyPlaylist);
+			trace(PlayState.storyDifficulty);
+			trace(PlayState.storyPlaylist[0].toLowerCase() + diffic);
+			trace(PlayState.storyPlaylist[0].toLowerCase());
+			trace(CoolUtil.difficulties);
 			switch (curWeek)
 			{
 				case 0:
