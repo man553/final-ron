@@ -40,6 +40,7 @@ class FreeplayState extends MusicBeatState
 
 	var scoreBG:FlxSprite;
 	var portrait:FlxSprite;
+	var portraitOverlay:FlxSprite;
 	var scoreText:FlxText;
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
@@ -152,6 +153,14 @@ class FreeplayState extends MusicBeatState
 		bar.screenCenter();
 		add(bar);
 		bar.x += 30;
+		
+		portraitOverlay = new FlxSprite().loadGraphic(Paths.image('freeplayportraits/ron'));
+		portraitOverlay.scale.set(0.5,0.5);
+		portraitOverlay.updateHitbox();
+		portraitOverlay.antialiasing = ClientPrefs.globalAntialiasing;
+		add(portraitOverlay);
+		portraitOverlay.screenCenter(XY);
+		portraitOverlay.visible = false;
 		
 		var coolemitter:FlxEmitter = new FlxEmitter();
 		coolemitter.width = FlxG.width*1.5;
@@ -330,7 +339,7 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
-		
+		portraitOverlay.y = portrait.y;
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -466,10 +475,18 @@ class FreeplayState extends MusicBeatState
 				colorTween.cancel();
 			}
 			
-			if (FlxG.keys.pressed.SHIFT){
-				LoadingState.loadAndSwitchState(new ChartingState());
-			}else{
-				LoadingState.loadAndSwitchState(new PlayState());
+			if ((songLowercase == 'trojan-virus') && !(FlxG.keys.pressed.ALT))
+			{
+				var video:misc.MP4Handler = new misc.MP4Handler();
+				video.playMP4(Paths.videoRon('trojan-virus'), new PlayState(), false, false, false);
+			}
+			else
+				{
+				if (FlxG.keys.pressed.SHIFT){
+					LoadingState.loadAndSwitchState(new ChartingState());
+				}else{
+					LoadingState.loadAndSwitchState(new PlayState());
+				}
 			}
 
 			FlxG.sound.music.volume = 0;
@@ -661,6 +678,17 @@ class FreeplayState extends MusicBeatState
 		portrait.scale.set(0.5,0.5);
 		portrait.updateHitbox();
 		portrait.screenCenter(XY);
+		
+		if ((songs[curSelected].songName.toLowerCase() == 'slammed') || (songs[curSelected].songName.toLowerCase() == 'oh-my-god-hes-ballin'))
+		{
+			portraitOverlay.loadGraphic(Paths.image('freeplayportraits/'+songs[curSelected].songName.toLowerCase()+'-over'));
+			portraitOverlay.scale.set(0.5,0.5);
+			portraitOverlay.updateHitbox();
+			portraitOverlay.screenCenter(XY);
+			portraitOverlay.visible = true;
+		}
+		else
+			portraitOverlay.visible = false;
 	}
 	
 	private function shadering() {

@@ -41,12 +41,6 @@ class MP4Handler
 	public function playMP4(path:String, callback:FlxState, ?outputTo:FlxSprite = null, ?repeat:Bool = false, ?isWindow:Bool = false, ?isFullscreen:Bool = false):Void
 	{
 		// we dont wanna see the game anymore do we
-		var blackeffect:FlxSprite = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
-		blackeffect.updateHitbox();
-		blackeffect.antialiasing = true;
-		blackeffect.screenCenter(XY);
-		blackeffect.scrollFactor.set();
-		blackeffect.alpha = 1;
 		#if html5
 		FlxG.autoPause = false;
 

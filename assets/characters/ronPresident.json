@@ -1,127 +1,160 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-700,
 				-490
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "ron idle"
+			"fps": 24,
+			"name": "ron idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-515,
 				-465
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
+			"fps": 24,
+			"name": "ron left",
 			"indices": [
 				0,
 				1,
 				2,
 				3,
 				4
-			],
-			"name": "ron left"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-646,
 				-570
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
+			"fps": 24,
+			"name": "ron down",
 			"indices": [
 				0,
 				1,
 				2,
 				3,
 				4
-			],
-			"name": "ron down"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-682,
 				-439
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
+			"fps": 24,
+			"name": "ron up",
 			"indices": [
 				0,
 				1,
 				2,
 				3,
 				4
-			],
-			"name": "ron up"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-770,
 				-535
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "ron right",
 			"indices": [
 				0,
 				1,
 				2,
 				3,
 				4
-			],
-			"name": "ron right"
+			]
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-515,
 				-465
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "ron left miss"
+			"fps": 24,
+			"name": "ron left miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-646,
 				-570
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "ron down miss"
+			"fps": 24,
+			"name": "ron down miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-682,
 				-439
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "ron up miss"
+			"fps": 24,
+			"name": "ron up miss",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-770,
 				-525
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"name": "ron right miss",
+			"indices": []
+		},
+		{
+			"offsets": [
+				-684,
+				-493
+			],
 			"indices": [],
-			"name": "ron right miss"
+			"fps": 24,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "ron death"
+		},
+		{
+			"offsets": [
+				-685,
+				-980
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "deathLoop",
+			"loop": false,
+			"name": "ron dead"
+		},
+		{
+			"offsets": [
+				-687,
+				-493
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "deathConfirm",
+			"loop": false,
+			"name": "ron alive"
 		}
 	],
 	"no_antialiasing": false,

@@ -2977,6 +2977,14 @@ class PlayState extends MusicBeatState
 			*/
 			boyfriendIdleTime = 0;
 		}
+		
+		if (SONG.song.toLowerCase() == "official-debate") {
+			if (curStep == 1176)
+			{
+				FlxG.camera.flash(FlxColor.WHITE, 1);
+				triggerEventNote('Change Scroll Speed', '1.2', '0.01');
+			}
+		}
 		if (curSong == 'wasted')
 		{
 			if ((curStep >= 1104) && (curStep < 1408))
@@ -5092,7 +5100,7 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
-		if (curSong == 'oh-my-god-hes-ballin') 
+		/*if (curSong == 'oh-my-god-hes-ballin') 
 		{
 			switch (curStep) {
 				case 0:
@@ -5105,7 +5113,7 @@ var cameraTwn:FlxTween;
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					addShader(camGame, "bloom");
 			}
-		}
+		}*/
 		
 		if (curSong == 'Haemorrhage')
 		{
@@ -5859,6 +5867,11 @@ var cameraTwn:FlxTween;
 					moveing = true;
 					Shaders["glitchsmh"].shader.data.on.value = [1.];
 					defaultCamZoom = 0.88;
+				case 1160 | 1164 | 1165 | 1166 | 1167:
+					//imagine just getting this from the vs bob github with the exact values that would be a cool reference
+					Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -25, 25),Lib.application.window.y + FlxG.random.int( -16, 16));
+					
+					Application.current.window.alert("hi", "um");
 				case 1424:
 					moveing = false;
 					for (i in 0...8)
@@ -5867,11 +5880,15 @@ var cameraTwn:FlxTween;
 						member.x = defaultStrumX[i];
 					}
 					Shaders["glitchsmh"].shader.data.on.value = [0.];
+					FlxTween.tween(camHUD, {alpha: 0}, 2, {ease: FlxEase.circInOut});
 				case 1490:
 					defaultCamZoom = 1;
 					//stupid
-					dad.playAnim('hey');
+					dad.playAnim('hey',true);
+					dad.specialAnim = true;
+					dad.heyTimer = 9999;
 				case 1552:
+					camHUD.alpha = 1;
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
 					budjet.scrollFactor.set();

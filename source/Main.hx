@@ -11,6 +11,15 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
+import openfl.events.UncaughtErrorEvent;
+import haxe.CallStack;
+import sys.FileSystem;
+import sys.io.File;
+import sys.io.Process;
+import lime.app.Application;
+#if desktop
+import important.Discord.DiscordClient;
+#end
 
 class Main extends Sprite
 {
@@ -29,6 +38,21 @@ class Main extends Sprite
 	{
 		Lib.current.addChild(new Main());
 	}
+	
+    function onCrash(e:UncaughtErrorEvent):Void
+    {
+        var errMsg:String = "";
+        var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+
+        errMsg += "\nwhoopsies. trojan virus detected! " + "\n";
+
+        Sys.println(errMsg);
+        Sys.println("u should probably send this to the vs ron discord server or soemthing\nhttps://discord.gg/Rg7XUXE4C8");
+
+        Application.current.window.alert(errMsg, "um");
+        DiscordClient.shutdown();
+        Sys.exit(1);
+    }
 
 	public function new()
 	{
