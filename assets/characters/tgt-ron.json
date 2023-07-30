@@ -1,48 +1,92 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
+			"anim": "idle",
+			"fps": 12,
+			"name": "trollRon idle",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 12,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "tgt-sonic left"
+			"loop": false,
+			"name": "trollRon left"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singLEFTmiss",
 			"loop": false,
+			"name": "trollRon missl"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 12,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "tgt-sonic down"
+			"loop": false,
+			"name": "trollRon down"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singDOWNmiss",
 			"loop": false,
+			"name": "trollRon missd"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 12,
 			"anim": "singUP",
-			"indices": [],
-			"name": "tgt-sonic up"
+			"loop": false,
+			"name": "trollRon up"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
+			"indices": [],
+			"fps": 12,
+			"anim": "singUPmiss",
 			"loop": false,
+			"name": "trollRon missu"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
 			"fps": 12,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "tgt-sonic right"
+			"loop": false,
+			"name": "trollRon right"
 		},
 		{
 			"offsets": [
@@ -51,9 +95,9 @@
 			],
 			"indices": [],
 			"fps": 12,
-			"anim": "idle",
+			"anim": "singRIGHTmiss",
 			"loop": false,
-			"name": "trollRon idle"
+			"name": "trollRon missr"
 		}
 	],
 	"no_antialiasing": true,

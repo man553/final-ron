@@ -70,10 +70,10 @@
 		232
 	],
 	"camera_position": [
-		830,
-		660
+		730,
+		480
 	],
 	"sing_duration": 4,
-	"noteskin": "NOTE_assets",
+	"noteskin": "NOTEold_assets",
 	"scale": 1.1
 }
