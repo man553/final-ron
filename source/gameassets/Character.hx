@@ -326,6 +326,10 @@ class Character extends FlxSprite
 	{
 		if (!debugMode && !skipDance && !specialAnim)
 		{
+			//that did not work
+			if (curCharacter == 'trojanohno')
+				return;
+				
 			if(danceIdle)
 			{
 				danced = !danced;

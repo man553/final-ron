@@ -8,6 +8,8 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import gameassets.Boyfriend;
 
+using StringTools;
+
 class GameOverSubstate extends MusicBeatSubstate
 {
 	public var boyfriend:Boyfriend;
@@ -60,13 +62,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (ClientPrefs.siteenable)
 		{
-			switch (PlayState.curStage)
-			{
-				case 'baka':
-					FlxG.openURL("https://sites.google.com/view/robgivesyourobuc/home");
-				case 'hell':
-					FlxG.openURL("https://sites.google.com/view/ronmoment/home/");
-			}
+			if (PlayState.curStage.toLowerCase().contains('hell'))
+				FlxG.openURL("https://spacehey.com/profile?id=1955124");
 		}
 
 		boyfriend = new Boyfriend(x, y, characterName);

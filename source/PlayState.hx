@@ -792,7 +792,7 @@ class PlayState extends MusicBeatState
 				popup.animation.play('idle');
 				popup.scrollFactor.set(0.8, 0.8);
 				popup.screenCenter();
-				popup.alpha = 0.3;
+				popup.alpha = 0.5;
 				add(popup);
 				
 				var popupt:FlxSprite = new FlxSprite();
@@ -802,8 +802,8 @@ class PlayState extends MusicBeatState
 				popupt.animation.play('idle');
 				popupt.scrollFactor.set(0.9, 0.9);
 				popupt.screenCenter();
-				popupt.alpha = 0.5;
-				add(popup);
+				popupt.alpha = 0.7;
+				add(popupt);
 				
 				var platform:BGSprite = new BGSprite('bgs/newbgtest/trojan-virus/platform', -100, 20);
 				platform.screenCenter();
@@ -5847,22 +5847,39 @@ var cameraTwn:FlxTween;
 					moveing = true;
 					defaultCamZoom = 0.8;
 				case 640:
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x = defaultStrumX[i];
+					}
 					moveing = false;
 					Shaders["glitchsmh"].shader.data.on.value = [0.];
-					defaultCamZoom -= 0.2;
-				case 940:
+					defaultCamZoom = 0.55;
+				case 912:
 					moveing = true;
+					Shaders["glitchsmh"].shader.data.on.value = [1.];
+					defaultCamZoom = 0.88;
 				case 1424:
 					moveing = false;
-				case 1584:
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.x = defaultStrumX[i];
+					}
+					Shaders["glitchsmh"].shader.data.on.value = [0.];
+				case 1490:
+					defaultCamZoom = 1;
+					//stupid
+					dad.playAnim('hey');
+				case 1552:
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
-					budjet.screenCenter();
+					budjet.scrollFactor.set();
 					budjet.cameras = [camHUD];
 					add(budjet);
 					dad.visible = false;
-					defaultCamZoom = 1;
-					FlxTween.tween(FlxG.camera, {zoom: 1}, 0.4, {ease: FlxEase.expoOut,});
+					defaultCamZoom = 0.9;
+					//FlxTween.tween(FlxG.camera, {zoom: 1}, 0.4, {ease: FlxEase.expoOut,});
 			}
 			if ((curStep >= 384) && (curStep <= 640))
 				FlxG.camera.shake(0.00625, 0.1);

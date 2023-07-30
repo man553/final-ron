@@ -1,0 +1,49 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "ohnohetransformed",
+			"indices": [
+				0,
+				0
+			]
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 30,
+			"anim": "hey",
+			"loop": false,
+			"name": "ohnohetransformed"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ohnohetransformed",
+	"position": [
+		-210,
+		190
+	],
+	"healthicon": "ronpower",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		215,
+		0
+	],
+	"camera_position": [
+		40,
+		-100
+	],
+	"sing_duration": 6.1,
+	"noteskin": "ron",
+	"scale": 1
+}
