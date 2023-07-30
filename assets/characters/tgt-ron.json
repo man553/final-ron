@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "tgt-sonic left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "tgt-sonic down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "tgt-sonic up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "tgt-sonic right"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 12,
+			"anim": "idle",
+			"loop": false,
+			"name": "trollRon idle"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/newcharstest/trollRon",
+	"position": [
+		-60,
+		260
+	],
+	"healthicon": "tgt-ron",
+	"flip_x": true,
+	"healthbar_colors": [
+		240,
+		57,
+		26
+	],
+	"camera_position": [
+		240,
+		0
+	],
+	"sing_duration": 4,
+	"noteskin": "demon",
+	"scale": 1.1
+}

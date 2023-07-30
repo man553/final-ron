@@ -1,65 +1,65 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-700,
 				-560
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "idle",
-			"loop": false,
-			"name": "tgt-sonic idle"
+			"fps": 12,
+			"name": "tgt-sonic idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-699,
 				-560
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "tgt-sonic left"
+			"fps": 12,
+			"name": "tgt-sonic left",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-702,
 				-564
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singDOWN",
-			"loop": false,
-			"name": "tgt-sonic down"
+			"fps": 12,
+			"name": "tgt-sonic down",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-700,
 				-560
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singUP",
-			"loop": false,
-			"name": "tgt-sonic up"
+			"fps": 12,
+			"name": "tgt-sonic up",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				-699,
 				-565
 			],
-			"indices": [],
-			"fps": 12,
 			"anim": "singRIGHT",
-			"loop": false,
-			"name": "tgt-sonic right"
+			"fps": 12,
+			"name": "tgt-sonic right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
 	"image": "characters/newcharstest/tgt-sonic",
 	"position": [
-		-920,
+		-900,
 		-420
 	],
 	"healthicon": "tgt-sonic",
@@ -70,10 +70,10 @@
 		232
 	],
 	"camera_position": [
-		1020,
-		700
+		830,
+		660
 	],
 	"sing_duration": 4,
 	"noteskin": "NOTE_assets",
-	"scale": 1
+	"scale": 1.1
 }
