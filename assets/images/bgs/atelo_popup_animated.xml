@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="atelo_popup_animated.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="popups instance 10000" x="0" y="0" width="1673" height="274"/>
+	<SubTexture name="popups instance 10001" x="1673" y="0" width="1673" height="274"/>
+	<SubTexture name="popups instance 10002" x="0" y="274" width="1673" height="274"/>
+	<SubTexture name="popups instance 10003" x="1673" y="274" width="1673" height="274"/>
+	<SubTexture name="popups instance 10004" x="0" y="548" width="1673" height="274"/>
+	<SubTexture name="popups instance 10005" x="1673" y="548" width="1673" height="274"/>
+	<SubTexture name="popups instance 10006" x="0" y="822" width="1673" height="274"/>
+	<SubTexture name="popups instance 10007" x="1673" y="822" width="1673" height="274"/>
+	<SubTexture name="popups instance 10008" x="0" y="1096" width="1673" height="274"/>
+	<SubTexture name="popups instance 10009" x="1673" y="1096" width="1673" height="274"/>
+	<SubTexture name="popups instance 10010" x="0" y="1370" width="1673" height="274"/>
+	<SubTexture name="popups instance 10011" x="1673" y="1370" width="1673" height="274"/>
+	<SubTexture name="popups instance 10012" x="0" y="1644" width="1673" height="274"/>
+	<SubTexture name="popups instance 10013" x="1673" y="1644" width="1673" height="274"/>
+	<SubTexture name="popups instance 10014" x="0" y="1918" width="1673" height="274"/>
+	<SubTexture name="popups instance 10015" x="1673" y="1918" width="1673" height="274"/>
+	<SubTexture name="popups instance 10016" x="0" y="2192" width="1673" height="274"/>
+	<SubTexture name="popups instance 10017" x="1673" y="2192" width="1673" height="274"/>
+	<SubTexture name="popups instance 10018" x="0" y="2466" width="1673" height="274"/>
+	<SubTexture name="popups instance 10019" x="1673" y="2466" width="1673" height="274"/>
+	<SubTexture name="popups instance 10020" x="0" y="2740" width="1673" height="274"/>
+	<SubTexture name="popups instance 10021" x="1673" y="2740" width="1673" height="274"/>
+	<SubTexture name="popups instance 10022" x="0" y="3014" width="1673" height="274"/>
+	<SubTexture name="popups instance 10023" x="1673" y="3014" width="1673" height="274"/>
+	<SubTexture name="popups instance 10024" x="0" y="3288" width="1673" height="274"/>
+	<SubTexture name="popups instance 10025" x="1673" y="3288" width="1673" height="274"/>
+	<SubTexture name="popups instance 10026" x="0" y="3562" width="1673" height="274"/>
+	<SubTexture name="popups instance 10027" x="1673" y="3562" width="1673" height="274"/>
+	<SubTexture name="popups instance 10028" x="0" y="3836" width="1673" height="274"/>
+	<SubTexture name="popups instance 10029" x="1673" y="3836" width="1673" height="274"/>
+	<SubTexture name="popups instance 10030" x="0" y="4110" width="1673" height="274"/>
+	<SubTexture name="popups instance 10031" x="1673" y="4110" width="1673" height="274"/>
+	<SubTexture name="popups instance 10032" x="0" y="4384" width="1673" height="274"/>
+	<SubTexture name="popups instance 10033" x="1673" y="4384" width="1673" height="274"/>
+	<SubTexture name="popups instance 10034" x="0" y="4658" width="1673" height="274"/>
+</TextureAtlas>
