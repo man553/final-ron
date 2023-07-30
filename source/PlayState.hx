@@ -197,6 +197,7 @@ class PlayState extends MusicBeatState
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
+	public var camTrojan:FlxCamera;
 	public var camGame:FlxCamera;
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
@@ -399,6 +400,7 @@ class PlayState extends MusicBeatState
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
 
 		// var gameCam:FlxCamera = FlxG.camera;
+		camTrojan = new FlxCamera();
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camOther = new FlxCamera();
@@ -407,6 +409,7 @@ class PlayState extends MusicBeatState
 		camOverlay = new FlxCamera();
 		camOverlay.bgColor.alpha = 0;
 
+		FlxG.cameras.add(camTrojan);
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camOther);
 		FlxG.cameras.add(camHUD);
@@ -757,6 +760,94 @@ class PlayState extends MusicBeatState
 				bgLol.screenCenter();
 				add(bgLol);
 				
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [35];
+				Shaders["rain"].shader.data.raindropLength.value = [0.075];
+				Shaders["rain"].shader.data.opacity.value = [0.2];
+				
+			case 'ronTrojan': //ron
+				//FlxCamera.defaultCameras = [camTrojan, camGame];
+				camGame.bgColor.alpha = 0;
+				defaultCamZoom = 0.9;
+						
+				//var sky:BGSprite = new BGSprite('bgs/newbgtest/trojan-virus/background', -100, 20);
+				//sky.screenCenter();
+				//sky.scrollFactor.set();
+				//add(sky);
+				//sky.cameras = [camTrojan];
+				
+				var skye:FlxSprite = new FlxSprite();
+				skye.frames = Paths.getSparrowAtlas('bgs/newbgtest/trojan-virus/backgroundanimated');
+				skye.scale.set(5,5);
+				skye.animation.addByPrefix('bruj', 'bruj', 16, true);
+				skye.animation.play('bruj');
+				skye.scrollFactor.set(0.1, 0.1);
+				skye.screenCenter();
+				add(skye);
+	
+				var popup:FlxSprite = new FlxSprite();
+				popup.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
+				popup.scale.set(4,4);
+				popup.animation.addByPrefix('idle', 'popups instance 1', 24, true);
+				popup.animation.play('idle');
+				popup.scrollFactor.set(0.8, 0.8);
+				popup.screenCenter();
+				popup.alpha = 0.3;
+				add(popup);
+				
+				var popupt:FlxSprite = new FlxSprite();
+				popupt.frames = Paths.getSparrowAtlas('bgs/atelo_popup_animated');
+				popupt.scale.set(5,5);
+				popupt.animation.addByPrefix('idle', 'popups instance 1', 24, true);
+				popupt.animation.play('idle');
+				popupt.scrollFactor.set(0.9, 0.9);
+				popupt.screenCenter();
+				popupt.alpha = 0.5;
+				add(popup);
+				
+				var platform:BGSprite = new BGSprite('bgs/newbgtest/trojan-virus/platform', -100, 20);
+				platform.screenCenter();
+				platform.y += 375;
+				add(platform);
+				
+				var error:FlxSprite = new FlxSprite(1100, 650);
+				error.frames = Paths.getSparrowAtlas('bgs/error');
+				error.scale.set(2,2);
+				error.animation.addByPrefix('idle', 'error instance 1', 24, true);
+				error.animation.play('idle');
+				error.updateHitbox();
+				error.antialiasing = true;
+				add(error);
+				
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
+				sky.screenCenter();
+				sky.scrollFactor.set(0.1, 0.1);
+				wastedGrp.add(sky);
+				
+				var mountainsback:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_mountainsback', -100, 20);
+				mountainsback.screenCenter();
+				mountainsback.scrollFactor.set(0.3, 0.3);
+				mountainsback.y -= 60;
+				wastedGrp.add(mountainsback);
+				
+				var mountains:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_mountains', -100, 20);
+				mountains.screenCenter();
+				mountains.scrollFactor.set(0.3, 0.3);
+				mountains.y -= 60;
+				wastedGrp.add(mountains);
+			
+				var hillfront:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_hillfront', -100, 20);
+				hillfront.screenCenter();
+				hillfront.scrollFactor.set(0.4, 0.4);
+				hillfront.y -= 60;
+				wastedGrp.add(hillfront);		
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_street', -100, 40);
+				street.screenCenter();
+				wastedGrp.add(street);	
+				
+				add(wastedGrp);
+
 				addShader(FlxG.camera, "rain");
 				Shaders["rain"].shader.data.zoom.value = [35];
 				Shaders["rain"].shader.data.raindropLength.value = [0.075];
@@ -1494,7 +1585,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 		//add(wastedGrp);
-		wastedGrp.visible = false;
+		//bruhi wasted(Pun) my time compiling
+		if (curStage != 'ronTrojan') {
+			wastedGrp.visible = false;
+		}
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
 		}
@@ -2957,11 +3051,11 @@ class PlayState extends MusicBeatState
 			{
 				for (i in 0...8)
 					strumLineNotes.members[i].x = defaultStrumX[i]+ 32 * Math.sin((currentBeat + i*0.25) * Math.PI);
-			} else
-			{
-				for (i in 0...8)
-					strumLineNotes.members[i].x = defaultStrumX[i]+ 16 * Math.sin((currentBeat/4 + i*0.25) * Math.PI);
 			}
+			//{
+			//	for (i in 0...8)
+			//		strumLineNotes.members[i].x = defaultStrumX[i]+ 16 * Math.sin((currentBeat/4 + i*0.25) * Math.PI);
+			//}
 		}
 
 		if ((curSong == 'Atelophobia') || (curSong == 'Factory-Reset') || (curSong == 'Bloodshed') || (curSong == 'Bloodshed-b') || (curSong == 'Bloodshed-old') || (curSong == 'BLOODSHED-TWO') || (curSong == 'Factory-Reset-b') || (curSong == 'Atelophobia-b') || (curSong == 'Trojan-Virus') || (curSong == 'Trojan-Virus-b') || (curSong == 'File-Manipulation') || (curSong == 'File Manipulation-b')) 
@@ -5714,13 +5808,29 @@ var cameraTwn:FlxTween;
 					//FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					var chromeOffset = (ClientPrefs.rgbintense/350);
+					addShader(FlxG.camera, "chromatic aberration");
+					addShader(FlxG.camera, "fake CRT");
+					addShader(FlxG.camera, "vhs");
+
+					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+					wastedGrp.visible = false;
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 					addShader(FlxG.camera,"glitchsmh");
 					Shaders["glitchsmh"].shader.data.on.value = [1.];
 					camHUD.shake(0.002);
-					defaultCamZoom += 0.2;
+					moveing = true;
+					defaultCamZoom = 0.8;
 				case 640:
+					moveing = false;
 					Shaders["glitchsmh"].shader.data.on.value = [0.];
 					defaultCamZoom -= 0.2;
+				case 940:
+					moveing = true;
+				case 1424:
+					moveing = false;
 				case 1584:
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
@@ -6059,15 +6169,6 @@ var cameraTwn:FlxTween;
 				intensecameramove = false;
 			}
 		}
-
-		if (curSong.toLowerCase() == 'trojan-virus')
-		{
-			if (curStep == 384)
-				moveing = true;
-			if (curStep == 640)
-				moveing = false;
-		}
-
 	}
 
 	var lastBeatHit:Int = -1;
