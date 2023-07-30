@@ -1259,7 +1259,7 @@ class PlayState extends MusicBeatState
 
 				add(stageHills);*/
 
-				var gate:FlxSprite = new FlxSprite(-200, -125).loadGraphic(Paths.image('bgs/gate'));
+				var gate:FlxSprite = new FlxSprite(-200, 50).loadGraphic(Paths.image('bgs/gate'));
 				gate.setGraphicSize(Std.int(gate.width * 1.2));
 				gate.updateHitbox();
 				gate.antialiasing = true;
@@ -1686,6 +1686,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
+		healthBarBG.scale.set(1,.75);
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 		healthBarBG2 = new AttachedSprite('healthBarintheworks');
@@ -1695,6 +1696,7 @@ class PlayState extends MusicBeatState
 		healthBarBG2.visible = !ClientPrefs.hideHud;
 		healthBarBG2.xAdd = -4;
 		healthBarBG2.yAdd = -4;
+		healthBarBG2.scale.set(1,.75);
 		add(healthBarBG2);
 		if(ClientPrefs.downScroll) healthBarBG2.y = 0.11 * FlxG.height;
 		

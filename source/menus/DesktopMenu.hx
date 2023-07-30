@@ -52,6 +52,7 @@ class DesktopMenu extends MusicBeatState
 	var window:FlxSprite;
 	var ywindow:Float = FlxG.height/2-203;
 	var tweening:Bool = false;
+	var transitioningStory:Bool = false;
 	override function create() {
 
 		#if desktop
@@ -99,7 +100,9 @@ class DesktopMenu extends MusicBeatState
 					button.color = 0xFF485EC2;
 					if (clickAmounts == 2) {
 						if (icons[i] == "story mode is idiot") {
-							StoryMenuState.musicTime = FlxG.sound.music.time;
+							if (transitioningStory) {return;}
+							transitioningStory = true;
+							//StoryMenuState.musicTime = FlxG.sound.music.time;
 							//new StoryMenuState();
 							//transitioningToIdiotism = true;
 							//rainbTmr.cancel();
