@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				-10,
 				-190
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "shuttle ron down",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "shuttle ron down"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				-190
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 14,
-			"name": "shuttle ron idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "shuttle ron idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				-10,
 				-195
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "shuttle ron right",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "shuttle ron right"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				-190
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "shuttle ron left",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "shuttle ron left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				-170
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "shuttle ron up",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "shuttle ron up"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,11 +62,11 @@
 		20,
 		10
 	],
-	"healthicon": "ron",
+	"healthicon": "ron-classic",
 	"flip_x": false,
 	"healthbar_colors": [
-		127,
-		106,
+		255,
+		232,
 		0
 	],
 	"camera_position": [
@@ -74,6 +74,6 @@
 		220
 	],
 	"sing_duration": 4,
-	"noteskin": "NOTE_assets",
+	"noteskin": "ron",
 	"scale": 1
 }
