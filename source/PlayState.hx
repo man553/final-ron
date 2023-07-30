@@ -1270,7 +1270,7 @@ class PlayState extends MusicBeatState
 
 				add(stageHills);*/
 
-				var gate:FlxSprite = new FlxSprite(-200, 50).loadGraphic(Paths.image('bgs/gate'));
+				var gate:FlxSprite = new FlxSprite(-200, 75).loadGraphic(Paths.image('bgs/gate'));
 				gate.setGraphicSize(Std.int(gate.width * 1.2));
 				gate.updateHitbox();
 				gate.antialiasing = true;
@@ -5714,9 +5714,12 @@ var cameraTwn:FlxTween;
 					//FlxTween.tween(cloudsa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(witheredRa, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					//FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
+					addShader(FlxG.camera,"glitchsmh");
+					Shaders["glitchsmh"].shader.data.on.value = [1.];
 					camHUD.shake(0.002);
 					defaultCamZoom += 0.2;
 				case 640:
+					Shaders["glitchsmh"].shader.data.on.value = [0.];
 					defaultCamZoom -= 0.2;
 				case 1584:
 					var budjet = new FlxSprite(0, 0);
