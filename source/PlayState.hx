@@ -338,6 +338,7 @@ class PlayState extends MusicBeatState
 	var bar1:FlxSprite;
 	var bar2:FlxSprite;
 	var rain:flixel.effects.particles.FlxEmitter;
+
 	//ok ig
 
 	override public function create()
@@ -526,6 +527,7 @@ class PlayState extends MusicBeatState
 		rain.launchMode = SQUARE;
 		rain.width = 1280*4;
 		rain.start(false, 0.01);
+
 		switch (curStage)
 		{ 	//all the stages here
 			case 'farm':
@@ -707,7 +709,12 @@ class PlayState extends MusicBeatState
 				fx.scrollFactor.set(0.1, 0.1);
 				add(fx);
 				fx.alpha = 0;
-				addShader(FlxG.camera,"rain");
+				
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [32];
+				Shaders["rain"].shader.data.raindropLength.value = [0.03];
+				Shaders["rain"].shader.data.opacity.value = [0.125];
+				
 			case 'ronMad': //ron
 				var sky:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_sky', -100, 20);
 				sky.screenCenter();
@@ -749,7 +756,11 @@ class PlayState extends MusicBeatState
 				bgLol = new BGSprite('bgs/newbgtest/ayo/ayo_streetNoLight', -100, 40);
 				bgLol.screenCenter();
 				add(bgLol);
-			
+				
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [35];
+				Shaders["rain"].shader.data.raindropLength.value = [0.075];
+				Shaders["rain"].shader.data.opacity.value = [0.2];
 
 			case 'ronNormal': //ron
 				addCharacterToList("rontriggered", 1);
@@ -5099,6 +5110,10 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 1;
 				case 288:
 					defaultCamZoom = 0.65;
+					addShader(camGame, "rain");
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
 					evilTrail.color = FlxColor.RED;
 					addBehindDad(evilTrail);
 					FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -5110,6 +5125,7 @@ var cameraTwn:FlxTween;
 					FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.circOut});
 					FlxTween.cancelTweensOf(satan);
 					FlxTween.angle(satan, 0, satan.angle+359.99, 3, {ease: FlxEase.circOut} );
+					Shaders["rain"].shader.data.opacity.value = [0];
 				case 864:
 					defaultCamZoom = 0.9;
 				case 896:
@@ -5119,6 +5135,10 @@ var cameraTwn:FlxTween;
 				case 928:
 					missval = false;
 					defaultCamZoom = 0.65;
+					addShader(camGame, "rain");
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.08];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.circOut});
 					FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
@@ -5133,6 +5153,9 @@ var cameraTwn:FlxTween;
 					FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.circOut});
 					FlxTween.cancelTweensOf(satan);
 					FlxTween.angle(satan, 0, satan.angle+359.99, 3, {ease: FlxEase.circOut} );
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.0];
 			}
 		}
 		
@@ -5214,6 +5237,10 @@ var cameraTwn:FlxTween;
 			switch (curStep) {
 				case 1:
 				case 128:
+					addShader(camGame, "rain");
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
 					evilTrail.color = FlxColor.RED;
 					addBehindDad(evilTrail);
 					bloodshedGrp.visible = true;
@@ -5253,6 +5280,8 @@ var cameraTwn:FlxTween;
 				case 384:
 					FlxG.camera.follow(camFollowPos, LOCKON, cameraSpeed*2);
 					cameramove = true;
+					Shaders["rain"].shader.data.zoom.value = [20];
+					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					defaultCamZoom = 0.7;
 					cameraSpeed = 8;
 					FlxTween.color(witheredRa, 1, 0xFF660000, 0xFF000000);
@@ -5286,6 +5315,8 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 1.1;
 				case 640:
 					cameraSpeed = 1.5;
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
 					cameramove = false;
 					defaultCamZoom = 0.7;
 					FlxTween.tween(camGame, {angle: 0}, 1, {ease: FlxEase.circOut});
@@ -5301,6 +5332,8 @@ var cameraTwn:FlxTween;
 				case 896: 
 					cameramove = true;
 					islands.visible = false;
+					Shaders["rain"].shader.data.zoom.value = [20];
+					Shaders["rain"].shader.data.raindropLength.value = [0.05];
 					FlxG.camera.flash(FlxColor.WHITE, 1);	
 					FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
 					dad.y -= 5400;
@@ -5321,6 +5354,7 @@ var cameraTwn:FlxTween;
 					FlxG.camera.follow(camFollowPos, LOCKON, 0.5);
 					defaultCamZoom = 0.9;
 					FlxG.camera.flash(FlxColor.WHITE, 1);	
+					Shaders["rain"].shader.data.opacity.value = [0.0];
 					FlxTween.angle(boyfriend, 0, boyfriend.angle + 359.99, 3, { type: FlxTweenType.LOOPING } );
 					FlxTween.angle(freindly, 0, 5, 3, { type: FlxTweenType.PINGPONG } );
 					camGame.fade(0xFFFFFFFF, 0.1, true);
@@ -5797,6 +5831,9 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.95;
 					//penile injection
 					wastedGrp.visible = true;
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.075];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
 					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/wasted/fog'));
 					fxtwo.scale.set(2, 2);
 					fxtwo.updateHitbox();
@@ -5810,6 +5847,9 @@ var cameraTwn:FlxTween;
 					fxtwo.cameras = [camOverlay];
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 				case 576:
+					Shaders["rain"].shader.data.zoom.value = [32];
+					Shaders["rain"].shader.data.raindropLength.value = [0.03];
+					Shaders["rain"].shader.data.opacity.value = [0.125];
 					wastedGrp.visible = false;
 					fxtwo.visible = false;
 					cameraSpeed = 1;
@@ -5822,11 +5862,15 @@ var cameraTwn:FlxTween;
 					fxtwo.visible = true;
 					wastedGrp.visible = true;
 					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					Shaders["rain"].shader.data.zoom.value = [40];
+					Shaders["rain"].shader.data.raindropLength.value = [0.1];
+					Shaders["rain"].shader.data.opacity.value = [0.25];
 				case 1088:
 					wastedGrp.visible = false;
 					cameraSpeed = 1;
 					defaultCamZoom = 0.9;
 					camGame.alpha = 0;
+					Shaders["rain"].shader.data.opacity.value = [0];
 				case 1104:
 					cameraSpeed = 8;
 					camGame.alpha = 1;
@@ -5850,6 +5894,7 @@ var cameraTwn:FlxTween;
 					cameraSpeed = 1;
 					defaultCamZoom = 0.9;
 					camGame.alpha = 1;
+					Shaders["rain"].shader.data.opacity.value = [0];
 			}
 		}
 
@@ -5896,7 +5941,11 @@ var cameraTwn:FlxTween;
 				case 1304:
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
+					addShader(FlxG.camera, "rain");
 					addShader(FlxG.camera, "godray");
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.075];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
 					wastedGrp.visible = true;
 					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 					fxtwo.scale.set(0.75, 0.75);
