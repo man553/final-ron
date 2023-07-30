@@ -1,8 +1,8 @@
 COMPOSER(s)
-Fearless
+ArmandRonan
 
 CHARTER(s)
-Seezee
+Shoutsuo
 
 ARTIST(s)
-Byok
+YaWill

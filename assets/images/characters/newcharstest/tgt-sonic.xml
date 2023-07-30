@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="tgt-sonic.png">
+<SubTexture name="tgt-sonic idle0000" x="521" y="0" width="264" height="511" frameX="-150" frameY="-42" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic idle0001" x="0" y="0" width="266" height="516" frameX="-145" frameY="-37" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic idle0002" x="785" y="0" width="263" height="511" frameX="-147" frameY="-42" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic idle0003" x="0" y="516" width="261" height="510" frameX="-149" frameY="-43" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic left0000" x="1380" y="0" width="339" height="503" frameX="-69" frameY="-51" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic left0001" x="1048" y="0" width="332" height="505" frameX="-76" frameY="-49" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic left0002" x="1048" y="505" width="330" height="505" frameX="-78" frameY="-49" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic down0000" x="1291" y="1026" width="330" height="424" frameX="-88" frameY="-126" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic down0001" x="643" y="1026" width="325" height="425" frameX="-90" frameY="-125" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic down0002" x="968" y="1026" width="323" height="425" frameX="-91" frameY="-125" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic up0000" x="266" y="0" width="255" height="512" frameX="-148" frameY="-41" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic up0001" x="261" y="516" width="257" height="510" frameX="-148" frameY="-43" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic up0002" x="518" y="516" width="257" height="509" frameX="-148" frameY="-44" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic right0000" x="321" y="1026" width="322" height="498" frameX="-197" frameY="-57" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic right0001" x="0" y="1026" width="321" height="499" frameX="-197" frameY="-56" frameWidth="575" frameHeight="575" />
+<SubTexture name="tgt-sonic right0002" x="1380" y="503" width="321" height="500" frameX="-197" frameY="-55" frameWidth="575" frameHeight="575" />
+</TextureAtlas>

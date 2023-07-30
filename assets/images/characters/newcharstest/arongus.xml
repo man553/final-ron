@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="arongus.png">
+<SubTexture name="arongus idle0000" x="803" y="612" width="269" height="290" frameX="-253" frameY="-271" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0001" x="275" y="905" width="290" height="284" frameX="-242" frameY="-277" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0002" x="0" y="905" width="275" height="287" frameX="-248" frameY="-273" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0003" x="836" y="307" width="263" height="295" frameX="-260" frameY="-267" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0004" x="0" y="612" width="281" height="293" frameX="-246" frameY="-267" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0005" x="1139" y="579" width="263" height="286" frameX="-256" frameY="-274" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0006" x="1139" y="0" width="269" height="290" frameX="-253" frameY="-271" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus idle0007" x="1139" y="290" width="269" height="289" frameX="-253" frameY="-272" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus right0000" x="567" y="0" width="572" height="305" frameX="-279" frameY="-255" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus right0001" x="0" y="0" width="567" height="307" frameX="-277" frameY="-255" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus right0002" x="0" y="307" width="572" height="305" frameX="-275" frameY="-255" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus left0000" x="1408" y="0" width="382" height="280" frameX="-112" frameY="-281" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus left0001" x="565" y="905" width="354" height="284" frameX="-141" frameY="-277" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus left0002" x="919" y="905" width="356" height="283" frameX="-138" frameY="-278" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus down0000" x="816" y="1192" width="418" height="254" frameX="-105" frameY="-308" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus down0001" x="0" y="1192" width="404" height="261" frameX="-115" frameY="-299" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus down0002" x="404" y="1192" width="412" height="260" frameX="-109" frameY="-300" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus up0000" x="572" y="307" width="264" height="296" frameX="-261" frameY="-267" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus up0001" x="543" y="612" width="260" height="291" frameX="-256" frameY="-270" frameWidth="1280" frameHeight="720" />
+<SubTexture name="arongus up0002" x="281" y="612" width="262" height="292" frameX="-257" frameY="-270" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

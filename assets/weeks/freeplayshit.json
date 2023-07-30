@@ -29,21 +29,30 @@
 			]
 		],
 		[
-			"clusterfunk",
-			"rongd",
-			[
-				224,
-				16,
-				192
-			]
-		],
-		[
 			"official-debate",
 			"obama",
 			[
 				0,
 				32,
 				192
+			]
+		],
+		[
+			"difficult-powers",
+			"tgt-sonic",
+			[
+				0,
+				32,
+				192
+			]
+		],
+		[
+			"sabotage-remix",
+			"arongus",
+			[
+				224,
+				0,
+				32
 			]
 		],
 		[

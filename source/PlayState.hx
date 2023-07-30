@@ -1413,6 +1413,9 @@ class PlayState extends MusicBeatState
 			case 'walmart':
 				var bg:BGSprite = new BGSprite('bgs/wallmart', -600, -450, 0.9, 0.9);
 				add(bg);
+			case 'tgt':
+				var bg:BGSprite = new BGSprite('bgs/tgt', -600, -450, 0.9, 0.9);
+				add(bg);
 			case 'normal':
 			{
 				defaultCamZoom = 0.9;
@@ -1429,6 +1432,28 @@ class PlayState extends MusicBeatState
 				add(glitchSprite);*/
 				
 				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/happyRon_ground'));
+				ground.updateHitbox();
+				ground.active = false;
+				ground.antialiasing = true;
+				add(ground);
+			}
+			case 'greystage':
+			{
+				defaultCamZoom = 0.9;
+				curStage = 'stage';
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/greyRon_sky'));
+				bg.updateHitbox();
+				bg.scale.x = 1.2;
+				bg.scale.y = 1.2;
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				add(bg);
+				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
+				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
+				add(glitchSprite);*/
+				
+				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('updateron/bg/greyRon_ground'));
 				ground.updateHitbox();
 				ground.active = false;
 				ground.antialiasing = true;
