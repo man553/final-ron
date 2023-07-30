@@ -6,6 +6,9 @@ import flixel.FlxG;
 import haxe.Json;
 import openfl.Assets;
 import gameassets.Alphabet;
+#if desktop
+import important.Discord.DiscordClient;
+#end
 import flixel.FlxSprite;
 import flixel.math.FlxMath;
 import flixel.math.FlxRandom;
@@ -36,6 +39,9 @@ class CreditMenu extends MusicBeatState {
 		bg.updateHitbox();
 		bg.screenCenter();
 		add(bg);
+		#if desktop
+		DiscordClient.changePresence("Looking at Credits", null);
+		#end
 		creditJSON = Json.parse(Assets.getText(Paths.json("credit")));
 		for (i in 0...creditJSON.length){
 			var j = new Alphabet(0, 100 + (150 * i), creditJSON[i].handle,true);

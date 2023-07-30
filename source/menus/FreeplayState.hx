@@ -1,9 +1,6 @@
 package menus;
 
 import misc.CustomFadeTransition;
-#if desktop
-import important.Discord.DiscordClient;
-#end
 import important.Highscore;
 import important.Song;
 import gameassets.HealthIcon;
@@ -70,10 +67,6 @@ class FreeplayState extends MusicBeatState
 		WeekData.reloadWeekFiles(false);
 		persistentUpdate = persistentDraw = false;
 
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
-		#end
 		camText = new FlxCamera();
 		camText.bgColor = 0;
 		camWhat = new FlxCamera();
@@ -245,6 +238,7 @@ class FreeplayState extends MusicBeatState
 			lastDifficultyName = CoolUtil.defaultDifficulty;
 		}
 		curDifficulty = Math.round(Math.max(0, CoolUtil.defaultDifficulties.indexOf(lastDifficultyName)));
+		
 		changeSelection();
 		changeDiff();
 		updateportrait();
@@ -486,9 +480,9 @@ class FreeplayState extends MusicBeatState
 		switch(songs[curSelected].songName.toLowerCase())
 		{
 			case 'bleeding':
-				//camWhat.zoom = 1.2;
+				camWhat.zoom = 1.2;
 			case 'bleeding-classic':
-				//camWhat.zoom = 1.2;
+				camWhat.zoom = 1.2;
 			default:
 				camWhat.zoom = 1;
 		}
@@ -561,7 +555,13 @@ class FreeplayState extends MusicBeatState
 		intendedScore = Highscore.getScore(songName, curDifficulty);
 		intendedRating = Highscore.getRating(songName, curDifficulty);
 		#end
-		shadering();
+		
+		switch(songs[curSelected].songName.toLowerCase())
+		{
+			case 'trojan-virus':
+				shadering();
+				addShader(camWhat, "vhs");
+		}
 
 		var bullShit:Int = 0;
 
@@ -665,7 +665,6 @@ class FreeplayState extends MusicBeatState
 	
 	private function shadering() {
 		clearShader(camWhat);
-		clearShader(camText);
 		addShader(camWhat, "chromatic aberration");
 		addShader(camWhat, "fake CRT");
 		addShader(camText, "fisheye");
@@ -674,7 +673,7 @@ class FreeplayState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		
-		if (mode == 'classic' || songs[curSelected].songName.toLowerCase() == "trojan virus")
+		if (mode == 'classic')
 			addShader(camWhat, "vhs");
 	}
 	

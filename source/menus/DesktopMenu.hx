@@ -54,10 +54,10 @@ class DesktopMenu extends MusicBeatState
 	var tweening:Bool = false;
 	var transitioningStory:Bool = false;
 	override function create() {
-
+	
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("At Desktop", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 

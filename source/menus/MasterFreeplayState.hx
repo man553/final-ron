@@ -44,6 +44,10 @@ class MasterFreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		#if desktop
+		DiscordClient.changePresence("Freeplay Selection", null);
+		#end
+		
 		Paths.clearStoredMemory();
 		persistentUpdate = true;
 		cameraText = new FlxCamera();
@@ -138,8 +142,7 @@ class MasterFreeplayState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		super.create();
 	}
-	
-	var accepted:Bool = false;
+
 	override function update(elapsed:Float)
 	{
 		time += elapsed;
@@ -173,9 +176,7 @@ class MasterFreeplayState extends MusicBeatState
 		
 		if(controls.ACCEPT)
 		{
-			if (accepted) {return;}
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			accepted = true;
 			
 			MusicBeatState.switchState(new menus.FreeplayState());
 		}
