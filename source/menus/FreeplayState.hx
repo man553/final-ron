@@ -60,6 +60,7 @@ class FreeplayState extends MusicBeatState
 	var camWhat:FlxCamera;
 	var camText:FlxCamera;
 	var chromeOffset = (ClientPrefs.rgbintense/350);
+	var hasAccepted:Bool = false;
 	public static var mode:String = 'main';
 
 	override function create()
@@ -460,8 +461,10 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		else if (accepted)
+		else if ((accepted) && !(hasAccepted))
 		{
+			//lol
+			hasAccepted = true;
 			var songLowercase:String = Paths.formatToSongPath(songs[curSelected].songName);
 			var poop:String = Highscore.formatSong(songLowercase, curDifficulty);
 			trace(poop);
@@ -488,7 +491,7 @@ class FreeplayState extends MusicBeatState
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}
-
+			
 			FlxG.sound.music.volume = 0;
 					
 			destroyFreeplayVocals();
@@ -702,11 +705,17 @@ class FreeplayState extends MusicBeatState
 		Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 		Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
 		
-		if (mode == 'classic' || songs[curSelected].songName.toLowerCase() == "trojan virus")
+		if (mode == 'classic')
 			addShader(camWhat, "vhs");
-		if (songs[curSelected].songName.toLowerCase() == "trojan virus") {
-			addShader(camWhat,"glitchsmh");
-			Shaders["glitchsmh"].shader.data.on.value = [1.];
+		switch (songs[curSelected].songName.toLowerCase())
+		{
+			case "trojan virus":
+				addShader(camWhat,"glitchsmh");
+				Shaders["glitchsmh"].shader.data.on.value = [1.];		
+			case "gron":
+				//grayscale looks better unless a cooler paper shader is found
+				//addShader(camWhat,"paper");
+				addShader(camWhat,"grayscale");
 		}
 	}
 	

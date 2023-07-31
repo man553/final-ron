@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Gron.png"><SubTexture name="Gron Idle0000" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0001" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0002" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0003" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0004" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0005" x="0" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0006" x="0" y="1500" width="521" height="381" frameX="-46" frameY="-78" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0007" x="0" y="1500" width="521" height="381" frameX="-46" frameY="-78" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0008" x="0" y="1500" width="521" height="381" frameX="-46" frameY="-78" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0009" x="600" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0010" x="600" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0011" x="0" y="500" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0012" x="0" y="500" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0013" x="0" y="1500" width="521" height="381" frameX="-46" frameY="-78" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Idle0014" x="0" y="1500" width="521" height="381" frameX="-46" frameY="-78" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Left0000" x="600" y="500" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Left0001" x="1200" y="0" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Left0002" x="1200" y="500" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Down0000" x="521" y="1500" width="600" height="300" frameX="0" frameY="0" frameWidth="600" frameHeight="300" />
+<SubTexture name="Gron Down0001" x="1121" y="1500" width="600" height="300" frameX="0" frameY="0" frameWidth="600" frameHeight="300" />
+<SubTexture name="Gron Down0002" x="1721" y="1500" width="600" height="300" frameX="0" frameY="0" frameWidth="600" frameHeight="300" />
+<SubTexture name="Gron Up0000" x="0" y="1000" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Up0001" x="600" y="1000" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Up0002" x="1200" y="1000" width="600" height="500" frameX="0" frameY="0" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gron Right0000" x="1800" y="0" width="700" height="500" frameX="0" frameY="0" frameWidth="700" frameHeight="500" />
+<SubTexture name="Gron Right0001" x="1800" y="500" width="700" height="500" frameX="0" frameY="0" frameWidth="700" frameHeight="500" />
+<SubTexture name="Gron Right0002" x="1800" y="1000" width="700" height="500" frameX="0" frameY="0" frameWidth="700" frameHeight="500" />
+</TextureAtlas>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Gray BF.png"><SubTexture name="Gray BF Idle0000" x="411" y="505" width="573" height="396" frameX="-9" frameY="-80" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0001" x="411" y="505" width="573" height="396" frameX="-9" frameY="-80" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0002" x="411" y="505" width="573" height="396" frameX="-9" frameY="-80" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0003" x="411" y="505" width="573" height="396" frameX="-9" frameY="-80" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0004" x="437" y="925" width="573" height="381" frameX="-9" frameY="-96" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0005" x="0" y="1312" width="573" height="358" frameX="-9" frameY="-121" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0006" x="573" y="1312" width="573" height="324" frameX="-9" frameY="-157" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0007" x="1146" y="1312" width="573" height="280" frameX="-9" frameY="-203" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0008" x="1840" y="0" width="573" height="224" frameX="-9" frameY="-263" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Idle0009" x="1840" y="0" width="573" height="224" frameX="-9" frameY="-263" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Down0000" x="1341" y="0" width="499" height="368" frameX="-128" frameY="-128" frameWidth="800" frameHeight="500" />
+<SubTexture name="Gray BF Left0000" x="789" y="0" width="552" height="438" frameX="-71" frameY="-61" frameWidth="700" frameHeight="500" />
+<SubTexture name="Gray BF Right0000" x="0" y="925" width="437" height="387" frameX="-145" frameY="-101" frameWidth="700" frameHeight="500" />
+<SubTexture name="Gray BF Up0000" x="0" y="0" width="476" height="505" frameX="-67" frameY="-174" frameWidth="600" frameHeight="700" />
+<SubTexture name="Gray BF Miss0000" x="0" y="505" width="411" height="420" frameX="-104" frameY="-56" frameWidth="600" frameHeight="500" />
+<SubTexture name="Gray BF Death0000" x="476" y="0" width="313" height="463" frameX="-101" frameY="-26" frameWidth="600" frameHeight="500" />
+</TextureAtlas>

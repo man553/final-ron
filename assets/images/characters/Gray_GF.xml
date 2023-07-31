@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Gray GF.png"><SubTexture name="Gray GF Idle0000" x="641" y="554" width="641" height="547" frameX="-19" frameY="-71" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0001" x="641" y="0" width="641" height="549" frameX="-19" frameY="-69" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0002" x="0" y="554" width="641" height="549" frameX="-19" frameY="-69" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0003" x="1282" y="0" width="641" height="546" frameX="-19" frameY="-72" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0004" x="1282" y="546" width="641" height="537" frameX="-19" frameY="-81" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0005" x="0" y="1103" width="641" height="525" frameX="-19" frameY="-93" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0006" x="641" y="1103" width="641" height="514" frameX="-19" frameY="-104" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0007" x="1282" y="1103" width="641" height="491" frameX="-19" frameY="-127" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0008" x="1923" y="477" width="641" height="456" frameX="-19" frameY="-162" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0009" x="1923" y="933" width="641" height="396" frameX="-19" frameY="-222" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0010" x="1923" y="0" width="641" height="477" frameX="-19" frameY="-141" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0011" x="0" y="0" width="641" height="554" frameX="-19" frameY="-64" frameWidth="703" frameHeight="648" />
+<SubTexture name="Gray GF Idle0012" x="641" y="554" width="641" height="547" frameX="-19" frameY="-71" frameWidth="703" frameHeight="648" />
+</TextureAtlas>

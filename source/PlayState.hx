@@ -1545,10 +1545,10 @@ class PlayState extends MusicBeatState
 			}
 			case 'greystage':
 			{
+				addShader(camHUD,"grayscale");
 				defaultCamZoom = 0.9;
 				curStage = 'stage';
-				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('updateron/bg/greyRon_sky'));
-				bg.updateHitbox();
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/greyRon_sky'));				bg.updateHitbox();
 				bg.scale.x = 1.2;
 				bg.scale.y = 1.2;
 				bg.active = false;
@@ -1559,7 +1559,7 @@ class PlayState extends MusicBeatState
 				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
 				add(glitchSprite);*/
 				
-				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('updateron/bg/greyRon_ground'));
+				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/greyRon_ground'));
 				ground.updateHitbox();
 				ground.active = false;
 				ground.antialiasing = true;
@@ -5891,13 +5891,13 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.88;
 				case 1160 | 1164 | 1165 | 1166 | 1167:
 					//imagine just getting this from the vs bob github with the exact values that would be a cool reference
-					Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -25, 25),Lib.application.window.y + FlxG.random.int( -16, 16));
+					Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -50, 50),Lib.application.window.y + FlxG.random.int( -32, 32));
 					
 					//wuh n that sucks
 					//Application.current.window.alert("hi", "um");
 				case 1161:
 					#if windows
-					misc.SendWindowsNotification.sendWindowsNotification("Virus & threat protection", "TROJAN VIRUS DETECTED");
+					misc.SendWindowsNotification.sendWindowsNotification("Virus & threat protection", "Windows Defender Antivirus found threats. Get details.");
 					//this doesnt work for me but it might work for someone.
 					#end
 				case 1424:
