@@ -5943,6 +5943,7 @@ var cameraTwn:FlxTween;
 					budjet.loadGraphic(Paths.image('ron/popup')); // you can replace this for later (if there's another cutscene for another song)
 					budjet.setGraphicSize(576, 309);
 					budjet.scrollFactor.set();
+					budjet.screenCenter();
 					budjet.cameras = [camHUD];
 					add(budjet);
 					dad.visible = false;
