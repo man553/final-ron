@@ -348,6 +348,10 @@ class PlayState extends MusicBeatState
 		Paths.clearStoredMemory();
 		FlxG.mouse.visible = false;
 
+		defaultWindowX = Application.current.window.x;
+		defaultWindowY = Application.current.window.y;
+		setDefaultPos = true;
+
 		// for lua
 		instance = this;
 
@@ -2946,12 +2950,23 @@ class PlayState extends MusicBeatState
 	var canPause:Bool = true;
 	var sinSpeed:Float = 0;
 	var noteSinSpeed:Float = 0;
+	var setDefaultPos:Bool = false;
+	var songsWithWinMove:Array<String>= ['bloodbath', 'bleeding', 'bleeding-classic'];
 	override public function update(elapsed:Float)
 	{		
 		/*if (FlxG.keys.justPressed.NINE)
 		{
 			iconP1.swapOldIcon();
 		}*/
+		if (setDefaultPos && songsWithWinMove.contains(SONG.song.toLowerCase())) {
+			if (windowmove) {
+				Application.current.window.x = Std.int(FlxMath.lerp(neededWindowX, Application.current.window.x, 0.5));
+				Application.current.window.y = Std.int(FlxMath.lerp(neededWindowY, Application.current.window.y, 0.5));
+			} else {
+				Application.current.window.x = Std.int(FlxMath.lerp(defaultWindowX, Application.current.window.x, 0.5));
+				Application.current.window.y = Std.int(FlxMath.lerp(defaultWindowY, Application.current.window.y, 0.5));
+			}
+		}
 		
 		dadTimer += 1;
 		bfTimer += 1;
@@ -3025,8 +3040,11 @@ class PlayState extends MusicBeatState
 
 		if (curSong.toLowerCase() == 'bloodbath' || curSong.toLowerCase() == 'bloodshed')
 		{
+			if (curSong.toLowerCase() == 'bloodbath' && (!isDestroying && Application.current.window.resizable)) Application.current.window.resizable = false;
 			if (windowmove)
-				setWindowPos(Math.round(24 * Math.sin(currentBeat * Math.PI) + 327), Math.round(24 * Math.sin(currentBeat * 3) + 160));
+				setWindowPos(Math.round(24 * Math.sin(currentBeat * Math.PI) + defaultWindowX), Math.round(24 * Math.sin(currentBeat * 3) + defaultWindowY));
+			else
+				setWindowPos(defaultWindowX, defaultWindowY);
 			if (cameramove)
 			{
 				camHUD.angle = 11 * Math.sin((currentBeat/6) * Math.PI);
@@ -3041,10 +3059,11 @@ class PlayState extends MusicBeatState
 
 		if (curSong.toLowerCase() == 'bleeding-classic')
 		{
+			if (!isDestroying && Application.current.window.resizable) Application.current.window.resizable = false;
 			if (windowmove)
-			{
-				setWindowPos(Math.round(24 * Math.sin(currentBeat * Math.PI) + 327), Math.round(24 * Math.sin(currentBeat * 3) + 160));
-			}
+				setWindowPos(Math.round(24 * Math.sin(currentBeat * Math.PI) + defaultWindowX), Math.round(24 * Math.sin(currentBeat * 3) + defaultWindowY));
+			else
+				setWindowPos(defaultWindowX, defaultWindowY);
 			if (cameramove)
 			{
 				camHUD.angle = 22 * Math.sin((currentBeat/4) * Math.PI);
@@ -4856,8 +4875,12 @@ var cameraTwn:FlxTween;
 		grpNoteSplashes.add(splash);
 	}
 	private var preventLuaRemove:Bool = false;
+	var isDestroying:Bool = false;
 	override function destroy() {
 		preventLuaRemove = true;
+		isDestroying = true;
+		setDefaultPos = false;
+		Application.current.window.resizable = true;
 
 		if(!ClientPrefs.controllerMode)
 		{
@@ -6488,10 +6511,15 @@ var cameraTwn:FlxTween;
 		});
 	}
 
+	var defaultWindowX:Int = 0;
+	var defaultWindowY:Int = 0;
+	var neededWindowX:Int = 0;
+	var neededWindowY:Int = 0;
+
 	function setWindowPos(x:Int,y:Int)
 	{
-		Application.current.window.x = x;
-		Application.current.window.y = y;
+		neededWindowX = x;
+		neededWindowY = y;
 	}
 
 	function setDefault(id)

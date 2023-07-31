@@ -64,7 +64,7 @@ class PauseSubState extends MusicBeatSubstate
 							FlxG.sound.playMusic(Paths.music('freakyMenu'));
 							PlayState.changedDifficulty = false;
 							PlayState.chartingMode = false;
-						case "shut down": #if windows Sys.exit(0); #end
+						case "shut down": Sys.exit(0);
 					}
 				}
 			}
