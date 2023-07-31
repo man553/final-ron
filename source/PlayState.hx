@@ -5804,7 +5804,7 @@ var cameraTwn:FlxTween;
 		{
 				switch(curStep){
 					case 144 | 400:
-						FlxTween.tween(camGame, {angle: 359.99}, 1.5, { ease: FlxEase.quadIn } );
+						FlxTween.tween(camGame, {angle: 359.99}, 1.5, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
 						FlxTween.angle(skyBLR, 0, 359.99, 1.5, { 
 							ease: FlxEase.quadIn, 
 							onComplete: function(twn:FlxTween) 
@@ -5822,7 +5822,7 @@ var cameraTwn:FlxTween;
 						FlxTween.cancelTweensOf(skyBLR);
 						FlxTween.cancelTweensOf(camGame);
 						FlxTween.angle(skyBLR, 0, skyBLR.angle+359.99, 3, {ease: FlxEase.circOut} );
-						FlxTween.tween(camGame, {angle: camGame.angle+359.99}, 3, {ease: FlxEase.circOut} );
+						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
 				}
 		}
 		
