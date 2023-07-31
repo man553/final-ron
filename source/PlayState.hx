@@ -72,6 +72,9 @@ import sys.FileSystem;
 #end
 import lime.app.Application;
 import flixel.addons.display.FlxBackdrop;
+#if windows
+import misc.SendWindowsNotification;
+#end
 
 using StringTools;
 
@@ -5892,6 +5895,11 @@ var cameraTwn:FlxTween;
 					
 					//wuh n that sucks
 					//Application.current.window.alert("hi", "um");
+				case 1161:
+					#if windows
+					misc.SendWindowsNotification.sendWindowsNotification("Virus & threat protection", "TROJAN VIRUS DETECTED");
+					//this doesnt work for me but it might work for someone.
+					#end
 				case 1424:
 					moveing = false;
 					for (i in 0...8)

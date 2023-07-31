@@ -704,6 +704,10 @@ class FreeplayState extends MusicBeatState
 		
 		if (mode == 'classic' || songs[curSelected].songName.toLowerCase() == "trojan virus")
 			addShader(camWhat, "vhs");
+		if (songs[curSelected].songName.toLowerCase() == "trojan virus") {
+			addShader(camWhat,"glitchsmh");
+			Shaders["glitchsmh"].shader.data.on.value = [1.];
+		}
 	}
 	
 	

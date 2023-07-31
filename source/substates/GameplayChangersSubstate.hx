@@ -40,24 +40,24 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 
 	function getOptions()
 	{
-		//var goption:GameplayOption = new GameplayOption('Scroll Type', 'scrolltype', 'string', 'multiplicative', ["multiplicative", "constant"]);
+		var goption:GameplayOption = new GameplayOption('Scroll Type', 'scrolltype', 'string', 'multiplicative', ["multiplicative", "constant"]);
 		//optionsArray.push(goption);
 
-		//var option:GameplayOption = new GameplayOption('Scroll Speed', 'scrollspeed', 'float', 1);
-		//option.scrollSpeed = 1.5;
-		//option.minValue = 0.5;
-		//option.changeValue = 0.1;
-		//if (goption.getValue() != "constant")
-		//{
-		//	option.displayFormat = '%vX';
-		//	option.maxValue = 3;
-		//}
-		//else
-		//{
-		//	option.displayFormat = "%v";
-		//	option.maxValue = 6;
-		//}
-		//optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Scroll Speed', 'scrollspeed', 'float', 1);
+		option.scrollSpeed = 1.5;
+		option.minValue = 0.5;
+		option.changeValue = 0.1;
+		if (goption.getValue() != "constant")
+		{
+			option.displayFormat = '%vX';
+			option.maxValue = 3;
+		}
+		else
+		{
+			option.displayFormat = "%v";
+			option.maxValue = 6;
+		}
+		optionsArray.push(option);
 
 		/*var option:GameplayOption = new GameplayOption('Playback Rate', 'songspeed', 'float', 1);
 		option.scrollSpeed = 1;
@@ -67,27 +67,22 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		option.displayFormat = '%vX';
 		optionsArray.push(option);*/
 
-		//var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', 'float', 1);
-		//option.scrollSpeed = 2.5;
-		//option.minValue = 0;
-		//option.maxValue = 5;
-		//option.changeValue = 0.1;
-		//option.displayFormat = '%vX';
-		//optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Health Gain Multiplier', 'healthgain', 'float', 1);
+		option.scrollSpeed = 2.5;
+		option.minValue = 0;
+		option.maxValue = 5;
+		option.changeValue = 0.1;
+		option.displayFormat = '%vX';
+		optionsArray.push(option);
 
-		//var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', 'float', 1);
-		//option.scrollSpeed = 2.5;
-		//option.minValue = 0.5;
-		//option.maxValue = 5;
-		//option.changeValue = 0.1;
-		//option.displayFormat = '%vX';
-		//optionsArray.push(option);
+		var option:GameplayOption = new GameplayOption('Health Loss Multiplier', 'healthloss', 'float', 1);
+		option.scrollSpeed = 2.5;
+		option.minValue = 0.5;
+		option.maxValue = 5;
+		option.changeValue = 0.1;
+		option.displayFormat = '%vX';
+		optionsArray.push(option);
 		
-		// any non-boolean gameplay modifier crashes the game,
-		// cant be bothered to fix rn
-		// if ur rlly desperate u can go manually change it through ur save file :P
-		// ill probably fix it later
-
 		var option:GameplayOption = new GameplayOption('Instakill on Miss', 'instakill', 'bool', false);
 		optionsArray.push(option);
 
@@ -332,9 +327,12 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 	function updateTextFrom(option:GameplayOption) {
 		var text:String = option.displayFormat;
 		var val:Dynamic = option.getValue();
+		if (option.getValue() == 2 || option.getValue() == 3 || option.getValue() == 4 || option.getValue() == 1 || option.getValue() == 0 || option.getValue() == 5) { // stupid problems require stupid solutions
+			val = option.getValue() + ".0";
+		}
 		if(option.type == 'percent') val *= 100;
 		var def:Dynamic = option.defaultValue;
-		option.text = text.replace('%v', val).replace('%d', def);
+		option.text = text.replace('%v', val);
 	}
 
 	function clearHold()
