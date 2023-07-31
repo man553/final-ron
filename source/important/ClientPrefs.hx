@@ -35,6 +35,7 @@ class ClientPrefs {
 	public static var pauseMusic:String = 'Tea Time';
 	public static var directionalCamera:Bool = true;
 	public static var chromaticAbberationEverywhere:Bool = true;
+	public static var cutscenes:Bool = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -142,6 +143,7 @@ class ClientPrefs {
 		FlxG.save.data.rgbintense = rgbintense;
 		FlxG.save.data.directionalCamera = directionalCamera;
 		FlxG.save.data.chromaticAbberationEverywhere = chromaticAbberationEverywhere;
+		FlxG.save.data.cutscenes = cutscenes;
 	
 		FlxG.save.flush();
 
@@ -263,6 +265,10 @@ class ClientPrefs {
 		if (FlxG.save.data.chromaticAbberationEverywhere != null) {
 			chromaticAbberationEverywhere = FlxG.save.data.chromaticAbberationEverywhere;
 		}
+		if (FlxG.save.data.cutscenes != null ) {
+			cutscenes = FlxG.save.data.cutscenes;
+		}
+		
 		if(FlxG.save.data.gameplaySettings != null)
 		{
 			var savedMap:Map<String, Dynamic> = FlxG.save.data.gameplaySettings;

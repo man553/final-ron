@@ -2985,6 +2985,8 @@ class PlayState extends MusicBeatState
 			if (curStep == 1176)
 			{
 				FlxG.camera.flash(FlxColor.WHITE, 1);
+				iconP1.changeIcon(gf.healthIcon);
+				dad.healthColorArray = [224,139,115];
 				triggerEventNote('Change Scroll Speed', '1.2', '0.01');
 			}
 		}
@@ -3070,7 +3072,7 @@ class PlayState extends MusicBeatState
 		{
 			if (moveing)
 			{
-				for (i in 0...8)
+				for (i in 0...8) 
 					strumLineNotes.members[i].x = defaultStrumX[i]+ 32 * Math.sin((currentBeat + i*0.25) * Math.PI);
 			}
 			//{
@@ -5898,7 +5900,6 @@ var cameraTwn:FlxTween;
 				case 1161:
 					#if windows
 					misc.SendWindowsNotification.sendWindowsNotification("Virus & threat protection", "Windows Defender Antivirus found threats. Get details.");
-					//this doesnt work for me but it might work for someone.
 					#end
 				case 1424:
 					moveing = false;

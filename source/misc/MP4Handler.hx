@@ -41,6 +41,11 @@ class MP4Handler
 	public function playMP4(path:String, callback:FlxState, ?outputTo:FlxSprite = null, ?repeat:Bool = false, ?isWindow:Bool = false, ?isFullscreen:Bool = false):Void
 	{
 		// we dont wanna see the game anymore do we
+		if (!ClientPrefs.cutscenes) {
+			finishCallback = callback;
+			onVLCComplete();
+			return;
+		}
 		#if html5
 		FlxG.autoPause = false;
 
