@@ -1,0 +1,46 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				500,
+				0
+			],
+			"anim": "danceLeft",
+			"fps": 24,
+			"name": "bop",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				500,
+				0
+			],
+			"anim": "danceRight",
+			"fps": 24,
+			"name": "bop",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/grayGrill",
+	"position": [
+		200,
+		0
+	],
+	"healthicon": "gf",
+	"flip_x": false,
+	"healthbar_colors": [
+		165,
+		0,
+		77
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
+	"scale": 1
+}

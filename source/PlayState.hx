@@ -1439,10 +1439,7 @@ class PlayState extends MusicBeatState
 					cloudsa.antialiasing = true;
 					cloudsa.scrollFactor.set(0.2, 0.2);
 					add(cloudsa);
-					/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
-						var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
-						add(glitchSprite); */
-
+					
 					var ground:FlxSprite = new FlxSprite(-537, -320).loadGraphic(Paths.image('bgs/veryAngreRon_ground'));
 					ground.updateHitbox();
 					ground.active = false;
@@ -1522,6 +1519,29 @@ class PlayState extends MusicBeatState
 			case 'tgt':
 				var bg:BGSprite = new BGSprite('bgs/tgt', -600, -450, 0.9, 0.9);
 				add(bg);
+			case 'skeld':
+				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.BLACK);
+				wbg.scale.set(5,5);
+				wbg.updateHitbox();
+				wbg.screenCenter(XY);
+				wbg.scrollFactor.set();
+				wbg.alpha = 0.35;
+				defaultCamZoom = 0.75;
+				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+				fx.setGraphicSize(Std.int(2560 * 0.75));
+				fx.updateHitbox();
+				fx.antialiasing = true;
+				fx.screenCenter(XY);
+				fx.scrollFactor.set(0, 0);
+				fx.alpha = 0.5;		
+				var dBg = new BGSprite('bgs/newbgtest/sabotage/darkbackground', -600, -250, 1, 1);
+				add(dBg);
+				bgLol = new BGSprite('bgs/newbgtest/sabotage/background', -600, -250, 1, 1);
+				add(bgLol);
+			case 'baseplate':
+				defaultCamZoom = 0.6;
+				var bg:BGSprite = new BGSprite('bgs/baseplate', -600, -450, 0.9, 0.9);
+				add(bg);
 			case 'normal':
 			{
 				defaultCamZoom = 0.9;
@@ -1533,10 +1553,7 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				bg.scrollFactor.set(1,1);
 				add(bg);
-				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
-				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
-				add(glitchSprite);*/
-				
+
 				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/happyRon_ground'));
 				ground.updateHitbox();
 				ground.active = false;
@@ -1545,24 +1562,24 @@ class PlayState extends MusicBeatState
 			}
 			case 'greystage':
 			{
+				//6nstn648
 				addShader(camHUD,"grayscale");
-				defaultCamZoom = 0.9;
-				curStage = 'stage';
-				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bgs/greyRon_sky'));				bg.updateHitbox();
-				bg.scale.x = 1.2;
-				bg.scale.y = 1.2;
+				defaultCamZoom = 0.69;
+				
+				var bg:FlxSprite = new FlxSprite(-600,300).loadGraphic(Paths.image('bgs/newbgtest/gron/paperBack'));				
+				bg.scale.set(2,2);
+				bg.updateHitbox();
 				bg.active = false;
 				bg.antialiasing = true;
-				bg.scrollFactor.set(0.1, 0.1);
+				bg.scrollFactor.set(0.9, 0.9);
 				add(bg);
-				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
-				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
-				add(glitchSprite);*/
 				
-				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/greyRon_ground'));
+				var ground:FlxSprite = new FlxSprite(-100, 0).loadGraphic(Paths.image('bgs/newbgtest/gron/paperFront'));
+				ground.scale.set(2,2);
 				ground.updateHitbox();
 				ground.active = false;
 				ground.antialiasing = true;
+				ground.scrollFactor.set(0.9, 0.9);
 				add(ground);
 			}
 			default:
@@ -1576,9 +1593,6 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				bg.scrollFactor.set(1,1);
 				add(bg);
-				/*var glitchEffect = new FlxGlitchEffect(8,10,0.4,FlxGlitchDirection.HORIZONTAL);
-				var glitchSprite = new FlxEffectSprite(bg, [glitchEffect]);
-				add(glitchSprite);*/
 				
 				var ground:FlxSprite = new FlxSprite(-537, -290).loadGraphic(Paths.image('bgs/happyRon_ground'));
 				ground.updateHitbox();
@@ -1651,13 +1665,14 @@ class PlayState extends MusicBeatState
 			case 'immediateHell':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				addBehindDad(evilTrail);
-			case 'nothing':
+			case 'baseplate':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
 					//maybe bob will sing idk
-					camGame.alpha = 0;
+					//camGame.alpha = 0;
 					cameraSpeed = 3;
 					gf.visible = false;
+					boyfriend.x += 10000;
 					boyfriend.scrollFactor.set(0.2,0.2); //what
 					boyfriend.alpha = 0;
 					defaultCamZoom += 0.2;
@@ -1845,6 +1860,17 @@ class PlayState extends MusicBeatState
 			boyfriend.x -= 1250;
 			boyfriend.y -= 625;
 		}
+		if (SONG.song.toLowerCase() == "gron") {
+			boyfriend.x = 2600;
+			boyfriend.y = 2250;
+			gf.x = 2500;
+			gf.y = 2225;
+			dad.x = 1300;
+			dad.y = 2300;
+		}
+		if (SONG.song.toLowerCase() == "bleeding") {
+			dad.y += 300;
+		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 60;
@@ -1994,6 +2020,8 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'bloodshed-legacy-redux':
 					addShader(camGame, "fake CRT");
+					iconP1.changeIcon('oldbf');
+					dad.healthColorArray = [49,176,209];
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
@@ -2050,8 +2078,17 @@ class PlayState extends MusicBeatState
 					boyfriend.y += 30;
 					startCountdown();
 				default:
-					if (dialogueJson == null) startCountdown();
-					else schoolIntro(doof);
+					if (dialogueJson == null) 
+					{
+						if (daSong.toLowerCase().contains("classic"))
+						{
+							iconP1.changeIcon('oldbf');
+							dad.healthColorArray = [49,176,209];
+						}	
+						startCountdown();
+					}
+					else 
+						schoolIntro(doof);
 			}
 			seenCutscene = false;
 		}
@@ -3483,7 +3520,8 @@ class PlayState extends MusicBeatState
 				var offsetY:Int = 0;
 				if (curSong == "slammed") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
 				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
-				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -200; }
+				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -100; }
+				if (curSong == "gron") { offsetY = -200; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -5777,6 +5815,24 @@ var cameraTwn:FlxTween;
 					}
 				}
 		}*/
+		
+		if ((curSong.toLowerCase() == 'lights-down-remix') && (curStep == 256))
+		{
+			camGame.flash(FlxColor.WHITE, 0.2);
+			bgLol.visible = false;
+			//addShader(FlxG.camera, "fake CRT");
+			addShader(FlxG.camera,"glitchsmh");
+			Shaders["glitchsmh"].shader.data.on.value = [1.];
+			var chromeOffset = (ClientPrefs.rgbintense/350);
+			addShader(FlxG.camera, "chromatic aberration");
+
+			var chromeOffset = (ClientPrefs.rgbintense/350);
+			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
+			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+			Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
+			add(fx);
+			add(wbg);
+		}
 
 		if (curSong == 'Holy-Shit-Dave-Fnf')
 		{
@@ -5886,7 +5942,6 @@ var cameraTwn:FlxTween;
 					//FlxTween.tween(bgLol, {alpha: 0}, 1, {ease: FlxEase.quadIn});
 					var chromeOffset = (ClientPrefs.rgbintense/350);
 					addShader(FlxG.camera, "chromatic aberration");
-					addShader(FlxG.camera, "fake CRT");
 					addShader(FlxG.camera, "vhs");
 
 					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
@@ -5940,7 +5995,7 @@ var cameraTwn:FlxTween;
 				case 1552:
 					camHUD.alpha = 1;
 					var budjet = new FlxSprite(0, 0);
-					budjet.loadGraphic(Paths.image('ron/popup')); // you can replace this for later (if there's another cutscene for another song)
+					budjet.loadGraphic(Paths.image('ron/budjet'));
 					budjet.setGraphicSize(576, 309);
 					budjet.scrollFactor.set();
 					budjet.screenCenter();
@@ -6290,12 +6345,12 @@ var cameraTwn:FlxTween;
 			//trace('BEAT HIT: ' + curBeat + ', LAST HIT: ' + lastBeatHit);
 			return;
 		}
-		if (curBeat >= 36 && SONG.song.toLowerCase() == 'oh-my-god-hes-ballin') {
+		if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin') {
 			for (i=>cam in [camHUD, camGame]) {
 				FlxTween.cancelTweensOf(cam);
 				var offset = 1;
 				cam.angle = curBeat % 2 == 0 ? -3 + (offset * 0.5) : 3 - (offset * 0.5);
-				cam.zoom += 0.1;
+				cam.zoom += 0.05;
 				camHUD.x = curBeat % 2 == 0 ? 10 - (20 * offset) : -10 + (20 * offset);
 				camHUD.y += 10 - (20 * offset);
 				FlxTween.tween(cam, {angle: 0}, Conductor.crochet / 1000, {ease: FlxEase.circOut});

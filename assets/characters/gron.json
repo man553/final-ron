@@ -2,76 +2,76 @@
 	"animations": [
 		{
 			"offsets": [
-				-5,
-				0
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "idle",
-			"indices": [],
-			"name": "Gron Idle"
-		},
-		{
-			"offsets": [
-				5,
-				-6
+				820,
+				-93
 			],
 			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
 			"indices": [],
-			"name": "Gron Left"
+			"name": "left"
 		},
 		{
 			"offsets": [
-				-21,
-				-156
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "Gron Down"
-		},
-		{
-			"offsets": [
-				54,
-				37
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "Gron Up"
-		},
-		{
-			"offsets": [
-				-48,
-				-7
+				150,
+				50
 			],
 			"loop": false,
 			"fps": 24,
 			"anim": "singRIGHT",
 			"indices": [],
-			"name": "Gron Right"
+			"name": "right"
+		},
+		{
+			"offsets": [
+				90,
+				-50
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "down"
+		},
+		{
+			"offsets": [
+				264,
+				401
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "up"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				130,
+				-20
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/Gron",
+	"image": "characters/newcharstest/gronner",
 	"position": [
-		-120,
-		260
+		0,
+		0
 	],
 	"healthicon": "gron",
 	"flip_x": false,
 	"healthbar_colors": [
-		255,
-		255,
-		255
+		161,
+		161,
+		161
 	],
 	"camera_position": [
-		120,
-		-60
+		-180,
+		-40
 	],
 	"sing_duration": 4,
 	"noteskin": "ron",

@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "idle",
+			"indices": [],
+			"name": "arongus idle"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "arongus left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "arongus down"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "arongus up"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "arongus right"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/arongus",
+	"position": [
+		-160,
+		160
+	],
+	"healthicon": "arongus",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		238,
+		0
+	],
+	"camera_position": [
+		-120,
+		20
+	],
+	"sing_duration": 6.1,
+	"noteskin": "ron",
+	"scale": 1
+}

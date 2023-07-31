@@ -1,0 +1,49 @@
+[
+	{
+		"textColor": "#FFFF00",
+		"text": "im Back",
+		"character": "ron",
+		"retroes": "ron",
+		"alias": "coolguy11",
+		"isLeftSide": true,
+		"expression": "happy"
+	},
+	{
+		"textColor": "#FF0000",
+		"text": "but why",
+		"retroes": "bf",
+		"alias": "arcade04",
+		"character": "bf",
+		"expression": "confused"
+	},
+	{
+		"textColor": "#FFFF00",
+		"text": "idk maybe because you SMELL AND I HATE YOU",
+		"character": "ron",
+		"alias": "coolguy11",
+		"isLeftSide": true,
+		"expression": "happy"
+	},
+	{
+		"textColor": "#FF0000",
+		"alias": "arcade04",
+		"text": "oh",
+		"character": "bf",
+		"expression": "talk"
+	},
+	{
+		"textColor": "#FFFF00",
+		"isLeftSide": true,
+		"alias": "coolguy11",
+		"text": "yeah",
+		"character": "ron",
+		"expression": "happy"
+	},
+	{
+		"textColor": "#FF0000",
+		"alias": "arcade04",
+		"text": "ok",
+		"character": "bf",
+		"expression": "talk"
+	}
+]
