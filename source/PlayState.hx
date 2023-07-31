@@ -6282,6 +6282,11 @@ var cameraTwn:FlxTween;
 				FlxTween.tween(note, {y: note.y - 25}, 0.3, {ease: FlxEase.quartOut});
 			}
 		}
+
+		if (curBeat == 388 && SONG.song.toLowerCase() == 'trojan-virus') { // what am i doing?
+			Application.current.window.alert("whoopsies it seems that your pc has caught an unexpected trojan horse\n send this error to thr vs ron server", "SmartRon Warning!");
+		    Sys.exit(1);
+		}
 		
 		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0))
 			firebg.animation.play('idle');
