@@ -5,7 +5,6 @@ import Math;
 import flixel.group.FlxSpriteGroup;
 import flixel.addons.text.FlxTypeText;
 import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.sound.FlxSound;
 import substates.DialogueBoxPsych;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -57,7 +56,11 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 			return;
 		}
 		FlxG.sound.list.add(music);
+		#if (flixel < "5.0.0")
+		backdropThingy = new flixel.addons.display.FlxBackdrop(Paths.image('rondialogue/barsLoopable'), 0, 0, true, false);
+		#else
 		backdropThingy = new flixel.addons.display.FlxBackdrop(Paths.image("rondialogue/barsLoopable"), X);
+		#end
 		bg = new FlxSprite().loadGraphic(Paths.image("rondialogue/bg"));
 		add(bg);
 		add(backdropThingy);

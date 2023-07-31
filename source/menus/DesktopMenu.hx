@@ -2,7 +2,6 @@ package menus;
 
 import important.Song;
 import flixel.addons.ui.FlxUIButton;
-import flixel.sound.FlxSound;
 import flixel.FlxGame;
 import flixel.addons.ui.FlxMultiGamepadAnalogStick.XY;
 import flixel.addons.ui.FlxUIInputText;
@@ -64,8 +63,13 @@ class DesktopMenu extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 		var iconI:Int = 0;
 		var iconFrames = Paths.getSparrowAtlas("menuIcons");
+		#if (flixel < "5.0.0")
+		var sanstitre = new FlxBackdrop(Paths.image('sanstitre'), 0, 0, true, true);
+		rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), 0, 0, true, true);
+		#else
 		var sanstitre = new FlxBackdrop(Paths.image('sanstitre'), XY, 0, 0);
 		rainbowscreen = new FlxBackdrop(Paths.image('rainbowpcBg'), XY, 0, 0);
+		#end
 		var rainbTmr = new FlxTimer().start(0.005, function(tmr:FlxTimer)
 		{
 			rainbowscreen.x += (Math.sin(time)/5)+2;

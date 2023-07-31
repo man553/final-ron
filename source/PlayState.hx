@@ -30,7 +30,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -625,9 +624,14 @@ class PlayState extends MusicBeatState
 			case 'triad':
 			{
 				defaultCamZoom = 0.75;
+				#if (flixel < "5.0.0")
+				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/nomajin'), 0, 0, true, true);
+				var bgt = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), 0, 0, true, true);
+				#else
 				var bg = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/nomajin'), XY, 0, 0);
-				bg.scale.set(2,2);
 				var bgt = new FlxBackdrop(Paths.image('bgs/newbgtest/triad/majinother'), XY, 0, 0);
+				#end
+				bg.scale.set(2,2);
 				bgt.scale.set(2,2);
 				bg.scrollFactor.set(0.5,0.5);
 				//bg.cameras = [camBg];

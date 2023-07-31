@@ -25,7 +25,7 @@
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
-	<haxelib name="hxCodec" if="desktop || android" />
+	<haxelib name="hxCodec" if="desktop || android"/>
 
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
