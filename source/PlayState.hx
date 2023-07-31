@@ -1448,16 +1448,14 @@ class PlayState extends MusicBeatState
 					add(ground);
 				}
 			case 'blr': {
-				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
-				skyBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
-				skyBLR.updateHitbox();
-				skyBLR.x = -500;
-				skyBLR.y = 150;
-				add(skyBLR);
-
 				var groundBLR:BGSprite = new BGSprite('bgs/madRonV1_ground', -600, -100);
 				groundBLR.setGraphicSize(FlxG.width * 2, FlxG.height * 2);
 				groundBLR.updateHitbox();
+				
+				skyBLR = new FlxSprite().loadGraphic(Paths.image('bgs/madRonV1_sky'), false, 20);
+				skyBLR.x = groundBLR.getMidpoint().x - 600;
+				skyBLR.y = 150;
+				add(skyBLR);
 				add(groundBLR);
 			}
 			case 'nothing':
@@ -5794,14 +5792,26 @@ var cameraTwn:FlxTween;
 		if (curSong.toLowerCase() == 'bloodshed-legacy-redux')
 		{
 				switch(curStep){
-					case 228:
-						FlxTween.tween(skyBLR, {angle : 360}, 0.5, {type: LOOPING});
-					case 544:
+					case 144 | 400:
+						FlxTween.tween(camGame, {angle: 359.99}, 1.5, { ease: FlxEase.quadIn } );
+						FlxTween.angle(skyBLR, 0, 359.99, 1.5, { 
+							ease: FlxEase.quadIn, 
+							onComplete: function(twn:FlxTween) 
+							{
+								FlxTween.angle(skyBLR, 0, 359.99, 0.75, { 
+									type: FlxTweenType.LOOPING,
+									onComplete: function(twnr:FlxTween) 
+									{
+										FlxTween.tween(camGame, {angle: 359.99}, 0.74);
+									}
+								});
+							}} 
+						);
+					case 272 | 656:
 						FlxTween.cancelTweensOf(skyBLR);
-					case 800:
-						FlxTween.tween(skyBLR, {angle : 360}, 0.5, {type: LOOPING});
-					case 1312:
-						FlxTween.cancelTweensOf(skyBLR);
+						FlxTween.cancelTweensOf(camGame);
+						FlxTween.angle(skyBLR, 0, skyBLR.angle+359.99, 3, {ease: FlxEase.circOut} );
+						FlxTween.tween(camGame, {angle: camGame.angle+359.99}, 3, {ease: FlxEase.circOut} );
 				}
 		}
 		
