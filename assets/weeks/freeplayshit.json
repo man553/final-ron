@@ -38,21 +38,21 @@
 			]
 		],
 		[
+			"gron",
+			"gron",
+			[
+				127,
+				127,
+				127
+			]
+		],
+		[
 			"difficult-powers",
 			"tgt-sonic",
 			[
 				0,
 				162,
 				232
-			]
-		],
-		[
-			"sabotage-remix",
-			"arongus",
-			[
-				224,
-				0,
-				32
 			]
 		],
 		[
@@ -80,6 +80,15 @@
 				0,
 				127,
 				64
+			]
+		],
+		[
+			"sabotage-remix",
+			"arongus",
+			[
+				224,
+				0,
+				32
 			]
 		],
 		[

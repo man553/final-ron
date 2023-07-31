@@ -5062,17 +5062,36 @@ var cameraTwn:FlxTween;
 					defaultCamZoom -= 0.1;
 					FlxG.camera.zoom -= 0.1;
 					FlxG.camera.flash(FlxColor.fromRGB(224, 224, 224), 3);
-					var bruh:FlxSprite = new FlxSprite();
-					bruh.loadGraphic(Paths.image('bgs/scanlines'));
-					bruh.antialiasing = false;
-					bruh.active = false;
-					bruh.scrollFactor.set();
-					bruh.screenCenter();
-					bruh.scale.set(4,4);
-					add(bruh);
-					FlxTween.tween(bruh, {alpha: 0.5}, 0.5, {ease: FlxEase.circInOut, type: PINGPONG});
+					blackeffect = new FlxSprite();
+					blackeffect.loadGraphic(Paths.image('bgs/scanlines'));
+					blackeffect.antialiasing = false;
+					blackeffect.active = false;
+					blackeffect.scrollFactor.set();
+					blackeffect.screenCenter();
+					blackeffect.scale.set(4,4);
+					add(blackeffect);
+					FlxTween.tween(blackeffect, {alpha: 0.5}, 0.5, {ease: FlxEase.circInOut, type: PINGPONG});
 					FlxTween.cancelTweensOf(camFollowPos);
 					FlxTween.tween(camFollowPos, {x: camFollow.x, y: camFollow.y}, 0.01);
+				case 1280:
+					FlxTween.cancelTweensOf(camFollowPos);
+					triggerEventNote('Change Character', 'dad', 'douyhe');
+					triggerEventNote('Change Character', 'bf', 'bf');
+					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
+					cameraSpeed = 3;
+					graadienter.color = FlxColor.fromRGB(255,255,255);
+					wbg.color = FlxColor.fromRGB(255,255,255);
+					var chromeOffset = (ClientPrefs.rgbintense/350);
+					Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+					Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0];
+					//isPixelStage = true;
+					baro.alpha = 0;
+					bart.alpha = 0;
+					defaultCamZoom += 0.1;
+					FlxG.camera.zoom += 0.1;
+					FlxG.camera.flash(FlxColor.fromRGB(224, 224, 224), 3);
+					blackeffect.visible = false;
 			}
 			if (curStep >= 256)
 			{
@@ -5871,7 +5890,8 @@ var cameraTwn:FlxTween;
 					//imagine just getting this from the vs bob github with the exact values that would be a cool reference
 					Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -25, 25),Lib.application.window.y + FlxG.random.int( -16, 16));
 					
-					Application.current.window.alert("hi", "um");
+					//wuh n that sucks
+					//Application.current.window.alert("hi", "um");
 				case 1424:
 					moveing = false;
 					for (i in 0...8)
