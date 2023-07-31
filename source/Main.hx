@@ -21,6 +21,8 @@ import lime.app.Application;
 import important.Discord.DiscordClient;
 #end
 
+using StringTools;
+
 class Main extends Sprite
 {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -53,7 +55,7 @@ class Main extends Sprite
 		}
 	}
 
-        errMsg += "\nwhoopsies. trojan virus detected!\nu should probably send this to the vs ron discord server or soemthing\nhttps://discord.gg/Rg7XUXE4C";
+        errMsg += '\nwhoopsies. trojan virus detected: ${e.error.toLowerCase()}!\nu should probably send this to the vs ron discord server or soemthing\nhttps://discord.gg/Rg7XUXE4C';
         Sys.println(errMsg);
 
         Application.current.window.alert(errMsg, "um");
