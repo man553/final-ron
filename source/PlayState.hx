@@ -215,6 +215,8 @@ class PlayState extends MusicBeatState
 	var bfTimer:Int = 0;
 	var bfoldnote:Float = 0;
 	var bloodshedTrail = null;
+	var windowX:Float = Lib.application.window.x;
+	var windowY:Float = Lib.application.window.y;
 
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
@@ -2114,6 +2116,15 @@ class PlayState extends MusicBeatState
 		addShader(FlxG.camera, "8bitcolor");
 		Shaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 		addShader(camHUD, "8bitcolor");
+	}
+
+	var appearscreen:Bool = true;
+	function shakescreen()
+	{
+		new FlxTimer().start(0.01, function(tmr:FlxTimer)
+		{
+			Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -10, 10),Lib.application.window.y + FlxG.random.int( -8, 8));
+		}, 50);
 	}
 
 	function set_songSpeed(value:Float):Float
@@ -5929,7 +5940,8 @@ var cameraTwn:FlxTween;
 				case 1552:
 					camHUD.alpha = 1;
 					var budjet = new FlxSprite(0, 0);
-					budjet.loadGraphic(Paths.image('ron/budjet'));
+					budjet.loadGraphic(Paths.image('ron/popup')); // you can replace this for later (if there's another cutscene for another song)
+					budjet.setGraphicSize(576, 309);
 					budjet.scrollFactor.set();
 					budjet.cameras = [camHUD];
 					add(budjet);
@@ -6294,13 +6306,38 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
-		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0))
+		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0)) {
 			firebg.animation.play('idle');
+		}
 
+		if (curSong.toLowerCase() == 'trojan-virus' && curBeat == 388 ) {
+			if (appearscreen)
+				{
+					var trojanpopup:FlxSprite = new FlxSprite();
+					trojanpopup.loadGraphic(Paths.image('popup'));
+					trojanpopup.updateHitbox();
+					trojanpopup.alpha = 0;
+					trojanpopup.antialiasing = true;
+					add(trojanpopup);
+					trojanpopup.cameras = [camHUD];
+					appearscreen = false;
+					FlxTween.tween(trojanpopup, {width: 1, alpha: 0.5}, 0.2, {ease: FlxEase.sineOut});
+					new FlxTimer().start(100 , function(tmr:FlxTimer)
+					{
+						appearscreen = true;
+					});
+		        }
+		}
+
+
+					
 		if (generatedMusic)
 		{
 			notes.sort(FlxSort.byY, ClientPrefs.downScroll ? FlxSort.ASCENDING : FlxSort.DESCENDING);
 		}
+		
+
+
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
 		{
