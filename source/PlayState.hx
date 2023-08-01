@@ -613,7 +613,7 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				bg.scrollFactor.set(1,1);
 				bg.screenCenter();
-				bg.y -= 200;
+				bg.y -= 85;
 				add(bg);
 			}
 			case 'clusterfunk':
@@ -1663,8 +1663,8 @@ class PlayState extends MusicBeatState
 				//var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				//addBehindDad(evilTrail);
 			case 'immediateHell':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				addBehindDad(evilTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(bloodshedTrail);
 			case 'baseplate':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
@@ -1850,6 +1850,7 @@ class PlayState extends MusicBeatState
 			if (SONG.song.toLowerCase().contains('classic'))
 			{
 				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)';
+				kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			}
 			add(kadeEngineWatermark);
 		}
@@ -1869,7 +1870,13 @@ class PlayState extends MusicBeatState
 			dad.y = 2300;
 		}
 		if (SONG.song.toLowerCase() == "bleeding") {
-			dad.y += 300;
+			dad.y += 80;
+			dad.x += 150;
+		}
+		if (SONG.song.toLowerCase() == "awesome-ron") {
+			dad.y -= 176;
+			boyfriend.y -= 175;
+			gf.y -= 175;
 		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
@@ -1895,7 +1902,7 @@ class PlayState extends MusicBeatState
 			reloadHealthBarColors();
 		}
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36+6, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36+16, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -1908,7 +1915,7 @@ class PlayState extends MusicBeatState
 		{
 			//can someone please fix that im busy   - Sword352
 			if (ClientPrefs.downScroll)
-				kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
+				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 50);
 			else scoreTxt.y + 10;
 		}
 
@@ -3553,6 +3560,10 @@ class PlayState extends MusicBeatState
 				} else if (curSong.toLowerCase() == "ayo-classic") {
 					offsetX = 175;
 					offsetY = 300;
+				} else if (curSong.toLowerCase() == "bleeding") {
+					offsetY = -50;
+				} else if (curSong.toLowerCase() == "fardventure") {
+					offsetY = -100;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				
@@ -4183,11 +4194,11 @@ var cameraTwn:FlxTween;
 				// i should nerf unforgiving input its too hard
 				// skill issue
 				case 'shit':
-					health -= 0.15;
+					health -= 0.15*healthLoss;
 				case 'bad':
-					health -= 0.045;
+					health -= 0.045*healthLoss;
 				case 'good' | 'sick':
-					health += 0.05;
+					health += 0.05*healthGain;
 			}
 		}
 
@@ -4669,7 +4680,7 @@ var cameraTwn:FlxTween;
 
 		//shakes the fuck out of your screen and hud -ekical
 		// now it drains your health because fuck you -ekical
-		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron'))
+		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron') || (dad.curCharacter == "guitarhellron"))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -4679,20 +4690,14 @@ var cameraTwn:FlxTween;
 
 			camHUD.shake((0.0055 * multiplier / 4) / 2, 0.15);
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
-			if (health > 0.06)
-				health -= 0.05;
+			if (health > 0.05*healthLoss+.01)
+				health -= 0.05*healthLoss;
 			else
-				health = 0.05;
+				health = 0.05*healthLoss;
 		}
-		if (dad.curCharacter == 'ron-usb' || dad.curCharacter == 'ateloron')
-		{
-			if (health > 0.03)
-				health -= 0.014;
-			else
-				health = 0.02;
-		}
+
 		// NO MERE MORTAL CAN HANDLE THE POWERFUL DRIP RON
-		if (dad.curCharacter == 'hellron-drippin')
+		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -4701,10 +4706,10 @@ var cameraTwn:FlxTween;
 				multiplier = multiplier + ((1 - health));
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
 			camHUD.shake(0.0055 * multiplier / 4, 0.15);
-			if (health > 0.1)
-				health -= 0.1;
+			if (health > 0.1*healthLoss)
+				health -= 0.1*healthLoss;
 			else
-				health = 0.02;
+				health = 0.02*healthLoss;
 			//really annoying
 			//Lib.application.window.move(Lib.application.window.x + FlxG.random.int(-4, 4), Lib.application.window.y + FlxG.random.int(-4, 4));
 		}
@@ -4881,6 +4886,7 @@ var cameraTwn:FlxTween;
 
 	function spawnNoteSplashOnNote(note:Note) {
 		if(ClientPrefs.noteSplashes && note != null) {
+			if (!boyfriend.noteskin.toLowerCase().contains("_assets")) {return;}
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
 				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
@@ -5863,7 +5869,9 @@ var cameraTwn:FlxTween;
 		{
 				switch(curStep){
 					case 144 | 400:
-						FlxTween.tween(camGame, {angle: 359.99}, 1.5, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
+						FlxTween.cancelTweensOf(skyBLR);
+						FlxTween.cancelTweensOf(camGame);
+						FlxTween.tween(camGame, {angle: 359.99}, 3, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
 						FlxTween.angle(skyBLR, 0, 359.99, 1.5, { 
 							ease: FlxEase.quadIn, 
 							onComplete: function(twn:FlxTween) 
@@ -5872,7 +5880,7 @@ var cameraTwn:FlxTween;
 									type: FlxTweenType.LOOPING,
 									onComplete: function(twnr:FlxTween) 
 									{
-										FlxTween.tween(camGame, {angle: 359.99}, 0.74);
+										FlxTween.tween(camGame, {angle: 359.99}, 1.5);
 									}
 								});
 							}} 
@@ -5881,7 +5889,7 @@ var cameraTwn:FlxTween;
 						FlxTween.cancelTweensOf(skyBLR);
 						FlxTween.cancelTweensOf(camGame);
 						FlxTween.angle(skyBLR, 0, skyBLR.angle+359.99, 3, {ease: FlxEase.circOut} );
-						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
+						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 6, {ease: FlxEase.circOut} );
 				}
 		}
 		
@@ -6265,7 +6273,7 @@ var cameraTwn:FlxTween;
 				}
 				for (i in 4...8)
 				{
-					FlxTween.tween(strumLineNotes.members[i], {x: strumLineNotes.members[i].x - 275, angle: strumLineNotes.members[i].angle}, 1, {
+					FlxTween.tween(strumLineNotes.members[i], {x: strumLineNotes.members[i].x - 300, angle: strumLineNotes.members[i].angle}, 1, {
 						ease: FlxEase.linear,
 						onComplete: function(w:FlxTween) setDefault(i)
 					});
@@ -6274,8 +6282,12 @@ var cameraTwn:FlxTween;
 			}
 			if (curStep == 518)
 			{
-				camHUD.angle = 0;
-				FlxG.camera.angle = 0;
+				//camHUD.angle = 0;
+				//FlxG.camera.angle = 0;
+				FlxTween.cancelTweensOf(FlxG.camera);
+				FlxTween.cancelTweensOf(camHUD);
+				FlxTween.tween(camHUD, {angle: Math.floor(camHUD.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
+				FlxTween.tween(FlxG.camera, {angle: Math.floor(FlxG.camera.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
 				windowmove = false;
 				cameramove = false;
 			}
@@ -6334,6 +6346,12 @@ var cameraTwn:FlxTween;
 				cameramove = false;
 				intensecameramove = false;
 			}
+			if (curStep == 384) {
+				remove(bloodshedTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				addBehindDad(bloodshedTrail);
+				dad.y += 50;
+			}
 		}
 	}
 
@@ -6364,9 +6382,16 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
-		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0)) {
-			firebg.animation.play('idle');
+		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
+		{
+			iconP1.angle = 0;
+			FlxTween.cancelTweensOf(iconP1);
+			FlxTween.tween(iconP1, {angle: 359.99}, Conductor.crochet / 1200, {ease: FlxEase.circOut});
 		}
+		
+		//WHATS THE POINT OF ADDING BRACKETS EYAD
+		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0))
+			firebg.animation.play('idle');
 
 		/*if (curSong.toLowerCase() == 'trojan-virus' && curBeat == 388 ) {
 			if (appearscreen)
