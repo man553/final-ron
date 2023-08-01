@@ -1850,6 +1850,7 @@ class PlayState extends MusicBeatState
 			if (SONG.song.toLowerCase().contains('classic'))
 			{
 				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)';
+				kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			}
 			add(kadeEngineWatermark);
 		}
@@ -1901,7 +1902,7 @@ class PlayState extends MusicBeatState
 			reloadHealthBarColors();
 		}
 
-		scoreTxt = new FlxText(0, healthBarBG.y + 36+6, FlxG.width, "", 20);
+		scoreTxt = new FlxText(0, healthBarBG.y + 36+16, FlxG.width, "", 20);
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -1914,7 +1915,7 @@ class PlayState extends MusicBeatState
 		{
 			//can someone please fix that im busy   - Sword352
 			if (ClientPrefs.downScroll)
-				kadeEngineWatermark.y = FlxG.height * 0.9 + 45;
+				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 50);
 			else scoreTxt.y + 10;
 		}
 
@@ -4889,6 +4890,7 @@ var cameraTwn:FlxTween;
 
 	function spawnNoteSplashOnNote(note:Note) {
 		if(ClientPrefs.noteSplashes && note != null) {
+			if (!boyfriend.noteskin.toLowerCase().contains("_assets")) {return;}
 			var strum:StrumNote = playerStrums.members[note.noteData];
 			if(strum != null) {
 				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
