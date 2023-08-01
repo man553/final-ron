@@ -4695,15 +4695,9 @@ var cameraTwn:FlxTween;
 			else
 				health = 0.05*healthLoss;
 		}
-		if (dad.curCharacter == 'ron-usb' || dad.curCharacter == 'ateloron')
-		{
-			if (health > 0.02*healthLoss+.01)
-				health -= 0.014*healthLoss;
-			else
-				health = 0.02*healthLoss;
-		}
+
 		// NO MERE MORTAL CAN HANDLE THE POWERFUL DRIP RON
-		if (dad.curCharacter == 'hellron-drippin')
+		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -5875,7 +5869,9 @@ var cameraTwn:FlxTween;
 		{
 				switch(curStep){
 					case 144 | 400:
-						FlxTween.tween(camGame, {angle: 359.99}, 1.5, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
+						FlxTween.cancelTweensOf(skyBLR);
+						FlxTween.cancelTweensOf(camGame);
+						FlxTween.tween(camGame, {angle: 359.99}, 3, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
 						FlxTween.angle(skyBLR, 0, 359.99, 1.5, { 
 							ease: FlxEase.quadIn, 
 							onComplete: function(twn:FlxTween) 
@@ -5884,7 +5880,7 @@ var cameraTwn:FlxTween;
 									type: FlxTweenType.LOOPING,
 									onComplete: function(twnr:FlxTween) 
 									{
-										FlxTween.tween(camGame, {angle: 359.99}, 0.74);
+										FlxTween.tween(camGame, {angle: 359.99}, 1.5);
 									}
 								});
 							}} 
@@ -5893,7 +5889,7 @@ var cameraTwn:FlxTween;
 						FlxTween.cancelTweensOf(skyBLR);
 						FlxTween.cancelTweensOf(camGame);
 						FlxTween.angle(skyBLR, 0, skyBLR.angle+359.99, 3, {ease: FlxEase.circOut} );
-						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
+						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 6, {ease: FlxEase.circOut} );
 				}
 		}
 		
@@ -6386,9 +6382,16 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
-		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0)) {
-			firebg.animation.play('idle');
+		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
+		{
+			iconP1.angle = 0;
+			FlxTween.cancelTweensOf(iconP1);
+			FlxTween.tween(iconP1, {angle: 359.99}, Conductor.crochet / 1200, {ease: FlxEase.circOut});
 		}
+		
+		//WHATS THE POINT OF ADDING BRACKETS EYAD
+		if ((SONG.song.toLowerCase() == 'clusterfunk') && (curBeat % 2 == 0))
+			firebg.animation.play('idle');
 
 		/*if (curSong.toLowerCase() == 'trojan-virus' && curBeat == 388 ) {
 			if (appearscreen)
