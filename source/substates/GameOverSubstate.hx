@@ -5,7 +5,12 @@ import flixel.FlxObject;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
+import flixel.util.helpers.FlxRange;
 import flixel.util.FlxTimer;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import gameassets.Boyfriend;
 
 using StringTools;
@@ -59,6 +64,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (characterName == 'dBF')
 			characterName = 'bf';
+			
+		//clearShader(FlxG.camera);
 
 		if (ClientPrefs.siteenable)
 		{
@@ -70,6 +77,30 @@ class GameOverSubstate extends MusicBeatSubstate
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
 		add(boyfriend);
+		
+		if (PlayState.SONG.player1 == 'bfgd')
+		{
+			boyfriend.visible = false;
+			deathSoundName = 'gdDeath';
+			var emitter = new FlxEmitter(boyfriend.x + 90, boyfriend.y - 50);
+	 
+			for (i in 0 ... 32)
+			{
+				var p = new FlxParticle();
+				var bSize = FlxG.random.int(8,20);
+				p.makeGraphic(bSize, bSize, 0xFFFFFFFF);
+				p.exists = false;
+				//p.alphaRange = new FlxRange(1.0, 0.0);
+				emitter.add(p);
+			}
+			
+			FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.quadOut})
+			
+			emitter.velocity.set(-16, 16, 16, -16);
+			emitter.lifespan.set(3);
+			add(emitter);
+			emitter.start(true, 1, 0);
+		}
 
 		camFollow = new FlxPoint(boyfriend.getGraphicMidpoint().x, boyfriend.getGraphicMidpoint().y);
 
@@ -178,6 +209,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			boyfriend.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
 			FlxG.sound.play(Paths.music(endSoundName));
+			if (PlayState.SONG.player1 == 'bfgd')
+				FlxG.sound.play(Paths.sound('gdLive'));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

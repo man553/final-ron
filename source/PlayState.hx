@@ -1205,6 +1205,11 @@ class PlayState extends MusicBeatState
 				add(earth);
 			case 'immediateHell':
 				defaultCamZoom = 0.8;
+
+				addShader(camGame, "rain");
+				Shaders["rain"].shader.data.zoom.value = [40];
+				Shaders["rain"].shader.data.raindropLength.value = [0.1];
+				Shaders["rain"].shader.data.opacity.value = [0.25];
 				precacheList.set('hellexplode', 'sound');
 				var asdfsa:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_sky', 0, 0);
 				asdfsa.screenCenter();
@@ -1270,7 +1275,7 @@ class PlayState extends MusicBeatState
 				satan.setGraphicSize(Std.int(satan.width * 1.2));
 				satan.scrollFactor.set(0.2, 0.4);
 				satan.screenCenter(XY);
-				satan.y += 600;
+				satan.y += 1000;
 				satan.x -= 100;
 				satan.updateHitbox();
 				add(satan);
@@ -1303,28 +1308,6 @@ class PlayState extends MusicBeatState
 				islands.scale.set(1,1);
 				islands.visible = false;
 				add(islands);				
-				
-				space = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/spacebg'));
-				space.scale.set(1.5,1.5);
-				space.scrollFactor.set(0.1, 0.1);
-				space.screenCenter();
-				space.visible = false;
-				add(space);
-				
-				freindly = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/freindlystars'));
-				freindly.scale.set(1,1);
-				freindly.scrollFactor.set(0.05, 0.05);
-				freindly.screenCenter();
-				freindly.alpha = 0.5;
-				freindly.visible = false;
-				add(freindly);
-				
-				earth = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/bloodshed/space'));
-				earth.scale.set(1.5,1.5);
-				earth.scrollFactor.set(0.3, 0.3);
-				earth.screenCenter();
-				earth.visible = false;
-				add(earth);
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -537, 100, 0.9, 0.9);
 				add(bg);
@@ -1920,6 +1903,8 @@ class PlayState extends MusicBeatState
 		}
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
+		if (SONG.stage == 'clusterfunk')
+			botplayTxt.text = "SPACEUK MODE";
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			botplayTxt.setFormat(Paths.font("comic.ttf"), 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -3093,7 +3078,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if (curSong.toLowerCase() == 'bleeding-classic')
+		if (curSong.toLowerCase().contains('bleeding'))
 		{
 			if (windowmove)
 			{
@@ -3529,6 +3514,7 @@ class PlayState extends MusicBeatState
 				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
 				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -100; }
 				if (curSong == "gron") { offsetY = -200; }
+				if (curSong == "clusterfunk") { offsetY = -120; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -5139,7 +5125,7 @@ var cameraTwn:FlxTween;
 					triggerEventNote('Change Character', 'dad', 'douyhe');
 					triggerEventNote('Change Character', 'bf', 'bf');
 					Shaders["mosaic"].shader.data.uBlocksize.value = [0];
-					cameraSpeed = 3;
+					cameraSpeed = 1;
 					graadienter.color = FlxColor.fromRGB(255,255,255);
 					wbg.color = FlxColor.fromRGB(255,255,255);
 					var chromeOffset = (ClientPrefs.rgbintense/350);
@@ -6300,17 +6286,8 @@ var cameraTwn:FlxTween;
 
 		if (curSong.toLowerCase() == 'bleeding')
 		{
+			var chromeOffset = (ClientPrefs.rgbintense/350);
 			if (curStep == 256)
-			{
-				windowmove = true;
-				cameramove = true;
-			}
-			if (curStep == 512)
-			{
-				windowmove = false;
-				cameramove = false;
-			}
-			if (curStep == 768)
 			{
 				for (i in 0...4)
 				{
@@ -6324,33 +6301,33 @@ var cameraTwn:FlxTween;
 						onComplete: function(w:FlxTween) setDefault(i)
 					});
 				}
-				windowmove = true;
-				cameramove = false;
-				intensecameramove = true;
 			}
-			if (curStep == 896)
+			if (curStep == 376)
 			{
-				intensecameramove = false;
-				WHATTHEFUCK = true;
+				FlxTween.tween(satan, {y: satan.y - 700, angle: 359.99}, 1, {ease: FlxEase.backInOut});
 			}
-			if (curStep == 1024)
+			if (curStep == 384)
 			{
-				WHATTHEFUCK = false;
-				WTFending = true;
-			}
-			if (curStep == 1040)
-				WTFending = false;
-			if (curStep == 1296)
-			{
-				windowmove = false;
-				cameramove = false;
-				intensecameramove = false;
-			}
-			if (curStep == 384) {
+				camGame.flash(FlxColor.WHITE, 1);
+				addShader(FlxG.camera,"glitchsmh");
+				Shaders["glitchsmh"].shader.data.on.value = [1.];
+				
+				addShader(FlxG.camera, "chromatic aberration");
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(curStep*4)/2];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset*Math.sin(curStep*4) * -1/2];
 				remove(bloodshedTrail);
 				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				addBehindDad(bloodshedTrail);
 				dad.y += 50;
+				
+				intensecameramove = true;
+			}
+			if (curStep > 384)
+			{
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(curStep*4)/2];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset*Math.sin(curStep*4) * -1/2];
 			}
 		}
 	}
@@ -6384,9 +6361,24 @@ var cameraTwn:FlxTween;
 		
 		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
 		{
-			iconP1.angle = 0;
-			FlxTween.cancelTweensOf(iconP1);
-			FlxTween.tween(iconP1, {angle: 359.99}, Conductor.crochet / 1200, {ease: FlxEase.circOut});
+			var multiplier:Float = 1;
+			if (health >= 1)
+				multiplier = 1;
+			else
+				multiplier = multiplier + ((1 - health));
+			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
+			camHUD.shake(0.0055 * multiplier / 4, 0.15);
+			if (health > 0.1*healthLoss)
+				health -= 0.1*healthLoss;
+			else
+				health = 0.02*healthLoss;
+			
+			FlxG.camera.zoom += 0.02 * camZoomingMult;
+			camHUD.zoom += 0.01 * camZoomingMult;
+
+			iconP2.angle = 0;
+			FlxTween.cancelTweensOf(iconP2);
+			FlxTween.tween(iconP2, {angle: 359.99}, Conductor.crochet / 1200, {ease: FlxEase.circOut});
 		}
 		
 		//WHATS THE POINT OF ADDING BRACKETS EYAD
