@@ -6004,7 +6004,10 @@ var cameraTwn:FlxTween;
 					dad.heyTimer = 9999;
 				case 1552:
 					camHUD.alpha = 1;
-					new WindowShit(0, 0, 500, 500, "test");
+					var window:WindowShit = new WindowShit(0, 0, 500, 500, "test");
+					var text:FlxText = new FlxText(100, 100, 0, "you got fucked fuck you");
+					text.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, CENTER); // it doesnt appear but ill do it tommorow
+					window.addObject(text);
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
 					budjet.scrollFactor.set();

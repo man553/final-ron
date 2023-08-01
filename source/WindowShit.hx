@@ -27,6 +27,7 @@ class WindowShit extends Sprite{
 	public static var cameras(default, null):CameraFrontEnd;
 	public var camera:FlxCamera;
     public var isNull:Bool = true;
+	var body:FlxText;
 
 	public function new(x:Int, y:Int, width:Int, height:Int, title:String = "Debug", frameRate:Int = 0)
 	{
@@ -61,7 +62,7 @@ class WindowShit extends Sprite{
 			vsync: false
 		};
 		window = FlxG.stage.application.createWindow(attributes);
-		window.stage.color = FlxColor.ORANGE;
+		window.stage.color = FlxColor.TRANSPARENT; // hmm
 		camera = new FlxCamera(0, 0, width, height);
 		addEventListener(Event.ADDED_TO_STAGE, create);
         isNull = false;
