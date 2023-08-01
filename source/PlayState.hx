@@ -3529,7 +3529,6 @@ class PlayState extends MusicBeatState
 				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
 				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -100; }
 				if (curSong == "gron") { offsetY = -200; }
-				if (curSong == "clusterfunk") { offsetY = -120; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
 				//camFollow.x -= boyfriend.cameraPosition[0] + boyfriendCameraOffset[0];
 				//camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
@@ -5946,12 +5945,6 @@ var cameraTwn:FlxTween;
 
 		if (curSong == 'Trojan-Virus')
 		{
-			//idk if it works yet
-			/*if (curStep > 384)
-			{
-				gf.angle += 20;
-				gf.y += 2*Math.sin(curStep);
-			}*/
 			switch (curStep)
 			{
 				case 384:
@@ -5962,11 +5955,6 @@ var cameraTwn:FlxTween;
 					addShader(FlxG.camera, "chromatic aberration");
 					addShader(FlxG.camera, "vhs");
 
-					//FlxTween.tween(gf, { x: FlxG.width - gf.width }, 2, { ease: FlxEase.circInOut, type: PINGPONG });
-					//gf.x -= 200;
-					//gf.y -= 75; //(adjust the position or just use setposition lmao)
-					//gf.scale.set(0.5,0.5);
-					
 					Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset/2];
 					Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
 					Shaders["chromatic aberration"].shader.data.bOffset.value = [chromeOffset * -1];
@@ -5993,7 +5981,6 @@ var cameraTwn:FlxTween;
 				case 1160 | 1164 | 1165 | 1166 | 1167:
 					//imagine just getting this from the vs bob github with the exact values that would be a cool reference
 					Lib.application.window.move(Lib.application.window.x + FlxG.random.int( -50, 50),Lib.application.window.y + FlxG.random.int( -32, 32));
-					
 					//wuh n that sucks
 					//Application.current.window.alert("hi", "um");
 				case 1161:
@@ -6017,6 +6004,7 @@ var cameraTwn:FlxTween;
 					dad.heyTimer = 9999;
 				case 1552:
 					camHUD.alpha = 1;
+					new WindowShit(0, 0, 500, 500, "test");
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
 					budjet.scrollFactor.set();
