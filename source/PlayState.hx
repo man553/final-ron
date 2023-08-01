@@ -613,7 +613,7 @@ class PlayState extends MusicBeatState
 				bg.antialiasing = true;
 				bg.scrollFactor.set(1,1);
 				bg.screenCenter();
-				bg.y -= 200;
+				bg.y -= 85;
 				add(bg);
 			}
 			case 'clusterfunk':
@@ -3562,6 +3562,8 @@ class PlayState extends MusicBeatState
 					offsetY = 300;
 				} else if (curSong.toLowerCase() == "bleeding") {
 					offsetY = -50;
+				} else if (curSong.toLowerCase() == "fardventure") {
+					offsetY = -100;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				

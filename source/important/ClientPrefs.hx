@@ -34,7 +34,7 @@ class ClientPrefs {
 	public static var hitsoundVolume:Float = 0;
 	public static var pauseMusic:String = 'Tea Time';
 	public static var directionalCamera:Bool = true;
-	public static var chromaticAbberationEverywhere:Bool = true;
+	public static var chromaticAbberationEverywhere:Bool = false;
 	public static var cutscenes:Bool = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
