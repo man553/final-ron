@@ -20,7 +20,17 @@ class PauseSubState extends MusicBeatSubstate
 	var optionArray = ["resume song", "restart song", "shut down", "log off"];
 	var optionButtons = [];
 	var curSelected = 0;
+	var pauseMusic:FlxSound = new FlxSound();
 	override function create() {
+		var songName:String = ClientPrefs.pauseMusic;
+		pauseMusic = new FlxSound();
+		if (songName != 'None' && songName != null) {
+			pauseMusic.loadEmbedded(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic).toLowerCase()), true, true);
+		}
+		pauseMusic.volume = 0;
+		pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseMusic.length / 2))); // idk why it starts at a random point i just stole it from psych
+		FlxG.sound.list.add(pauseMusic);
+		
 		var startMenu = new FlxSprite(0, 720).loadGraphic(Paths.image("windowsUi/start menu"));
 		startMenu.y -= startMenu.height;
 		add(startMenu);
@@ -39,13 +49,16 @@ class PauseSubState extends MusicBeatSubstate
 		super.create();
 	}
 	override function update(elapsed:Float) {
+		if (pauseMusic.volume < .5) {
+			pauseMusic.volume += elapsed * .01;
+		}
 		for (i in optionButtons) {
 			if (i.ID == curSelected) {i.animation.play("select");
 				if (FlxG.keys.justPressed.ENTER) {
 					var choice = optionArray[i.ID];
 					switch (choice) {
 						case "resume song": close();
-						case "restart song": 		
+						case "restart song": 	
 							PlayState.instance.paused = true; // For lua
 							FlxG.sound.music.volume = 0;
 							PlayState.instance.vocals.volume = 0;
@@ -71,9 +84,15 @@ class PauseSubState extends MusicBeatSubstate
 			}
 			else i.animation.play("unselect");
 		}
-		if (controls.UI_DOWN_P) curSelected += 1;
-		if (controls.UI_UP_P) curSelected -= 1;
+		if (controls.UI_DOWN_P) { curSelected += 1; FlxG.sound.play(Paths.sound('scrollFunny'), 0.6); }
+		if (controls.UI_UP_P) { curSelected -= 1; FlxG.sound.play(Paths.sound('scrollFunny'), 0.6); }
 		curSelected = (curSelected > optionArray.length - 1 ? 0 : (curSelected < 0 ? optionArray.length - 1 : curSelected));
 		super.update(elapsed);
+	}
+	override function destroy()
+	{
+		pauseMusic.destroy();
+
+		super.destroy();
 	}
 }
