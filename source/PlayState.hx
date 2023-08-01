@@ -1663,8 +1663,8 @@ class PlayState extends MusicBeatState
 				//var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
 				//addBehindDad(evilTrail);
 			case 'immediateHell':
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
-				addBehindDad(evilTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069); //nice
+				addBehindDad(bloodshedTrail);
 			case 'baseplate':
 				if (SONG.song.toLowerCase() == 'oh-my-god-hes-ballin')
 				{
@@ -1869,7 +1869,13 @@ class PlayState extends MusicBeatState
 			dad.y = 2300;
 		}
 		if (SONG.song.toLowerCase() == "bleeding") {
-			dad.y += 300;
+			dad.y += 80;
+			dad.x += 150;
+		}
+		if (SONG.song.toLowerCase() == "awesome-ron") {
+			dad.y -= 176;
+			boyfriend.y -= 175;
+			gf.y -= 175;
 		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
@@ -3553,6 +3559,8 @@ class PlayState extends MusicBeatState
 				} else if (curSong.toLowerCase() == "ayo-classic") {
 					offsetX = 175;
 					offsetY = 300;
+				} else if (curSong.toLowerCase() == "bleeding") {
+					offsetY = -50;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				
@@ -4183,11 +4191,11 @@ var cameraTwn:FlxTween;
 				// i should nerf unforgiving input its too hard
 				// skill issue
 				case 'shit':
-					health -= 0.15;
+					health -= 0.15*healthLoss;
 				case 'bad':
-					health -= 0.045;
+					health -= 0.045*healthLoss;
 				case 'good' | 'sick':
-					health += 0.05;
+					health += 0.05*healthGain;
 			}
 		}
 
@@ -4679,17 +4687,17 @@ var cameraTwn:FlxTween;
 
 			camHUD.shake((0.0055 * multiplier / 4) / 2, 0.15);
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
-			if (health > 0.06)
-				health -= 0.05;
+			if (health > 0.05*healthLoss+.01)
+				health -= 0.05*healthLoss;
 			else
-				health = 0.05;
+				health = 0.05*healthLoss;
 		}
 		if (dad.curCharacter == 'ron-usb' || dad.curCharacter == 'ateloron')
 		{
-			if (health > 0.03)
-				health -= 0.014;
+			if (health > 0.02*healthLoss+.01)
+				health -= 0.014*healthLoss;
 			else
-				health = 0.02;
+				health = 0.02*healthLoss;
 		}
 		// NO MERE MORTAL CAN HANDLE THE POWERFUL DRIP RON
 		if (dad.curCharacter == 'hellron-drippin')
@@ -4701,10 +4709,10 @@ var cameraTwn:FlxTween;
 				multiplier = multiplier + ((1 - health));
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
 			camHUD.shake(0.0055 * multiplier / 4, 0.15);
-			if (health > 0.1)
-				health -= 0.1;
+			if (health > 0.1*healthLoss)
+				health -= 0.1*healthLoss;
 			else
-				health = 0.02;
+				health = 0.02*healthLoss;
 			//really annoying
 			//Lib.application.window.move(Lib.application.window.x + FlxG.random.int(-4, 4), Lib.application.window.y + FlxG.random.int(-4, 4));
 		}
@@ -6333,6 +6341,12 @@ var cameraTwn:FlxTween;
 				windowmove = false;
 				cameramove = false;
 				intensecameramove = false;
+			}
+			if (curStep == 384) {
+				remove(bloodshedTrail);
+				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+				addBehindDad(bloodshedTrail);
+				dad.y += 50;
 			}
 		}
 	}
