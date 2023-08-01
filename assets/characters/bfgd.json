@@ -1,136 +1,136 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				98,
 				237
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				124,
 				236
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left instance 1"
+			"fps": 24,
+			"name": "left instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				96,
 				226
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "down instance 1"
+			"fps": 24,
+			"name": "down instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				80,
 				267
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "up instance 1"
+			"fps": 24,
+			"name": "up instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				58,
 				245
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right instance 1"
+			"fps": 24,
+			"name": "right instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				124,
 				237
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "leftmiss instance 1"
+			"fps": 24,
+			"name": "leftmiss instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				96,
 				227
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "downmiss instance 1"
+			"fps": 24,
+			"name": "downmiss instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				80,
 				267
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUPmiss",
-			"indices": [],
-			"name": "upmiss instance 1"
+			"fps": 24,
+			"name": "upmiss instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				53,
 				247
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "rightmiss instance 1"
+			"fps": 24,
+			"name": "rightmiss instance 1",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				77,
 				228
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "death"
+			"fps": 24,
+			"name": "death",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				86,
 				227
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathLoop",
-			"indices": [],
-			"name": "death"
+			"fps": 24,
+			"name": "death",
+			"indices": []
 		},
 		{
+			"loop": false,
 			"offsets": [
 				86,
 				227
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "deathConfirm",
-			"indices": [],
-			"name": "death"
+			"fps": 24,
+			"name": "death",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -139,7 +139,7 @@
 		-520,
 		-520
 	],
-	"healthicon": "bfgd",
+	"healthicon": "bf",
 	"flip_x": true,
 	"healthbar_colors": [
 		0,
@@ -148,8 +148,9 @@
 	],
 	"camera_position": [
 		30,
-		-60
+		-180
 	],
 	"sing_duration": 4,
+	"noteskin": "NOTE_assets",
 	"scale": 0.999999999999999
 }

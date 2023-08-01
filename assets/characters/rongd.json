@@ -1,5 +1,4 @@
 {
-	"noteskin": "ron",
 	"animations": [
 		{
 			"offsets": [
@@ -63,17 +62,18 @@
 		90,
 		105
 	],
-	"healthicon": "rongd",
+	"healthicon": "gdron",
 	"flip_x": false,
 	"healthbar_colors": [
-		255,
-		246,
+		116,
+		254,
 		0
 	],
 	"camera_position": [
 		0,
-		60
+		-60
 	],
 	"sing_duration": 4,
+	"noteskin": "ron",
 	"scale": 0.999999999999999
 }
