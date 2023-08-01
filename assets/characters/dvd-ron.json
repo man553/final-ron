@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				-5,
 				0
 			],
-			"indices": [],
-			"fps": 24,
 			"anim": "idle",
-			"loop": false,
-			"name": "Idle"
+			"fps": 24,
+			"name": "Idle",
+			"indices": []
 		},
 		{
 			"offsets": [
-				315,
-				-46
+				185,
+				4
 			],
 			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
 			"loop": false,
-			"name": "Left"
+			"name": "left"
 		},
 		{
 			"offsets": [
-				0,
-				-41
+				120,
+				-1
 			],
 			"indices": [],
 			"fps": 24,
 			"anim": "singDOWN",
 			"loop": false,
-			"name": "Down"
+			"name": "down"
 		},
 		{
 			"offsets": [
-				-66,
-				87
+				4,
+				7
 			],
 			"indices": [],
 			"fps": 24,
 			"anim": "singUP",
 			"loop": false,
-			"name": "Up"
+			"name": "up"
 		},
 		{
 			"offsets": [
-				-118,
-				-7
+				-28,
+				0
 			],
 			"indices": [],
 			"fps": 24,
 			"anim": "singRIGHT",
 			"loop": false,
-			"name": "Right"
+			"name": "right"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/DvdRon",
+	"image": "characters/newcharstest/rong_aisle",
 	"position": [
 		0,
 		350
@@ -74,5 +74,6 @@
 		0
 	],
 	"sing_duration": 4,
+	"noteskin": "ron",
 	"scale": 1
 }
