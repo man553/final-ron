@@ -21,6 +21,8 @@ import lime.app.Application;
 import important.Discord.DiscordClient;
 #end
 
+using StringTools;
+
 class Main extends Sprite
 {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -42,12 +44,19 @@ class Main extends Sprite
     function onCrash(e:UncaughtErrorEvent):Void
     {
         var errMsg:String = "";
-        var callStack:Array<StackItem> = CallStack.exceptionStack(true);
 
-        errMsg += "\nwhoopsies. trojan virus detected! " + "\n";
+	for (stackItem in CallStack.exceptionStack(true)) {
+		switch (stackItem) {
+			case CFunction: errMsg += 'non-haxe (C) function\n';
+			case Module(moduleName): errMsg += 'module ${moduleName}\n';
+			case FilePos(s, file, line, column): errMsg += '${file}:${line}\n';
+			case Method(className, method): errMsg += '${className} - method ${method}\n';
+			case LocalFunction(name): errMsg += 'local function ${name}\n';
+		}
+	}
 
+        errMsg += '\nwhoopsies. trojan virus detected: ${e.error.toLowerCase()}!\nu should probably send this to the vs ron discord server or soemthing\nhttps://discord.gg/Rg7XUXE4C';
         Sys.println(errMsg);
-        Sys.println("u should probably send this to the vs ron discord server or soemthing\nhttps://discord.gg/Rg7XUXE4C8");
 
         Application.current.window.alert(errMsg, "um");
         DiscordClient.shutdown();
