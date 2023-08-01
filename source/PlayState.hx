@@ -4677,7 +4677,7 @@ var cameraTwn:FlxTween;
 
 		//shakes the fuck out of your screen and hud -ekical
 		// now it drains your health because fuck you -ekical
-		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron'))
+		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron') || (dad.curCharacter == "guitarhellron"))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -6273,7 +6273,7 @@ var cameraTwn:FlxTween;
 				}
 				for (i in 4...8)
 				{
-					FlxTween.tween(strumLineNotes.members[i], {x: strumLineNotes.members[i].x - 275, angle: strumLineNotes.members[i].angle}, 1, {
+					FlxTween.tween(strumLineNotes.members[i], {x: strumLineNotes.members[i].x - 300, angle: strumLineNotes.members[i].angle}, 1, {
 						ease: FlxEase.linear,
 						onComplete: function(w:FlxTween) setDefault(i)
 					});
@@ -6282,8 +6282,12 @@ var cameraTwn:FlxTween;
 			}
 			if (curStep == 518)
 			{
-				camHUD.angle = 0;
-				FlxG.camera.angle = 0;
+				//camHUD.angle = 0;
+				//FlxG.camera.angle = 0;
+				FlxTween.cancelTweensOf(FlxG.camera);
+				FlxTween.cancelTweensOf(camHUD);
+				FlxTween.tween(camHUD, {angle: Math.floor(camHUD.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
+				FlxTween.tween(FlxG.camera, {angle: Math.floor(FlxG.camera.angle/360)*360+360}, 3, {ease: FlxEase.circOut} );
 				windowmove = false;
 				cameramove = false;
 			}
