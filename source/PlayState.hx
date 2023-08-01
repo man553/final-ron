@@ -3550,6 +3550,9 @@ class PlayState extends MusicBeatState
 				} else if (curSong.toLowerCase().contains("redux") || curSong.toLowerCase() == "bijuu") {
 					offsetY = -250;
 					offsetX = -225;
+				} else if (curSong.toLowerCase() == "ayo-classic") {
+					offsetX = 175;
+					offsetY = 300;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				
