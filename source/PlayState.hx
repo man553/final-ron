@@ -5996,7 +5996,6 @@ var cameraTwn:FlxTween;
 					camHUD.alpha = 1;
 					var budjet = new FlxSprite(0, 0);
 					budjet.loadGraphic(Paths.image('ron/budjet'));
-					budjet.setGraphicSize(576, 309);
 					budjet.scrollFactor.set();
 					budjet.screenCenter();
 					budjet.cameras = [camHUD];
@@ -6366,7 +6365,7 @@ var cameraTwn:FlxTween;
 			firebg.animation.play('idle');
 		}
 
-		if (curSong.toLowerCase() == 'trojan-virus' && curBeat == 388 ) {
+		/*if (curSong.toLowerCase() == 'trojan-virus' && curBeat == 388 ) {
 			if (appearscreen)
 				{
 					var trojanpopup:FlxSprite = new FlxSprite();
@@ -6383,8 +6382,7 @@ var cameraTwn:FlxTween;
 						appearscreen = true;
 					});
 		        }
-		}
-
+		}*/
 
 					
 		if (generatedMusic)
