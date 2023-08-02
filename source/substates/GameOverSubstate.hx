@@ -7,6 +7,7 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.util.helpers.FlxRange;
 import flixel.util.FlxTimer;
+import flixel.addons.display.shapes;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import flixel.tweens.FlxEase;
@@ -94,9 +95,9 @@ class GameOverSubstate extends MusicBeatSubstate
 				emitter.add(p);
 			}
 			
-			FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.quadOut});
+			FlxTween.tween(FlxG.camera, {alpha: 0}, 2, {ease: FlxEase.linear});
 			
-			emitter.velocity.set(-16, 16, 16, -16);
+			emitter.velocity.set(-32, 32, 32, -32);
 			emitter.lifespan.set(3);
 			add(emitter);
 			emitter.start(true, 1, 0);

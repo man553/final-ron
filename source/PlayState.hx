@@ -2014,6 +2014,12 @@ class PlayState extends MusicBeatState
 					addShader(camGame, "fake CRT");
 					iconP1.changeIcon('oldbf');
 					dad.healthColorArray = [49,176,209];
+					for (i in 0...unspawnNotes.length)
+						unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? 'NOTEold_assets' : dad.noteskin);
+					for (n in notes.members)
+						n.texture = "noteskins/" + (n.mustPress ? 'NOTEold_assets' : dad.noteskin);
+					for (i in strumLineNotes.members)
+						i.texture = "noteskins/" + (i.player == 0 ? dad.noteskin : 'NOTEold_assets');
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
@@ -2076,6 +2082,12 @@ class PlayState extends MusicBeatState
 						{
 							iconP1.changeIcon('oldbf');
 							dad.healthColorArray = [49,176,209];
+							for (i in 0...unspawnNotes.length)
+								unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? 'NOTEold_assets' : dad.noteskin);
+							for (n in notes.members)
+								n.texture = "noteskins/" + (n.mustPress ? 'NOTEold_assets' : dad.noteskin);
+							for (i in strumLineNotes.members)
+								i.texture = "noteskins/" + (i.player == 0 ? dad.noteskin : 'NOTEold_assets');
 						}	
 						startCountdown();
 					}
@@ -5858,25 +5870,13 @@ var cameraTwn:FlxTween;
 					case 144 | 400:
 						FlxTween.cancelTweensOf(skyBLR);
 						FlxTween.cancelTweensOf(camGame);
-						FlxTween.tween(camGame, {angle: 359.99}, 3, { ease: FlxEase.linear, type: FlxTweenType.LOOPING } );
-						FlxTween.angle(skyBLR, 0, 359.99, 1.5, { 
-							ease: FlxEase.quadIn, 
-							onComplete: function(twn:FlxTween) 
-							{
-								FlxTween.angle(skyBLR, 0, 359.99, 0.75, { 
-									type: FlxTweenType.LOOPING,
-									onComplete: function(twnr:FlxTween) 
-									{
-										FlxTween.tween(camGame, {angle: 359.99}, 1.5);
-									}
-								});
-							}} 
-						);
+						FlxTween.tween(camGame, {angle: 180}, 3, { ease: FlxEase.backInOut} );
+						FlxTween.angle(skyBLR, 0, 180, 3, { ease: FlxEase.backInOut } );
 					case 272 | 656:
 						FlxTween.cancelTweensOf(skyBLR);
 						FlxTween.cancelTweensOf(camGame);
-						FlxTween.angle(skyBLR, 0, skyBLR.angle+359.99, 3, {ease: FlxEase.circOut} );
-						FlxTween.tween(camGame, {angle: Math.floor(camGame.angle/360)*360+360}, 6, {ease: FlxEase.circOut} );
+						FlxTween.tween(camGame, {angle: camGame.angle+180}, 3, { ease: FlxEase.backInOut} );
+						FlxTween.angle(skyBLR, 0, skyBLR.angle+180, 3, { ease: FlxEase.backInOut } );
 				}
 		}
 		
