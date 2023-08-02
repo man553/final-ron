@@ -8,6 +8,7 @@ import flash.display.BlendMode;
 import flash.display.Sprite;
 import flash.Lib;
 import flixel.FlxG;
+import flixel.FlxSprite;
  
 @:bitmap("art/preloaderArt.png") class LogoImage extends BitmapData { }
  
@@ -28,7 +29,7 @@ class Preloader extends FlxBasePreloader
         var ratio:Float = this._width / 2560; //This allows us to scale assets depending on the size of the screen.
          
         logo = new Sprite();
-        logo.addChild(new Bitmap(new LogoImage(0,0))); //Sets the graphic of the sprite to a Bitmap object, which uses our embedded BitmapData class.
+        logo.addChild(new FlxSprite().loadGraphic(Paths.image('trueTitleLogo'))); //Sets the graphic of the sprite to a Bitmap object, which uses our embedded BitmapData class.
         logo.scaleX = logo.scaleY = ratio;
         logo.x = ((this._width) / 2) - ((logo.width) / 2);
         logo.y = (this._height / 2) - ((logo.height) / 2);

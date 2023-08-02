@@ -7,7 +7,6 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.util.helpers.FlxRange;
 import flixel.util.FlxTimer;
-import flixel.addons.display.shapes;
 import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
 import flixel.tweens.FlxEase;

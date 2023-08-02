@@ -712,7 +712,7 @@ class PlayState extends MusicBeatState
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/newbgtest/wasted/underwater'));
 				fx.updateHitbox();
 				fx.antialiasing = true;
-				fx.scale.set(4,4);
+				fx.scale.set(5,5);
 				fx.screenCenter(XY);
 				fx.scrollFactor.set(0.1, 0.1);
 				add(fx);
@@ -3061,6 +3061,10 @@ class PlayState extends MusicBeatState
 			}
 			if (curStep == 1408)
 			{
+				addShader(FlxG.camera, "rain");
+				Shaders["rain"].shader.data.zoom.value = [32];
+				Shaders["rain"].shader.data.raindropLength.value = [0.03];
+				Shaders["rain"].shader.data.opacity.value = [0.125];
 				for (i in 0...8)
 				{ 
 					var member = strumLineNotes.members[i];
@@ -3069,6 +3073,7 @@ class PlayState extends MusicBeatState
 				gf.angle = 0;
 				boyfriend.angle = 0;
 				dad.angle = 0;
+				fx.visible = false;
 				startCharacterPos(boyfriend);
 				startCharacterPos(gf, true);
 				startCharacterPos(dad);
@@ -6167,12 +6172,14 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.85;
 				case 1360:
 					camGame.alpha = 0;
+					clearShader(FlxG.camera);
+					clearShader(camGame);
 				case 1488:
 					wastedGrp.visible = true;
+					fx.alpha = 0;
 					cameraSpeed = 1;
 					defaultCamZoom = 0.9;
 					camGame.alpha = 1;
-					Shaders["rain"].shader.data.opacity.value = [0];
 			}
 		}
 

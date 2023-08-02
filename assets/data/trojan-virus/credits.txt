@@ -8,4 +8,3 @@ Karbis
 ARTIST(s)
 Seezee
 YaWill
-Wildythomas
