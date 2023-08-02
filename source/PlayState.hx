@@ -217,6 +217,7 @@ class PlayState extends MusicBeatState
 	var bloodshedTrail = null;
 	var windowX:Float = Lib.application.window.x;
 	var windowY:Float = Lib.application.window.y;
+	var noDadAnimations:Bool = false;
 
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
@@ -4672,8 +4673,10 @@ var cameraTwn:FlxTween;
 
 			if(char != null)
 			{
-				char.playAnim(animToPlay, true);
-				char.holdTimer = 0;
+				if (!noDadAnimations) {
+					char.playAnim(animToPlay, true);
+					char.holdTimer = 0;
+				}
 			}
 		}
 
@@ -4689,7 +4692,7 @@ var cameraTwn:FlxTween;
 
 		//shakes the fuck out of your screen and hud -ekical
 		// now it drains your health because fuck you -ekical
-		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'demonron') || (dad.curCharacter == "guitarhellron"))
+		if ((dad.curCharacter == 'hellron') || (dad.curCharacter == 'classichellron') || (dad.curCharacter == 'bloodshedron') || (dad.curCharacter == 'bloodbathnew') || (dad.curCharacter == "guitarhellron"))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -6289,14 +6292,10 @@ var cameraTwn:FlxTween;
 				triggerEventNote("Play Animation","transform","dad");
 			}
 			if (curStep == 498) {
-				dad.stunned = true;
-				dad.specialAnim = true;
 				triggerEventNote("Play Animation","untransform","dad");
-
-				new FlxTimer().start(29/24, function(tmr:FlxTimer)
-				{
-					dad.stunned = false;
-					dad.specialAnim = false;
+				noDadAnimations = true;
+				new FlxTimer().start(29/24,function(tmr:FlxTimer) {
+					noDadAnimations = false;
 				});
 			}
 		}

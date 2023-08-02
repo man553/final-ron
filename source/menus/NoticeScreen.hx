@@ -39,6 +39,9 @@ class NoticeScreen extends MusicBeatState
 	override function create() 
 	{
 		super.create();
+		important.PlayerSettings.init();
+		FlxG.save.bind('funkin', 'ninjamuffin99');
+		ClientPrefs.loadPrefs();
 	
 		#if desktop
 		if (!DiscordClient.isInitialized)
