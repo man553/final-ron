@@ -67,7 +67,6 @@ class PauseSubState extends MusicBeatSubstate
 							FlxG.resetState();
 							MusicBeatState.animatedShaders["8bitcolor"].shader.data.enablethisbitch.value = [0.];
 						case "log off":
-							FlxG.sound.play(Paths.sound('shutDown'));
 							PlayState.deathCounter = 0;
 							PlayState.seenCutscene = false;
 							if(PlayState.isStoryMode) {
