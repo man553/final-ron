@@ -24,8 +24,8 @@
 		},
 		{
 			"offsets": [
-				123,
-				-39
+				119,
+				-33
 			],
 			"loop": false,
 			"fps": 24,
@@ -35,8 +35,8 @@
 		},
 		{
 			"offsets": [
-				104,
-				67
+				79,
+				51
 			],
 			"loop": false,
 			"fps": 24,
@@ -46,8 +46,8 @@
 		},
 		{
 			"offsets": [
-				59,
-				33
+				39,
+				23
 			],
 			"loop": false,
 			"fps": 24,
@@ -58,8 +58,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				67,
-				168
+				56,
+				143
 			],
 			"anim": "transform",
 			"fps": 24,
@@ -69,8 +69,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				27,
-				4
+				22,
+				3
 			],
 			"anim": "untransform",
 			"fps": 24,
@@ -80,8 +80,8 @@
 		{
 			"loop": true,
 			"offsets": [
-				10,
-				168
+				8,
+				143
 			],
 			"anim": "idle-alt",
 			"fps": 24,
@@ -91,8 +91,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				230,
-				174
+				181,
+				147
 			],
 			"anim": "singLEFT-alt",
 			"fps": 24,
@@ -102,8 +102,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				54,
-				84
+				66,
+				69
 			],
 			"anim": "singDOWN-alt",
 			"fps": 24,
@@ -113,8 +113,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				175,
-				222
+				145,
+				188
 			],
 			"anim": "singUP-alt",
 			"fps": 24,
@@ -124,8 +124,8 @@
 		{
 			"loop": false,
 			"offsets": [
-				-76,
-				170
+				-50,
+				149
 			],
 			"anim": "singRIGHT-alt",
 			"fps": 24,
@@ -136,8 +136,8 @@
 	"no_antialiasing": false,
 	"image": "characters/newcharstest/bloodshitron",
 	"position": [
-		60,
-		260
+		80,
+		200
 	],
 	"healthicon": "demonron",
 	"flip_x": false,
@@ -147,10 +147,10 @@
 		52
 	],
 	"camera_position": [
-		-200,
+		0,
 		-20
 	],
 	"sing_duration": 4.9,
-	"scale": 0.8,
-	"noteskin": "demon"
+	"noteskin": "demon",
+	"scale": 0.9
 }
