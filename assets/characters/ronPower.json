@@ -1,5 +1,4 @@
 {
-	"noteskin": "ron",
 	"animations": [
 		{
 			"loop": true,
@@ -74,17 +73,18 @@
 		-200,
 		150
 	],
-	"healthicon": "ronpower",
+	"healthicon": "ronpower-classic",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
-		216,
+		232,
 		0
 	],
 	"camera_position": [
-		0,
-		0
+		260,
+		210
 	],
 	"sing_duration": 6.1,
+	"noteskin": "ron",
 	"scale": 1
 }

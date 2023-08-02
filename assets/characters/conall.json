@@ -1,0 +1,79 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "ronIdle"
+		},
+		{
+			"offsets": [
+				73,
+				-17
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singLEFT",
+			"loop": false,
+			"name": "ronLeft"
+		},
+		{
+			"offsets": [
+				-11,
+				-9
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "ronRight"
+		},
+		{
+			"offsets": [
+				10,
+				25
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "ronUp"
+		},
+		{
+			"offsets": [
+				130,
+				-154
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "ronDown"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/newcharstest/ronDsides",
+	"position": [
+		-200,
+		0
+	],
+	"healthicon": "ron-dsides",
+	"flip_x": false,
+	"healthbar_colors": [
+		102,
+		153,
+		255
+	],
+	"camera_position": [
+		200,
+		160
+	],
+	"sing_duration": 6.1,
+	"noteskin": "conall",
+	"scale": 0.5
+}

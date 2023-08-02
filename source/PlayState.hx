@@ -1855,6 +1855,7 @@ class PlayState extends MusicBeatState
 			dad.x = 1300;
 			dad.y = 2300;
 		}
+
 		if (SONG.song.toLowerCase() == "bleeding") {
 			dad.y += 80;
 			dad.x += 150;
@@ -1886,6 +1887,15 @@ class PlayState extends MusicBeatState
 			dad.healthColorArray = boyfriend.healthColorArray;
 			boyfriend.healthColorArray = tempDadColors;
 			reloadHealthBarColors();
+		}
+		
+		if (SONG.song.toLowerCase() == "ron-dsides") {
+			boyfriend.y -= 30;
+			gf.y -= 30;
+			dad.y -= 30;
+			
+			if (FlxG.random.int(0, 1000) == 69)
+				iconP2.changeIcon('peak-dsides');
 		}
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36+16, FlxG.width, "", 20);
@@ -5676,12 +5686,14 @@ var cameraTwn:FlxTween;
 			}
 			switch (curStep)
 			{
+				case 248 | 760:
+					FlxG.sound.play(Paths.sound('vine'));
 				case 256:
 					var xx = dad.x;
 					var yy = dad.y;
-					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
 					//dad.x = xx-80;
 					//dad.y = yy-200;
+					triggerEventNote('Change Character', 'dad', 'dripronclassic');
 					resetTrail();
 					defaultCamZoom += 0.1;
 					SCREWYOU = true;
@@ -5716,7 +5728,7 @@ var cameraTwn:FlxTween;
 						botplayTxt.text = "UNFORGIVING INPUT ENABLED!";
 					var xx = dad.x;
 					var yy = dad.y;
-					triggerEventNote('Change Character', 'dad', 'hellron-drippin');
+					triggerEventNote('Change Character', 'dad', 'dripronclassic');
 					resetTrail();
 					//dad.x = xx-80;
 					//dad.y = yy-200;
@@ -5733,7 +5745,6 @@ var cameraTwn:FlxTween;
 				case 1168:
 					defaultCamZoom -= 0.1;
 				case 1296:
-					FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.quadInOut});
 					defaultCamZoom -= 0.1;
 					SCREWYOU = false;
 					if (!ClientPrefs.gameplaySettings['botplay'])
@@ -6221,7 +6232,6 @@ var cameraTwn:FlxTween;
 					//frak can you make it so wasted bg appears
 					//going to spawn the wasted bg in the shittiest way possible
 					addShader(FlxG.camera, "rain");
-					addShader(FlxG.camera, "godray");
 					Shaders["rain"].shader.data.zoom.value = [35];
 					Shaders["rain"].shader.data.raindropLength.value = [0.075];
 					Shaders["rain"].shader.data.opacity.value = [0.2];
@@ -6248,6 +6258,29 @@ var cameraTwn:FlxTween;
 				case 1600:
 					FlxTween.tween(blackeffect, {alpha: 0}, 0.5, {ease: FlxEase.circOut,});
 					defaultCamZoom = 0.8;
+			}
+		}
+		
+		if (curSong == 'ron-dsides') 
+		{
+			switch (curStep)
+			{
+				case 1315:
+					addShader(FlxG.camera, "rain");
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.075];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
+					wastedGrp.visible = true;
+					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fxtwo.scale.set(0.75, 0.75);
+					fxtwo.updateHitbox();
+					fxtwo.antialiasing = true;
+					fxtwo.screenCenter();
+					fxtwo.alpha = 0.2;
+					fxtwo.scrollFactor.set(0, 0);
+					add(fxtwo);
+					fxtwo.cameras = [camOverlay];
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 			}
 		}
 
