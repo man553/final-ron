@@ -60,7 +60,7 @@ class CreditMenu extends MusicBeatState {
 		largePortrait.setGraphicSize(350, 350);
 		largePortrait.updateHitbox();
 		largePortrait.antialiasing = true;
-		descText = new FlxText(780-51, 425, 490, "seezee", 20);
+		descText = new FlxText(780-49, 425, 490, "seezee", 20);
 		descText.alignment = CENTER;
 		socialMediaText = new FlxText(710,675,0,"Press enter to open social media link", 20);
 		socialMediaFavicon = new FlxSprite(1165+35, 673);
@@ -85,8 +85,8 @@ class CreditMenu extends MusicBeatState {
 		if (time > 1) keyCount = 0;
 		if (!antiSpam) {
 			if (controls.BACK) MusicBeatState.switchState(new DesktopMenu());
-			if (controls.UI_UP_P) {changeSelection(-1);keyCount=0;}
-			if (controls.UI_DOWN_P) changeSelection(1);
+			if (controls.UI_UP_P) {changeSelection(-1);keyCount=0;FlxG.sound.play(Paths.sound('scrollMenu'));}
+			if (controls.UI_DOWN_P) {changeSelection(1);FlxG.sound.play(Paths.sound('scrollMenu'));}
 			if (controls.UI_DOWN_P || controls.UI_UP_P) {dividingBar.scale.x += 0.2; time = 0;}
 		}
 		dividingBar.scale.x = FlxMath.lerp(dividingBar.scale.x, 1, 0.1 / (60 / ClientPrefs.framerate));
@@ -140,7 +140,6 @@ class CreditMenu extends MusicBeatState {
 		else {
 			socialMediaText.text = "Theres no social media link";
 			socialMediaFavicon.visible = false;
-		}
-			
+		}	
 	}
 }

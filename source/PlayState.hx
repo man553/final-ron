@@ -1904,7 +1904,7 @@ class PlayState extends MusicBeatState
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "BOTPLAY", 32);
 		if (SONG.stage == 'clusterfunk')
-			botplayTxt.text = "SPACEUK MODE";
+			botplayTxt.text = (["ZBOT","SPACEUK MODE","940PX","KOLO WAS HERE"])[Math.floor(Math.random() * 4+.5)];
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			botplayTxt.setFormat(Paths.font("comic.ttf"), 42, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -2552,6 +2552,7 @@ class PlayState extends MusicBeatState
 		if (OpenFlAssets.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
 		{
 			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
+			trace(creditsText);
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 28);
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
 			var targety:Int = 0;
