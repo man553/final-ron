@@ -1167,6 +1167,7 @@ class PlayState extends MusicBeatState
 				Estatic.scrollFactor.set();
 				Estatic.screenCenter();
 				Estatic.alpha = 0;
+				Estatic.blend = BlendMode.OVERLAY;
 				
 				Estatic2 = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_streetBroken', -100, -5560);
 				Estatic2.screenCenter();
@@ -1280,9 +1281,9 @@ class PlayState extends MusicBeatState
 				satan.updateHitbox();
 				add(satan);
 				
-				var streetbl:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 40);
-				streetbl.screenCenter();
-				add(streetbl);
+				bgLol = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 40);
+				bgLol.screenCenter();
+				add(bgLol);
 
 				blackeffect = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.width*3, FlxColor.BLACK);
 				blackeffect.updateHitbox();
@@ -1298,13 +1299,14 @@ class PlayState extends MusicBeatState
 				Estatic.scrollFactor.set();
 				Estatic.screenCenter();
 				Estatic.alpha = 0;
+				Estatic.blend = BlendMode.OVERLAY;
 				
 				Estatic2 = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_streetBroken', -100, -5560);
 				Estatic2.screenCenter();
 				add(Estatic2);
 				Estatic2.visible = false;
 			
-				islands = new FlxSprite(-800).loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
+				islands = new FlxSprite(-100, 40).loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
 				islands.scale.set(1,1);
 				islands.visible = false;
 				add(islands);				
@@ -3090,7 +3092,7 @@ class PlayState extends MusicBeatState
 			}
 			if (intensecameramove)
 			{
-				camHUD.angle = 22 * Math.sin((currentBeat/2) * Math.PI);
+				camHUD.angle = 11 * Math.sin((currentBeat/2) * Math.PI);
 				FlxG.camera.angle = 4 * Math.sin((currentBeat/2) * Math.PI);
 			}
 		}
@@ -3617,6 +3619,9 @@ class PlayState extends MusicBeatState
 			FlxG.sound.music.stop();
 
 			persistentUpdate = false;
+			FlxG.camera.angle = camGame.angle;
+			FlxG.camera.zoom = camGame.zoom;
+			FlxTween.tween(FlxG.camera, {zoom: 0.8, angle: 0}, 1, {ease: FlxEase.backInOut});
 			persistentDraw = false;
 			clearShader(camGame);
 			openSubState(new substates.GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
@@ -5401,10 +5406,6 @@ var cameraTwn:FlxTween;
 
 		if (curSong == 'Bloodshed') 
 		{
-			healthBarBG.alpha = 0;
-			healthBar.alpha = 0;
-			iconP1.visible = true;
-			iconP2.visible = true;
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
 			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
@@ -5589,11 +5590,6 @@ var cameraTwn:FlxTween;
 				botplayTxt.screenCenter(X);
 				botplayTxt.y = scoreTxt.y - 100;
 			}
-            healthBarBG.alpha = 0;
-            healthBar.alpha = 0;
-            scoreTxt.alpha = 0;
-            iconP1.visible = true;
-            iconP2.visible = true;
             iconP2.alpha = (2-(health)-0.25)/2+0.2;
             iconP1.alpha = (health-0.25)/2+0.2;
             switch (curStep)
@@ -6308,6 +6304,17 @@ var cameraTwn:FlxTween;
 		if (curSong.toLowerCase() == 'bleeding')
 		{
 			var chromeOffset = (ClientPrefs.rgbintense/350);
+			var exploders:FlxSprite = new FlxSprite();
+			exploders.cameras = [camHUD];
+			exploders.frames = Paths.getSparrowAtlas('bgs/newbgtest/bloodshed/explosion');
+			exploders.scrollFactor.set(0, 0);
+			exploders.animation.addByPrefix('explosion', 'explosion', 24, false);
+			exploders.updateHitbox();
+			exploders.screenCenter(XY);
+			insert(0,exploders);
+			exploders.animation.play('explosion');
+			exploders.scale.set(0.01,0.01);
+			exploders.alpha = 0.01;
 			if (curStep == 256)
 			{
 				for (i in 0...4)
@@ -6323,12 +6330,10 @@ var cameraTwn:FlxTween;
 					});
 				}
 			}
-			if (curStep == 376)
-			{
-				FlxTween.tween(satan, {y: satan.y - 700, angle: 359.99}, 1, {ease: FlxEase.backInOut});
-			}
 			if (curStep == 384)
 			{
+				add(Estatic);
+				FlxTween.tween(Estatic, {"scale.x":1.2,"scale.y":1.2}, Conductor.crochet / 1000, {ease: FlxEase.quadInOut, type: PINGPONG});
 				camGame.flash(FlxColor.WHITE, 1);
 				addShader(FlxG.camera,"glitchsmh");
 				Shaders["glitchsmh"].shader.data.on.value = [1.];
@@ -6342,7 +6347,16 @@ var cameraTwn:FlxTween;
 				addBehindDad(bloodshedTrail);
 				dad.y += 50;
 				
+				exploders.animation.play('explosion');
+				exploders.scale.set(2,2);
+				exploders.alpha = 1;
+				exploders.screenCenter(XY);
+				
+				bgLol.visible = false;
+				islands.visible = true;
 				intensecameramove = true;
+				
+				FlxTween.tween(satan, {y: satan.y - 1500, angle: 359.99}, 1, {ease: FlxEase.backInOut});
 			}
 			if (curStep > 384)
 			{
