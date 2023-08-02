@@ -59,7 +59,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			characterName = 'bfbloodshed-death';
 			deathSoundName = 'smack';
 			loopSoundName = 'gameOver-bloodshed';
-			endSoundName = 'gameOverEnd-bloodshed';
+			//endSoundName = 'gameOverEnd-bloodshed';
 		}
 
 		if (characterName == 'dBF')

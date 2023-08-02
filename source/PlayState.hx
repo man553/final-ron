@@ -1832,7 +1832,7 @@ class PlayState extends MusicBeatState
 			kadeEngineWatermark.scrollFactor.set();
 			if (SONG.song.toLowerCase().contains('classic'))
 			{
-				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | Kade Engine (KE 1.2)';
+				kadeEngineWatermark.text = '$songName - ${CoolUtil.difficulties[storyDifficulty]} | KE 1.5.4 (ron eidtion)';
 				kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			}
 			add(kadeEngineWatermark);
@@ -2552,7 +2552,6 @@ class PlayState extends MusicBeatState
 		if (OpenFlAssets.exists(Paths.txt(SONG.song.toLowerCase()  + "/credits")))
 		{
 			var creditsText:String = Assets.getText(Paths.txt(SONG.song.toLowerCase()  + "/credits"));
-			trace(creditsText);
 			var credits:FlxText = new FlxText(0, 0, 0, creditsText, 28);
 			var creditsblack:FlxSprite = new FlxSprite().makeGraphic(600, FlxG.height*3, FlxColor.BLACK);
 			var targety:Int = 0;
@@ -6286,6 +6285,20 @@ var cameraTwn:FlxTween;
 			{
 				windowmove = true;
 				cameramove = true;
+			}
+			if (curStep == 235 || curStep == 747) {
+				triggerEventNote("Play Animation","transform","dad");
+			}
+			if (curStep == 498) {
+				dad.stunned = true;
+				dad.specialAnim = true;
+				triggerEventNote("Play Animation","untransform","dad");
+
+				new FlxTimer().start(29/24, function(tmr:FlxTimer)
+				{
+					dad.stunned = false;
+					dad.specialAnim = false;
+				});
 			}
 		}
 

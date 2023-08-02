@@ -111,8 +111,8 @@ class DesktopMenu extends MusicBeatState
 							//	new FlxTimer().start(2, function(tmr:FlxTimer){ FlxG.switchState(new StoryMenuState()); FlxG.camera.fade(0x88FFFFFF, 0, true);});
 							//});
 							var video:misc.MP4Handler = new misc.MP4Handler();
-							openSubState(new misc.CustomFadeTransition(1.5, false));
-							new FlxTimer().start(1, function(tmr:FlxTimer)
+							openSubState(new misc.CustomFadeTransition(.8, false));
+							new FlxTimer().start(.5, function(tmr:FlxTimer)
 							{
 								PlayState.storyPlaylist = ["Ron","Wasted","Ayo","Bloodshed"];
 								PlayState.isStoryMode = true;
