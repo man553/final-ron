@@ -3601,6 +3601,7 @@ class PlayState extends MusicBeatState
 
 			persistentUpdate = false;
 			persistentDraw = false;
+			clearShader(camGame);
 			openSubState(new substates.GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
 
 			// MusicBeatState.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));

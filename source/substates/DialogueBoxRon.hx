@@ -67,7 +67,7 @@ class DialogueBoxRon extends FlxSpriteGroup { //same method cuz im lazy
 		//portrait loading
 		for (i=>a in dialogueJSON){
 			if (a.textColor != null && !alieasesesae.contains(a.alias)) {
-				aliases.push([a.alias, a.textColor, ["%","#","^","*"][aliases.length]]);
+				aliases.push([a.alias, a.textColor == "#FFFF00" ? "#FFC800" : a.textColor, ["%","#","^","*"][aliases.length]]); // yellow is unreadable on a white background
 				alieasesesae.push(a.alias);
 			}
 			if (a.character != null && !portraiter.contains(a.character)) {

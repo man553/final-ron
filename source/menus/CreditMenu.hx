@@ -60,9 +60,10 @@ class CreditMenu extends MusicBeatState {
 		largePortrait.setGraphicSize(350, 350);
 		largePortrait.updateHitbox();
 		largePortrait.antialiasing = true;
-		descText = new FlxText(780, 425, 490, "seezee", 20);
-		socialMediaText = new FlxText(675,675,0,"Press enter to open social media link", 20);
-		socialMediaFavicon = new FlxSprite(1165, 673);
+		descText = new FlxText(780-51, 425, 490, "seezee", 20);
+		descText.alignment = CENTER;
+		socialMediaText = new FlxText(710,675,0,"Press enter to open social media link", 20);
+		socialMediaFavicon = new FlxSprite(1165+35, 673);
 		var loBg = new FlxSprite(700, 0).makeGraphic(999, 999, 0xFF000000);
 		loBg.alpha = 1;
 		loBg.scrollFactor.set();

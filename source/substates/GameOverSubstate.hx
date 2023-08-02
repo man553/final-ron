@@ -94,7 +94,7 @@ class GameOverSubstate extends MusicBeatSubstate
 				emitter.add(p);
 			}
 			
-			FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.quadOut})
+			FlxTween.tween(FlxG.camera, {alpha: 0}, 1, {ease: FlxEase.quadOut});
 			
 			emitter.velocity.set(-16, 16, 16, -16);
 			emitter.lifespan.set(3);
