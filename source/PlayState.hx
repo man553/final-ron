@@ -1507,7 +1507,7 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('bgs/newbgtest/official-debate/whitehouse');
 				bg.scale.set(2,2);
 				bg.screenCenter();
-				bg.x += 400;
+				bg.x += 200;
 				bg.antialiasing = true;
 				add(bg);
 				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
@@ -1979,7 +1979,7 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 40;
 		}
 		
-		if (curSong == "bloodbath") {
+		if ((curSong == "bloodbath") || (curSong == "bleeding")) {
 			switchToCoolHealthBar();
 		}
 
@@ -3107,7 +3107,6 @@ class PlayState extends MusicBeatState
 				// cant be bothered to fix it FlxTween.tween(gf, {x: savedPos}, 0.8, {ease: FlxEase.circOut});
 				//FlxTween.globalManager.cancelTweensOf(gf);
 				//gf.x = -2520;
-				//FlxTween.tween(gf, {x: gf.x + 1400}, 0.8, {ease: FlxEase.circOut});
 			}
 			if (curStep == 1176)
 			{
@@ -5642,7 +5641,7 @@ var cameraTwn:FlxTween;
 					FlxTween.tween(camHUD, {angle: 0}, 0.3, {ease: FlxEase.circOut});
 				case 1151: 
 					FlxG.camera.follow(camFollowPos, LOCKON, 0.5);
-					defaultCamZoom = 0.9;
+					defaultCamZoom = 0.7;
 					FlxG.camera.flash(FlxColor.WHITE, 1);	
 					Shaders["rain"].shader.data.opacity.value = [0.0];
 					FlxTween.angle(boyfriend, 0, boyfriend.angle + 359.99, 3, { type: FlxTweenType.LOOPING } );
@@ -6443,6 +6442,8 @@ var cameraTwn:FlxTween;
 					}} 
 				);
 				
+				FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
+				
 				exploders.animation.play('explosion');
 				exploders.scale.set(2,2);
 				exploders.alpha = 1;
@@ -6453,10 +6454,56 @@ var cameraTwn:FlxTween;
 				cameramove = true;
 				
 				FlxTween.tween(satan, {y: gf.y - 500}, 1, {ease: FlxEase.backInOut});
-				FlxTween.tween(gf, {y: gf.y + 1000, angle: 45}, 1, {ease: FlxEase.quadIn});
+				FlxTween.tween(gf, {y: gf.y + 800, angle: 45}, 1, {ease: FlxEase.quadIn});
 			}
 			if (curStep == 640)
+			{
+				gf.visible = false;
 				cameramove = false;
+			}
+			//BULLSHIT
+			if (curStep == 1408)
+			{
+				FlxG.sound.play(Paths.sound('hellexplode'), 0.7);
+				
+				cameramove = true;
+				wbg.alpha = 0;
+				
+				FlxTween.globalManager.completeTweensOf(satan);
+				FlxTween.angle(satan, 0, 359.99, 0.33, { type: FlxTweenType.LOOPING } );
+				exploders.animation.play('explosion');
+				exploders.scale.set(2,2);
+				exploders.alpha = 1;
+				exploders.screenCenter(XY);
+			}
+			if (curStep == 1664)
+			{		
+				triggerEventNote('Change Scroll Speed', '1.45', '1');
+				camGame.flash(FlxColor.WHITE, 1);
+				cameramove = false;
+				intensecameramove = true;
+				clearShader(camHUD);
+				addShader(camHUD, "bleedingvhs");
+				Estatic.color = FlxColor.BLACK;
+				Estatic.blend = BlendMode.NORMAL;
+				defaultCamZoom -= 0.1;
+				FlxTween.tween(islands, {y: islands.y + 25}, 1, {ease: FlxEase.circInOut, type: PINGPONG});
+				FlxTween.tween(dad, {y: dad.y + 25}, 1, {ease: FlxEase.circInOut, type: PINGPONG});
+				FlxTween.tween(boyfriend, {y: boyfriend.y + 25}, 1, {ease: FlxEase.circInOut, type: PINGPONG});
+			}
+			if (curStep == 1920)
+			{
+				Estatic.color = FlxColor.RED;
+				satan.color = FlxColor.WHITE;
+				clearShader(camHUD);
+				triggerEventNote('Change Scroll Speed', '1.2', '1');
+				camGame.flash(FlxColor.WHITE, 1);
+				FlxTween.tween(hellbg, {alpha: 0}, 1, {ease: FlxEase.circInOut});
+				FlxTween.tween(firebg, {alpha: 0}, 1, {ease: FlxEase.circInOut});
+				FlxTween.cancelTweensOf(satan);
+				FlxTween.angle(satan, satan.angle, 359.99, 0.5, {ease: FlxEase.quadIn});
+				defaultCamZoom += 0.1;
+			}
 			if (curStep > 384)
 			{
 				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(curStep*4)/2];
