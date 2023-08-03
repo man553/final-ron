@@ -279,7 +279,6 @@ class RunTab extends FlxGroup {
 			case "cdplayer": 	FlxG.state.add(new MusicPlayer());
 								FlxG.sound.music.volume = 0.01;
 			case "passionatedevs": ClientPrefs.rtxMode = !ClientPrefs.rtxMode;
-									addShader(camWhat,"bloom");
 			default: if (runText.contains("www") || runText.contains("http") || runText.contains("com")) CoolUtil.browserLoad(runText);
 		}
 	}
