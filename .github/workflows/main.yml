@@ -20,6 +20,14 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Delete old workflow runs
+        uses: MajorScruffy/delete-old-workflow-runs@v0.3.0
+        with:
+          repository: man553/final-ron   # replace this with your own repository
+          older-than-seconds: 86400                           # remove all workflow runs older than 1 day
+        env:
+          GITHUB_TOKEN: "place your token here seezee"
+
       - uses: actions/checkout@v2.3.0
 
       - uses: krdlab/setup-haxe@master
@@ -45,7 +53,6 @@ jobs:
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
-          haxelib install hxCodec
           haxelib list
         shell: cmd
       - name: Create Version Tag
