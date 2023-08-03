@@ -1350,7 +1350,7 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 				}
 			case 'daveHouse':
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('bgs/sky'));
+				var bg:FlxSprite = new FlxSprite(-600+200, -200).loadGraphic(Paths.image('bgs/sky'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.75, 0.75);
 				bg.active = false;
@@ -1854,6 +1854,10 @@ class PlayState extends MusicBeatState
 			if (songName == 'Holy-Shit-Dave-Fnf') {
 				songName = 'Dave-Fnf';
 				boyfriend.y += 175;
+				boyfriend.y -= 125;
+				boyfriend.x += 300;
+				dad.x += 300;
+				dad.y -= 125;
 			}
 
 			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
@@ -3606,7 +3610,7 @@ class PlayState extends MusicBeatState
 				var offsetY:Int = 0;
 				if (curSong == "slammed") { offsetX = 650; offsetY = 375; } // why does this happen? whatever
 				if (curSong.toLowerCase() == "pretty-wacky" && cameraSpeed == 3) { offsetX = -300; offsetY = -175;}
-				if (curSong == "Holy-Shit-Dave-Fnf") { offsetY = -100; }
+				if (SONG.song == 'Holy-Shit-Dave-Fnf') { offsetY = -250; }
 				if (curSong == "gron") { offsetY = -200; }
 				if (curSong == "clusterfunk") { offsetY = -120; }
 				camFollow.set(boyfriend.getMidpoint().x+offsetX, boyfriend.getMidpoint().y-75+offsetY);
