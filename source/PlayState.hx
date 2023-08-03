@@ -218,6 +218,7 @@ class PlayState extends MusicBeatState
 	var windowX:Float = Lib.application.window.x;
 	var windowY:Float = Lib.application.window.y;
 	var noDadAnimations:Bool = false;
+	var funnyDSidesSpin:Bool = false;
 
 	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
@@ -3340,6 +3341,10 @@ class PlayState extends MusicBeatState
 			fakeHealth2 = 100-fakeHealth2;
 		}
 		
+		if (funnyDSidesSpin) {
+			iconP2.angle += 180*elapsed;
+		}
+		
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(fakeHealth2, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(fakeHealth2, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 		healthBarBG2.alpha = healthBarBG.alpha;
@@ -3593,10 +3598,10 @@ class PlayState extends MusicBeatState
 		//		KillNotes();
 		//		FlxG.sound.music.onComplete();
 		//	}
-		//	if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
-		//		setSongTime(Conductor.songPosition + 10000);
-		//		clearNotesBefore(Conductor.songPosition);
-		//	}
+			if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
+				setSongTime(Conductor.songPosition + 10000);
+				clearNotesBefore(Conductor.songPosition);
+			}
 		//}
 		//#end
 
@@ -4789,6 +4794,10 @@ var cameraTwn:FlxTween;
 			else
 				health = 0.05*healthLoss;
 		}
+		
+		if (funnyDSidesSpin) {
+			dad.angle += 20;
+		}
 
 		// NO MERE MORTAL CAN HANDLE THE POWERFUL DRIP RON
 		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
@@ -5057,6 +5066,19 @@ var cameraTwn:FlxTween;
 					bruh();
 				case 1148:
 					FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+			}
+		}
+		
+		if (curSong.toLowerCase() == 'ron-dsides')
+		{
+			switch (curStep)
+			{
+				case 768:
+					funnyDSidesSpin = true;
+				case 1037:
+					funnyDSidesSpin = false;
+					FlxTween.tween(dad, {angle: Math.floor(dad.angle/360)*360}, 0.8, {ease: FlxEase.expoOut});
+					FlxTween.tween(iconP2, {angle: Math.floor(iconP2.angle/360)*360}, 0.8, {ease: FlxEase.expoOut});
 			}
 		}
 		
