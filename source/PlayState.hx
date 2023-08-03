@@ -353,7 +353,8 @@ class PlayState extends MusicBeatState
 		healthBarBG2.loadGraphic(Paths.image("healthBarintheworks2"));
 		healthBar.x -= 100;
 		healthBar.y -= 24;
-		healthBar.width = 800;
+		healthBar.setGraphicSize(800,Std.int(healthBar.height));
+		healthBar.updateHitbox();
 		scoreTxt.y += 24;
 	}
 	
@@ -6459,6 +6460,8 @@ var cameraTwn:FlxTween;
 				
 				FlxTween.tween(satan, {y: gf.y - 500}, 1, {ease: FlxEase.backInOut});
 				FlxTween.tween(gf, {y: gf.y + 800, angle: 45}, 1, {ease: FlxEase.quadIn});
+				healthBar.setGraphicSize(800,Std.int(healthBar.height));
+				healthBar.updateHitbox();
 			}
 			if (curStep == 640)
 			{
