@@ -354,8 +354,6 @@ class PlayState extends MusicBeatState
 		healthBar.x -= 100;
 		healthBar.y -= 24;
 		healthBar.width = 800;
-		healthBarBG2.scale.set(1,.85);
-		healthBarBG.scale.set(1,.85);
 		scoreTxt.y += 24;
 	}
 	
@@ -1789,24 +1787,28 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 		moveCameraSection(0);
 
-		healthBarBG = new AttachedSprite('healthBarintheworks');
+		healthBarBG = new AttachedSprite(curSong.toLowerCase().contains("classic") ? "healthBar" : 'healthBarintheworks');
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
-		healthBarBG.scale.set(1,.85);
+		if (!curSong.toLowerCase().contains("classic")) {
+			healthBarBG.scale.set(1,.85);
+		}
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
-		healthBarBG2 = new AttachedSprite('healthBarintheworks');
+		healthBarBG2 = new AttachedSprite(curSong.toLowerCase().contains("classic") ? "healthBar" : 'healthBarintheworks');
 		healthBarBG2.y = FlxG.height * 0.89;
 		healthBarBG2.screenCenter(X);
 		healthBarBG2.scrollFactor.set();
 		healthBarBG2.visible = !ClientPrefs.hideHud;
 		healthBarBG2.xAdd = -4;
 		healthBarBG2.yAdd = -4;
-		healthBarBG2.scale.set(1,.85);
+		if (!curSong.toLowerCase().contains("classic")) {
+			healthBarBG2.scale.set(1,.85);
+		}
 		add(healthBarBG2);
 		if(ClientPrefs.downScroll) healthBarBG2.y = 0.11 * FlxG.height;
 		
@@ -1815,7 +1817,7 @@ class PlayState extends MusicBeatState
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
 		// healthBar
-		healthBar.visible = false;
+		healthBar.visible = curSong.toLowerCase().contains("classic");
 		healthBar.alpha = ClientPrefs.healthBarAlpha;
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar; // Compatability
@@ -1869,13 +1871,13 @@ class PlayState extends MusicBeatState
 		}
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
-		iconP1.y = healthBar.y - 60;
+		iconP1.y = healthBar.y - (!curSong.toLowerCase().contains("classic") ? 60 : 75);
 		iconP1.visible = !ClientPrefs.hideHud;
 		iconP1.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP1);
 
 		iconP2 = new HealthIcon(dad.healthIcon, false);
-		iconP2.y = healthBar.y - 60;
+		iconP2.y = healthBar.y - (!curSong.toLowerCase().contains("classic") ? 60 : 75);
 		iconP2.visible = !ClientPrefs.hideHud;
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP2);
@@ -1901,6 +1903,9 @@ class PlayState extends MusicBeatState
 		}
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36+16, FlxG.width, "", 20);
+		if (curSong.toLowerCase().contains("classic")) {
+			scoreTxt.y -= 16;
+		}
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -1947,6 +1952,10 @@ class PlayState extends MusicBeatState
 			default:
 				//stop fucking flying you dipshit
 				boyfriend.y += 40;
+		}
+		
+		if (curSong == "bloodbath") {
+			switchToCoolHealthBar();
 		}
 
 		strumLineNotes.cameras = [camHUD];
@@ -5050,6 +5059,9 @@ var cameraTwn:FlxTween;
 			iconP2.alpha = 0;
 			iconP1.alpha = 0;
 		}
+		if (curSong == "Bloodshed" && curStep == 128) {
+			switchToCoolHealthBar();
+		}
 		
 		if (curSong == 'blizzard')
 		{
@@ -5443,7 +5455,6 @@ var cameraTwn:FlxTween;
 		{
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
-			switchToCoolHealthBar();
 			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -5628,7 +5639,6 @@ var cameraTwn:FlxTween;
 			}
             iconP2.alpha = (2-(health)-0.25)/2+0.2;
             iconP1.alpha = (health-0.25)/2+0.2;
-			switchToCoolHealthBar();
             switch (curStep)
             {
                 case 1: defaultCamZoom = 0.9;
@@ -5649,6 +5659,7 @@ var cameraTwn:FlxTween;
                      defaultCamZoom = 1.1;
                      FlxTween.tween(firebg, {alpha: 1}, 1, {ease: FlxEase.quadInOut});
 			case 1039: defaultCamZoom = 0.85; // shit ton of code because yeah
+				case 1056: windowmove = false;
 		}
 		if ((curStep >= 254) && (curStep <= 518))
 		{
