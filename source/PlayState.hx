@@ -356,7 +356,7 @@ class PlayState extends MusicBeatState
 		healthBar.y -= 24;
 		healthBar.setGraphicSize(800,Std.int(healthBar.height));
 		healthBar.updateHitbox();
-		scoreTxt.y += 24;
+		scoreTxt.y += 28;
 	}
 	
 	override public function create()
@@ -3621,10 +3621,10 @@ class PlayState extends MusicBeatState
 		//		KillNotes();
 		//		FlxG.sound.music.onComplete();
 		//	}
-			if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
-				setSongTime(Conductor.songPosition + 10000);
-				clearNotesBefore(Conductor.songPosition);
-			}
+		//	if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
+		//		setSongTime(Conductor.songPosition + 10000);
+		//		clearNotesBefore(Conductor.songPosition);
+		//	}
 		//}
 		//#end
 
