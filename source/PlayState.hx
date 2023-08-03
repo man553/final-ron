@@ -982,7 +982,7 @@ class PlayState extends MusicBeatState
 				
 				var behind:BGSprite = new BGSprite('bgs/newbgtest/dsides/conall_bgBehind', -100, 40);
 				behind.screenCenter();
-				behind.scrollFactor.set(0.7, 0.9);
+				behind.scrollFactor.set(0.7, 1);
 				add(behind);
 				
 				var street:BGSprite = new BGSprite('bgs/newbgtest/dsides/conall_bg', -100, 40);
