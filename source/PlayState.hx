@@ -2014,6 +2014,10 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.chromaticAbberationEverywhere) {
 			addShader(FlxG.camera, "chromatic aberration");
 		}
+		if (ClientPrefs.rtxMode) {
+			addShader(FlxG.camera,"bloom");
+			addShader(camHUD,"bloom");
+		}
 
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (!seenCutscene)

@@ -4,8 +4,8 @@
 //LENS_DIRT - draws lens dirt on the screen
 //DIRT_INTENSITY - how intense the dirt effect is
 //BLOOM_ONLY - only shows the blur created by bloom
-#define BLOOM_THRESHOLD 0.9
-#define BLOOM_INTENSITY 2.5
+#define BLOOM_THRESHOLD 0.5
+#define BLOOM_INTENSITY 3
 #define DIRT_INTENSITY 5
 //#define BLOOM_ONLY
 
@@ -13,9 +13,9 @@
 //BLUR_ITERATIONS - how many times a blur is created
 //BLUR_SIZE - the radius of the bloom
 //BLUR_SUBDIVISIONS - how many times the texture is sampled per iteration
-#define BLUR_ITERATIONS 3
-#define BLUR_SIZE .02
-#define BLUR_SUBDIVISIONS 32
+#define BLUR_ITERATIONS 5
+#define BLUR_SIZE .03
+#define BLUR_SUBDIVISIONS 48
 
 vec3 getHDR(vec3 tex) {
     return max((tex - BLOOM_THRESHOLD) * BLOOM_INTENSITY, 0.);

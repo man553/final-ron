@@ -36,6 +36,7 @@ class ClientPrefs {
 	public static var directionalCamera:Bool = true;
 	public static var chromaticAbberationEverywhere:Bool = false;
 	public static var cutscenes:Bool = true;
+	public static var rtxMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 

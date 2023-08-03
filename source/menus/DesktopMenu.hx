@@ -271,12 +271,6 @@ class RunTab extends FlxGroup {
 		switch (runText) {
 			case "teevee": CoolUtil.browserLoad("https://youtu.be/X9hIJDzo9m0");
 			case "ron": #if windows Sys.command("start RON.exe"); #end
-			case "peak" | "ron undertale" | "for old times sake":
-				var songIndex = ["peak" => "awesome-ron", "ron undertale" => "haemorrhage", "for old times sake" => "oneirophobia"];
-				PlayState.SONG = Song.loadFromJson('${songIndex[runText]}-hard', songIndex[runText]);
-			    PlayState.isStoryMode = false;
-			    PlayState.storyDifficulty = 2;
-			    MusicBeatState.switchState(new PlayState());
 			case "full" | "full version" | "2.5" | "3.0" | "demo 3" | "next demo": CoolUtil.browserLoad("https://youtu.be/pNzGTCEmf3U");
 			case "2012": 
 				rainbowscreen.visible = false;
@@ -284,6 +278,8 @@ class RunTab extends FlxGroup {
 			case "winver": FlxG.state.add(new Winver());
 			case "cdplayer": 	FlxG.state.add(new MusicPlayer());
 								FlxG.sound.music.volume = 0.01;
+			case "passionatedevs": ClientPrefs.rtxMode = !ClientPrefs.rtxMode;
+									addShader(camWhat,"bloom");
 			default: if (runText.contains("www") || runText.contains("http") || runText.contains("com")) CoolUtil.browserLoad(runText);
 		}
 	}
