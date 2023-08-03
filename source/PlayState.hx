@@ -347,7 +347,18 @@ class PlayState extends MusicBeatState
 	var rain:flixel.effects.particles.FlxEmitter;
 
 	//ok ig
-
+	
+	function switchToCoolHealthBar() {
+		healthBarBG.loadGraphic(Paths.image("healthBarintheworks2"));
+		healthBarBG2.loadGraphic(Paths.image("healthBarintheworks2"));
+		healthBar.x -= 100;
+		healthBar.y -= 24;
+		healthBar.width = 800;
+		healthBarBG2.scale.set(1,.85);
+		healthBarBG.scale.set(1,.85);
+		scoreTxt.y += 24;
+	}
+	
 	override public function create()
 	{
 		//preventing duplicate shaders
@@ -1885,7 +1896,7 @@ class PlayState extends MusicBeatState
 			gf.y -= 30;
 			dad.y -= 30;
 			
-			if (FlxG.random.int(0, 1000) == 69)
+			if (FlxG.random.int(1, 1000) == 69)
 				iconP2.changeIcon('peak-dsides');
 		}
 
@@ -1898,6 +1909,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
+		
 		if(kadeEngineWatermark != null)
 		{
 			//can someone please fix that im busy   - Sword352
@@ -3053,7 +3065,7 @@ class PlayState extends MusicBeatState
 				gf.visible = true;
 				
 				//for some reason this breaks???
-				FlxTween.tween(gf, {x: gf.x + 1600}, 0.8, {ease: FlxEase.circOut});
+				FlxTween.tween(gf, {x: gf.x + 1650}, 0.8, {ease: FlxEase.circOut});
 			}
 			if (curStep == 1176)
 			{
@@ -5431,6 +5443,7 @@ var cameraTwn:FlxTween;
 		{
 			iconP2.alpha = (2-(health)-0.25)/2+0.2;
 			iconP1.alpha = (health-0.25)/2+0.2;
+			switchToCoolHealthBar();
 			var chromeOffset = (((2 - health)*Math.sin(curStep/10))*ClientPrefs.rgbintense/350)/5;
 			Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset];
 			Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -5615,6 +5628,7 @@ var cameraTwn:FlxTween;
 			}
             iconP2.alpha = (2-(health)-0.25)/2+0.2;
             iconP1.alpha = (health-0.25)/2+0.2;
+			switchToCoolHealthBar();
             switch (curStep)
             {
                 case 1: defaultCamZoom = 0.9;
