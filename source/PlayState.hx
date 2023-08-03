@@ -3151,7 +3151,7 @@ class PlayState extends MusicBeatState
 		}
 		if (curSong == 'wasted')
 		{
-			if ((curStep >= 1104) && (curStep < 1408))
+			if ((curStep >= 1104) && (curStep < 1360))
 			{
 				var chromeOffset = ClientPrefs.rgbintense/350;
 				for (i in 0...8)
@@ -3167,24 +3167,13 @@ class PlayState extends MusicBeatState
 				boyfriend.angle += Math.sin(curStep/8)/6;
 				dad.angle -= Math.sin(curStep/8)/6;
 			}
-			if (curStep == 1408)
+			if (curStep >= 1360)
 			{
-				addShader(FlxG.camera, "rain");
-				Shaders["rain"].shader.data.zoom.value = [32];
-				Shaders["rain"].shader.data.raindropLength.value = [0.03];
-				Shaders["rain"].shader.data.opacity.value = [0.125];
 				for (i in 0...8)
 				{ 
 					var member = strumLineNotes.members[i];
 					member.y = defaultStrumY;
 				}
-				gf.angle = 0;
-				boyfriend.angle = 0;
-				dad.angle = 0;
-				fx.visible = false;
-				startCharacterPos(boyfriend);
-				startCharacterPos(gf, true);
-				startCharacterPos(dad);
 			}
 		}
 
@@ -3615,19 +3604,6 @@ class PlayState extends MusicBeatState
 		}
 		checkEventNote();
 
-		//#if debug
-		//if(!endingSong && !startingSong) {
-		//	if (FlxG.keys.justPressed.ONE) {
-		//		KillNotes();
-		//		FlxG.sound.music.onComplete();
-		//	}
-		//	if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
-		//		setSongTime(Conductor.songPosition + 10000);
-		//		clearNotesBefore(Conductor.songPosition);
-		//	}
-		//}
-		//#end
-
 		//camera movement cuz the current one is quite fucky
 		var section = (SONG.notes[Math.floor(curStep / 16)] != null ? SONG.notes[Math.floor(curStep / 16)].mustHitSection : null);
 		if (!isCameraOnForcedPos)
@@ -3680,6 +3656,9 @@ class PlayState extends MusicBeatState
 					offsetY = -50;
 				} else if (curSong.toLowerCase() == "fardventure") {
 					offsetY = -100;
+				}
+				if ((curSong.toLowerCase() == "wasted" && dad.curCharacter.toLowerCase() == "ronmad")) {
+					offsetY = -200;
 				}
 				camFollow.set(baseX+dad.cameraPosition[0]+offsetX, baseY+dad.cameraPosition[1]+offsetY);
 				
@@ -6271,6 +6250,7 @@ var cameraTwn:FlxTween;
 					fxtwo.alpha = 0.2;
 					fxtwo.scrollFactor.set(0.8, 0.8);
 					fxtwo.color = FlxColor.BLACK;
+					fxtwo.blend = BlendMode.OVERLAY;
 					add(fxtwo);
 					cameraSpeed = 0.2;
 					fxtwo.cameras = [camOverlay];
@@ -6320,12 +6300,38 @@ var cameraTwn:FlxTween;
 					camGame.alpha = 0;
 					clearShader(FlxG.camera);
 					clearShader(camGame);
+					for (i in 0...8)
+					{ 
+						var member = strumLineNotes.members[i];
+						member.y = defaultStrumY;
+					}
+				case 1400:
+					gf.angle = 0;
+					boyfriend.angle = 0;
+					dad.angle = 0;
+
+					startCharacterPos(boyfriend);
+					startCharacterPos(gf, true);
+					startCharacterPos(dad);
+			
+					triggerEventNote('Change Character', 'bf', 'bfDark');
+					triggerEventNote('Change Character', 'gf', 'gfDark');
 				case 1488:
+					addShader(FlxG.camera, "fake CRT");
+					addShader(FlxG.camera, "rain");
+					Shaders["rain"].shader.data.zoom.value = [32];
+					Shaders["rain"].shader.data.raindropLength.value = [0.03];
+					Shaders["rain"].shader.data.opacity.value = [0.125];
+					addShader(camHUD,"glitchsmh");
+					Shaders["glitchsmh"].shader.data.on.value = [1.];
 					wastedGrp.visible = true;
 					fx.alpha = 0;
 					cameraSpeed = 1;
-					defaultCamZoom = 0.9;
+					defaultCamZoom = 1;
 					camGame.alpha = 1;
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					triggerEventNote('Change Bars Size', '12', '0.01');
+					triggerEventNote('Change Scroll Speed', '1.2', '1');
 			}
 		}
 
@@ -6640,12 +6646,12 @@ var cameraTwn:FlxTween;
 			FlxTween.globalManager.completeTweensOf(healthBar);
 			FlxTween.globalManager.completeTweensOf(healthBarBG);
 			FlxTween.globalManager.completeTweensOf(healthBarBG2);
-			healthBar.x += 50;
-			healthBarBG.x += 50;
-			healthBarBG2.x += 50;
-			FlxTween.tween(healthBar, {x: healthBar.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
-			FlxTween.tween(healthBarBG, {x: healthBarBG.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
-			FlxTween.tween(healthBarBG2, {x: healthBarBG2.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			healthBar.x += 75;
+			healthBarBG.x += 75;
+			healthBarBG2.x += 75;
+			FlxTween.tween(healthBar, {x: healthBar.x - 75}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			FlxTween.tween(healthBarBG, {x: healthBarBG.x - 75}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			FlxTween.tween(healthBarBG2, {x: healthBarBG2.x - 75}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
 		}
 		
 		//WHATS THE POINT OF ADDING BRACKETS EYAD
