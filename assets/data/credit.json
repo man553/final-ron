@@ -49,10 +49,16 @@
 		"description": "Lead Coder\n\ntheres nothing meaningful to my quote so i put this instead: \n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 	},
 	{
-		"name": "sword",
-		"handle": "Sword",
-		"description": "Coder\n\ni eat fart",
-		"social_link": "https://cdn.discordapp.com/attachments/922851145586720888/1134095075777982556/x5rj14.mp4"
+		"name": "spiritualosu",
+		"handle": "spiritualosu",
+		"description": "Composer\n\nedigameryt",
+		"social_link": "https://www.youtube.com/@SpiritualOsu"
+	},
+	{
+		"name": "mrstupid",
+		"handle": "Mr.Stupid",
+		"description": "Composer\n\nhi",
+		"social_link": "https://www.youtube.com/channel/UCk_v2aq9pL3HezpLAgiVF8g"
 	},
 	{
 		"name": "shoutsuo",
@@ -91,6 +97,12 @@
 		"social_link": "https://youtube.com/@Blacknide"
 	},
 	{
+		"name": "sword",
+		"handle": "Sword",
+		"description": "Coder\n\ni eat fart",
+		"social_link": "https://cdn.discordapp.com/attachments/922851145586720888/1134095075777982556/x5rj14.mp4"
+	},
+	{
 		"name": "coquers",
 		"handle": "Coquers",
 		"description": "Composer\n\nfeeling a little Wasted...",
@@ -98,9 +110,9 @@
 	},
 	{
 		"name": "sonicaccelerate",
-		"handle": "SonicAccelerate",
+		"handle": "AccelerateWasTaken",
 		"description": "Concept Artist\n\nyes I haven't done anything since v1",
-		"social_link": "https://youtube.com/@SonicAccelerate"
+		"social_link": "https://www.youtube.com/@AccelerateWasTaken"
 	},
 	{
 		"name": "goggledanimations",

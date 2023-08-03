@@ -969,6 +969,28 @@ class PlayState extends MusicBeatState
 				
 				add(wastedGrp);
 				wastedGrp.visible = false;
+			case 'dsides': //ron
+				Shaders["chromatic aberration"].shader.data.rOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
+				Shaders["chromatic aberration"].shader.data.bOffset.value = [0.0]; // add 
+
+				defaultCamZoom = 0.8;
+				var sky:BGSprite = new BGSprite('bgs/newbgtest/dsides/conall_sky', -100, 40);
+				sky.screenCenter();
+				sky.scrollFactor.set(0.1, 0.1);
+				add(sky);
+				
+				var behind:BGSprite = new BGSprite('bgs/newbgtest/dsides/conall_bgBehind', -100, 40);
+				behind.screenCenter();
+				behind.scrollFactor.set(0.7, 1);
+				add(behind);
+				
+				var street:BGSprite = new BGSprite('bgs/newbgtest/dsides/conall_bg', -100, 40);
+				street.screenCenter();
+				add(street);
+
+				hellbg = new BGSprite('bgs/newbgtest/dsides/conall_bucket', -100, 40);
+				hellbg.screenCenter();
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
@@ -1485,6 +1507,7 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('bgs/newbgtest/official-debate/whitehouse');
 				bg.scale.set(2,2);
 				bg.screenCenter();
+				bg.x += 400;
 				bg.antialiasing = true;
 				add(bg);
 				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
@@ -1494,6 +1517,8 @@ class PlayState extends MusicBeatState
 				wbg.scrollFactor.set();
 				add(wbg);
 				wbg.alpha = 0;
+				
+				triggerEventNote('Change Bars Size', '12', '0.01');
 			}
 			case 'cool':
 				var bg:BGSprite = new BGSprite('bgs/bg_less_concept', -600, -200, 0.9, 0.9);
@@ -2045,6 +2070,9 @@ class PlayState extends MusicBeatState
 						n.texture = "noteskins/" + (n.mustPress ? 'NOTEold_assets' : dad.noteskin);
 					for (i in strumLineNotes.members)
 						i.texture = "noteskins/" + (i.player == 0 ? dad.noteskin : 'NOTEold_assets');
+					startCountdown();
+				case 'ron-dsides':
+					add(hellbg);
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
@@ -3077,6 +3105,9 @@ class PlayState extends MusicBeatState
 				
 				//for some reason this breaks???
 				// cant be bothered to fix it FlxTween.tween(gf, {x: savedPos}, 0.8, {ease: FlxEase.circOut});
+				//FlxTween.globalManager.cancelTweensOf(gf);
+				//gf.x = -2520;
+				//FlxTween.tween(gf, {x: gf.x + 1400}, 0.8, {ease: FlxEase.circOut});
 			}
 			if (curStep == 1176)
 			{
@@ -6297,30 +6328,6 @@ var cameraTwn:FlxTween;
 					defaultCamZoom = 0.8;
 			}
 		}
-		
-		if (curSong == 'ron-dsides') 
-		{
-			switch (curStep)
-			{
-				case 1315:
-					addShader(FlxG.camera, "rain");
-					Shaders["rain"].shader.data.zoom.value = [35];
-					Shaders["rain"].shader.data.raindropLength.value = [0.075];
-					Shaders["rain"].shader.data.opacity.value = [0.2];
-					wastedGrp.visible = true;
-					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
-					fxtwo.scale.set(0.75, 0.75);
-					fxtwo.updateHitbox();
-					fxtwo.antialiasing = true;
-					fxtwo.screenCenter();
-					fxtwo.alpha = 0.2;
-					fxtwo.scrollFactor.set(0, 0);
-					add(fxtwo);
-					fxtwo.cameras = [camOverlay];
-					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
-			}
-		}
-
 		lastStepHit = curStep;
 
 		if (curSong.toLowerCase() == 'bloodbath')
