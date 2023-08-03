@@ -1849,7 +1849,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == "official-debate") {
 			boyfriend.x -= 1250;
 			boyfriend.y -= 625;
-			gf.x = -2520;
+			gf.visible = false;
 		}
 		if (SONG.song.toLowerCase() == "gron") {
 			boyfriend.x = 2600;
@@ -3072,9 +3072,11 @@ class PlayState extends MusicBeatState
 				dad.color = FlxColor.WHITE;
 				boyfriend.color = FlxColor.WHITE;
 				gf.visible = true;
+				//var savedPos:Float = gf.x;
+				//gf.x = -1600;
 				
 				//for some reason this breaks???
-				FlxTween.tween(gf, {x: gf.x + 1650}, 0.8, {ease: FlxEase.circOut});
+				// cant be bothered to fix it FlxTween.tween(gf, {x: savedPos}, 0.8, {ease: FlxEase.circOut});
 			}
 			if (curStep == 1176)
 			{
@@ -3547,16 +3549,16 @@ class PlayState extends MusicBeatState
 		checkEventNote();
 
 		//#if debug
-		if(!endingSong && !startingSong) {
-			if (FlxG.keys.justPressed.ONE) {
-				KillNotes();
-				FlxG.sound.music.onComplete();
-			}
-			if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
-				setSongTime(Conductor.songPosition + 10000);
-				clearNotesBefore(Conductor.songPosition);
-			}
-		}
+		//if(!endingSong && !startingSong) {
+		//	if (FlxG.keys.justPressed.ONE) {
+		//		KillNotes();
+		//		FlxG.sound.music.onComplete();
+		//	}
+		//	if(FlxG.keys.justPressed.TWO) { //Go 10 seconds into the future :O
+		//		setSongTime(Conductor.songPosition + 10000);
+		//		clearNotesBefore(Conductor.songPosition);
+		//	}
+		//}
 		//#end
 
 		//camera movement cuz the current one is quite fucky

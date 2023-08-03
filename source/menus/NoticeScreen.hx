@@ -63,6 +63,7 @@ class NoticeScreen extends MusicBeatState
 			}
 			mmtw.volume = 0;
 			mmtw.play(false, FlxG.random.int(0, Std.int(mmtw.length / 2))); // idk why it starts at a random point 
+			FlxG.sound.list.add(mmtw);
 			addShader(FlxG.camera,"glitchsmh");
 			addShader(FlxG.camera, "vhs");
 			addShader(FlxG.camera, "fake CRT");
@@ -112,5 +113,11 @@ class NoticeScreen extends MusicBeatState
 			FlxTween.tween(FlxG.camera, {zoom: 0.5, angle: 45}, 0.5, {ease: FlxEase.quadIn});
 			MusicBeatState.switchState(new menus.TitleState());
 		}
+	}
+	override function destroy()
+	{
+		mmtw.destroy();
+
+		super.destroy();
 	}
 }
