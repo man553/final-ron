@@ -767,6 +767,7 @@ class PlayState extends MusicBeatState
 				graadienter.active = false;
 				graadienter.antialiasing = true;
 				graadienter.visible = false;
+				graadienter.blend = BlendMode.ADD;
 				add(graadienter);				
 				
 				var street:BGSprite = new BGSprite('bgs/newbgtest/ayo/ayo_street', -100, 40);
@@ -993,6 +994,26 @@ class PlayState extends MusicBeatState
 
 				hellbg = new BGSprite('bgs/newbgtest/dsides/conall_bucket', -100, 40);
 				hellbg.screenCenter();
+				
+				var sky2:BGSprite = new BGSprite('bgs/newbgtest/dsides/conallwasted_sky', -100, 40);
+				sky2.screenCenter();
+				sky2.scrollFactor.set(0.1, 0.1);
+				wastedGrp.add(sky2);
+				
+				var behind2:BGSprite = new BGSprite('bgs/newbgtest/dsides/conallwasted_bgBehind', -100, 40);
+				behind2.screenCenter();
+				behind2.scrollFactor.set(0.7, 1);
+				wastedGrp.add(behind2);
+				
+				var street2:BGSprite = new BGSprite('bgs/newbgtest/dsides/conallwasted_bg', -100, 40);
+				street2.screenCenter();
+				wastedGrp.add(street2);
+				
+				add(wastedGrp);
+				wastedGrp.visible = false;
+
+				fx = new BGSprite('bgs/newbgtest/dsides/conallwasted_bucket', -100, 40);
+				fx.screenCenter();
 			case 'hell': //ron
 				addCharacterToList("hellron-drippin", 1);
 				defaultCamZoom = 0.8;
@@ -2083,6 +2104,8 @@ class PlayState extends MusicBeatState
 					startCountdown();
 				case 'ron-dsides':
 					add(hellbg);
+					add(fx);
+					fx.visible = false;
 					startCountdown();
 				case 'bloodshed':
 					wastedGrp.visible = true;
@@ -4796,7 +4819,7 @@ var cameraTwn:FlxTween;
 		}
 		
 		if (funnyDSidesSpin) {
-			dad.angle += 20;
+			dad.angle = FlxG.random.int(0,359);
 		}
 
 		// NO MERE MORTAL CAN HANDLE THE POWERFUL DRIP RON
@@ -5079,6 +5102,26 @@ var cameraTwn:FlxTween;
 					funnyDSidesSpin = false;
 					FlxTween.tween(dad, {angle: Math.floor(dad.angle/360)*360}, 0.8, {ease: FlxEase.expoOut});
 					FlxTween.tween(iconP2, {angle: Math.floor(iconP2.angle/360)*360}, 0.8, {ease: FlxEase.expoOut});
+				case 1315:
+					addShader(FlxG.camera, "rain");
+					defaultCamZoom += 0.1;
+					Shaders["rain"].shader.data.zoom.value = [35];
+					Shaders["rain"].shader.data.raindropLength.value = [0.075];
+					Shaders["rain"].shader.data.opacity.value = [0.2];
+					wastedGrp.visible = true;
+					fxtwo = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
+					fxtwo.scale.set(0.75, 0.75);
+					fxtwo.updateHitbox();
+					fxtwo.antialiasing = true;
+					fxtwo.screenCenter();
+					fxtwo.alpha = 0.2;
+					fxtwo.scrollFactor.set(0, 0);
+					add(fxtwo);
+					fxtwo.cameras = [camOverlay];
+					FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+					fx.visible = true;
+					hellbg.visible = false;
+					triggerEventNote('Change Scroll Speed', '1.2', '1');
 			}
 		}
 		
