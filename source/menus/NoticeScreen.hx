@@ -83,7 +83,7 @@ class NoticeScreen extends MusicBeatState
 			blackScreen.alpha = 0.33;
 			add(blackScreen);
 
-			screen = new FlxSprite().loadGraphic(Paths.image("warning/lol1"));
+			screen = new FlxSprite().loadGraphic(Paths.image("warning/lol"));
 			screen.screenCenter();
 			screen.angle = -3;
 			add(screen);
@@ -103,14 +103,10 @@ class NoticeScreen extends MusicBeatState
 			mmtw.volume += elapsed * .01;
 		}
 		
-		screen = new FlxSprite().loadGraphic(Paths.image("warning/lol1"));
-		if (Math.floor(timer/30) % 2 == 0)
-			screen = new FlxSprite().loadGraphic(Paths.image("warning/lol2"));
-		
 		if (FlxG.keys.justPressed.ENTER){
 			mmtw.destroy();
 			FlxG.sound.play(Paths.sound('resumeSong'));
-			FlxTween.tween(FlxG.camera, {zoom: 0.5, angle: 45}, 0.75, {ease: FlxEase.quadIn});
+			FlxTween.tween(FlxG.camera, {zoom: 0.5, angle: 45}, 0.5, {ease: FlxEase.quadIn});
 			MusicBeatState.switchState(new menus.TitleState());
 		}
 	}
