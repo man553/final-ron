@@ -356,7 +356,7 @@ class Alphabet extends FlxSpriteGroup
 		var it:Int = 0;
 		if (autoOffset)
 			for (i in this.members) {
-				if (it != 0) i.offset.x = ((1 - i.scale.x) * 50) * it;
+				if (it != 0 && i != null) i.offset.x = ((1 - i.scale.x) * 50) * it;
 				it++;
 			}
 		if (isMenuItem)
