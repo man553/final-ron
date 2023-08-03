@@ -1213,10 +1213,10 @@ class PlayState extends MusicBeatState
 				Shaders["rain"].shader.data.raindropLength.value = [0.1];
 				Shaders["rain"].shader.data.opacity.value = [0.25];
 				precacheList.set('hellexplode', 'sound');
-				var asdfsa:BGSprite = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_sky', 0, 0);
-				asdfsa.screenCenter();
-				asdfsa.scrollFactor.set(0.1, 0.1);
-				add(asdfsa);
+				wbg = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_sky', 0, 0);
+				wbg.screenCenter();
+				wbg.scrollFactor.set(0.1, 0.1);
+				add(wbg);
 				hellbg = new BGSprite('bgs/hell_bg', -300, 140, 0.5, 0.1);
 				hellbg.animation.addByPrefix('idle instance 1', 'idle instance 1', 48, true);
 				hellbg.setGraphicSize(Std.int(hellbg.width * 5));
@@ -1235,18 +1235,6 @@ class PlayState extends MusicBeatState
 				firebg.screenCenter();
 				firebg.alpha = 0;
 				add(firebg);
-				
-				wbg = new FlxSprite();
-				wbg.frames = Paths.getSparrowAtlas('bgs/newbgtest/bloodshed/lava');
-			    wbg.animation.addByPrefix('lava', 'lava', 24, true);
-				wbg.scale.set(2,2);
-				wbg.updateHitbox();
-				wbg.antialiasing = true;
-				wbg.screenCenter(XY);
-				wbg.scrollFactor.set(0.2, 0.05);
-				wbg.alpha = 0;	
-				add(wbg);
-				wbg.animation.play('lava');
 		
 				fx = new FlxSprite().loadGraphic(Paths.image('bgs/effect'));
 				fx.setGraphicSize(Std.int(2560 * 1)); // i dont know why but this gets smol if i make it the same size as the kade ver
@@ -1260,18 +1248,18 @@ class PlayState extends MusicBeatState
 				mountainsbackbl.screenCenter();
 				mountainsbackbl.scrollFactor.set(0.3, 0.3);
 				mountainsbackbl.y -= 60;
-				add(mountainsbackbl);
+				bloodshedGrp.add(mountainsbackbl);
 				
 				hillfrontbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_city', -100, 20);
 				hillfrontbl.screenCenter();
 				hillfrontbl.scrollFactor.set(0.4, 0.4);
-				add(hillfrontbl);
+				bloodshedGrp.add(hillfrontbl);
 				
 				mountainsbl = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_mountains', -100, 20);
 				mountainsbl.screenCenter();
 				mountainsbl.scrollFactor.set(0.3, 0.3);
 				mountainsbl.y -= 60;
-				add(mountainsbl);
+				bloodshedGrp.add(mountainsbl);
 				
 				satan = new BGSprite('bgs/hellRon_satan', -600, -500, 0.15, 0.15);
 				satan.setGraphicSize(Std.int(satan.width * 1.2));
@@ -1282,6 +1270,8 @@ class PlayState extends MusicBeatState
 				satan.updateHitbox();
 				add(satan);
 				
+				add(bloodshedGrp);
+				
 				bgLol = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_street', -100, 40);
 				bgLol.screenCenter();
 				add(bgLol);
@@ -1291,9 +1281,7 @@ class PlayState extends MusicBeatState
 				blackeffect.antialiasing = true;
 				blackeffect.screenCenter(XY);
 				blackeffect.scrollFactor.set();
-				blackeffect.alpha = 1;
-				if (SONG.song != 'Bloodshed-b')
-					blackeffect.alpha = 0;
+				blackeffect.alpha = 0;
 				add(blackeffect);
 
 				Estatic = new FlxSprite().loadGraphic(Paths.image('bgs/deadly'));
@@ -1302,13 +1290,8 @@ class PlayState extends MusicBeatState
 				Estatic.alpha = 0;
 				Estatic.blend = BlendMode.OVERLAY;
 				
-				Estatic2 = new BGSprite('bgs/newbgtest/bloodshed/bloodshed_streetBroken', -100, -5560);
-				Estatic2.screenCenter();
-				add(Estatic2);
-				Estatic2.visible = false;
-			
 				islands = new FlxSprite(-100, 40).loadGraphic(Paths.image('bgs/newbgtest/bloodshed/bloodshed_streetBroken'));
-				islands.scale.set(1,1);
+				islands.screenCenter();
 				islands.visible = false;
 				add(islands);				
 			case 'stage': //Week 1
@@ -1495,6 +1478,13 @@ class PlayState extends MusicBeatState
 				bg.screenCenter();
 				bg.antialiasing = true;
 				add(bg);
+				wbg = new FlxSprite().makeGraphic(FlxG.width*3, FlxG.height*3, FlxColor.WHITE);
+				wbg.scale.set(5,5);
+				wbg.updateHitbox();
+				wbg.screenCenter(XY);
+				wbg.scrollFactor.set();
+				add(wbg);
+				wbg.alpha = 0;
 			}
 			case 'cool':
 				var bg:BGSprite = new BGSprite('bgs/bg_less_concept', -600, -200, 0.9, 0.9);
@@ -1846,6 +1836,7 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == "official-debate") {
 			boyfriend.x -= 1250;
 			boyfriend.y -= 625;
+			gf.x = -2520;
 		}
 		if (SONG.song.toLowerCase() == "gron") {
 			boyfriend.x = 2600;
@@ -3045,6 +3036,25 @@ class PlayState extends MusicBeatState
 		}
 		
 		if (SONG.song.toLowerCase() == "official-debate") {
+			if (curStep == 984)
+			{
+				camGame.flash(FlxColor.WHITE, 1);
+				wbg.alpha = 1;
+				dad.color = FlxColor.BLACK;
+				boyfriend.color = FlxColor.BLACK;
+				gf.visible = false;
+			}
+			if (curStep == 1112)
+			{
+				FlxG.camera.flash(FlxColor.WHITE, 1);
+				wbg.alpha = 0;
+				dad.color = FlxColor.WHITE;
+				boyfriend.color = FlxColor.WHITE;
+				gf.visible = true;
+				
+				//for some reason this breaks???
+				FlxTween.tween(gf, {x: gf.x + 1600}, 0.8, {ease: FlxEase.circOut});
+			}
 			if (curStep == 1176)
 			{
 				FlxG.camera.flash(FlxColor.WHITE, 1);
@@ -6364,12 +6374,21 @@ var cameraTwn:FlxTween;
 			}
 			if (curStep == 384)
 			{
+				wbg.alpha = 0.66;
 				add(Estatic);
+				Estatic.alpha = 1;
+				wastedGrp.visible = false;
 				FlxTween.tween(Estatic, {"scale.x":1.2,"scale.y":1.2}, Conductor.crochet / 1000, {ease: FlxEase.quadInOut, type: PINGPONG});
 				camGame.flash(FlxColor.WHITE, 1);
 				addShader(FlxG.camera,"glitchsmh");
 				Shaders["glitchsmh"].shader.data.on.value = [1.];
+				bloodshedGrp.visible = false;
+				blackeffect.visible = false;
+				satan.color = FlxColor.BLACK;
+				firebg.alpha = 1;
+				firebg.screenCenter();
 				
+				addShader(camHUD, "vhs");
 				addShader(FlxG.camera, "chromatic aberration");
 				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(curStep*4)/2];
 				Shaders["chromatic aberration"].shader.data.gOffset.value = [0.0];
@@ -6377,7 +6396,18 @@ var cameraTwn:FlxTween;
 				remove(bloodshedTrail);
 				bloodshedTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				addBehindDad(bloodshedTrail);
-				dad.y += 50;
+				dad.y -= 230;
+				dad.x -= 230;
+				boyfriend.y -= 230;
+				boyfriend.x += 300;
+
+				FlxTween.angle(satan, 0, 359.99, 1.5, { 
+					ease: FlxEase.quadIn, 
+					onComplete: function(twn:FlxTween) 
+					{
+						FlxTween.angle(satan, 0, 359.99, 0.75, { type: FlxTweenType.LOOPING } );
+					}} 
+				);
 				
 				exploders.animation.play('explosion');
 				exploders.scale.set(2,2);
@@ -6386,10 +6416,13 @@ var cameraTwn:FlxTween;
 				
 				bgLol.visible = false;
 				islands.visible = true;
-				intensecameramove = true;
+				cameramove = true;
 				
-				FlxTween.tween(satan, {y: satan.y - 1500, angle: 359.99}, 1, {ease: FlxEase.backInOut});
+				FlxTween.tween(satan, {y: gf.y - 500}, 1, {ease: FlxEase.backInOut});
+				FlxTween.tween(gf, {y: gf.y + 1000, angle: 45}, 1, {ease: FlxEase.quadIn});
 			}
+			if (curStep == 640)
+				cameramove = false;
 			if (curStep > 384)
 			{
 				Shaders["chromatic aberration"].shader.data.rOffset.value = [chromeOffset*Math.sin(curStep*4)/2];
@@ -6426,7 +6459,7 @@ var cameraTwn:FlxTween;
 			}
 		}
 		
-		if ((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic'))
+		if (((dad.curCharacter == 'hellron-drippin') || (dad.curCharacter == 'dripronclassic')) && (curBeat % 2 == 0))
 		{
 			var multiplier:Float = 1;
 			if (health >= 1)
@@ -6435,17 +6468,27 @@ var cameraTwn:FlxTween;
 				multiplier = multiplier + ((1 - health));
 			FlxG.camera.shake(0.025 * multiplier / 4, 0.1);
 			camHUD.shake(0.0055 * multiplier / 4, 0.15);
-			if (health > 0.1*healthLoss)
-				health -= 0.1*healthLoss;
+			if (health > 0.5*healthLoss)
+				health -= 0.5*healthLoss;
 			else
-				health = 0.02*healthLoss;
+				health = 0.03*healthLoss;
 			
 			FlxG.camera.zoom += 0.02 * camZoomingMult;
 			camHUD.zoom += 0.01 * camZoomingMult;
 
 			iconP2.angle = 0;
 			FlxTween.cancelTweensOf(iconP2);
-			FlxTween.tween(iconP2, {angle: 359.99}, Conductor.crochet / 1200, {ease: FlxEase.circOut});
+			FlxTween.tween(iconP2, {angle: 359.99}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			
+			FlxTween.globalManager.completeTweensOf(healthBar);
+			FlxTween.globalManager.completeTweensOf(healthBarBG);
+			FlxTween.globalManager.completeTweensOf(healthBarBG2);
+			healthBar.x += 50;
+			healthBarBG.x += 50;
+			healthBarBG2.x += 50;
+			FlxTween.tween(healthBar, {x: healthBar.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			FlxTween.tween(healthBarBG, {x: healthBarBG.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
+			FlxTween.tween(healthBarBG2, {x: healthBarBG2.x - 50}, Conductor.crochet / 1200 * 2, {ease: FlxEase.circOut});
 		}
 		
 		//WHATS THE POINT OF ADDING BRACKETS EYAD
@@ -6498,8 +6541,15 @@ var cameraTwn:FlxTween;
 		}
 		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms)
 		{
-			FlxG.camera.zoom += 0.015 * camZoomingMult;
-			camHUD.zoom += 0.03 * camZoomingMult;
+			if ((SONG.song.toLowerCase() == "official-debate") && (curBeat < 38))
+			{
+				//ehhh Uuhmmm ill think fo something
+			}
+			else
+			{
+				FlxG.camera.zoom += 0.015 * camZoomingMult;
+				camHUD.zoom += 0.03 * camZoomingMult;
+			}
 		}
 
 		iconP1.scale.set(1.2, 1.2);

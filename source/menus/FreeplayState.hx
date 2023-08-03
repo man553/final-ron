@@ -544,7 +544,13 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		diffText.text = '  ' + CoolUtil.difficultyString() + '  ';
+		diffText.color = FlxColor.WHITE;
+		if (songs[curSelected].songName.toLowerCase() == 'bleeding')
+		{
+			diffText.color = FlxColor.RED;
+			diffText.text = '  ' + 'COOL' + '  ';
+		}
 		positionHighscore();
 	}
 
@@ -709,7 +715,7 @@ class FreeplayState extends MusicBeatState
 			addShader(camWhat, "vhs");
 		switch (songs[curSelected].songName.toLowerCase())
 		{
-			case "trojan virus":
+			case "trojan virus" | "bleeding":
 				addShader(camWhat,"glitchsmh");
 				Shaders["glitchsmh"].shader.data.on.value = [1.];		
 			case "gron":
