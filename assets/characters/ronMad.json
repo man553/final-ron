@@ -1,59 +1,25 @@
 {
-	"noteskin": "ron",
 	"animations": [
 		{
 			"loop": false,
 			"offsets": [
-				104,
-				-18
+				0,
+				0
 			],
-			"anim": "singLEFT",
+			"anim": "idle",
 			"fps": 24,
-			"name": "ron angery left",
+			"name": "idle",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-59,
-				-11
-			],
-			"anim": "singDOWN",
-			"fps": 24,
-			"name": "ron angery down",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				45,
-				40
-			],
-			"anim": "singUP",
-			"fps": 24,
-			"name": "ron angery up",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-62,
-				10
-			],
-			"anim": "singRIGHT",
-			"fps": 24,
-			"name": "ron angery right",
-			"indices": []
-		},
-		{
-			"loop": false,
-			"offsets": [
-				-61,
-				-6
+				0,
+				1
 			],
 			"anim": "idle-alt",
 			"fps": 24,
-			"name": "ron angery bridle alt",
+			"name": "jordans",
 			"indices": []
 		},
 		{
@@ -64,25 +30,59 @@
 			],
 			"anim": "hey",
 			"fps": 24,
-			"name": "ron angery yes",
+			"name": "jordans",
 			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
+			"offsets": [
+				120,
+				17
+			],
+			"anim": "singLEFT",
 			"fps": 24,
-			"anim": "idle",
-			"name": "ron angery idle"
+			"name": "left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				17,
+				19
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				84,
+				129
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				175,
+				-167
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/newcharstest/ronMad",
+	"image": "characters/newcharstest/thisisronfnf",
 	"position": [
-		-110,
-		220
+		-340,
+		40
 	],
 	"healthicon": "ronmad",
 	"flip_x": false,
@@ -92,9 +92,10 @@
 		0
 	],
 	"camera_position": [
-		280,
-		120
+		180,
+		290
 	],
 	"sing_duration": 4,
-	"scale": 1.2
+	"noteskin": "ron",
+	"scale": 0.55
 }
