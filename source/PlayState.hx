@@ -3650,7 +3650,7 @@ class PlayState extends MusicBeatState
 				} else if (curSong.toLowerCase().contains("redux") || curSong.toLowerCase() == "bijuu") {
 					offsetY = -250;
 					offsetX = -225;
-				} else if (curSong.toLowerCase() == "ayo-classic") {
+				} else if (curSong.toLowerCase().contains("ayo") && curSong.toLowerCase().contains("classic")) {
 					offsetX = 175;
 					offsetY = 300;
 				} else if (curSong.toLowerCase() == "bleeding") {
@@ -5684,9 +5684,11 @@ var cameraTwn:FlxTween;
 					freindly.visible = true;
 					defaultCamZoom -= 0.1;
 					dad.y += 9400;
-					boyfriend.y = dad.y;
+					boyfriend.y = dad.y+650;
 				case 1152: 
-					boyfriend.y = dad.y;
+					boyfriend.y = dad.y+650;
+					healthBar.setGraphicSize(800,Std.int(healthBar.height));
+					healthBar.updateHitbox();
 			}
 		}
 
