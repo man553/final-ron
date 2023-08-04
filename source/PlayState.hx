@@ -3655,7 +3655,7 @@ class PlayState extends MusicBeatState
 					offsetY = -250;
 					offsetX = -225;
 				} else if (curSong == "ayo-classic") {
-					offsetX = 175;
+					offsetX = 180;
 					offsetY = 550;
 				} else if (curSong.toLowerCase() == "bleeding") {
 					offsetY = -50;
