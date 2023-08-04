@@ -352,11 +352,13 @@ class PlayState extends MusicBeatState
 	function switchToCoolHealthBar() {
 		healthBarBG.loadGraphic(Paths.image("healthBarintheworks2"));
 		healthBarBG2.loadGraphic(Paths.image("healthBarintheworks2"));
-		healthBar.x -= 100;
 		healthBar.y -= 24;
 		healthBar.setGraphicSize(800,Std.int(healthBar.height));
 		healthBar.updateHitbox();
-		scoreTxt.y += 28;
+		healthBar.screenCenter(X);
+		if (ClientPrefs.downScroll) {
+			scoreTxt.y += 28;
+		}
 	}
 	
 	override public function create()
@@ -1884,7 +1886,7 @@ class PlayState extends MusicBeatState
 			}
 
 			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
-			kadeEngineWatermark = new FlxText(4, 0, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
+			kadeEngineWatermark = new FlxText(5, 6, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
 			kadeEngineWatermark.cameras = [camHUD];
 			kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			kadeEngineWatermark.scrollFactor.set();
@@ -1957,6 +1959,9 @@ class PlayState extends MusicBeatState
 		scoreTxt = new FlxText(0, healthBarBG.y + 36+16, FlxG.width, "", 20);
 		if (curSong.toLowerCase().contains("classic")) {
 			scoreTxt.y -= 16;
+		}
+		if (!ClientPrefs.downScroll) {
+			scoreTxt.y -= 3;
 		}
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
