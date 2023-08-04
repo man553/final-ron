@@ -3649,9 +3649,9 @@ class PlayState extends MusicBeatState
 				} else if (curSong.toLowerCase().contains("redux") || curSong.toLowerCase() == "bijuu") {
 					offsetY = -250;
 					offsetX = -225;
-				} else if (curSong.toLowerCase().contains("ayo") && curSong.toLowerCase().contains("classic")) {
+				} else if (curSong == "ayo-classic") {
 					offsetX = 175;
-					offsetY = 300;
+					offsetY = 550;
 				} else if (curSong.toLowerCase() == "bleeding") {
 					offsetY = -50;
 				} else if (curSong.toLowerCase() == "fardventure") {
@@ -4267,6 +4267,7 @@ var cameraTwn:FlxTween;
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + ClientPrefs.ratingOffset);
+		if (cpuControlled) {noteDiff=0;}
 		//trace(noteDiff, ' ' + Math.abs(note.strumTime - Conductor.songPosition));
 
 		// boyfriend.playAnim('hey');
