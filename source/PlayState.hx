@@ -352,13 +352,10 @@ class PlayState extends MusicBeatState
 	function switchToCoolHealthBar() {
 		healthBarBG.loadGraphic(Paths.image("healthBarintheworks2"));
 		healthBarBG2.loadGraphic(Paths.image("healthBarintheworks2"));
-		healthBar.y -= 24;
+		healthBar.y -= 36;
 		healthBar.setGraphicSize(800,Std.int(healthBar.height));
 		healthBar.updateHitbox();
 		healthBar.screenCenter(X);
-		if (ClientPrefs.downScroll) {
-			scoreTxt.y += 28;
-		}
 	}
 	
 	override public function create()
@@ -1862,7 +1859,10 @@ class PlayState extends MusicBeatState
 		add(healthBarBG2);
 		if(ClientPrefs.downScroll) healthBarBG2.y = 0.11 * FlxG.height;
 		
-
+		if (!curSong.toLowerCase().contains("classic")) {
+			healthBarBG.y -= 16;
+		}
+		
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
 		healthBar.scrollFactor.set();
@@ -1886,7 +1886,7 @@ class PlayState extends MusicBeatState
 			}
 
 			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
-			kadeEngineWatermark = new FlxText(5, 6, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
+			kadeEngineWatermark = new FlxText(10, 10, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
 			kadeEngineWatermark.cameras = [camHUD];
 			kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			kadeEngineWatermark.scrollFactor.set();
@@ -1960,9 +1960,9 @@ class PlayState extends MusicBeatState
 		if (curSong.toLowerCase().contains("classic")) {
 			scoreTxt.y -= 16;
 		}
-		if (!ClientPrefs.downScroll) {
-			scoreTxt.y -= 3;
-		}
+		//if (!ClientPrefs.downScroll) {
+		//	scoreTxt.y -= 3;
+		//}
 		if (SONG.stage == 'daveHouse' || SONG.stage == 'farm')
 			scoreTxt.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		else
@@ -1976,7 +1976,7 @@ class PlayState extends MusicBeatState
 		{
 			//can someone please fix that im busy   - Sword352
 			if (ClientPrefs.downScroll)
-				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 50);
+				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 49);
 			else scoreTxt.y + 10;
 		}
 
@@ -5235,8 +5235,9 @@ var cameraTwn:FlxTween;
 					iconP2.visible = true;
 					defaultCamZoom -= 0.1;
 					timeBarBG.visible = true;
-					timeBar.visible = true;
-					timeTxt.visible = true;
+					var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
+					timeBar.visible = showTime;
+					timeTxt.visible = showTime;
 					camHUD.alpha = 1;
 					graadienter.color = FlxColor.WHITE;
 					wbg.color = FlxColor.WHITE;
