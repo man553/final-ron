@@ -2925,6 +2925,9 @@ class PlayState extends MusicBeatState
 
 			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player, dad.curCharacter);
 			babyArrow.downScroll = ClientPrefs.downScroll;
+			if (curSong.toLowerCase().contains("classic")) {
+				boyfriend.noteskin = 'NOTEold_assets';
+			}
 			babyArrow.texture = "noteskins/" + (player == 0 ? dad.noteskin : boyfriend.noteskin);
 			babyArrow.reloadNote();
 			if (!isStoryMode && !skipArrowStartTween)
@@ -3962,7 +3965,9 @@ class PlayState extends MusicBeatState
 							boyfriend.alpha = 0.00001;
 							boyfriend = boyfriendMap.get(value2);
 							boyfriend.alpha = lastAlpha;
-							iconP1.changeIcon(boyfriend.healthIcon);
+							if (curSong.toLowerCase() != "bloodshed-classic") {
+								iconP1.changeIcon(boyfriend.healthIcon);
+							}
 						}
 
 					case 1:
@@ -4008,6 +4013,8 @@ class PlayState extends MusicBeatState
 				{
 					unspawnNotes[i].texture = "noteskins/" + (unspawnNotes[i].mustPress ? boyfriend.noteskin : dad.noteskin);
 				}
+				
+				
 				for (n in notes.members)
 				{
 					n.texture = "noteskins/" + (n.mustPress ? boyfriend.noteskin : dad.noteskin);
