@@ -127,6 +127,12 @@
 		"social_link": "https://www.youtube.com/@glitch_mp3"
 	},
 	{
+		"name": "karpov",
+		"handle": "Karpov",
+		"description": "hello",
+		"social_link": "https://www.youtube.com/@KarpovYT"
+	},
+	{
 		"name": "justin",
 		"handle": "Justin(Yuble)",
 		"description": "Composer\n\nTheres grape juice on my keyboard elp",
@@ -179,6 +185,12 @@
 		"handle": "JaceLOL",
 		"description": "Composer\n\npopeyes fried chicken",
 		"social_link": "https://www.youtube.com/@JaceLOL_"
+	},
+	{
+		"name": "ezzy",
+		"handle": "Ezzy",
+		"description": "gumbal",
+		"social_link": "https://www.youtube.com/channel/UCv9kOV0Xm9q_DMhbR39rHvA"
 	},
 	{
 		"name": "bitto",
