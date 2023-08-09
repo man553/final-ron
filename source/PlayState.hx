@@ -1886,7 +1886,7 @@ class PlayState extends MusicBeatState
 			}
 
 			var swordEngine = FlxG.random.getObject(['Tristan', 'Dave', 'Bambi']);
-			kadeEngineWatermark = new FlxText(10, 10, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
+			kadeEngineWatermark = new FlxText(5, 10, 0, '$songName - ${CoolUtil.difficulties[storyDifficulty]} | $swordEngine Engine (KE 1.2)', 16);
 			kadeEngineWatermark.cameras = [camHUD];
 			kadeEngineWatermark.setFormat(Paths.font("comic.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 			kadeEngineWatermark.scrollFactor.set();
@@ -1976,7 +1976,7 @@ class PlayState extends MusicBeatState
 		{
 			//can someone please fix that im busy   - Sword352
 			if (ClientPrefs.downScroll)
-				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 49);
+				kadeEngineWatermark.y =  FlxG.height * 0.9 + ((SONG.stage == 'daveHouse' || SONG.stage == 'farm') ? 45 : 50);
 			else scoreTxt.y + 10;
 		}
 

@@ -2,7 +2,7 @@ COMPOSER(s)
 ArmandRonan
 
 CHARTER(s)
-Idk
+Shoutsuo
 
 ARTIST(s)
 Byok
