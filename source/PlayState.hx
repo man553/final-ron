@@ -3664,6 +3664,8 @@ class PlayState extends MusicBeatState
 					offsetY = -50;
 				} else if (curSong.toLowerCase() == "fardventure") {
 					offsetY = -100;
+				} else if (curSong.toLowerCase().contains("champion")) {
+					offsetY = -70;
 				}
 				if ((curSong.toLowerCase() == "wasted" && dad.curCharacter.toLowerCase() == "ronmad")) {
 					offsetY = -200;
