@@ -332,6 +332,7 @@ class PlayState extends MusicBeatState
 	var intensecameramove:Bool = false;
 
 	var moveing:Bool = false;
+	var defaultHealthBarY:Float;
 
 	var bgLol:BGSprite;
 	var cloudsa:FlxSprite;
@@ -352,7 +353,9 @@ class PlayState extends MusicBeatState
 	function switchToCoolHealthBar() {
 		healthBarBG.loadGraphic(Paths.image("healthBarintheworks2"));
 		healthBarBG2.loadGraphic(Paths.image("healthBarintheworks2"));
-		healthBar.y -= 36;
+		healthBar.y = defaultHealthBarY-36;
+		iconP1.y -= 6;
+		iconP2.y -= 6;
 		healthBar.setGraphicSize(800,Std.int(healthBar.height));
 		healthBar.updateHitbox();
 		healthBar.screenCenter(X);
@@ -1814,12 +1817,12 @@ class PlayState extends MusicBeatState
 		snapCamFollowToPos(camPos.x, camPos.y);
 		if (prevCamFollow != null)
 		{
-			camFollow = prevCamFollow;
+			//camFollow = prevCamFollow;
 			prevCamFollow = null;
 		}
 		if (prevCamFollowPos != null)
 		{
-			camFollowPos = prevCamFollowPos;
+			//camFollowPos = prevCamFollowPos;
 			prevCamFollowPos = null;
 		}
 		add(camFollowPos);
@@ -1865,6 +1868,7 @@ class PlayState extends MusicBeatState
 		
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
 			'health', 0, 2);
+		defaultHealthBarY = healthBar.y;
 		healthBar.scrollFactor.set();
 		// healthBar
 		healthBar.visible = curSong.toLowerCase().contains("classic");
