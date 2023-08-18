@@ -59,7 +59,7 @@ class NoticeScreen extends MusicBeatState
 			var songName:String = ClientPrefs.pauseMusic;
 			mmtw = new FlxSound();
 			if (songName != 'None' && songName != null) {
-				mmtw.loadEmbedded(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic).toLowerCase()), true, true);
+				mmtw.loadEmbedded(Paths.music(Paths.formatToSongPath("Tea Time").toLowerCase()), true, true);
 			}
 			mmtw.volume = 0;
 			mmtw.play(false, FlxG.random.int(0, Std.int(mmtw.length / 2))); // idk why it starts at a random point 

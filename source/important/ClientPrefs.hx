@@ -32,7 +32,7 @@ class ClientPrefs {
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var hitsoundVolume:Float = 0;
-	public static var pauseMusic:String = 'Tea Time';
+	public static var pauseMusic:String = 'TSTPWYPTG';
 	public static var directionalCamera:Bool = true;
 	public static var chromaticAbberationEverywhere:Bool = false;
 	public static var cutscenes:Bool = true;

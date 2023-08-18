@@ -2214,7 +2214,7 @@ class PlayState extends MusicBeatState
 		precacheList.set('missnote3', 'sound');
 		if(ClientPrefs.pauseMusic != 'None') {
 			if (ClientPrefs.pauseMusic != "Tea Time" && ClientPrefs.pauseMusic != "Breakfast") {
-				ClientPrefs.pauseMusic = "Breakfast"; // failsafe
+				ClientPrefs.pauseMusic = "TSTPWYPTG"; // failsafe
 			}
 			precacheList.set(Paths.formatToSongPath(ClientPrefs.pauseMusic), 'music');
 		};
